@@ -9,10 +9,10 @@ const links = [
 ];
 
 export default function Header(): JSX.Element {
-  const [click, setClick] = useState(false);
+  // const [click, setClick] = useState(false);
   const [navbar, setNavbar] = useState(false);
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  // const handleClick = () => setClick(!click);
+  // const closeMobileMenu = () => setClick(false);
 
   const changeBackground = () => {
     const viewportHeight = window.innerHeight;

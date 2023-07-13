@@ -19,6 +19,7 @@ export default function Portfolio(): JSX.Element {
               project.id % 2 === 0 ? '' : 'flex-row-reverse'
             }`}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={project.pic}
               alt=''

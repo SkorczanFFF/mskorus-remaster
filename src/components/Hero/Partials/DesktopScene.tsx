@@ -5,6 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 import { colors } from '@/components/Hero/Partials/colors';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DesktopScene = (props: any) => {
   const { nodes } = useLoader(GLTFLoader, '/models/desktop.gltf');
   const group = useRef<THREE.Group>();

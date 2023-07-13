@@ -63,6 +63,7 @@ export default function CV(): JSX.Element {
               </div>
               <div className='mt-[65px]'>
                 <div className='h-[4px] w-[95%] bg-gradient-to-r from-white from-10% to-transparent to-100%' />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src='/cvphoto.png'
                   alt='Me'

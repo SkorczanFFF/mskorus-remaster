@@ -8,24 +8,24 @@ import {
   useProgress,
 } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import * as THREE from 'three';
 
 import DesktopBackground from '@/components/Hero/Partials/DesktopBackground';
 import DesktopScene from '@/components/Hero/Partials/DesktopScene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
-function ViewportWidth() {
-  const [viewportSize, setViewportSize] = useState([window.innerWidth]);
-  useEffect(() => {
-    const handleResize = () => setViewportSize([window.innerWidth]);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-  return viewportSize;
-}
+// function ViewportWidth() {
+//   const [viewportSize, setViewportSize] = useState([window.innerWidth]);
+//   useEffect(() => {
+//     const handleResize = () => setViewportSize([window.innerWidth]);
+//     window.addEventListener('resize', handleResize);
+//     return () => {
+//       window.removeEventListener('resize', handleResize);
+//     };
+//   }, []);
+//   return viewportSize;
+// }
 
 function Rig() {
   const { camera, mouse } = useThree();
