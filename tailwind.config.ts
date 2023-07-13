@@ -12,6 +12,7 @@ export default {
       colors: {
         'primary-blue': '#141827',
         'secondary-blue': '#0b0d16',
+        'real-white': '#ffffff',
         white: '#e4e4e4',
         raspberry: '#801834',
         orange: '#992210',

@@ -3,7 +3,7 @@ const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
-
+  transpilePackages: ['three'],
   reactStrictMode: true,
   swcMinify: true,
 
@@ -35,3 +35,7 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withTM = require('next-transpile-modules')(['three']);
+module.exports = withTM();

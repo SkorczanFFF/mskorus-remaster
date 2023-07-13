@@ -1,0 +1,34 @@
+[
+  {
+    "id": 0,
+    "pic": "/projects/portfolio.jpg",
+    "title": "MSKORUS.PL - moje portfolio",
+    "description": "My personal portfolio page, remastered on Next.js. Hero section is WebGL scene made with React Three Fiber. Blender models were converted to JSX components for better scene handling.",
+    "live": "https://mskorus.pl/",
+    "git": "https://github.com/SkorczanFFF/MSKORUS-portfolio"
+  },
+  {
+    "id": 1,
+    "pic": "/projects/polonez_autodrive.jpg",
+    "title": "POLONEZ AUTODRIVE",
+    "description": "Simple animation in Synthwave/80's style served as interactive `coloring book`. Obecně známou věcí, že člověk bývá při zkoumání grafického návrhu rozptylován okolním textem, pokud mu dává nějaký smysl. Úkolem Lorem Ipsum je pak nahradit klasický smysluplný text vhodnou bezvýznamovou alternativou s relativně běžným rozložením slov.",
+    "live": "https://skorczanfff.github.io/Polonez-Autodrive/",
+    "git": "https://github.com/SkorczanFFF/Polonez-Autodrive"
+  },
+  {
+    "id": 2,
+    "pic": "/projects/YAWA.jpg",
+    "title": "Yet Another Weather App",
+    "description": "Existuje mnoho variant s pasážemi Lorem Ipsum, nicméně valná většina trpí neduhy v podobě snahy o vtipný text či použití naprosto náhodných slov, což nevypadá zrovna uvěřitelně. Pokud plánujete použít pasáž z Lorem Ipsum, měli byste mít jistotu, že v textu nebude nic, co by jej mohlo narušovat.",
+    "live": "https://skorczanfff.github.io/YetAnotherWeatherApp/",
+    "git": "https://github.com/SkorczanFFF/YetAnotherWeatherApp/"
+  },
+  {
+    "id": 3,
+    "pic": "/projects/construction.png",
+    "title": "Xxxxxxxxx xxxxxxx",
+    "description": "Existuje mnoho variant s pasážemi Lorem Ipsum, nicméně valná většina trpí neduhy v podobě snahy o vtipný text či použití naprosto náhodných slov, což nevypadá zrovna uvěřitelně. Pokud plánujete použít pasáž z Lorem Ipsum, měli byste mít jistotu, že v textu nebude nic, co by jej mohlo narušovat.",
+    "live": "",
+    "git": ""
+  }
+]
