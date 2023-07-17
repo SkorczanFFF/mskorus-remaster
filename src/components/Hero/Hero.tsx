@@ -4,10 +4,13 @@ import {
   Environment,
   Html,
   OrbitControls,
+  RandomizedLight,
   Stars,
   useProgress,
 } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { EffectComposer, Vignette } from '@react-three/postprocessing';
+import { BlendFunction } from 'postprocessing';
 import React, { Suspense } from 'react';
 import * as THREE from 'three';
 
@@ -61,7 +64,7 @@ export default function Hero(): JSX.Element {
   // const [width] = ViewportWidth();
   // const canvasRef = useRef<HTMLCanvasElement>(null);
   return (
-    <section className='font-mont bg-primary-blue -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center'>
+    <section className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a25]'>
       <Canvas shadows dpr={[1, 1.5]} id='canvas' gl={{ antialias: true }}>
         <Suspense fallback={<Loader />}>
           <OrbitControls
@@ -75,31 +78,43 @@ export default function Hero(): JSX.Element {
             rollFrequency={0.02}
           />
           <Rig />
-          <Environment preset='city' />
-          <spotLight intensity={0.5} position={[600, -700, 700]} />
-          <spotLight intensity={0.5} position={[-600, 700, -700]} />
-          <Stars radius={0.2} depth={150} count={1000} factor={3} fade />
-          <DesktopBackground />
-          {/* <mesh
-            receiveShadow
-            rotation={[-Math.PI / 2, 0, 0]}
-            position={[0, -3, 20]}
-          >
-            <planeGeometry args={[30, 100]} />
-            <MeshReflectorMaterial
-              blur={[100, 30]}
-              resolution={2048}
-              mixBlur={1}
-              mixStrength={120}
-              roughness={1}
-              depthScale={1.3}
-              minDepthThreshold={0.3}
-              maxDepthThreshold={1.4}
-              color='#141827'
-              metalness={0.7}
-              mirror={0}
+          {/* <ambientLight intensity={0.5} color='#ffffff' /> */}
+
+          {/* <spotLight intensity={0.55} position={[600, -700, 700]} />
+          <spotLight intensity={0.25} position={[-600, 700, -700]} /> */}
+          <EffectComposer>
+            <Vignette
+              offset={0.5}
+              darkness={0.5}
+              eskil={false}
+              blendFunction={BlendFunction.NORMAL}
             />
-          </mesh> */}
+            <Stars
+              radius={200}
+              depth={1}
+              count={1000}
+              factor={2}
+              saturation={154}
+              speed={1}
+            />
+            {/* <Sparkles
+              opacity={0.5}
+              size={5}
+              color='#972b1a'
+              scale={8}
+              position={[0, 0, -5]}
+              count={100}
+            /> */}
+            <RandomizedLight
+              castShadow
+              amount={8}
+              frames={100}
+              position={[5, 5, -5]}
+            />
+            <Environment preset='warehouse' />
+            <DesktopBackground />
+          </EffectComposer>
+
           <DesktopScene />
           <BakeShadows />
         </Suspense>

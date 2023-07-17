@@ -24,7 +24,14 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/Hero/Partials/DesktopScene.jsx"
+    "src/components/Hero/Partials/DesktopScene.jsx",
+    "src/components/Hero/Partials/Blob.jsx",
+    "src/components/Hero/Partials/Blob/vertexShader.ts",
+    "src/components/Hero/Partials/Blob/fragmentShader.ts",
+    "src/components/Hero/Partials/Blob/Blob.jsx",
+    "src/components/Hero/Partials/Blob/Blob.js",
+    "src/components/Hero/Hero.tsx",
+    "src/components/Hero/Godrays.jsx"
   ],
   "exclude": ["node_modules"],
   "moduleResolution": ["node_modules", ".next", "node"],
