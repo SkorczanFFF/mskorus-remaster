@@ -21,7 +21,7 @@
     "@react-three/drei": "^9.78.1",
     "@react-three/fiber": "^8.13.4",
     "@react-three/postprocessing": "^2.14.13",
-    "@types/three": "^0.153.0",
+    "@types/three": "^0.154.0",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.18",
     "next": "^13.4.4",
