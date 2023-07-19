@@ -6,7 +6,6 @@ export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
   return (
     <footer className='font-mont bg-primary-blue flex min-h-[20vh] w-full flex-col items-center'>
-      {/* <div className='arrow-down white' /> */}
       <div className='w-full min-w-[350px] px-2 xl:w-[1100px] xl:px-0'>
         <div className='arrow-down white' />
         <p className='font-mont relative ml-3 text-start text-2xl font-[400] text-white'>
@@ -51,7 +50,7 @@ export default function Footer(): JSX.Element {
 
               {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
               <a
-                href='/cv'
+                href='/resume'
                 className=' hover:text-raspberry text-sm duration-150'
               >
                 English (WEB)

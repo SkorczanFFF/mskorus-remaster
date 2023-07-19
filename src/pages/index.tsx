@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import About from '@/components/About/About';
 import Contact from '@/components/Contact/Contact';
+import Footer from '@/components/layout/Footer/Footer';
 import Layout from '@/components/layout/Layout';
 import Portfolio from '@/components/Portfolio/Portfolio';
 import Seo from '@/components/Seo';
@@ -22,6 +23,7 @@ export default function HomePage() {
         <Technos />
         <Portfolio />
         <Contact />
+        <Footer />
       </main>
     </Layout>
   );

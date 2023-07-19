@@ -48,11 +48,11 @@ export default function Technos(): JSX.Element {
   return (
     <section className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20'>
       <h3 className='font-mont font-[400] tracking-wider'>TECH STACK</h3>
-      <div className='mb-20 mt-10 flex max-w-[1200px] flex-wrap justify-center gap-10'>
+      <div className='mx-4 mb-20 mt-10 flex max-w-[1200px] flex-wrap justify-center gap-10'>
         {technos.map((techno, index) => (
           <div
             key={index}
-            className='text-primary-blue hover:text-raspberry flex w-[100px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
+            className='text-primary-blue hover:text-raspberry flex w-[75px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px]'
           >
             {techno.icon}
             <span className='text-center text-xs'>{techno.label}</span>

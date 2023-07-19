@@ -67,6 +67,15 @@ const DesktopScene = (props: any) => {
           />
         </mesh>
         <Text
+          fontSize={7}
+          letterSpacing={0}
+          color='#e4e4e4'
+          {...props}
+          position={[10, 17, -20]}
+        >
+          FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
+        </Text>
+        <Text
           fontSize={6}
           letterSpacing={0}
           color='#e4e4e4'
