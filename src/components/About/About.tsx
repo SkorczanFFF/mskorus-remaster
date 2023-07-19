@@ -2,7 +2,10 @@ import React from 'react';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 export default function About(): JSX.Element {
   return (
-    <section className='font-mont relative flex h-[100%] w-full flex-col items-center justify-center bg-white pb-10 pt-[200px]'>
+    <section
+      id='about'
+      className='font-mont relative flex h-[100%] w-full flex-col items-center justify-center bg-white pb-10 pt-[200px]'
+    >
       <h3 className='font-mont text-primary-blue absolute left-0 top-[170px] -rotate-90 text-xl font-[500] leading-3 tracking-[10px]'>
         ABOUT
       </h3>
@@ -19,7 +22,8 @@ export default function About(): JSX.Element {
         </div>
       </div>
       <h3 className='bg-primary-blue font-mont text-real-white mb-10 mt-20 px-4 py-2 text-sm font-[300]'>
-        Always trying to make something from outer space.
+        Always trying to make something from outer space. Curious about Web,
+        WebGL
       </h3>
 
       <div className='mt-20 flex gap-10'>
