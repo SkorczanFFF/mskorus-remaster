@@ -4,12 +4,12 @@ export default function About(): JSX.Element {
   return (
     <section
       id='about'
-      className='font-mont relative flex h-[100%] w-full flex-col items-center justify-center bg-white pb-10 pt-[200px]'
+      className='font-mont relative flex h-[100%] w-full flex-col items-center justify-center bg-white pb-10 md:pt-[200px]'
     >
-      <h3 className='font-mont text-primary-blue absolute left-0 top-[170px] -rotate-90 text-xl font-[500] leading-3 tracking-[10px]'>
+      <h3 className='font-mont text-primary-blue left-0 top-[140px] py-20 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:-rotate-90 md:py-0'>
         ABOUT
       </h3>
-      <div className='flex max-w-[700px] flex-col gap-3 text-white md:flex-col'>
+      <div className='flex max-w-[900px] flex-col gap-3 text-white md:flex-col'>
         <div className='perspective-right flex items-start'>
           <h2 className='from-raspberry to-oranger font-mont w-auto justify-end bg-gradient-to-r px-6 py-3 font-[500]'>
             Hey, I'm Maciej.

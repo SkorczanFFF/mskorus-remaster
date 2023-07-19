@@ -5,10 +5,10 @@ export default function Contact(): JSX.Element {
   return (
     <section className='font-mont ny-20 relative flex h-auto w-full flex-col items-center justify-center bg-white'>
       <div className='arrow-down blue' />
-      <h3 className='font-mont text-primary-blue absolute -left-6 top-[150px] -rotate-90 text-xl font-[500] leading-3 tracking-[10px]'>
+      <h3 className='font-mont text-primary-blue -left-6 top-[150px] mt-[60px] text-xl font-[500] leading-3 tracking-[10px] md:absolute md:mt-0 md:-rotate-90'>
         CONTACT
       </h3>
-      <div className='gradient-slow border-primary-blue my-20 flex h-[500px] w-[400px] flex-col items-center gap-3 border-t-2 text-white md:flex-col'>
+      <div className='gradient-slow border-primary-blue my-20 mt-10 flex h-[500px] w-[400px] flex-col items-center gap-3 border-t-2 text-white md:my-20 md:flex-col'>
         <IoMailOpenSharp className='text-primary-blue my-2 text-center text-8xl' />
         <form>
           <div className='flex justify-between gap-2'>

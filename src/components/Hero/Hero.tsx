@@ -18,7 +18,7 @@ function Rig() {
     easing.damp3(
       state.camera.position,
       [
-        Math.sin(-state.pointer.x) * 5,
+        Math.sin(-state.pointer.x) * 3,
         state.pointer.y * 3.5,
         15 + Math.cos(state.pointer.x) * 10,
       ],
@@ -27,8 +27,6 @@ function Rig() {
     );
     state.camera.lookAt(0, 0, 0);
   });
-
-  // You can return null or an empty fragment if you don't need to render anything for this component
   return null;
 }
 

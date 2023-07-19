@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import {
   AiFillCar,
@@ -59,7 +60,7 @@ const projects = [
   {
     title: 'PORTFOLIO PAGE',
     technologies:
-      'Next.js • TailwindCSS • TypeScript • React Three Fiber/Three.js • Blender',
+      'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
     description:
       'Remaster of my deprecated React portfolio page. Now it is based on Next.js, TailwindCSS and React Three Fiber/Three.js. Also integrated with TypeScript, Framer Motion and now with built-in resume on Web. Some parts of WebGL scene were made with Blender.',
     repositoryLink: 'https://github.com/SkorczanFFF/mskorus-remaster',
@@ -75,7 +76,7 @@ const projects = [
   },
   {
     title: 'YET ANOTHER WEATHER APP',
-    technologies: 'React • JavaScript • Vanta.js • Sass • OpenWeather API',
+    technologies: 'React • JavaScript • Sass • Vanta.js • OpenWeather API',
     description:
       'Another "weather application", but in a new edition. The application displays weather information for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with weather data and background. Unfortunately, still desktop only.',
     repositoryLink: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp',
@@ -128,9 +129,13 @@ const Project: React.FC<ProjectData> = ({
 );
 
 export default function CV(): JSX.Element {
+  const currentYear = new Date().getFullYear();
   return (
     <>
-      <section className='font-mont flex min-h-[100vh] flex-col items-center bg-[#0a0c0e]'>
+      <Head>
+        <title>Maciej Skorus - Resume - Frontend Developer</title>
+      </Head>
+      <section className='font-mont bg-primary-blue flex min-h-[100vh] flex-col items-center'>
         <div className='m-10 flex h-[2015px] w-[1421px] bg-white'>
           <div className='flex w-full bg-red-300'>
             <div className='flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-[#20252f] from-0% via-[#20252f] via-60% to-[#2b3240] to-100%'>
@@ -307,8 +312,10 @@ export default function CV(): JSX.Element {
                           </p>
                           <p className='flex'>
                             <BsDot className='mt-1' />
-                            New Pirates of the Arrland homepage layout
-                            implementation and development
+                            New <i className='mx-1'>
+                              Pirates of the Arrland
+                            </i>{' '}
+                            homepage layout implementation and development
                           </p>
                           <p className='flex'>
                             <BsDot className='mt-1' />
@@ -395,6 +402,11 @@ export default function CV(): JSX.Element {
               </div>
             </div>
           </div>
+        </div>
+        <div className='gradient w-full text-center'>
+          <p className='text-primary-blue p-2 text-xs'>
+            &copy; {currentYear} Maciej Skorus
+          </p>
         </div>
       </section>
     </>
