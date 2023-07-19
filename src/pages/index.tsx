@@ -9,7 +9,7 @@ import Seo from '@/components/Seo';
 import Technos from '@/components/Technos/Technos';
 
 const HeroNoSSR = dynamic(() => import('@/components/Hero/Hero'), {
-  ssr: false,
+  ssr: true,
 });
 
 export default function HomePage() {

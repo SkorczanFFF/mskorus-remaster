@@ -69,39 +69,31 @@ const DesktopScene = (props: any) => {
         <Text
           fontSize={6}
           letterSpacing={0}
-          color='#eaeaea'
+          color='#e4e4e4'
           {...props}
-          position={[10, 12, -23]}
+          position={[10, 12, -20]}
         >
           FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
         </Text>
         <Text
           fontSize={6}
           letterSpacing={0}
-          color='#eaeaea'
+          color='#e4e4e4'
           {...props}
-          position={[5, 7, -23]}
+          position={[5, 8, -25]}
         >
-          FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
+          ENDENDENDENDENDENDENDENDENDENDENDEND
         </Text>
         <Text
           fontSize={6}
           letterSpacing={0}
-          color='#eaeaea'
+          color='#e4e4e4'
           {...props}
-          position={[0, 2, -23]}
+          position={[2.5, 2, -15]}
         >
-          FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
+          FRONTFRONTFRONTFRONTFRONT
         </Text>
-        <Text
-          fontSize={6}
-          letterSpacing={0}
-          color='#801834'
-          {...props}
-          position={[5, -8, -23]}
-        >
-          DEVELOPERDEVELOPERDEVELOPERDEVELOPER
-        </Text>
+
         <Text
           fontSize={6}
           letterSpacing={0}
@@ -117,7 +109,17 @@ const DesktopScene = (props: any) => {
           letterSpacing={0}
           color='#801834'
           {...props}
-          position={[-5, -13, -23]}
+          position={[5, -10, -25]}
+        >
+          DEVELOPERDEVELOPERDEVELOPERDEVELOPER
+        </Text>
+
+        <Text
+          fontSize={6}
+          letterSpacing={0}
+          color='#801834'
+          {...props}
+          position={[-5, -13, -15]}
           rotation={[0, 0, 0]}
         >
           DEVELOPERDEVELOPERDEVELOPERDEVELOPER

@@ -42,8 +42,8 @@ export default function Header(): JSX.Element {
     <header
       className={`font-mont border-primary-blue sticky top-0 z-50 flex h-[45px] items-center justify-between border-b ${
         navbar
-          ? 'navbar-gradient opacity-[98%] backdrop-blur-[50px]'
-          : 'opacity-90 backdrop-blur-[100px]'
+          ? 'navbar-gradient opacity-[98%]'
+          : 'opacity-95 backdrop-blur-[100px]'
       }`}
     >
       {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
