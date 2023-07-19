@@ -10,7 +10,7 @@ export default {
         mont: ['Montserrat'],
       },
       colors: {
-        'primary-blue': '#001a25',
+        'primary-blue': '#00171D',
         'secondary-blue': '#0b0d16',
         'real-white': '#ffffff',
         white: '#e4e4e4',

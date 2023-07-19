@@ -28,6 +28,9 @@ function Rig() {
     );
     state.camera.lookAt(0, 0, 0);
   });
+
+  // You can return null or an empty fragment if you don't need to render anything for this component
+  return null;
 }
 
 function Loader() {
@@ -59,7 +62,8 @@ export default function Hero(): JSX.Element {
         eventPrefix='client'
         gl={{ antialias: false }}
       >
-        <color attach='background' args={[0x001a25]} />
+        <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />
+
         <Rig />
         <spotLight
           position={[20, 20, 10]}
