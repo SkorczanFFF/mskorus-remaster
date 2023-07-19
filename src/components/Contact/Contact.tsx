@@ -3,7 +3,10 @@ import { IoMailOpenSharp } from 'react-icons/io5';
 
 export default function Contact(): JSX.Element {
   return (
-    <section className='font-mont ny-20 relative flex h-auto w-full flex-col items-center justify-center bg-white'>
+    <section
+      id='contact'
+      className='font-mont ny-20 relative flex h-auto w-full flex-col items-center justify-center bg-white'
+    >
       <div className='arrow-down blue' />
       <h3 className='font-mont text-primary-blue -left-6 top-[150px] mt-[60px] text-xl font-[500] leading-3 tracking-[10px] md:absolute md:mt-0 md:-rotate-90'>
         CONTACT

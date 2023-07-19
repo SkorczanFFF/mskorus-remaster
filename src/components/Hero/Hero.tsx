@@ -51,7 +51,10 @@ function Loader() {
 
 export default function Hero(): JSX.Element {
   return (
-    <section className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'>
+    <section
+      id='home'
+      className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
+    >
       <Canvas
         shadows
         camera={{ position: [0, 0, -21], fov: 50 }}

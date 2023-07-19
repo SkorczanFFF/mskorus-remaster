@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 interface LinkItem {
   href: string;
   label: string;
@@ -9,16 +9,19 @@ interface MobileProps {
   links: LinkItem[];
 }
 export default function Mobile({ links }: MobileProps): JSX.Element {
-  const [opened, setOpened] = useState<boolean>(false);
+  // const [opened, setOpened] = useState<boolean>(false);
 
-  const handleOpen = () => {
-    // setOpened(!opened);
-    console.log('xd');
-  };
+  // const handleOpen = () => {
+  //   // setOpened(!opened);
+  //   console.log('xd');
+  // };
 
   return (
     <div className='relative block md:hidden'>
-      <button className='bg-orange z-50 h-10 w-10' onClick={() => handleOpen}>
+      <button
+        className='bg-orange z-50 h-10 w-10'
+        // onClick={() => handleOpen}
+      >
         X
       </button>
       <div className='border-primary-blue absolute right-0 mt-[11px] h-[99vh] w-[350px] border-l-2 opacity-95 backdrop-blur-[75px]'>
