@@ -7,7 +7,7 @@ const defaultMeta = {
   siteName: 'Maciej Skorus - Frontend Developer',
   description: 'Maciej Skorus - Frontend Developer Portfolio Page',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: '/',
+  url: 'https://mskorus.vercel.app/',
   type: 'website',
   robots: 'follow, index',
   /**

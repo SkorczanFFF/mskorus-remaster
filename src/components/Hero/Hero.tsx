@@ -1,44 +1,36 @@
 import {
-  BakeShadows,
-  CameraShake,
   Environment,
+  Float,
   Html,
-  OrbitControls,
-  RandomizedLight,
-  Stars,
+  Lightformer,
   useProgress,
 } from '@react-three/drei';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { EffectComposer, Vignette } from '@react-three/postprocessing';
-import { BlendFunction } from 'postprocessing';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
+import { easing } from 'maath';
 import React, { Suspense } from 'react';
-import * as THREE from 'three';
 
 import DesktopBackground from '@/components/Hero/Partials/DesktopBackground';
 import DesktopScene from '@/components/Hero/Partials/DesktopScene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
-// function ViewportWidth() {
-//   const [viewportSize, setViewportSize] = useState([window.innerWidth]);
-//   useEffect(() => {
-//     const handleResize = () => setViewportSize([window.innerWidth]);
-//     window.addEventListener('resize', handleResize);
-//     return () => {
-//       window.removeEventListener('resize', handleResize);
-//     };
-//   }, []);
-//   return viewportSize;
-// }
-
 function Rig() {
-  const { camera, mouse } = useThree();
-  const vec = new THREE.Vector3();
-  return useFrame(() =>
-    camera.position.lerp(
-      vec.set(mouse.x * 1, mouse.y * 0.5, camera.position.z),
-      0.02
-    )
-  );
+  useFrame((state, delta) => {
+    easing.damp3(
+      state.camera.position,
+      [
+        Math.sin(-state.pointer.x) * 5,
+        state.pointer.y * 3.5,
+        15 + Math.cos(state.pointer.x) * 10,
+      ],
+      0.2,
+      delta
+    );
+    state.camera.lookAt(0, 0, 0);
+  });
+
+  // You can return null or an empty fragment if you don't need to render anything for this component
+  return null;
 }
 
 function Loader() {
@@ -61,62 +53,43 @@ function Loader() {
 }
 
 export default function Hero(): JSX.Element {
-  // const [width] = ViewportWidth();
-  // const canvasRef = useRef<HTMLCanvasElement>(null);
   return (
-    <section className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a25]'>
-      <Canvas shadows dpr={[1, 1.5]} id='canvas' gl={{ antialias: true }}>
-        <Suspense fallback={<Loader />}>
-          <OrbitControls
-            enableZoom={false}
-            enablePan={true}
-            enableRotate={false}
-          />
-          <CameraShake
-            yawFrequency={0.01}
-            pitchFrequency={0.03}
-            rollFrequency={0.02}
-          />
-          <Rig />
-          {/* <ambientLight intensity={0.5} color='#ffffff' /> */}
+    <section className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'>
+      <Canvas
+        shadows
+        camera={{ position: [0, 0, -21], fov: 50 }}
+        dpr={[0.25, 1]}
+        eventPrefix='client'
+        gl={{ antialias: false }}
+      >
+        <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />
 
-          {/* <spotLight intensity={0.55} position={[600, -700, 700]} />
-          <spotLight intensity={0.25} position={[-600, 700, -700]} /> */}
-          <EffectComposer>
-            <Vignette
-              offset={0.5}
-              darkness={0.5}
-              eskil={false}
-              blendFunction={BlendFunction.NORMAL}
-            />
-            <Stars
-              radius={200}
-              depth={1}
-              count={1000}
-              factor={2}
-              saturation={154}
-              speed={1}
-            />
-            {/* <Sparkles
-              opacity={0.5}
-              size={5}
-              color='#972b1a'
-              scale={8}
-              position={[0, 0, -5]}
-              count={100}
-            /> */}
-            <RandomizedLight
-              castShadow
-              amount={8}
-              frames={100}
-              position={[5, 5, -5]}
-            />
-            <Environment preset='warehouse' />
+        <Rig />
+        <spotLight
+          position={[20, 20, 10]}
+          penumbra={1}
+          castShadow
+          angle={0.2}
+        />
+        <Suspense fallback={<Loader />}>
+          <EffectComposer disableNormalPass>
             <DesktopBackground />
+            <N8AO aoRadius={5} intensity={15} />
+            <TiltShift2 blur={0.125} />
           </EffectComposer>
 
-          <DesktopScene />
-          <BakeShadows />
+          <Environment preset='sunset'>
+            <Lightformer
+              intensity={8}
+              position={[10, 5, 0]}
+              scale={[15, 50, 1]}
+              onUpdate={(self) => self.lookAt(0, 0, 0)}
+            />
+          </Environment>
+
+          <Float floatIntensity={2}>
+            <DesktopScene />
+          </Float>
         </Suspense>
       </Canvas>
       <ScrollButton />

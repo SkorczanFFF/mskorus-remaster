@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const links = [
-  { href: '#', label: 'Home' },
+  { href: '#about', label: 'Home' },
   { href: '#', label: 'About' },
   { href: '#', label: 'Technologies' },
   { href: '#', label: 'Portfolio' },
@@ -9,10 +10,10 @@ const links = [
 ];
 
 export default function Header(): JSX.Element {
-  // const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false);
   const [navbar, setNavbar] = useState(false);
-  // const handleClick = () => setClick(!click);
-  // const closeMobileMenu = () => setClick(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
   const changeBackground = () => {
     const viewportHeight = window.innerHeight;
@@ -69,7 +70,7 @@ export default function Header(): JSX.Element {
         <nav>
           <ul className='mx-4 flex items-center justify-between space-x-4'>
             {links.map(({ href, label }) => (
-              <a
+              <Link
                 href={href}
                 key={`${href}${label}`}
                 className={` text-real-white text-xs uppercase tracking-widest duration-300 hover:tracking-[0.195em] ${
@@ -79,7 +80,7 @@ export default function Header(): JSX.Element {
                 }`}
               >
                 <li>{label}</li>
-              </a>
+              </Link>
             ))}
           </ul>
         </nav>

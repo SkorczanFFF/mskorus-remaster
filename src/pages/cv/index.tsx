@@ -15,6 +15,7 @@ import {
   SiAdobephotoshop,
   SiAutodesk,
   SiBitbucket,
+  SiBlender,
   SiFirebase,
   SiGitlab,
   SiMongodb,
@@ -45,6 +46,7 @@ const technos = [
   { icon: <SiNodedotjs className='text-6xl' />, label: 'Node.js' },
   { icon: <SiAdobephotoshop className='text-6xl' />, label: 'Photoshop' },
   { icon: <SiAutodesk className='text-6xl' />, label: '3Ds Max' },
+  { icon: <SiBlender className='text-6xl' />, label: 'Blender' },
   { icon: <AiFillGithub className='text-6xl' />, label: 'GitHub' },
   { icon: <SiGitlab className='text-6xl' />, label: 'GitLab' },
   { icon: <SiBitbucket className='text-6xl' />, label: 'BitBucket' },
@@ -59,7 +61,7 @@ const projects = [
     technologies:
       'Next.js • TailwindCSS • TypeScript • React Three Fiber/Three.js • Blender',
     description:
-      'Remaster of my deprecated React portfolio page. Now it is based on Next.js, TailwindCSS and React Three Fiber/Three.js. Also integrated with TypeScript, Framer Motion and now with built-in resume on Web. Personal training ground for WebGL with self-promotion.',
+      'Remaster of my deprecated React portfolio page. Now it is based on Next.js, TailwindCSS and React Three Fiber/Three.js. Also integrated with TypeScript, Framer Motion and now with built-in resume on Web. Some parts of WebGL scene were made with Blender.',
     repositoryLink: 'https://github.com/SkorczanFFF/mskorus-remaster',
     demoLink: 'https://mskorus.vercel.app/',
   },
@@ -67,7 +69,7 @@ const projects = [
     title: 'POLONEZ AUTODRIVE',
     technologies: 'HTML • JavaScript • Three.js • 3D Studio Max 2019',
     description:
-      'Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80\'s vibe coloring book" like animation with built-in GUI for full experience. Happy coloring!',
+      'Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80\'s vibe coloring book" like animation with built-in GUI for easy painting. Have fun with coloring!',
     repositoryLink: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
     demoLink: 'https://skorczanfff.github.io/Polonez-Autodrive/',
   },
@@ -75,7 +77,7 @@ const projects = [
     title: 'YET ANOTHER WEATHER APP',
     technologies: 'React • JavaScript • Vanta.js • Sass • OpenWeather API',
     description:
-      'Another "weather application", but in a new edition. The application displays weather information for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with data and background. Unfortunately, still desktop only.',
+      'Another "weather application", but in a new edition. The application displays weather information for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with weather data and background. Unfortunately, still desktop only.',
     repositoryLink: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp',
     demoLink: 'https://skorczanfff.github.io/YetAnotherWeatherApp/',
   },
@@ -107,12 +109,16 @@ const Project: React.FC<ProjectData> = ({
         <a
           className='hover:text-raspberry flex cursor-pointer items-center gap-2 duration-150'
           href={repositoryLink}
+          target='_blank'
+          rel='noreferrer'
         >
           <AiFillGithub className='text-3xl' /> repository
         </a>
         <a
           className='hover:text-raspberry flex cursor-pointer items-center gap-2 duration-150'
           href={demoLink}
+          target='_blank'
+          rel='noreferrer'
         >
           <BsGlobe2 className='text-2xl' /> web demo
         </a>
@@ -153,12 +159,14 @@ export default function CV(): JSX.Element {
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                   </div>
                   <p className='mx-4 mr-9 mt-2 text-end text-lg text-white'>
-                    Highly motivated and passionate Frontend Developer with a
-                    strong curiosity and ambition for creating exceptional web
-                    experiences. Dedicated to staying up-to-date with the latest
-                    trends and advancements in the field. Eager to expand my
-                    knowledge and skills, committed to continuous learning and
-                    growth in the ever-evolving world of development.
+                    Highly motivated, communicative, creative and passionate
+                    with a strong curiosity and ambition for creating
+                    exceptional web experiences. Dedicated to staying up-to-date
+                    with the latest trends and advancements in the field. Eager
+                    to share and expand knowledge and skills, committed to
+                    continuous learning in the ever-evolving world of
+                    development. Now looking for new team and challenges to grow
+                    and achieve something special and innovative together.
                   </p>
                 </div>
                 <div className='mt-5 flex flex-col items-end'>
@@ -172,12 +180,16 @@ export default function CV(): JSX.Element {
                     <a
                       href='mailto:skorusmaciej94@gmail.com'
                       className='hover:text-orange flex items-center gap-2 duration-150'
+                      target='_blank'
+                      rel='noreferrer'
                     >
                       skorusmaciej94@gmail.com <AiFillMail />
                     </a>
                     <a
                       href='tel:+48668366648'
                       className='hover:text-orange flex items-center justify-end gap-2 duration-150'
+                      target='_blank'
+                      rel='noreferrer'
                     >
                       +48 668 366 648
                       <IoCallSharp />
@@ -206,18 +218,24 @@ export default function CV(): JSX.Element {
                     <a
                       className='hover:text-orange flex items-center gap-2 duration-150'
                       href='https://github.com/SkorczanFFF'
+                      target='_blank'
+                      rel='noreferrer'
                     >
                       /skorczanFFF <BsGithub className='-mt-[2px]' />
                     </a>
                     <a
                       className='hover:text-orange flex items-center gap-2 duration-150'
                       href='https://linkedin.com/mskorus'
+                      target='_blank'
+                      rel='noreferrer'
                     >
                       /mskorus <BsLinkedin className='-mt-[2px]' />
                     </a>
                     <a
                       className='hover:text-orange flex items-center gap-2 duration-150'
                       href='https://mskorus.vercel.app/'
+                      target='_blank'
+                      rel='noreferrer'
                     >
                       mskorus.vercel.app <SiVercel className='-mt-[2px]' />
                     </a>
@@ -274,20 +292,33 @@ export default function CV(): JSX.Element {
                           </p>
                         </div>
                         <div className='ml-1 flex w-full flex-col items-start gap-2 text-xl'>
-                          <p className='flex'>
+                          <div className='flex'>
                             <BsDot className='mt-1' />
                             <p className='mr-4'>
-                              dApp and auction system developement with
-                              ImmutableX and smart contracts integration
+                              DApp and auction system developement and
+                              integration with ImmutableX collections and smart
+                              contracts
                             </p>
+                          </div>
+                          <p className='flex'>
+                            <BsDot className='mt-1' />
+                            Working with Moralis and Firebase cloud functions
+                            and databases
                           </p>
                           <p className='flex'>
                             <BsDot className='mt-1' />
-                            Front-end interactions with smart contracts
+                            New Pirates of the Arrland homepage layout
+                            implementation and development
                           </p>
                           <p className='flex'>
                             <BsDot className='mt-1' />
-                            full cross-team collaboration
+                            Handling custom events on company websites, direct
+                            cooperation with marketing
+                          </p>
+                          <p className='flex'>
+                            <BsDot className='mt-1' />
+                            Cross-team collaboration for consistent user
+                            experience with product
                           </p>
                         </div>
                       </div>
@@ -336,7 +367,7 @@ export default function CV(): JSX.Element {
                               {technos.map((techno, index) => (
                                 <div
                                   key={index}
-                                  className='hover:text-raspberry mb-3 flex w-[54px] cursor-pointer flex-col items-center text-[#20252ff6] duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
+                                  className='hover:text-raspberry mb-3 flex w-[70px] cursor-pointer flex-col items-center text-[#20252ff6] duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
                                 >
                                   {techno.icon}
                                   <p className='mt-2 text-xs'>{techno.label}</p>
@@ -345,7 +376,7 @@ export default function CV(): JSX.Element {
                             </div>
                           </div>
                         </div>
-                        <div className='bottom-0 -ml-2 mr-2 mt-[330px] text-center text-[10px] leading-3 opacity-75'>
+                        <div className='bottom-0 -ml-2 mr-2 mt-[200px] text-center text-[14px] leading-4 opacity-75'>
                           I agree to the processing of personal data provided in
                           this document for realising the recruitment process
                           pursuant to the Personal Data Protection Act of 10 May
