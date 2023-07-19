@@ -10,7 +10,6 @@ import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
 import { easing } from 'maath';
 import React, { Suspense } from 'react';
 
-import DesktopBackground from '@/components/Hero/Partials/DesktopBackground';
 import DesktopScene from '@/components/Hero/Partials/DesktopScene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
@@ -61,9 +60,9 @@ export default function Hero(): JSX.Element {
         dpr={[0.25, 1]}
         eventPrefix='client'
         gl={{ antialias: false }}
+        className='min-h-[97vh]'
       >
         <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />
-
         <Rig />
         <spotLight
           position={[20, 20, 10]}
@@ -73,7 +72,6 @@ export default function Hero(): JSX.Element {
         />
         <Suspense fallback={<Loader />}>
           <EffectComposer disableNormalPass>
-            <DesktopBackground />
             <N8AO aoRadius={5} intensity={15} />
             <TiltShift2 blur={0.125} />
           </EffectComposer>
