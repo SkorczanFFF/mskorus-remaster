@@ -46,7 +46,10 @@ export default function Technos(): JSX.Element {
   ];
 
   return (
-    <section className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20'>
+    <section
+      id='technologies'
+      className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20'
+    >
       <h3 className='font-mont font-[400] tracking-wider'>TECH STACK</h3>
       <div className='mx-4 mb-20 mt-10 flex max-w-[1200px] flex-wrap justify-center gap-10'>
         {technos.map((techno, index) => (

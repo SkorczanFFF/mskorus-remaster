@@ -6,7 +6,7 @@ import Mobile from '@/components/layout/Header/Partials/Mobile';
 const links = [
   { href: '/#home', label: 'Home' },
   { href: '/#about', label: 'About' },
-  { href: '/#techologies', label: 'Technologies' },
+  { href: '/#technologies', label: 'Technologies' },
   { href: '/#portfolio', label: 'Portfolio' },
   { href: '/#contact', label: 'Contact' },
   { href: '/resume', label: 'Resume' },

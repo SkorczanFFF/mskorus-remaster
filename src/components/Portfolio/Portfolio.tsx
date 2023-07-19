@@ -6,7 +6,10 @@ import projects from './Partials/projects.json';
 
 export default function Portfolio(): JSX.Element {
   return (
-    <section className='font-mont bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center pb-20'>
+    <section
+      id='portfolio'
+      className='font-mont bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center pb-20'
+    >
       <div className='arrow-down white pt-[60px]' />
       <h3 className='font-mont -left-[45px] top-[150px] text-xl font-[400] leading-3 tracking-[10px] text-white md:absolute md:-rotate-90'>
         PORTFOLIO
