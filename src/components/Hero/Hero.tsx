@@ -9,6 +9,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
 import { easing } from 'maath';
 import React, { Suspense } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 import DesktopScene from '@/components/Hero/Partials/DesktopScene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
@@ -50,47 +51,54 @@ function Loader() {
 }
 
 export default function Hero(): JSX.Element {
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Just trigger once when it comes into view
+    threshold: 0.5, // Intersection ratio at which to trigger the inView state change
+  });
   return (
     <section
+      ref={ref}
       id='home'
       className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
     >
-      <Canvas
-        shadows
-        camera={{ position: [0, 0, -21], fov: 50 }}
-        dpr={[0.25, 1]}
-        eventPrefix='client'
-        gl={{ antialias: false }}
-        className='min-h-[97vh]'
-      >
-        <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />
-        <Rig />
-        <spotLight
-          position={[20, 20, 10]}
-          penumbra={1}
-          castShadow
-          angle={0.2}
-        />
-        <Suspense fallback={<Loader />}>
-          <EffectComposer disableNormalPass>
-            <N8AO aoRadius={5} intensity={15} />
-            <TiltShift2 blur={0.125} />
-          </EffectComposer>
+      {inView && (
+        <Canvas
+          shadows
+          camera={{ position: [0, 0, -21], fov: 50 }}
+          dpr={[0.25, 1]}
+          eventPrefix='client'
+          gl={{ antialias: false }}
+          className='min-h-[97vh]'
+        >
+          <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />
+          <Rig />
+          <spotLight
+            position={[20, 20, 10]}
+            penumbra={1}
+            castShadow
+            angle={0.2}
+          />
+          <Suspense fallback={<Loader />}>
+            <EffectComposer disableNormalPass>
+              <N8AO aoRadius={5} intensity={15} />
+              <TiltShift2 blur={0.125} />
+            </EffectComposer>
 
-          <Environment preset='sunset'>
-            <Lightformer
-              intensity={8}
-              position={[10, 5, 0]}
-              scale={[15, 50, 1]}
-              onUpdate={(self) => self.lookAt(0, 0, 0)}
-            />
-          </Environment>
+            <Environment preset='sunset'>
+              <Lightformer
+                intensity={8}
+                position={[10, 5, 0]}
+                scale={[15, 50, 1]}
+                onUpdate={(self) => self.lookAt(0, 0, 0)}
+              />
+            </Environment>
 
-          <Float floatIntensity={2}>
-            <DesktopScene />
-          </Float>
-        </Suspense>
-      </Canvas>
+            <Float floatIntensity={2}>
+              <DesktopScene />
+            </Float>
+          </Suspense>
+        </Canvas>
+      )}
       <ScrollButton />
       <div className='flex w-full'>
         <div className='z-20 -mt-[20px] h-[20px] w-full bg-white' />

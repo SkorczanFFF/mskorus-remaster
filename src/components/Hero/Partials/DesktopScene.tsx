@@ -58,7 +58,7 @@ const DesktopScene = (props: any) => {
         >
           <MeshTransmissionMaterial
             backsideThickness={10}
-            thickness={2}
+            thickness={1}
             distortionScale={1}
             temporalDistortion={1}
             transmission={1}
@@ -76,18 +76,18 @@ const DesktopScene = (props: any) => {
           FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
         </Text>
         <Text
-          fontSize={6}
+          fontSize={7}
           letterSpacing={0}
           color='#e4e4e4'
           {...props}
-          position={[10, 12, -20]}
+          position={[10, 12, -17]}
         >
           FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
         </Text>
         <Text
-          fontSize={6}
+          fontSize={8}
           letterSpacing={0}
-          color='#e4e4e4'
+          color='#992210'
           {...props}
           position={[5, 8, -25]}
         >
