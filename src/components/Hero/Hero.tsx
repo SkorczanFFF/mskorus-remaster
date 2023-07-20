@@ -9,6 +9,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
 import { easing } from 'maath';
 import React, { Suspense } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 
 import DesktopScene from '@/components/Hero/Partials/DesktopScene';
@@ -79,19 +80,28 @@ export default function Hero(): JSX.Element {
             angle={0.2}
           />
           <Suspense fallback={<Loader />}>
-            <EffectComposer disableNormalPass>
-              <N8AO aoRadius={5} intensity={15} />
-              <TiltShift2 blur={0.125} />
-            </EffectComposer>
-
-            <Environment preset='sunset'>
-              <Lightformer
-                intensity={8}
-                position={[10, 5, 0]}
-                scale={[15, 50, 1]}
-                onUpdate={(self) => self.lookAt(0, 0, 0)}
-              />
-            </Environment>
+            {!isMobile ? (
+              <>
+                <EffectComposer disableNormalPass>
+                  <N8AO aoRadius={5} intensity={15} />
+                  <TiltShift2 blur={0.125} />
+                </EffectComposer>
+                <Environment preset='sunset'>
+                  <Lightformer
+                    intensity={8}
+                    position={[10, 5, 0]}
+                    scale={[15, 50, 1]}
+                    onUpdate={(self) => self.lookAt(0, 0, 0)}
+                  />
+                </Environment>
+              </>
+            ) : (
+              <>
+                <spotLight intensity={1} position={[10, 10, 20]} />
+                <spotLight intensity={1} position={[-10, -10, 20]} />
+                <spotLight intensity={1} position={[0, 0, 0]} />
+              </>
+            )}
 
             <Float floatIntensity={2}>
               <DesktopScene />
