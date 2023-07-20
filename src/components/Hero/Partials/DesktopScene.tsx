@@ -57,24 +57,24 @@ const DesktopScene = (props: any) => {
           rotation={[0, -0.089, 0.168]}
           scale={[3.322, 2.419, 2.524]}
         >
-          {isMobile ? (
+          {/* {isMobile ? (
             <meshStandardMaterial
               attach='material'
               color={colors.primaryBlue}
               roughness={0.3}
               metalness={0.5}
             />
-          ) : (
-            <MeshTransmissionMaterial
-              backsideThickness={10}
-              thickness={1}
-              distortionScale={1}
-              temporalDistortion={1}
-              transmission={1}
-              roughness={0.1}
-              metalness={0.1}
-            />
-          )}
+          ) : ( */}
+          <MeshTransmissionMaterial
+            backsideThickness={10}
+            thickness={1}
+            distortionScale={1}
+            temporalDistortion={1}
+            transmission={1}
+            roughness={0.1}
+            metalness={0.1}
+          />
+          {/* )} */}
         </mesh>
         <Text
           fontSize={7}

@@ -97,6 +97,10 @@ export default function Hero(): JSX.Element {
               </>
             ) : (
               <>
+                <EffectComposer disableNormalPass>
+                  <N8AO aoRadius={5} intensity={15} />
+                  <TiltShift2 blur={0.125} />
+                </EffectComposer>
                 <spotLight intensity={1} position={[10, 10, 20]} />
                 <spotLight intensity={1} position={[-10, -10, 20]} />
                 <spotLight intensity={1} position={[0, 0, 0]} />
