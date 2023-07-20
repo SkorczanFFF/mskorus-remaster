@@ -5,61 +5,59 @@ export default function Contact(): JSX.Element {
   return (
     <section
       id='contact'
-      className='font-mont ny-20 relative flex h-auto w-full flex-col items-center justify-center bg-white'
+      className='font-mont ny-20 relative flex h-auto w-full flex-col items-center justify-center overflow-hidden bg-white'
     >
       <div className='arrow-down blue' />
       <h3 className='font-mont text-primary-blue -left-6 top-[150px] mt-[60px] text-xl font-[500] leading-3 tracking-[10px] md:absolute md:mt-0 md:-rotate-90'>
         CONTACT
       </h3>
-      <div className='gradient-slow border-primary-blue my-20 mt-10 flex h-[500px] w-[400px] flex-col items-center gap-3 border-t-2 text-white md:my-20 md:flex-col'>
+      <div className='gradient-slow border-primary-blue xsm:w-[450px] my-20 mt-10 flex h-full w-full flex-col items-center gap-3 border-t-2 text-white md:my-20 md:flex-col'>
         <IoMailOpenSharp className='text-primary-blue my-2 text-center text-8xl' />
-        <form>
-          <div className='flex justify-between gap-2'>
-            <div className='relative h-11 w-full min-w-[180px]'>
+        <form className='w-full px-6'>
+          <div className='xsm:flex-row xsm:gap-2 mb-3 flex w-full flex-col justify-between gap-5'>
+            <div className='xsm:min-w-[180px] relative h-11 w-full'>
               <input
-                className='focus:border-orange border-primary-blue text-primary-blue placeholder-shown:border-primary-blue disabled:bg-primary-blue peer h-full w-full border-b bg-transparent pb-1.5 pt-4 font-sans text-sm font-normal outline outline-0 transition-all focus:outline-0 disabled:border-0'
+                className='focus:border-orange border-primary-blue placeholder-shown:border-primary-blue disabled:bg-primary-blue font-mont peer h-full w-full border-b bg-transparent px-2 pb-1.5 pt-4 text-sm font-[500] text-white outline outline-0 transition-all focus:outline-0 disabled:border-0'
                 placeholder=' '
               />
-              <label className="after:content[' '] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight text-white transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white">
+              <label className="after:content[' '] after: text-primary-blue pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white">
                 Your name
               </label>
             </div>
             <div className='relative h-11 w-full min-w-[180px]'>
               <input
-                className='focus:border-orange border-primary-blue text-primary-blue placeholder-shown:border-primary-blue disabled:bg-primary-blue peer h-full w-full border-b bg-transparent pb-1.5 pt-4 font-sans text-sm font-normal outline outline-0 transition-all focus:outline-0 disabled:border-0'
+                className='focus:border-orange border-primary-blue placeholder-shown:border-primary-blue disabled:bg-primary-blue font-mont peer h-full w-full border-b bg-transparent px-2 pb-1.5 pt-4 text-sm font-[500] text-white outline outline-0 transition-all focus:outline-0 disabled:border-0'
                 placeholder=' '
               />
-              <label className="after:content[' '] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight text-white transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white">
+              <label className="after:content[' '] after: text-primary-blue pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white">
                 Your mail
               </label>
             </div>
           </div>
-          <div className='mx-1 mt-2 flex flex-col gap-3'>
-            <label
-              htmlFor='subject'
-              className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
-            >
-              Subject
-            </label>
-            <input
-              id='subject'
-              className='focus:bg-real-white border-primary-blue focus:ring-none -mt-4 block w-full border border-t-[2px] bg-[#f1f1f1] p-2.5 text-sm text-black duration-150 focus:border-none'
-              placeholder='Subject'
-            />
-
-            <label
-              htmlFor='message'
-              className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
-            >
-              Your message
-            </label>
-            <textarea
-              id='message'
-              rows={9}
-              className='focus:bg-real-white border-primary-blue -mt-4 block w-full border border-t-[2px] bg-[#f1f1f1] p-2.5 text-sm text-black duration-150 focus:border-transparent focus:ring-transparent'
-              placeholder='Aa'
-            />
+          <div className='flex w-full flex-col gap-3'>
+            <div className='relative mt-3 h-11 w-full min-w-[180px]'>
+              <input
+                className='focus:border-orange border-primary-blue placeholder-shown:border-primary-blue disabled:bg-primary-blue font-mont peer h-full w-full border-b bg-transparent px-2 pb-1.5 pt-4 text-sm font-[500] text-white outline outline-0 transition-all focus:outline-0 disabled:border-0'
+                placeholder=' '
+              />
+              <label className="after:content[' '] after: text-primary-blue pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white">
+                Subject
+              </label>
+            </div>
+            <div className='relative mt-3 h-[250px] w-full min-w-[180px]'>
+              <textarea
+                className='font-mont peer h-[250px] w-full resize-none border-none  border-transparent bg-transparent px-2 pb-1.5 pt-4 text-sm font-[500] text-white outline-none transition-all focus:border-none focus:border-transparent focus:shadow-none focus:outline-none focus:ring-0 focus:drop-shadow-none disabled:border-0'
+                placeholder=' '
+              />
+              <div className='bg-primary-blue xsm:w-[404px] -mt-1 h-[1px] w-full' />
+              <label className="after:content[' '] text-primary-blue pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white">
+                Message
+              </label>
+            </div>
           </div>
+          <button className='bg-primary-blue hover:text-raspberry mb-5 mt-2 w-full py-3 text-xl tracking-[6px] text-white duration-150 hover:bg-white hover:font-[500] hover:tracking-[10px]'>
+            SEND
+          </button>
         </form>
       </div>
     </section>

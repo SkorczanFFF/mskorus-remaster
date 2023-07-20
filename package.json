@@ -29,8 +29,10 @@
     "next-transpile-modules": "^10.0.0",
     "postprocessing": "^6.32.2",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-intersection-observer": "^9.5.2",
     "tailwind-merge": "^1.13.0",
     "three": "^0.154.0"
   },
