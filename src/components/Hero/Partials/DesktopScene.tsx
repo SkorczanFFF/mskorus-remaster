@@ -1,6 +1,7 @@
 import { MeshTransmissionMaterial, Text } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
 import React, { useRef } from 'react';
+import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
@@ -56,15 +57,24 @@ const DesktopScene = (props: any) => {
           rotation={[0, -0.089, 0.168]}
           scale={[3.322, 2.419, 2.524]}
         >
-          <MeshTransmissionMaterial
-            backsideThickness={10}
-            thickness={1}
-            distortionScale={1}
-            temporalDistortion={1}
-            transmission={1}
-            roughness={0.1}
-            metalness={0.1}
-          />
+          {isMobile ? (
+            <meshStandardMaterial
+              attach='material'
+              color={colors.primaryBlue}
+              roughness={0.3}
+              metalness={0.5}
+            />
+          ) : (
+            <MeshTransmissionMaterial
+              backsideThickness={10}
+              thickness={1}
+              distortionScale={1}
+              temporalDistortion={1}
+              transmission={1}
+              roughness={0.1}
+              metalness={0.1}
+            />
+          )}
         </mesh>
         <Text
           fontSize={7}
@@ -73,7 +83,9 @@ const DesktopScene = (props: any) => {
           {...props}
           position={[10, 17, -20]}
         >
-          FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
+          {isMobile
+            ? 'FRONTENDFRONT'
+            : 'FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND'}
         </Text>
         <Text
           fontSize={7}
@@ -82,7 +94,9 @@ const DesktopScene = (props: any) => {
           {...props}
           position={[10, 12, -17]}
         >
-          FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND
+          {isMobile
+            ? 'FRONTENDFRONT'
+            : 'FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND'}
         </Text>
         <Text
           fontSize={8}
@@ -91,7 +105,7 @@ const DesktopScene = (props: any) => {
           {...props}
           position={[5, 8, -25]}
         >
-          ENDENDENDENDENDENDENDENDENDENDENDEND
+          {isMobile ? 'ENDENDEND' : 'ENDENDENDENDENDENDENDENDENDENDENDEND'}
         </Text>
         <Text
           fontSize={6}
@@ -100,7 +114,7 @@ const DesktopScene = (props: any) => {
           {...props}
           position={[2.5, 2, -15]}
         >
-          FRONTFRONTFRONTFRONTFRONT
+          {isMobile ? 'FRONTFRONT' : 'FRONTFRONTFRONTFRONTFRONT'}
         </Text>
 
         <Text
@@ -111,7 +125,7 @@ const DesktopScene = (props: any) => {
           position={[0, -3, -23]}
           rotation={[0, 0, 0]}
         >
-          DEVELOPERDEVELOPERDEVELOPERDEVELOPER
+          {isMobile ? 'DEVELOPERD' : 'DEVELOPERDEVELOPERDEVELOPERDEVELOPER'}
         </Text>
         <Text
           fontSize={6}
@@ -120,7 +134,7 @@ const DesktopScene = (props: any) => {
           {...props}
           position={[5, -10, -25]}
         >
-          DEVELOPERDEVELOPERDEVELOPERDEVELOPER
+          {isMobile ? 'DEVELOPERD' : 'DEVELOPERDEVELOPERDEVELOPERDEVELOPER'}
         </Text>
 
         <Text
@@ -131,9 +145,8 @@ const DesktopScene = (props: any) => {
           position={[-5, -13, -15]}
           rotation={[0, 0, 0]}
         >
-          DEVELOPERDEVELOPERDEVELOPERDEVELOPER
+          {isMobile ? 'DEVELOPERD' : 'DEVELOPERDEVELOPERDEVELOPERDEVELOPER'}
         </Text>
-        {/* <Blob /> */}
       </group>
     </>
   );

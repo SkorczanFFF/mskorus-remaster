@@ -11,13 +11,10 @@ export default function Portfolio(): JSX.Element {
       className='font-mont bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center pb-20'
     >
       <div className='arrow-down white pt-[60px]' />
-      <h3 className='font-mont -left-[45px] top-[150px] text-xl font-[400] leading-3 tracking-[10px] text-white md:absolute md:-rotate-90'>
+      <h3 className='font-mont -left-[45px] top-[190px] text-xl font-[400] leading-3 tracking-[10px] text-white md:absolute md:-rotate-90'>
         PORTFOLIO
       </h3>
-      <div className='xxl:w-[1200px] my-20 flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:w-[550px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
-        <p className='font-mont text-orange text-center text-lg tracking-widest'>
-          SELECTED PROJECTS
-        </p>
+      <div className='xxl:w-[1200px] my-[60px] flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:my-20 md:w-[550px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
         {projects.map((project) => (
           <motion.div
             key={project.id}
