@@ -9,19 +9,22 @@ export default function About(): JSX.Element {
       <h3 className='font-mont text-primary-blue left-0 top-[140px] py-20 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:-rotate-90 md:py-0'>
         ABOUT
       </h3>
-      <div className='flex max-w-[900px] flex-col gap-3 text-white md:flex-col'>
+      <div className='flex w-full max-w-[450px] flex-col gap-3 text-white md:flex-col'>
         <div className='perspective-right flex items-start'>
-          <h2 className='from-raspberry to-oranger font-mont w-auto justify-end bg-gradient-to-r px-6 py-3 font-[500]'>
+          <h2 className='from-raspberry to-oranger font-mont w-auto justify-end bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
             Hey, I'm Maciej.
           </h2>
         </div>
         <div className='perspective-left flex justify-end'>
-          <h2 className='from-oranger to-raspberry font-mont bg-gradient-to-r px-6 py-3 font-[500]'>
+          <h2 className='from-oranger to-raspberry font-mont bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
             Junior Frontend Developer.
           </h2>
         </div>
       </div>
-      <h3 className='bg-primary-blue font-mont text-real-white mb-10 mt-20 px-4 py-2 text-sm font-[300]'>
+      <h3
+        data-aos='zoom-out'
+        className='bg-primary-blue font-mont text-real-white mb-10 mt-20 px-4 py-2 text-sm font-[300]'
+      >
         Always trying to make something from outer space. Curious about Web,
         WebGL
       </h3>

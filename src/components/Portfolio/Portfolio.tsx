@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 import { AiFillGithub, AiOutlineGlobal } from 'react-icons/ai';
 
@@ -16,20 +15,27 @@ export default function Portfolio(): JSX.Element {
       </h3>
       <div className='xxl:w-[1200px] my-[60px] flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:my-20 md:w-[550px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
         {projects.map((project) => (
-          <motion.div
+          <div
             key={project.id}
             className={`flex flex-col drop-shadow-[0_5px_5px_#80183430] xl:flex-row ${
               project.id % 2 === 0 ? '' : 'xl:flex-row-reverse'
             }`}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={project.pic}
-              alt=''
-              className={` perspective-right border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 xl:w-1/2 ${
-                project.id % 2 === 0 ? '' : 'perspective-left'
-              }`}
-            />
+            <div
+              data-aos={project.id % 2 === 0 ? 'fade-left' : 'fade-right'}
+              className='w-1/2'
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.pic}
+                alt=''
+                className={`border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 xl:w-full ${
+                  project.id % 2 === 0
+                    ? 'perspective-right'
+                    : 'perspective-left'
+                }`}
+              />
+            </div>
             <div
               className={`w-full flex-col items-start xl:w-1/2 ${
                 project.id % 2 === 0 ? 'perspective-left' : ' perspective-right'
@@ -71,7 +77,7 @@ export default function Portfolio(): JSX.Element {
                 </div>
               )}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

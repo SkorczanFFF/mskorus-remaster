@@ -8,13 +8,18 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { colors } from '@/components/Hero/Partials/colors';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const DesktopScene = (props: any) => {
+const Scene = (props: any) => {
   const { nodes } = useLoader(GLTFLoader, '/models/desktopScene.glb');
   const group = useRef<THREE.Group>();
 
   return (
     <>
-      <group ref={group} {...props} dispose={null} scale={1.5}>
+      <group
+        ref={group}
+        {...props}
+        dispose={null}
+        scale={isMobile ? 1.25 : 1.5}
+      >
         <mesh
           castShadow
           receiveShadow
@@ -58,12 +63,16 @@ const DesktopScene = (props: any) => {
           scale={[3.322, 2.419, 2.524]}
         >
           {isMobile ? (
-            <meshStandardMaterial
-              attach='material'
-              color={colors.primaryBlue}
-              roughness={0.3}
-              metalness={0.5}
-            />
+            <>
+              <ambientLight intensity={0.5} />
+              <meshStandardMaterial
+                attach='material'
+                color={colors.primaryBlue}
+                roughness={0.5}
+                metalness={0.3}
+                opacity={0.3}
+              />
+            </>
           ) : (
             <MeshTransmissionMaterial
               backsideThickness={10}
@@ -130,7 +139,7 @@ const DesktopScene = (props: any) => {
         <Text
           fontSize={6}
           letterSpacing={0}
-          color='#801834'
+          color='#820025'
           {...props}
           position={[5, -10, -25]}
         >
@@ -152,4 +161,4 @@ const DesktopScene = (props: any) => {
   );
 };
 
-export default DesktopScene;
+export default Scene;

@@ -15,6 +15,7 @@ export default {
         'real-white': '#ffffff',
         white: '#e4e4e4',
         raspberry: '#801834',
+        raspberrer: '#820025',
         orange: '#992210',
         shadow: '#161616',
         oranger: '#972b1a',

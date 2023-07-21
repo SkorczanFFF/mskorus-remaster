@@ -404,7 +404,7 @@ export default function CV(): JSX.Element {
           </div>
         </div>
         <div className='gradient w-full text-center'>
-          <p className='text-primary-blue p-2 text-xs'>
+          <p className='text-primary-blue p-2 text-xs tracking-wider'>
             &copy; {currentYear} Maciej Skorus
           </p>
         </div>

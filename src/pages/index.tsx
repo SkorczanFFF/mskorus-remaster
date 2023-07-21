@@ -1,5 +1,8 @@
+import AOS from 'aos';
 import dynamic from 'next/dynamic';
 import * as React from 'react';
+
+import 'aos/dist/aos.css';
 
 import About from '@/components/About/About';
 import Contact from '@/components/Contact/Contact';
@@ -14,6 +17,10 @@ const HeroNoSSR = dynamic(() => import('@/components/Hero/Hero'), {
 });
 
 export default function HomePage() {
+  React.useEffect(() => {
+    AOS.init({ duration: 750 });
+  }, []);
+
   return (
     <Layout>
       <Seo />

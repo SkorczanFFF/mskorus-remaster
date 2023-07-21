@@ -12,7 +12,7 @@ import React, { Suspense } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 
-import DesktopScene from '@/components/Hero/Partials/DesktopScene';
+import DesktopScene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
 function Rig() {
@@ -36,15 +36,7 @@ function Loader() {
   const { progress } = useProgress();
   return (
     <Html center>
-      <b
-        style={{
-          color: '#801834',
-          fontSize: '3em',
-          margin: 'auto',
-          borderBottom: '2em',
-          fontWeight: 400,
-        }}
-      >
+      <b className='m-auto text-4xl font-[400] text-[#801834]'>
         {Math.round(progress)}%
       </b>
     </Html>
@@ -53,8 +45,8 @@ function Loader() {
 
 export default function Hero(): JSX.Element {
   const [ref, inView] = useInView({
-    triggerOnce: true, // Just trigger once when it comes into view
-    threshold: 0.5, // Intersection ratio at which to trigger the inView state change
+    triggerOnce: false,
+    threshold: 0.01,
   });
   return (
     <section
@@ -62,7 +54,7 @@ export default function Hero(): JSX.Element {
       id='home'
       className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
     >
-      {inView && (
+      {inView ? (
         <Canvas
           shadows
           camera={{ position: [0, 0, -21], fov: 50 }}
@@ -97,10 +89,6 @@ export default function Hero(): JSX.Element {
               </>
             ) : (
               <>
-                {/* <EffectComposer disableNormalPass>
-                  <N8AO aoRadius={5} intensity={15} />
-                  <TiltShift2 blur={0.125} />
-                </EffectComposer> */}
                 <spotLight intensity={1} position={[10, 10, 20]} />
                 <spotLight intensity={1} position={[-10, -10, 20]} />
                 <spotLight intensity={1} position={[0, 0, 0]} />
@@ -112,6 +100,10 @@ export default function Hero(): JSX.Element {
             </Float>
           </Suspense>
         </Canvas>
+      ) : (
+        <div className='w-100vw flex h-full items-center'>
+          <span className='loader'></span>
+        </div>
       )}
       <ScrollButton />
       <div className='flex w-full'>

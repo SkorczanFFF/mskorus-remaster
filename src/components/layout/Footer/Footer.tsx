@@ -1,6 +1,5 @@
-import { motion } from 'framer-motion';
 import React from 'react';
-import { IoIosPaperPlane } from 'react-icons/io';
+import { IoMailOpenSharp } from 'react-icons/io5';
 import { IoDocumentTextSharp } from 'react-icons/io5';
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
@@ -18,8 +17,11 @@ export default function Footer(): JSX.Element {
       </div>
       <div className='flex w-full items-center justify-center bg-white'>
         <div className='mx-5 flex w-[1000px] flex-col items-center justify-between gap-5 py-10 sm:flex-row sm:gap-0'>
-          <motion.div className='font-mont text-primary-blue flex w-full items-center gap-2'>
-            <IoIosPaperPlane className='hover:text-raspberry cursor-pointer text-8xl duration-150' />
+          <div
+            data-aos='zoom-out-left'
+            className='font-mont text-primary-blue flex w-full items-center gap-2'
+          >
+            <IoMailOpenSharp className='hover:text-raspberry cursor-pointer text-8xl duration-150' />
             <div className='flex flex-col'>
               <h3 className='font-mont text-xl font-[500] tracking-wide'>
                 CONTACT
@@ -32,9 +34,12 @@ export default function Footer(): JSX.Element {
                 skorusmaciej94@gmail.com
               </a>
             </div>
-          </motion.div>
-          <div className='font-mont text-primary-blue flex w-full flex-row-reverse items-center gap-2'>
-            <IoDocumentTextSharp className='hover:text-raspberry cursor-pointer text-[88px] duration-150' />
+          </div>
+          <div
+            data-aos='zoom-out-right'
+            className='font-mont text-primary-blue flex w-full flex-row-reverse items-center gap-2'
+          >
+            <IoDocumentTextSharp className='hover:text-raspberry cursor-pointer text-[82px] duration-150' />
             <div className='flex flex-col items-end '>
               <h3 className='font-mont text-xl font-[500] tracking-wide'>
                 RESUME
@@ -43,7 +48,7 @@ export default function Footer(): JSX.Element {
               <a
                 href='{cv}'
                 download='CV_Maciej_Skorus'
-                className=' hover:text-raspberry text-sm duration-150'
+                className=' hover:text-raspberrier text-sm duration-150'
               >
                 English (PDF)
               </a>
@@ -51,7 +56,7 @@ export default function Footer(): JSX.Element {
               {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
               <a
                 href='/resume'
-                className=' hover:text-raspberry text-sm duration-150'
+                className=' hover:text-raspberrer text-sm duration-150'
               >
                 English (WEB)
               </a>
@@ -60,7 +65,7 @@ export default function Footer(): JSX.Element {
         </div>
       </div>
       <div className='gradient w-full text-center'>
-        <p className='p-2 text-xs text-white'>
+        <p className='p-2 text-xs tracking-wider text-white'>
           &copy; {currentYear} Maciej Skorus
         </p>
       </div>
