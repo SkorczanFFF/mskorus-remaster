@@ -3,6 +3,6 @@ export const colors = {
   whiterColor: 0xe4e4e4,
   orangeColor: 0x972b1a,
   orangerColor: 0x993838,
-  primaryBlue: 0x11172b,
+  primaryBlue: 0x00171d,
   raspberryColor: 0x801834,
 };

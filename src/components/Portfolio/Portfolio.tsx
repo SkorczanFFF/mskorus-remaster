@@ -7,7 +7,7 @@ export default function Portfolio(): JSX.Element {
   return (
     <section
       id='portfolio'
-      className='font-mont bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center pb-20'
+      className='font-mont bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center overflow-hidden pb-20'
     >
       <div className='arrow-down white pt-[60px]' />
       <h3 className='font-mont -left-[45px] top-[190px] text-xl font-[400] leading-3 tracking-[10px] text-white md:absolute md:-rotate-90'>
@@ -22,17 +22,14 @@ export default function Portfolio(): JSX.Element {
             }`}
           >
             <div
+              className='xl:w-1/2'
               data-aos={project.id % 2 === 0 ? 'fade-left' : 'fade-right'}
-              className='w-1/2'
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={project.pic}
                 alt=''
-                className={`border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 xl:w-full ${
-                  project.id % 2 === 0
-                    ? 'perspective-right'
-                    : 'perspective-left'
+                className={` perspective-right border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 ${
+                  project.id % 2 === 0 ? '' : 'perspective-left'
                 }`}
               />
             </div>

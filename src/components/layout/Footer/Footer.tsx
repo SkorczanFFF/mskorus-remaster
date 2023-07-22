@@ -4,7 +4,7 @@ import { IoDocumentTextSharp } from 'react-icons/io5';
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className='font-mont bg-primary-blue flex min-h-[20vh] w-full flex-col items-center'>
+    <footer className='font-mont bg-primary-blue flex min-h-[20vh] w-full flex-col items-center overflow-hidden'>
       <div className='w-full min-w-[250px] px-2 xl:w-[1100px] xl:px-0'>
         <div className='arrow-down white' />
         <p className='font-mont relative ml-3 text-start text-2xl font-[400] text-white'>
@@ -18,8 +18,8 @@ export default function Footer(): JSX.Element {
       <div className='flex w-full items-center justify-center bg-white'>
         <div className='mx-5 flex w-[1000px] flex-col items-center justify-between gap-5 py-10 sm:flex-row sm:gap-0'>
           <div
-            data-aos='zoom-out-left'
             className='font-mont text-primary-blue flex w-full items-center gap-2'
+            data-aos='zoom-out-right'
           >
             <IoMailOpenSharp className='hover:text-raspberry cursor-pointer text-8xl duration-150' />
             <div className='flex flex-col'>
@@ -36,8 +36,8 @@ export default function Footer(): JSX.Element {
             </div>
           </div>
           <div
-            data-aos='zoom-out-right'
             className='font-mont text-primary-blue flex w-full flex-row-reverse items-center gap-2'
+            data-aos='zoom-out-left'
           >
             <IoDocumentTextSharp className='hover:text-raspberry cursor-pointer text-[82px] duration-150' />
             <div className='flex flex-col items-end '>

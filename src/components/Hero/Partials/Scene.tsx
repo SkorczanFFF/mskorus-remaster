@@ -1,4 +1,4 @@
-import { MeshTransmissionMaterial, Text } from '@react-three/drei';
+import { MeshTransmissionMaterial } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -6,6 +6,8 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 import { colors } from '@/components/Hero/Partials/colors';
+import DesktopBackground from '@/components/Hero/Partials/DesktopBackground';
+import MobileBackground from '@/components/Hero/Partials/MobileBackground';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Scene = (props: any) => {
@@ -18,7 +20,7 @@ const Scene = (props: any) => {
         ref={group}
         {...props}
         dispose={null}
-        scale={isMobile ? 1.25 : 1.5}
+        scale={isMobile ? 1.15 : 1.5}
       >
         <mesh
           castShadow
@@ -52,7 +54,6 @@ const Scene = (props: any) => {
             metalness={0.5}
           />
         </mesh>
-
         <mesh
           castShadow
           receiveShadow
@@ -65,12 +66,22 @@ const Scene = (props: any) => {
           {isMobile ? (
             <>
               <ambientLight intensity={0.5} />
-              <meshStandardMaterial
+              {/* <meshStandardMaterial
                 attach='material'
                 color={colors.primaryBlue}
                 roughness={0.5}
                 metalness={0.3}
-                opacity={0.3}
+                transparent
+                opacity={0.75}
+              /> */}
+              <meshPhysicalMaterial
+                roughness={0.45}
+                transmission={2}
+                thickness={1.5}
+                transparent
+                opacity={0.75}
+                color={0xffffff}
+                clearcoat={1}
               />
             </>
           ) : (
@@ -85,77 +96,7 @@ const Scene = (props: any) => {
             />
           )}
         </mesh>
-        <Text
-          fontSize={7}
-          letterSpacing={0}
-          color='#e4e4e4'
-          {...props}
-          position={[10, 17, -20]}
-        >
-          {isMobile
-            ? 'FRONTENDFRONT'
-            : 'FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND'}
-        </Text>
-        <Text
-          fontSize={7}
-          letterSpacing={0}
-          color='#e4e4e4'
-          {...props}
-          position={[10, 12, -17]}
-        >
-          {isMobile
-            ? 'FRONTENDFRONT'
-            : 'FRONTENDFRONTENDFRONTENDFRONTENDFRONTEND'}
-        </Text>
-        <Text
-          fontSize={8}
-          letterSpacing={0}
-          color='#992210'
-          {...props}
-          position={[5, 8, -25]}
-        >
-          {isMobile ? 'ENDENDEND' : 'ENDENDENDENDENDENDENDENDENDENDENDEND'}
-        </Text>
-        <Text
-          fontSize={6}
-          letterSpacing={0}
-          color='#e4e4e4'
-          {...props}
-          position={[2.5, 2, -15]}
-        >
-          {isMobile ? 'FRONTFRONT' : 'FRONTFRONTFRONTFRONTFRONT'}
-        </Text>
-
-        <Text
-          fontSize={6}
-          letterSpacing={0}
-          color='#801834'
-          {...props}
-          position={[0, -3, -23]}
-          rotation={[0, 0, 0]}
-        >
-          {isMobile ? 'DEVELOPERD' : 'DEVELOPERDEVELOPERDEVELOPERDEVELOPER'}
-        </Text>
-        <Text
-          fontSize={6}
-          letterSpacing={0}
-          color='#820025'
-          {...props}
-          position={[5, -10, -25]}
-        >
-          {isMobile ? 'DEVELOPERD' : 'DEVELOPERDEVELOPERDEVELOPERDEVELOPER'}
-        </Text>
-
-        <Text
-          fontSize={6}
-          letterSpacing={0}
-          color='#801834'
-          {...props}
-          position={[-5, -13, -15]}
-          rotation={[0, 0, 0]}
-        >
-          {isMobile ? 'DEVELOPERD' : 'DEVELOPERDEVELOPERDEVELOPERDEVELOPER'}
-        </Text>
+        {isMobile ? <MobileBackground /> : <DesktopBackground />}
       </group>
     </>
   );
