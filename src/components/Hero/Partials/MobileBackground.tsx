@@ -32,7 +32,7 @@ const MobileBackground = (props: any) => {
         {...props}
         position={[-2, 6.5, -18]}
       >
-        FRONTEND FRONTEND FRONTEND FRONTEND
+        FRONTENDFRONTENDFRONTENDFRONTEND
       </Text>
       <Text
         fontSize={5}
@@ -41,23 +41,23 @@ const MobileBackground = (props: any) => {
         {...props}
         position={[2, 2.75, -16]}
       >
-        FRONTEND FRONTEND FRONTEND
+        FRONTENDFRONTENDFRONTEND
       </Text>
       <Text
         fontSize={5}
         letterSpacing={0}
         color={colors.orangeColor}
         {...props}
-        position={[2, -1.25, -16]}
+        position={[2, -2.5, -13]}
       >
-        DEVELOPER DEVELOPER DEVELOPER
+        DEVELOPERDEVELOPERDEVELOPER
       </Text>
       <Text
         fontSize={2}
         letterSpacing={0}
         color={colors.whiteColor}
         {...props}
-        position={[-3, -3.5, -10]}
+        position={[0, -5, -10]}
       >
         DEVELOPERDEVELOPERDEVELOPEREVELOPER
       </Text>
@@ -66,7 +66,7 @@ const MobileBackground = (props: any) => {
         letterSpacing={0}
         color={colors.whiteColor}
         {...props}
-        position={[3, -7, -15]}
+        position={[3, -9, -17]}
       >
         DEVELOPERDEVELOPERDEVELOPERDEVELOPER
       </Text>
@@ -75,7 +75,16 @@ const MobileBackground = (props: any) => {
         letterSpacing={0}
         color={colors.whiteColor}
         {...props}
-        position={[3, -11, -12]}
+        position={[3, -12, -13]}
+      >
+        DEVELOPERDEVELOPERDEVELOPER
+      </Text>
+      <Text
+        fontSize={3}
+        letterSpacing={0}
+        color={colors.whiteColor}
+        {...props}
+        position={[3, -16, -15]}
       >
         DEVELOPERDEVELOPERDEVELOPER
       </Text>

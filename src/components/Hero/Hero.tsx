@@ -48,6 +48,8 @@ export default function Hero(): JSX.Element {
     triggerOnce: false,
     threshold: 0.01,
   });
+  const glProps = isMobile ? { antialias: false } : { antialias: true };
+
   return (
     <section
       ref={ref}
@@ -60,7 +62,7 @@ export default function Hero(): JSX.Element {
           camera={{ position: [0, 0, -21], fov: 50 }}
           dpr={[0.25, 1]}
           eventPrefix='client'
-          gl={{ antialias: false }}
+          gl={glProps}
           className='min-h-[97vh]'
         >
           <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />

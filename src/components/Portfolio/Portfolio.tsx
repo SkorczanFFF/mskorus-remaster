@@ -77,6 +77,7 @@ export default function Portfolio(): JSX.Element {
           </div>
         ))}
       </div>
+      <p className='mt-4 tracking-widest text-white'>STAY TUNED</p>
     </section>
   );
 }

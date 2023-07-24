@@ -62,7 +62,7 @@ const projects = [
     technologies:
       'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
     description:
-      'Remaster of my deprecated React portfolio page. Now it is based on Next.js, TailwindCSS and React Three Fiber/Three.js. Also integrated with TypeScript, Framer Motion and now with built-in resume on Web. Some parts of WebGL scene were made with Blender.',
+      'Remaster of my deprecated React portfolio page. Now it is based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scenes are GLTF models made in Blender and converted to React Three Fiber JSX components. Now features built-in web version of resume.',
     repositoryLink: 'https://github.com/SkorczanFFF/mskorus-remaster',
     demoLink: 'https://mskorus.vercel.app/',
   },
@@ -70,7 +70,7 @@ const projects = [
     title: 'POLONEZ AUTODRIVE',
     technologies: 'HTML • JavaScript • Three.js • 3D Studio Max 2019',
     description:
-      'Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80\'s vibe coloring book" like animation with built-in GUI for easy painting. Have fun with coloring!',
+      'Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80`s vibe `coloring book` like animation with built-in GUI to play with scene colors and models. Turn on some music and have fun with coloring!',
     repositoryLink: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
     demoLink: 'https://skorczanfff.github.io/Polonez-Autodrive/',
   },
@@ -78,7 +78,7 @@ const projects = [
     title: 'YET ANOTHER WEATHER APP',
     technologies: 'React • JavaScript • Sass • Vanta.js • OpenWeather API',
     description:
-      'Another "weather application", but in a new edition. The application displays weather information for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with weather data and background. Unfortunately, still desktop only.',
+      'Another "Another `weather application`, but in a new edition. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.',
     repositoryLink: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp',
     demoLink: 'https://skorczanfff.github.io/YetAnotherWeatherApp/',
   },
@@ -100,7 +100,7 @@ const Project: React.FC<ProjectData> = ({
   demoLink,
 }) => (
   <div className='ml-6 mt-6'>
-    <p className='text-2xl font-[500] tracking-[5px]'>{title}</p>
+    <p className='text-2xl font-[500]'>{title}</p>
     <div className='flex flex-col'>
       <div className='text-raspberry ml-2 mr-8 mt-2 flex items-center text-lg tracking-wide'>
         {technologies}
@@ -135,10 +135,10 @@ export default function CV(): JSX.Element {
       <Head>
         <title>Maciej Skorus - Resume - Frontend Developer</title>
       </Head>
-      <section className='font-mont bg-primary-blue flex min-h-[100vh] flex-col items-center'>
+      <section className='font-mont flex min-h-[100vh] flex-col items-center justify-between bg-gradient-to-b from-[#1A1A28] to-[#3a1323]'>
         <div className='m-10 flex h-[2015px] w-[1421px] bg-white'>
           <div className='flex w-full bg-red-300'>
-            <div className='flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-[#20252f] from-0% via-[#20252f] via-60% to-[#2b3240] to-100%'>
+            <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
               <div className='arrow-top-left white' />
               <div className='flex flex-col items-center justify-center'>
                 <p className='ml-[35px] mt-[23px] text-[3rem] font-[200] tracking-[32px] text-white'>
@@ -147,7 +147,7 @@ export default function CV(): JSX.Element {
                 <p className='z-10 ml-[30px] mt-[28px] text-[3.25rem] tracking-[23px] text-white'>
                   SKORUS
                 </p>
-                <div className='to-raspberry via-raspberry -mt-[15px] h-[4px] w-full bg-gradient-to-r from-transparent' />
+                <div className='to-raspberry via-raspberry -mt-[16px] h-[4px] w-full bg-gradient-to-r from-transparent' />
               </div>
               <div className='mt-[65px]'>
                 <div className='h-[4px] w-[95%] bg-gradient-to-r from-white from-10% to-transparent to-100%' />
@@ -165,13 +165,12 @@ export default function CV(): JSX.Element {
                   </div>
                   <p className='mx-4 mr-9 mt-2 text-end text-lg text-white'>
                     Highly motivated, communicative, creative and passionate
-                    with a strong curiosity and ambition for creating
-                    exceptional web experiences. Dedicated to staying up-to-date
-                    with the latest trends and advancements in the field. Eager
-                    to share and expand knowledge and skills, committed to
-                    continuous learning in the ever-evolving world of
-                    development. Now looking for new team and challenges to grow
-                    and achieve something special and innovative together.
+                    Developer with a strong curiosity and ambition for creating
+                    exceptional web experiences. Interested in WebGL and Web3,
+                    eager to share and expand knowledge and skills. Dedicated to
+                    staying up-to-date with the latest trends and advancements
+                    in the field. Now looking for new team and challenges to
+                    grow and achieve something special and innovative together.
                   </p>
                 </div>
                 <div className='mt-5 flex flex-col items-end'>
@@ -269,7 +268,7 @@ export default function CV(): JSX.Element {
               </div>
             </div>
             <div className='flex flex-col'>
-              <div className='flex h-[90px] w-full items-center bg-[#20252f] text-white'>
+              <div className='bg-primary-blue flex h-[90px] w-full items-center text-white'>
                 <p className='right-0 ml-[100px] text-3xl font-[300] tracking-[15px]'>
                   JUNIOR FRONTEND DEVELOPER
                 </p>
@@ -403,7 +402,7 @@ export default function CV(): JSX.Element {
             </div>
           </div>
         </div>
-        <div className='gradient w-full text-center'>
+        <div className='border-primary-blue gradient w-full border-t-2 text-center'>
           <p className='text-primary-blue p-2 text-xs tracking-wider'>
             &copy; {currentYear} Maciej Skorus
           </p>

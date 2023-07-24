@@ -191,7 +191,7 @@ body {
 }
 
 .cv-blue {
-  border-color: #20252f transparent transparent transparent;
+  border-color: #001a25 transparent transparent transparent;
 }
 
 .blue-hero {
@@ -295,4 +295,8 @@ body {
     height: 5em;
     background: #972b1a;
   }
+}
+
+::selection {
+  background-color: #801834;
 }

@@ -23,10 +23,10 @@ export default function About(): JSX.Element {
       </div>
       <h3
         data-aos='zoom-out'
-        className='bg-primary-blue font-mont text-real-white mx-3 mb-10 mt-20 px-4 py-2 text-sm font-[300]'
+        className='bg-primary-blue font-mont text-real-white mx-3 mb-10 mt-20 max-w-[600px] px-4 py-2 text-center text-sm font-[400] tracking-wide'
       >
-        Always trying to make something from outer space. Curious about Web,
-        WebGL
+        Driven by passion and curiosity for WebGL and Web3, my goal is to make
+        and deliver outstanding Web solutions.
       </h3>
 
       <div className='mt-20 flex gap-10'>
