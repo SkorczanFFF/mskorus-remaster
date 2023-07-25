@@ -3,6 +3,7 @@ import React from 'react';
 import {
   AiFillCar,
   AiFillCompass,
+  AiFillFilePdf,
   AiFillGithub,
   AiFillHtml5,
   AiFillMail,
@@ -136,7 +137,16 @@ export default function CV(): JSX.Element {
         <title>Maciej Skorus - Resume - Frontend Developer</title>
       </Head>
       <section className='font-mont flex min-h-[100vh] flex-col items-center justify-between bg-gradient-to-b from-[#1A1A28] to-[#3a1323]'>
-        <div className='m-10 flex h-[2015px] w-[1421px] bg-white'>
+        <div className='flex w-[1421px] justify-end'>
+          <a
+            href='/cv.pdf'
+            download='Maciej_Skorus_CV'
+            className=' hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
+          >
+            DOWNLOAD <AiFillFilePdf className='ml-1 text-lg' />
+          </a>
+        </div>
+        <div className='m-10 mt-0 flex h-[2015px] w-[1421px] bg-white'>
           <div className='flex w-full bg-red-300'>
             <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
               <div className='arrow-top-left white' />

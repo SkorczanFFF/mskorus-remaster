@@ -47,7 +47,7 @@ export default function Footer(): JSX.Element {
               </h3>
 
               <a
-                href='{cv}'
+                href='/cv.pdf'
                 download='CV_Maciej_Skorus'
                 className=' hover:text-raspberrier text-sm duration-150'
               >
