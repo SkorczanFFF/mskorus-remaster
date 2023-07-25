@@ -21,7 +21,6 @@ const initialValues: FormValues = {
 export default function Contact(): JSX.Element {
   const { showSuccess, showError } = useToast();
   const [values, setValues] = useState<FormValues>(initialValues);
-  const [loading, setLoading] = useState<boolean>(false);
 
   const validateForm = (): boolean => {
     if (values.name.length < 3) {
@@ -45,7 +44,6 @@ export default function Contact(): JSX.Element {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -73,12 +71,10 @@ export default function Contact(): JSX.Element {
           showSuccess('Message was sent successfully!');
         },
         (error) => {
-          setLoading(false);
           console.log(error);
           showError('An error occurred. Please try again later.');
         }
       );
-    setLoading(false);
   };
 
   const handleChange = (

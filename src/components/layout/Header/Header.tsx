@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Desktop from '@/components/layout/Header/Partials/Desktop';
+import Mobile from '@/components/layout/Header/Partials/Mobile';
 
 const links = [
   { href: '/#home', label: 'Home' },
@@ -30,7 +31,7 @@ export default function Header(): JSX.Element {
         </span>
       </a>
       <div className='justify-betweenflex h-14 items-center'>
-        {/* <Mobile links={links} /> */}
+        <Mobile links={links} />
         <Desktop links={links} />
       </div>
     </header>

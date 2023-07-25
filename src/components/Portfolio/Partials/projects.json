@@ -2,7 +2,7 @@
   {
     "id": 0,
     "pic": "/projects/portfolio.jpg",
-    "title": "MSKORUS.PL - moje portfolio",
+    "title": "MSKORUS - my porftolio",
     "technos": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
     "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume.",
     "live": "https://mskorus.pl/",
