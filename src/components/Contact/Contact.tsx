@@ -163,8 +163,7 @@ export default function Contact(): JSX.Element {
             className='bg-primary-blue hover:text-raspberry xsm:mb-5 mb-6 mt-2 w-full py-3 text-xl tracking-[2px] text-white duration-150 hover:bg-white hover:font-[500] hover:tracking-[6px]'
             type='submit'
           >
-            {/* SEND  */}
-            {loading ? <span className='loader' /> : 'SEND'}
+            SEND
           </button>
         </form>
       </div>
