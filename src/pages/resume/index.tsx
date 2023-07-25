@@ -62,7 +62,7 @@ const projects = [
     technologies:
       'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
     description:
-      'Remaster of my deprecated React portfolio page. Now it is based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scenes are GLTF models made in Blender and converted to React Three Fiber JSX components. Now features built-in web version of resume.',
+      'Remaster of my deprecated React portfolio page. Now it`s based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume.',
     repositoryLink: 'https://github.com/SkorczanFFF/mskorus-remaster',
     demoLink: 'https://mskorus.vercel.app/',
   },
@@ -163,14 +163,15 @@ export default function CV(): JSX.Element {
                     <p className='text-orange text-2xl tracking-[3px]'>ABOUT</p>
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                   </div>
-                  <p className='mx-4 mr-9 mt-2 text-end text-lg text-white'>
+                  <p className='ml-5 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
                     Highly motivated, communicative, creative and passionate
-                    Developer with a strong curiosity and ambition for creating
+                    developer with a strong curiosity and ambition for creating
                     exceptional web experiences. Interested in WebGL and Web3,
                     eager to share and expand knowledge and skills. Dedicated to
                     staying up-to-date with the latest trends and advancements
                     in the field. Now looking for new team and challenges to
-                    grow and achieve something special and innovative together.
+                    grow and achieve something special and
+                    <br /> innovative together.
                   </p>
                 </div>
                 <div className='mt-5 flex flex-col items-end'>
@@ -382,7 +383,7 @@ export default function CV(): JSX.Element {
                             </div>
                           </div>
                         </div>
-                        <div className='bottom-0 -ml-2 mr-2 mt-[200px] text-center text-[14px] leading-4 opacity-75'>
+                        <div className='bottom-0 -ml-2 mr-2 mt-[140px] text-center text-[14px] leading-4 opacity-75'>
                           I agree to the processing of personal data provided in
                           this document for realising the recruitment process
                           pursuant to the Personal Data Protection Act of 10 May

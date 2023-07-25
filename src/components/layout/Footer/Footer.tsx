@@ -1,6 +1,7 @@
 import React from 'react';
 import { IoMailOpenSharp } from 'react-icons/io5';
 import { IoDocumentTextSharp } from 'react-icons/io5';
+
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
   return (
