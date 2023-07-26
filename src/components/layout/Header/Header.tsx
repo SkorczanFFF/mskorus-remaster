@@ -1,6 +1,8 @@
-import React from 'react';
+import Link from 'next/link';
+import React, { useState } from 'react';
 
 import Desktop from '@/components/layout/Header/Partials/Desktop';
+import Mobile from '@/components/layout/Header/Partials/Mobile';
 
 const links = [
   { href: '/#home', label: 'Home' },
@@ -12,6 +14,11 @@ const links = [
 ];
 
 export default function Header(): JSX.Element {
+  const [click, setClick] = useState<boolean>(false);
+  const handleClick = () => {
+    setClick((prevClick) => !prevClick);
+  };
+
   return (
     <header
       className={`font-mont border-primary-blue sticky top-0 z-50 flex h-[45px] items-center justify-between border-b opacity-95 backdrop-blur-[100px]
@@ -30,9 +37,36 @@ export default function Header(): JSX.Element {
         </span>
       </a>
       <div className='justify-betweenflex h-14 items-center'>
-        {/* <Mobile links={links} /> */}
+        <Mobile links={links} click={click} handleClick={handleClick} />
         <Desktop links={links} />
       </div>
+      {click && (
+        <div
+          className={`mobileMenu border-primary-blue relative -z-50 -ml-[60px] h-[260px] w-[110vw] border-b backdrop-blur-[75px] duration-300 ${
+            click ? 'mt-[305px]' : '-mt-[305px]'
+          }`}
+          data-aos='fade-down'
+          data-aos-duration='750'
+        >
+          <ul
+            className='my-5 flex flex-col items-center gap-5'
+            data-aos='fade-down'
+            data-aos-duration='950'
+          >
+            {links.map(({ href, label }) => (
+              <Link
+                href={href}
+                scroll={false}
+                key={`${href}${label}`}
+                className='text-real-white hover:text-real-white text-md uppercase tracking-widest drop-shadow-[0_2px_2px_#001a25] duration-150 hover:tracking-[0.195em] hover:drop-shadow-[0_5px_5px_#972b1a]'
+                onClick={handleClick}
+              >
+                <li>{label}</li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

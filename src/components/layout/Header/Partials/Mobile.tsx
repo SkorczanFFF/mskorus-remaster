@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { AiFillCloseSquare } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
 interface LinkItem {
@@ -8,36 +8,27 @@ interface LinkItem {
 
 interface MobileProps {
   links: LinkItem[];
+  click: boolean;
+  handleClick: () => void;
 }
-export default function Mobile({ links }: MobileProps): JSX.Element {
-  const [click, setClick] = useState<boolean>(false);
-
-  const handleOpen = () => {
-    console.log('handleOpen is called'); // Check if this log appears in the console
-    setClick(true);
-  };
-
-  const closeMobileMenu = () => setClick(false);
-
-  useEffect(() => {
-    console.log(click); // Check if the state changes in the console
-  }, [click]);
-
+export default function Mobile({
+  click,
+  handleClick,
+}: MobileProps): JSX.Element {
   return (
     <>
-      <div className='flex w-full md:hidden'>
+      <div className='flex w-full cursor-pointer md:hidden'>
         {click ? (
           <AiFillCloseSquare
-            className='absolute right-3 mt-2 h-10 w-10 text-4xl text-white'
-            onClick={handleOpen}
+            className='text-raspberry absolute right-[10px] mt-2 h-10 w-10 text-4xl'
+            onClick={handleClick} // Fix the onClick event here
           />
         ) : (
           <RxHamburgerMenu
-            className='absolute right-3 mt-2 h-10 w-10 text-4xl text-white'
-            onClick={closeMobileMenu}
+            className='text-real-white absolute right-3 mt-2 h-10 w-9 text-4xl'
+            onClick={handleClick}
           />
         )}
-        <div className='relative -left-10 h-[400px] w-[70vw] backdrop-blur-[75px]'></div>
       </div>
     </>
   );

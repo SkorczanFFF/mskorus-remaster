@@ -101,7 +101,7 @@ const Project: React.FC<ProjectData> = ({
   demoLink,
 }) => (
   <div className='ml-6 mt-6'>
-    <p className='text-2xl font-[500]'>{title}</p>
+    <p className='text-2xl font-[500] tracking-widest'>{title}</p>
     <div className='flex flex-col'>
       <div className='text-raspberry ml-2 mr-8 mt-2 flex items-center text-lg tracking-wide'>
         {technologies}
@@ -137,7 +137,7 @@ export default function CV(): JSX.Element {
         <title>Maciej Skorus - Resume - Frontend Developer</title>
       </Head>
       <section className='font-mont flex min-h-[100vh] flex-col items-center justify-between bg-gradient-to-b from-[#1A1A28] to-[#3a1323]'>
-        <div className='flex w-[1421px] justify-end'>
+        <div className='xxl:justify-end flex w-[1421px] justify-center'>
           <a
             href='/cv.pdf'
             download='Maciej_Skorus_CV'
@@ -146,18 +146,18 @@ export default function CV(): JSX.Element {
             DOWNLOAD <AiFillFilePdf className='ml-1 text-lg' />
           </a>
         </div>
-        <div className='m-10 mt-0 flex h-[2015px] w-[1421px] bg-white'>
-          <div className='flex w-full bg-red-300'>
+        <div className='xxl:overflow-hidden m-10 mt-0 flex h-[2015px] w-[1421px] overflow-scroll bg-white'>
+          <div className='flex w-full'>
             <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
               <div className='arrow-top-left white' />
               <div className='flex flex-col items-center justify-center'>
                 <p className='ml-[35px] mt-[23px] text-[3rem] font-[200] tracking-[32px] text-white'>
                   MACIEJ
                 </p>
-                <p className='z-10 ml-[30px] mt-[28px] text-[3.25rem] tracking-[23px] text-white'>
+                <p className='z-10 ml-[30px] mt-[30px] text-[3.25rem] tracking-[23px] text-white'>
                   SKORUS
                 </p>
-                <div className='to-raspberry via-raspberry -mt-[16px] h-[4px] w-full bg-gradient-to-r from-transparent' />
+                <div className='to-raspberry via-raspberry -mt-[18px] h-[4px] w-full bg-gradient-to-r from-transparent' />
               </div>
               <div className='mt-[65px]'>
                 <div className='h-[4px] w-[95%] bg-gradient-to-r from-white from-10% to-transparent to-100%' />
@@ -384,7 +384,7 @@ export default function CV(): JSX.Element {
                               {technos.map((techno, index) => (
                                 <div
                                   key={index}
-                                  className='hover:text-raspberry mb-3 flex w-[70px] cursor-pointer flex-col items-center text-[#20252ff6] duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
+                                  className='hover:text-raspberry text-primary-blue mb-3 flex w-[70px] cursor-pointer flex-col items-center duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
                                 >
                                   {techno.icon}
                                   <p className='mt-2 text-xs'>{techno.label}</p>

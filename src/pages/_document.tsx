@@ -1,7 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import Header from '@/components/layout/Header/Header';
-
 export default function Document() {
   return (
     <Html lang='en' className='scroll-smooth'>
@@ -19,7 +17,7 @@ export default function Document() {
         />
       </Head>
       <body>
-        <Header />
+        {/* <Header /> */}
         <Main />
         <NextScript />
       </body>
