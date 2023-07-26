@@ -12,7 +12,7 @@ import React, { Suspense } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 
-import DesktopScene from '@/components/Hero/Partials/Scene';
+import Scene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
 function Rig() {
@@ -98,7 +98,7 @@ export default function Hero(): JSX.Element {
             )}
 
             <Float floatIntensity={2}>
-              <DesktopScene />
+              <Scene />
             </Float>
           </Suspense>
         </Canvas>

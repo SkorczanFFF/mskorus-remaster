@@ -21,7 +21,7 @@ export default function Mobile({
         {click ? (
           <AiFillCloseSquare
             className='text-raspberry absolute right-[10px] mt-2 h-10 w-10 text-4xl'
-            onClick={handleClick} // Fix the onClick event here
+            onClick={handleClick}
           />
         ) : (
           <RxHamburgerMenu
