@@ -79,7 +79,7 @@ const projects = [
     title: 'YET ANOTHER WEATHER APP',
     technologies: 'React • JavaScript • Sass • Vanta.js • OpenWeather API',
     description:
-      'Another "Another `weather application`, but in a new edition. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.',
+      'Another `weather application`, but with a breath of fresh air. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.',
     repositoryLink: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp',
     demoLink: 'https://skorczanfff.github.io/YetAnotherWeatherApp/',
   },
@@ -170,23 +170,27 @@ export default function CV(): JSX.Element {
                 <div className='to-raspberry via-raspberry mt-[60px] h-[4px] w-full bg-gradient-to-r from-transparent' />
                 <div className='mt-5 flex flex-col items-end'>
                   <div className='mt-[7px] flex items-center justify-end gap-3'>
-                    <p className='text-orange text-2xl tracking-[3px]'>ABOUT</p>
+                    <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      ABOUT
+                    </p>
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                   </div>
-                  <p className='ml-5 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
-                    Highly motivated, communicative, creative and passionate
-                    developer with a strong curiosity and ambition for creating
-                    exceptional web experiences. Interested in WebGL and Web3,
-                    eager to share and expand knowledge and skills. Dedicated to
-                    staying up-to-date with the latest trends and advancements
-                    in the field. Now looking for new team and challenges to
-                    grow and achieve something special and
-                    <br /> innovative together.
+                  <p className='ml-7 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
+                    I am an ambitious and passionate developer interested in web
+                    technologies, especially WebGL and Web3. With my first
+                    experience on the Blockchain in Game Development industry
+                    and my curiosity about the possibilities of web development,
+                    my goal is to create and deliver exceptional web
+                    experiences. I am constantly looking for new challenges in
+                    the evolving field of technology and currently looking for a
+                    new team to grow with and achieve something special and
+                    <br />
+                    innovative together.
                   </p>
                 </div>
                 <div className='mt-5 flex flex-col items-end'>
                   <div className='flex items-center justify-end gap-3'>
-                    <p className='text-orange text-2xl tracking-[3px]'>
+                    <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
                       CONTACT
                     </p>
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -213,7 +217,7 @@ export default function CV(): JSX.Element {
                 </div>
                 <div className='mt-5 flex flex-col items-end'>
                   <div className='flex items-center justify-end gap-3'>
-                    <p className='text-orange text-2xl tracking-[3px]'>
+                    <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
                       LANGUAGES
                     </p>
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -226,7 +230,9 @@ export default function CV(): JSX.Element {
                 </div>
                 <div className='mt-5 flex flex-col items-end'>
                   <div className='flex items-center justify-end gap-3'>
-                    <p className='text-orange text-2xl tracking-[3px]'>LINKS</p>
+                    <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      LINKS
+                    </p>
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                   </div>
                   <div className='mx-4 mr-9 mt-2 flex flex-col items-end text-xl text-white'>
@@ -258,7 +264,7 @@ export default function CV(): JSX.Element {
                 </div>
                 <div className='mt-5 flex flex-col items-end'>
                   <div className='flex items-center justify-end gap-3'>
-                    <p className='text-orange text-2xl tracking-[3px]'>
+                    <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
                       HOBBIES
                     </p>
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -310,9 +316,9 @@ export default function CV(): JSX.Element {
                           <div className='flex'>
                             <BsDot className='mt-1' />
                             <p className='mr-4'>
-                              DApp and auction system developement and
-                              integration with ImmutableX collections and smart
-                              contracts
+                              Decentralized App and auction system developement
+                              and integration with ImmutableX collections and
+                              smart contracts
                             </p>
                           </div>
                           <p className='flex'>
@@ -320,17 +326,10 @@ export default function CV(): JSX.Element {
                             Working with Moralis and Firebase cloud functions
                             and databases
                           </p>
-                          <p className='flex'>
+                          <p className='mr-10 flex'>
                             <BsDot className='mt-1' />
-                            New <i className='mx-1'>
-                              Pirates of the Arrland
-                            </i>{' '}
-                            homepage layout implementation and development
-                          </p>
-                          <p className='flex'>
-                            <BsDot className='mt-1' />
-                            Handling custom events on company websites, direct
-                            cooperation with marketing
+                            Implementation of a new homepage, handling custom
+                            events on company applications and websites
                           </p>
                           <p className='flex'>
                             <BsDot className='mt-1' />
@@ -393,7 +392,7 @@ export default function CV(): JSX.Element {
                             </div>
                           </div>
                         </div>
-                        <div className='bottom-0 -ml-2 mr-2 mt-[140px] text-center text-[14px] leading-4 opacity-75'>
+                        <div className='bottom-0 -ml-2 mr-2 mt-[150px] text-center text-[14px] leading-4 opacity-75'>
                           I agree to the processing of personal data provided in
                           this document for realising the recruitment process
                           pursuant to the Personal Data Protection Act of 10 May
