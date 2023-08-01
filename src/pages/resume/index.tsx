@@ -178,7 +178,7 @@ export default function CV(): JSX.Element {
                   <p className='ml-7 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
                     I am an ambitious and passionate developer interested in web
                     technologies, especially WebGL and Web3. With my first
-                    experience on the Blockchain in Game Development industry
+                    experience on the Blockchain in game development industry
                     and my curiosity about the possibilities of web development,
                     my goal is to create and deliver exceptional web
                     experiences. I am constantly looking for new challenges in
