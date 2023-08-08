@@ -88,6 +88,7 @@ export default function Contact(): JSX.Element {
 
   return (
     <section
+      data-testid='contact-section'
       id='contact'
       className='font-mont ny-20 relative flex h-auto w-full flex-col items-center justify-center overflow-hidden bg-white'
     >
@@ -110,7 +111,10 @@ export default function Contact(): JSX.Element {
                 value={values.name}
                 onChange={handleChange}
               />
-              <label className="after:content[' '] text-primary-blue pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white">
+              <label
+                htmlFor='name'
+                className="after:content[' '] text-primary-blue pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none text-[11px] font-normal leading-tight transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-white after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-white peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-white peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-white"
+              >
                 Your name
               </label>
             </div>
