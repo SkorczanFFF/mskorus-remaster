@@ -21,7 +21,9 @@ export default function Portfolio(): JSX.Element {
               project.id % 2 === 0 ? '' : 'xl:flex-row-reverse'
             }`}
           >
-            <div
+            <a
+              rel='noopener noreferrer'
+              target='blank'
               className='xl:w-1/2'
               data-aos={project.id % 2 === 0 ? 'fade-left' : 'fade-right'}
             >
@@ -32,7 +34,7 @@ export default function Portfolio(): JSX.Element {
                   project.id % 2 === 0 ? '' : 'perspective-left'
                 }`}
               />
-            </div>
+            </a>
             <div
               className={`w-full flex-col items-start xl:w-1/2 ${
                 project.id % 2 === 0 ? 'perspective-left' : ' perspective-right'
@@ -65,11 +67,23 @@ export default function Portfolio(): JSX.Element {
                 >
                   <div className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
                     <AiFillGithub className='text-2xl' />
-                    <a href={project.git}>repo</a>
+                    <a
+                      href={project.git}
+                      target='blank'
+                      rel='noopener noreferrer'
+                    >
+                      repo
+                    </a>
                   </div>
                   <div className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
                     <AiOutlineGlobal className='text-2xl' />
-                    <a href={project.live}>live demo</a>
+                    <a
+                      href={project.live}
+                      target='blank'
+                      rel='noopener noreferrer'
+                    >
+                      live demo
+                    </a>
                   </div>
                 </div>
               )}

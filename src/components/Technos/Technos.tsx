@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiFillGithub, AiFillHtml5 } from 'react-icons/ai';
+import { BiLogoJava } from 'react-icons/bi';
 import { IoLogoReact } from 'react-icons/io5';
 import {
   SiAdobephotoshop,
@@ -9,6 +10,7 @@ import {
   SiFirebase,
   SiGitlab,
   SiMongodb,
+  SiMysql,
   SiNextdotjs,
   SiNodedotjs,
   SiNpm,
@@ -33,7 +35,9 @@ export default function Technos(): JSX.Element {
     { icon: <SiSass className='text-6xl' />, label: 'Sass' },
     { icon: <SiFirebase className='text-6xl' />, label: 'Firebase' },
     { icon: <SiMongodb className='text-6xl' />, label: 'MongoDB' },
+    { icon: <SiMysql className='text-6xl' />, label: 'MySQL' },
     { icon: <SiNodedotjs className='text-6xl' />, label: 'Node.js' },
+    { icon: <BiLogoJava className='text-6xl' />, label: 'Java' },
     { icon: <SiAdobephotoshop className='text-6xl' />, label: 'Photoshop' },
     { icon: <SiAutodesk className='text-6xl' />, label: '3Ds Max' },
     { icon: <SiBlender className='text-6xl' />, label: 'Blender' },

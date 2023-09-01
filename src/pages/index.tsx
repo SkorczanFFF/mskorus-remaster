@@ -27,6 +27,7 @@ export default function HomePage() {
       <main>
         <HeroNoSSR />
         <About />
+        {/* <Experience /> */}
         <Technos />
         <Portfolio />
         <Contact />

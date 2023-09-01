@@ -5,8 +5,8 @@
     "title": "MSKORUS - my porftolio",
     "technos": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
     "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume.",
-    "live": "https://mskorus.pl/",
-    "git": "https://github.com/SkorczanFFF/MSKORUS-portfolio"
+    "live": "https://mskorus.vercel.app/",
+    "git": "https://github.com/SkorczanFFF/mskorus-remaster"
   },
   {
     "id": 1,
@@ -28,6 +28,15 @@
   },
   {
     "id": 3,
+    "pic": "/projects/tba.jpg",
+    "title": "MAMA.MI HANDMADE",
+    "technos": "",
+    "description": "MORE INFO SOON",
+    "live": "",
+    "git": ""
+  },
+  {
+    "id": 4,
     "pic": "/projects/tba.jpg",
     "title": "TO BE ANNOUCED",
     "technos": "",
