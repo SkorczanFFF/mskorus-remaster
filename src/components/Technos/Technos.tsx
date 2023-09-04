@@ -2,7 +2,7 @@ import React from 'react';
 import { AiFillGithub, AiFillHtml5 } from 'react-icons/ai';
 import { BiLogoJava } from 'react-icons/bi';
 import { GrMysql } from 'react-icons/gr';
-import { IoLogoCss3, IoLogoReact } from 'react-icons/io5';
+import { IoLogoCss3, IoLogoReact, IoLogoWordpress } from 'react-icons/io5';
 import {
   SiAdobephotoshop,
   SiAutodesk,
@@ -26,12 +26,13 @@ import {
 export default function Technos(): JSX.Element {
   const technos = [
     { icon: <AiFillHtml5 className='text-6xl' />, label: 'HTML5' },
-    { icon: <IoLogoCss3 className='text-6xl' />, label: 'CSS3' },
+
     { icon: <SiTypescript className='text-6xl' />, label: 'TypeScript' },
     { icon: <SiNextdotjs className='text-6xl' />, label: 'Next.js' },
     { icon: <IoLogoReact className='text-6xl' />, label: 'React' },
     { icon: <SiRedux className='text-6xl' />, label: 'Redux' },
     { icon: <SiThreedotjs className='text-6xl' />, label: 'Three.js' },
+    { icon: <IoLogoCss3 className='text-6xl' />, label: 'CSS3' },
     { icon: <SiTailwindcss className='text-6xl' />, label: 'Tailwind' },
     { icon: <SiSass className='text-6xl' />, label: 'Sass' },
     { icon: <SiFirebase className='text-6xl' />, label: 'Firebase' },
@@ -39,6 +40,7 @@ export default function Technos(): JSX.Element {
     { icon: <GrMysql className='text-6xl' />, label: 'MySQL' },
     { icon: <SiNodedotjs className='text-6xl' />, label: 'Node.js' },
     { icon: <BiLogoJava className='text-6xl' />, label: 'Java' },
+    { icon: <IoLogoWordpress className='text-6xl' />, label: 'Wordpress' },
     { icon: <SiAdobephotoshop className='text-6xl' />, label: 'Photoshop' },
     { icon: <SiAutodesk className='text-6xl' />, label: '3Ds Max' },
     { icon: <SiBlender className='text-6xl' />, label: 'Blender' },

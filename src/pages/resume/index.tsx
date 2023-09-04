@@ -8,11 +8,18 @@ import {
   AiFillHtml5,
   AiFillMail,
 } from 'react-icons/ai';
+import { BiLogoJava } from 'react-icons/bi';
 import { BsDot, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
 import { GiGuitarBassHead } from 'react-icons/gi';
+import { GrMysql } from 'react-icons/gr';
 import { HiChip, HiMusicNote } from 'react-icons/hi';
 import { HiMiniLanguage } from 'react-icons/hi2';
-import { IoCallSharp, IoLogoReact } from 'react-icons/io5';
+import {
+  IoCallSharp,
+  IoLogoCss3,
+  IoLogoReact,
+  IoLogoWordpress,
+} from 'react-icons/io5';
 import {
   SiAdobephotoshop,
   SiAutodesk,
@@ -35,26 +42,30 @@ import {
 } from 'react-icons/si';
 
 const technos = [
-  { icon: <AiFillHtml5 className='text-6xl' />, label: 'HTML5' },
-  { icon: <SiTypescript className='text-6xl' />, label: 'TypeScript' },
-  { icon: <SiNextdotjs className='text-6xl' />, label: 'Next.js' },
-  { icon: <IoLogoReact className='text-6xl' />, label: 'React' },
-  { icon: <SiRedux className='text-6xl' />, label: 'Redux' },
-  { icon: <SiThreedotjs className='text-6xl' />, label: 'Three.js' },
-  { icon: <SiTailwindcss className='text-6xl' />, label: 'Tailwind' },
-  { icon: <SiSass className='text-6xl' />, label: 'Sass' },
-  { icon: <SiFirebase className='text-6xl' />, label: 'Firebase' },
-  { icon: <SiMongodb className='text-6xl' />, label: 'MongoDB' },
-  { icon: <SiNodedotjs className='text-6xl' />, label: 'Node.js' },
-  { icon: <SiAdobephotoshop className='text-6xl' />, label: 'Photoshop' },
-  { icon: <SiAutodesk className='text-6xl' />, label: '3Ds Max' },
-  { icon: <SiBlender className='text-6xl' />, label: 'Blender' },
-  { icon: <AiFillGithub className='text-6xl' />, label: 'GitHub' },
-  { icon: <SiGitlab className='text-6xl' />, label: 'GitLab' },
-  { icon: <SiBitbucket className='text-6xl' />, label: 'BitBucket' },
-  { icon: <SiVisualstudiocode className='text-6xl' />, label: 'VS Code' },
-  { icon: <SiYarn className='text-6xl' />, label: 'Yarn' },
-  { icon: <SiNpm className='text-6xl' />, label: 'npm' },
+  { icon: <AiFillHtml5 className='text-5xl' />, label: 'HTML5' },
+  { icon: <SiTypescript className='text-5xl' />, label: 'TypeScript' },
+  { icon: <SiNextdotjs className='text-5xl' />, label: 'Next.js' },
+  { icon: <IoLogoReact className='text-5xl' />, label: 'React' },
+  { icon: <SiRedux className='text-5xl' />, label: 'Redux' },
+  { icon: <SiThreedotjs className='text-5xl' />, label: 'Three.js' },
+  { icon: <IoLogoCss3 className='text-5xl' />, label: 'CSS3' },
+  { icon: <SiTailwindcss className='text-5xl' />, label: 'Tailwind' },
+  { icon: <SiSass className='text-5xl' />, label: 'Sass' },
+  { icon: <SiFirebase className='text-5xl' />, label: 'Firebase' },
+  { icon: <SiMongodb className='text-5xl' />, label: 'MongoDB' },
+  { icon: <GrMysql className='text-5xl' />, label: 'MySQL' },
+  { icon: <SiNodedotjs className='text-5xl' />, label: 'Node.js' },
+  { icon: <BiLogoJava className='text-5xl' />, label: 'Java' },
+  { icon: <IoLogoWordpress className='text-5xl' />, label: 'Wordpress' },
+  { icon: <SiAdobephotoshop className='text-5xl' />, label: 'Photoshop' },
+  { icon: <SiAutodesk className='text-5xl' />, label: '3Ds Max' },
+  { icon: <SiBlender className='text-5xl' />, label: 'Blender' },
+  { icon: <AiFillGithub className='text-5xl' />, label: 'GitHub' },
+  { icon: <SiBitbucket className='text-5xl' />, label: 'BitBucket' },
+  { icon: <SiGitlab className='text-5xl' />, label: 'GitLab' },
+  { icon: <SiVisualstudiocode className='text-5xl' />, label: 'VS Code' },
+  { icon: <SiYarn className='text-5xl' />, label: 'Yarn' },
+  { icon: <SiNpm className='text-5xl' />, label: 'npm' },
 ];
 
 const projects = [
@@ -151,10 +162,10 @@ export default function CV(): JSX.Element {
             <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
               <div className='arrow-top-left white' />
               <div className='flex flex-col items-center justify-center'>
-                <p className='ml-[35px] mt-[23px] text-[3rem] font-[200] tracking-[32px] text-white'>
+                <p className='ml-[35px] mt-[26px] text-[3rem] font-[200] tracking-[32px] text-white'>
                   MACIEJ
                 </p>
-                <p className='z-10 ml-[30px] mt-[30px] text-[3.25rem] tracking-[23px] text-white'>
+                <p className='z-10 ml-[30px] mt-[27px] text-[3.25rem] tracking-[23px] text-white'>
                   SKORUS
                 </p>
                 <div className='to-raspberry via-raspberry -mt-[18px] h-[4px] w-full bg-gradient-to-r from-transparent' />
@@ -176,14 +187,15 @@ export default function CV(): JSX.Element {
                     <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                   </div>
                   <p className='ml-7 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
-                    I am an ambitious and passionate developer interested in web
-                    technologies, especially WebGL and Web3. With my first
-                    experience on the Blockchain in game development industry
-                    and my curiosity about the possibilities of web development,
-                    my goal is to create and deliver exceptional web
-                    experiences. I am constantly looking for new challenges in
-                    the evolving field of technology and currently looking for a
-                    new team to grow with and achieve something special and
+                    I am a motivated developer with a deep enthusiasm for
+                    cutting-edge web technologies, with a strong interest in
+                    WebGL. With my first experience on the Blockchain in game
+                    development industry and with my curiosity about the
+                    possibilities of web development, my goal is to create and
+                    deliver exceptional web experiences. I am constantly looking
+                    for new challenges in the evolving field of technology and
+                    currently looking for a new team to grow with and achieve
+                    something special and
                     <br />
                     innovative together.
                   </p>
@@ -377,7 +389,7 @@ export default function CV(): JSX.Element {
                           <div className='cv-arrow -ml-[22px]' />
                           <div className=' flex flex-col text-[#20252f]'>
                             <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
-                              SKILLS
+                              SKILLS AND TOOLS
                             </p>
                             <div className='ml-[22px] mr-2 mt-6 flex flex-wrap justify-start gap-x-[25px] gap-y-2'>
                               {technos.map((techno, index) => (
@@ -386,13 +398,15 @@ export default function CV(): JSX.Element {
                                   className='hover:text-raspberry text-primary-blue mb-3 flex w-[70px] cursor-pointer flex-col items-center duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
                                 >
                                   {techno.icon}
-                                  <p className='mt-2 text-xs'>{techno.label}</p>
+                                  <p className='mt-2 text-[10px] leading-3'>
+                                    {techno.label}
+                                  </p>
                                 </div>
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className='bottom-0 -ml-2 mr-2 mt-[150px] text-center text-[14px] leading-4 opacity-75'>
+                        <div className='bottom-0 -ml-2 mr-2 mt-[90px] text-center text-[14px] leading-4 opacity-75'>
                           I agree to the processing of personal data provided in
                           this document for realising the recruitment process
                           pursuant to the Personal Data Protection Act of 10 May
