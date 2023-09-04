@@ -26,7 +26,6 @@ import {
 export default function Technos(): JSX.Element {
   const technos = [
     { icon: <AiFillHtml5 className='text-6xl' />, label: 'HTML5' },
-
     { icon: <SiTypescript className='text-6xl' />, label: 'TypeScript' },
     { icon: <SiNextdotjs className='text-6xl' />, label: 'Next.js' },
     { icon: <IoLogoReact className='text-6xl' />, label: 'React' },
