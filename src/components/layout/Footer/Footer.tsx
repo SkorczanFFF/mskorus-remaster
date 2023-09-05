@@ -48,7 +48,7 @@ export default function Footer(): JSX.Element {
 
               <a
                 href='/cv.pdf'
-                download='CV_Maciej_Skorus'
+                download='Maciej Skorus - CV'
                 className=' hover:text-raspberrier text-sm duration-150'
               >
                 English (PDF)

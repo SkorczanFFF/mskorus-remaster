@@ -151,7 +151,7 @@ export default function CV(): JSX.Element {
         <div className='xxl:justify-end flex w-[1421px] justify-center'>
           <a
             href='/cv.pdf'
-            download='Maciej_Skorus_CV'
+            download='Maciej Skorus - CV'
             className=' hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
           >
             DOWNLOAD <AiFillFilePdf className='ml-1 text-lg' />
