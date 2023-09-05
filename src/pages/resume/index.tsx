@@ -190,12 +190,12 @@ export default function CV(): JSX.Element {
                     I am a motivated developer with a deep enthusiasm for
                     cutting-edge web technologies, with a strong interest in
                     WebGL. With my first experience on the Blockchain in game
-                    development industry and with my curiosity about the
-                    possibilities of web development, my goal is to create and
-                    deliver exceptional web experiences. I am constantly looking
-                    for new challenges in the evolving field of technology and
-                    currently looking for a new team to grow with and achieve
-                    something special and
+                    development industry and curiosity about the possibilities
+                    of web development, my goal is to create and deliver
+                    exceptional web experiences. I am constantly looking for new
+                    challenges in the evolving field of technology and currently
+                    looking for a new team to grow with and achieve something
+                    special and
                     <br />
                     innovative together.
                   </p>
