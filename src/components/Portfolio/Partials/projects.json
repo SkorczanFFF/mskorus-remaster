@@ -28,10 +28,10 @@
   },
   {
     "id": 3,
-    "pic": "/projects/tba.jpg",
+    "pic": "/projects/mamami.jpg",
     "title": "Mama.Mi HANDMADE",
-    "technos": "Prestashop",
-    "description": "E-Commerce shop based on PrestaShop with clothes for babies/kids",
+    "technos": "PrestaShop • PHP • JavaScript • MySQL",
+    "description": "E-Commerce based on PrestaShop with handmade clothes for babies/kids",
     "live": "",
     "git": ""
   },
