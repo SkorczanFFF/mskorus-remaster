@@ -1,6 +1,15 @@
 [
   {
     "id": 0,
+    "pic": "/projects/mamami.jpg",
+    "title": "Mama.Mi HANDMADE [WIP]",
+    "technos": "PrestaShop • PHP • JavaScript • MySQL",
+    "description": "E-Commerce based on PrestaShop with handmade clothes for babies/kids",
+    "live": "",
+    "git": ""
+  },
+  {
+    "id": 1,
     "pic": "/projects/portfolio.jpg",
     "title": "MSKORUS - my porftolio",
     "technos": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
@@ -9,7 +18,7 @@
     "git": "https://github.com/SkorczanFFF/mskorus-remaster"
   },
   {
-    "id": 1,
+    "id": 2,
     "pic": "/projects/polonez_autodrive.jpg",
     "title": "POLONEZ AUTODRIVE",
     "technos": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
@@ -18,7 +27,7 @@
     "git": "https://github.com/SkorczanFFF/Polonez-Autodrive"
   },
   {
-    "id": 2,
+    "id": 3,
     "pic": "/projects/YAWA.jpg",
     "title": "Yet Another Weather App",
     "technos": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
@@ -26,15 +35,7 @@
     "live": "https://skorczanfff.github.io/YetAnotherWeatherApp/",
     "git": "https://github.com/SkorczanFFF/YetAnotherWeatherApp/"
   },
-  {
-    "id": 3,
-    "pic": "/projects/mamami.jpg",
-    "title": "Mama.Mi HANDMADE",
-    "technos": "PrestaShop • PHP • JavaScript • MySQL",
-    "description": "E-Commerce based on PrestaShop with handmade clothes for babies/kids",
-    "live": "",
-    "git": ""
-  },
+
   {
     "id": 4,
     "pic": "/projects/tba.jpg",
