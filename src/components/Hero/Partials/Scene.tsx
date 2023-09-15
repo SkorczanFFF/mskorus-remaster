@@ -65,15 +65,6 @@ const Scene = (props: any) => {
         >
           {isMobile ? (
             <>
-              <ambientLight intensity={0.5} />
-              {/* <meshStandardMaterial
-                attach='material'
-                color={colors.primaryBlue}
-                roughness={0.5}
-                metalness={0.3}
-                transparent
-                opacity={0.75}
-              /> */}
               <meshPhysicalMaterial
                 roughness={0.45}
                 transmission={2}
