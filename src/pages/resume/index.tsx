@@ -170,21 +170,29 @@ export default function CV(): JSX.Element {
               : 'w-[1421px]'
           }`}
         >
-          {isMobile && (
+          {isMobile ? (
             <p className='text-white'>Download resume in PDF format</p>
+          ) : (
+            <div className='my-auto flex h-[28px]'>
+              <label
+                htmlFor='language-select'
+                className='mr-2 mt-[3px] text-sm text-white'
+              >
+                Language/Język
+              </label>
+              <select
+                id='language-select'
+                value={selectedLanguage}
+                onChange={handleLanguageChange}
+                className='hover:bg-orange bg-raspberry focus:bg-orange overflow-visible border-transparent py-0 text-xs tracking-wider text-white ring-gray-300 duration-150'
+              >
+                <option value='english'>English</option>
+                <option value='polish'>Polski</option>
+              </select>
+              -
+            </div>
           )}
-          <div>
-            <label htmlFor='language-select'>Select Language:</label>
-            <select
-              id='language-select'
-              value={selectedLanguage}
-              onChange={handleLanguageChange}
-            >
-              <option value='english'>English</option>
-              <option value='polish'>Polish</option>
-            </select>
-            <div>{/* Use languageData to render your content */}</div>
-          </div>
+
           <a
             href='/cv.pdf'
             download='Maciej Skorus - CV'
@@ -195,7 +203,7 @@ export default function CV(): JSX.Element {
           </a>
         </div>
         {!isMobile && (
-          <div className='xxl:overflow-hidden m-10 mt-0 flex h-[2015px] w-[1421px] overflow-scroll bg-white'>
+          <div className='xxl:overflow-hidden m-10 mt-0 flex  h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
             <div className='flex w-full'>
               <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
                 <div className='arrow-top-left white' />
