@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import {
   AiFillCar,
@@ -41,6 +41,9 @@ import {
   SiVisualstudiocode,
   SiYarn,
 } from 'react-icons/si';
+
+import english from './Languages/english.json';
+import polish from './Languages/polish.json';
 
 const technos = [
   { icon: <AiFillHtml5 className='text-5xl' />, label: 'HTML5' },
@@ -143,6 +146,13 @@ const Project: React.FC<ProjectData> = ({
 
 export default function CV(): JSX.Element {
   const currentYear = new Date().getFullYear();
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('english');
+  const handleLanguageChange = (e: any) => {
+    setSelectedLanguage(e.target.value);
+  };
+
+  const languageData = selectedLanguage === 'english' ? english : polish;
+
   return (
     <>
       <Head>
@@ -163,12 +173,25 @@ export default function CV(): JSX.Element {
           {isMobile && (
             <p className='text-white'>Download resume in PDF format</p>
           )}
+          <div>
+            <label htmlFor='language-select'>Select Language:</label>
+            <select
+              id='language-select'
+              value={selectedLanguage}
+              onChange={handleLanguageChange}
+            >
+              <option value='english'>English</option>
+              <option value='polish'>Polish</option>
+            </select>
+            <div>{/* Use languageData to render your content */}</div>
+          </div>
           <a
             href='/cv.pdf'
             download='Maciej Skorus - CV'
-            className='hover:bg-orange bg-raspberry my-6 flex w-[135px] items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
+            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
           >
-            DOWNLOAD <AiFillFilePdf className='ml-1 text-lg' />
+            {languageData.headers.download}
+            <AiFillFilePdf className='ml-1 text-lg' />
           </a>
         </div>
         {!isMobile && (
@@ -197,7 +220,7 @@ export default function CV(): JSX.Element {
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='mt-[7px] flex items-center justify-end gap-3'>
                       <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
-                        ABOUT
+                        {languageData.headers.about}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
@@ -218,7 +241,7 @@ export default function CV(): JSX.Element {
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
                       <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
-                        CONTACT
+                        {languageData.headers.contact}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
@@ -245,20 +268,26 @@ export default function CV(): JSX.Element {
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
                       <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
-                        LANGUAGES
+                        {languageData.headers.languages.languages}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
                     <div className='mx-4 mr-9 mt-2 flex flex-col text-end text-xl text-white'>
-                      <p className=''>English - C1</p>
-                      <p className=''>Russian - A2</p>
-                      <p className=''>Polish - native</p>
+                      <p className=''>
+                        {languageData.headers.languages.english}
+                      </p>
+                      <p className=''>
+                        {languageData.headers.languages.russian}
+                      </p>
+                      <p className=''>
+                        {languageData.headers.languages.polish}
+                      </p>
                     </div>
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
                       <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
-                        LINKS
+                        {languageData.headers.links}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
@@ -292,7 +321,7 @@ export default function CV(): JSX.Element {
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
                       <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
-                        HOBBIES
+                        {languageData.headers.hobbies}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
@@ -327,42 +356,31 @@ export default function CV(): JSX.Element {
                       <div className='cv-arrow' />
                       <div className=' flex flex-col text-[#20252f]'>
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
-                          EXPERIENCE
+                          {languageData.headers.experience}
                         </p>
                         <div className='ml-6 mt-3'>
                           <p className='text-2xl font-[500] tracking-[5px]'>
-                            ANFATA GAMES SP. Z O.O.
+                            {languageData.experience.company}
                           </p>
                           <div className='mb-4 mt-2 flex items-center gap-5 text-2xl tracking-[2px]'>
-                            <p>JUNIOR WEB 3.0 FRONTEND DEVELOPER</p>
+                            <p>{languageData.experience.position}</p>
                             <p className='text-raspberry text-lg'>
-                              [ September 2022 - June 2023 ]
+                              {languageData.experience.duration}
                             </p>
                           </div>
                           <div className='ml-1 flex w-full flex-col items-start gap-2 text-xl'>
-                            <div className='flex'>
-                              <BsDot className='mt-1' />
-                              <p className='mr-4'>
-                                Decentralized App and auction system
-                                developement and integration with ImmutableX
-                                collections and smart contracts
-                              </p>
-                            </div>
-                            <p className='flex'>
-                              <BsDot className='mt-1' />
-                              Working with Moralis and Firebase cloud functions
-                              and databases
-                            </p>
-                            <p className='mr-10 flex'>
-                              <BsDot className='mt-1' />
-                              Implementation of a new homepage, handling custom
-                              events on company applications and websites
-                            </p>
-                            <p className='flex'>
-                              <BsDot className='mt-1' />
-                              Cross-team collaboration for consistent user
-                              experience with product
-                            </p>
+                            <li className='m-0 p-0'>
+                              {languageData.experience.duties[1]}
+                            </li>
+                            <li>{languageData.experience.duties[2]}</li>
+                            <li
+                            // className={`flex ${
+                            //   selectedLanguage == 'english' ? 'mr-10' : ''
+                            // }`}
+                            >
+                              {languageData.experience.duties[3]}
+                            </li>
+                            <li>{languageData.experience.duties[4]}</li>
                           </div>
                         </div>
                       </div>
@@ -372,7 +390,7 @@ export default function CV(): JSX.Element {
                       <div className='cv-arrow' />
                       <div className=' flex flex-col text-[#20252f]'>
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
-                          EDUCATION
+                          {languageData.headers.education}
                         </p>
                         <div className='ml-6 mt-3'>
                           <p className='text-2xl font-[500] tracking-[5px]'>
