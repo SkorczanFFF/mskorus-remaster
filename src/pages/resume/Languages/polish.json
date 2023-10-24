@@ -1,0 +1,56 @@
+{
+  "headers": {
+    "about": "O MNIE",
+    "contact": "KONTAKT",
+    "languages": {
+      "languages": "JĘZYKI",
+      "english": "Angielski - C1",
+      "russian": "Rosyjski - A2",
+      "polish": "Polski - ojczysty"
+    },
+    "links": "LINKI",
+    "hobbies": "ZAINTERESOWANIA",
+    "experience": "DOŚWIADCZENIE",
+    "education": "EDUKACJA",
+    "selected-projects": "WYBRANE PROJEKTY",
+    "skills": "UMIEJĘTNOŚCI I NARZĘDZIA",
+    "download": "POBIERZ",
+    "repo": "repository"
+  },
+  "aboutme": "Jestem programistą z głęboką pasją i ciekawością do najnowocześniejszych technologii internetowych. Dzięki pierwszemu zobytemu doświadczeniowi podczas tworzenia gry opartej o technologię Blockchain oraz hobbistycznym zainteresowaniu WebGL, moim celem jest tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomi przeglądarki internetowej. Nieustannie szukam nowych wyzwań w ciągle rozwijającym się świecie technologii. Aktualnie szukam nowego zespołu z którym mógłbym rozwijać, dzielić wiedzą i cieszyć ze wspólnych sukcesów.",
+  "experience": {
+    "company": "ANFATA GAMES SP. Z O.O.",
+    "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
+    "duration": "[ Wrzesień 2022 - Lipiec 2023 ]",
+    "duties": {
+      "1": "Rozwój zdecentralizowanej aplikacji i systemu aukcyjnego, w tym integracja ze Smart Contractami",
+      "2": "Praca z Cloud Funkcjami baz danych Moralis i Firebase, TypeScript oraz Next.js",
+      "3": "Implementacja nowej strony głównej tworzonej gry, integracja z CMS Sanity, obsługa wydarzeń specjalnych",
+      "4": "Współpraca międzyzespołowa w zespole międzynarodowym dla spójnego efektu końcowego"
+    }
+  },
+  "projects": [
+    {
+      "title": "MSKORUS - PORTFOLIO",
+      "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
+      "description": "Nowa wersja przestarzałej strony portfolio opartej na React. Aktualnie bazuje na Next.js, TypeScript oraz TailwindCSS. Elementy sceny WebGL są modelami wykonanymi w Blender, po czym zostały skonwertowane go komponentów JSX biblioteki React Three Fiber dla prostrzego operowania elementami sceny. Zawiera wbudowaną wersję webową CV.",
+      "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
+      "demoLink": "https://mskorus.vercel.app/"
+    },
+    {
+      "title": "POLONEZ AUTODRIVE",
+      "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
+      "description": "Prosta trójwymiarowa animacja wykonana przy pomocy 3D Studio Max 2019 oraz Three.js. Wyeksportowane modele wraz z animacjami w formacie .fbx zostały wrzucone na scenę w klimacie Synthwave/lat 80 tworząc interaktywną kolorowankę. Wbudowane GUI umożliwia manipulację elementami sceny.",
+      "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
+      "demoLink": "https://skorczanfff.github.io/Polonez-Autodrive/"
+    },
+    {
+      "title": "YET ANOTHER WEATHER APP",
+      "technologies": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
+      "description": "'Kolejna Aplikacja Pogodowa', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem. Niestety, projekt dostępny wyłącznie w wersji na komputer.",
+      "repositoryLink": "https://github.com/SkorczanFFF/YetAnotherWeatherApp",
+      "demoLink": "https://skorczanfff.github.io/YetAnotherWeatherApp/"
+    }
+  ],
+  "rodo": "Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO)."
+}
