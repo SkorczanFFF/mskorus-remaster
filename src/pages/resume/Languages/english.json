@@ -14,22 +14,24 @@
     "education": "EDUCATION",
     "selected-projects": "SELECTED PROJECTS",
     "skills": "SKILLS AND TOOLS",
-    "download": "DOWNLOAD"
+    "download": "DOWNLOAD",
+    "repo": "repozytorium"
   },
+  "aboutme": "I am a motivated developer with a deep enthusiasm for cutting-edge web technologies, with a strong interest in WebGL. With my first experience in the Blockchain in game development industry and curiosity about the possibilities of web development, my goal is to create and deliver exceptional web experiences. I am constantly looking for new challenges in the evolving field of technology and currently looking for a new team to grow with and achieve something special and innovative together.",
   "experience": {
     "company": "ANFATA GAMES SP. Z O.O.",
     "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
     "duration": "[ September 2022 - June 2023 ]",
     "duties": {
-      "1": "Decentralized App and auction system development and integration with ImmutableX collections and smart contracts",
-      "2": "Working with Moralis and Firebase cloud functions and databases",
-      "3": "Implementation of a new homepage, handling custom events on company applications and websites",
-      "4": "Cross-team collaboration for consistent user experience with product"
+      "1": "Development of decentralized app and auction system, including integration with Smart Contracts",
+      "2": "Working with Moralis and Firebase cloud functions and databases, TypeScript and Next.js",
+      "3": "Implementation of a new homepage, integration with Sanity CMS blog system, handling custom events on company apps and sites",
+      "4": "Cross-team collaboration in cross-national team for consistent user experience with products"
     }
   },
   "projects": [
     {
-      "title": "PORTFOLIO PAGE",
+      "title": "MSKORUS - PORTFOLIO PAGE",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
       "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",

@@ -72,40 +72,13 @@ const technos = [
   { icon: <SiNpm className='text-5xl' />, label: 'npm' },
 ];
 
-const projects = [
-  {
-    title: 'PORTFOLIO PAGE',
-    technologies:
-      'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
-    description:
-      'Remaster of my deprecated React portfolio page. Now it`s based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume.',
-    repositoryLink: 'https://github.com/SkorczanFFF/mskorus-remaster',
-    demoLink: 'https://mskorus.vercel.app/',
-  },
-  {
-    title: 'POLONEZ AUTODRIVE',
-    technologies: 'HTML • JavaScript • Three.js • 3D Studio Max 2019',
-    description:
-      'Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80`s vibe `coloring book` like animation with built-in GUI to play with scene colors and models. Turn on some music and have fun with coloring!',
-    repositoryLink: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
-    demoLink: 'https://skorczanfff.github.io/Polonez-Autodrive/',
-  },
-  {
-    title: 'YET ANOTHER WEATHER APP',
-    technologies: 'React • JavaScript • Sass • Vanta.js • OpenWeather API',
-    description:
-      'Another `weather application`, but with a breath of fresh air. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.',
-    repositoryLink: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp',
-    demoLink: 'https://skorczanfff.github.io/YetAnotherWeatherApp/',
-  },
-];
-
 interface ProjectData {
   title: string;
   technologies: string;
   description: string;
   repositoryLink: string;
   demoLink: string;
+  repo: string;
 }
 
 const Project: React.FC<ProjectData> = ({
@@ -114,6 +87,7 @@ const Project: React.FC<ProjectData> = ({
   description,
   repositoryLink,
   demoLink,
+  repo,
 }) => (
   <div className='ml-6 mt-6'>
     <p className='text-2xl font-[500] tracking-widest'>{title}</p>
@@ -129,7 +103,7 @@ const Project: React.FC<ProjectData> = ({
           target='_blank'
           rel='noreferrer'
         >
-          <AiFillGithub className='text-3xl' /> repository
+          <AiFillGithub className='text-3xl' /> {repo}
         </a>
         <a
           className='hover:text-raspberry flex cursor-pointer items-center gap-2 duration-150'
@@ -232,18 +206,8 @@ export default function CV(): JSX.Element {
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <p className='ml-7 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
-                      I am a motivated developer with a deep enthusiasm for
-                      cutting-edge web technologies, with a strong interest in
-                      WebGL. With my first experience on the Blockchain in game
-                      development industry and curiosity about the possibilities
-                      of web development, my goal is to create and deliver
-                      exceptional web experiences. I am constantly looking for
-                      new challenges in the evolving field of technology and
-                      currently looking for a new team to grow with and achieve
-                      something special and
-                      <br />
-                      innovative together.
+                    <p className='ml-6 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
+                      {languageData.aboutme}
                     </p>
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
@@ -421,8 +385,16 @@ export default function CV(): JSX.Element {
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                           SELECTED PROJECTS
                         </p>
-                        {projects.map((project, index) => (
-                          <Project key={index} {...project} />
+                        {languageData.projects.map((project, index) => (
+                          <Project
+                            repo={
+                              selectedLanguage === 'english'
+                                ? 'repository'
+                                : 'repozytorium'
+                            }
+                            key={index}
+                            {...project}
+                          />
                         ))}
 
                         <div className='flex h-full flex-col justify-between'>
@@ -448,16 +420,7 @@ export default function CV(): JSX.Element {
                             </div>
                           </div>
                           <div className='bottom-0 -ml-2 mr-2 mt-[90px] text-center text-[14px] leading-4 opacity-75'>
-                            I agree to the processing of personal data provided
-                            in this document for realising the recruitment
-                            process pursuant to the Personal Data Protection Act
-                            of 10 May 2018 (Journal of Laws 2018, item 1000) and
-                            in agreement with Regulation (EU) 2016/679 of the
-                            European Parliament and of the Council of 27 April
-                            2016 on the protection of natural persons with
-                            regard to the processing of personal data and on the
-                            free movement of such data, and repealing Directive
-                            95/46/EC (General Data Protection Regulation)
+                            {languageData.rodo}
                           </div>
                         </div>
                       </div>

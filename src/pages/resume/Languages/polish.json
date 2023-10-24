@@ -14,38 +14,40 @@
     "education": "EDUKACJA",
     "selected-projects": "WYBRANE PROJEKTY",
     "skills": "UMIEJĘTNOŚCI I NARZĘDZIA",
-    "download": "POBIERZ"
+    "download": "POBIERZ",
+    "repo": "repository"
   },
+  "aboutme": "Jestem programistą z głęboką pasją i ciekawością do najnowocześniejszych technologii internetowych. Dzięki pierwszemu zobytemu doświadczeniowi podczas tworzenia gry opartej o technologię Blockchain oraz hobbistycznym zainteresowaniu WebGL, moim celem jest tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomi przeglądarki internetowej. Nieustannie szukam nowych wyzwań w ciągle rozwijającym się świecie technologii. Aktualnie szukam nowego zespołu z którym mógłbym rozwijać, dzielić wiedzą i cieszyć ze wspólnych sukcesów.",
   "experience": {
     "company": "ANFATA GAMES SP. Z O.O.",
     "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
     "duration": "[ Wrzesień 2022 - Lipiec 2023 ]",
     "duties": {
-      "1": "Decentralized App and auction system development and integration with ImmutableX collections and smart contracts",
-      "2": "Praca z bazami danych takimi jak Moralis i Firebase",
-      "3": "Implementacja nowej strony głównej tworzonej gry, obsługa wydarzeń specjalnych na firmowych aplikacjach webowy i stronach internetowych",
-      "4": "Współpraca międzyzespołowa lorem ipsum test"
+      "1": "Rozwój zdecentralizowanej aplikacji i systemu aukcyjnego, w tym integracja ze Smart Contractami",
+      "2": "Praca z Cloud Funkcjami baz danych Moralis i Firebase, TypeScript oraz Next.js",
+      "3": "Implementacja nowej strony głównej tworzonej gry, integracja z CMS Sanity, obsługa wydarzeń specjalnych",
+      "4": "Współpraca międzyzespołowa w zespole międzynarodowym dla spójnego efektu końcowego"
     }
   },
   "projects": [
     {
-      "title": "MSKORUS - PORTFOLIO PAGE",
+      "title": "MSKORUS - PORTFOLIO",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
-      "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume.",
+      "description": "Nowa wersja przestarzałej strony portfolio opartej na React. Aktualnie bazuje na Next.js, TypeScript oraz TailwindCSS. Elementy sceny WebGL są modelami wykonanymi w Blender, po czym zostały skonwertowane go komponentów JSX biblioteki React Three Fiber dla prostrzego operowania elementami sceny. Zawiera wbudowaną wersję webową CV.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
       "demoLink": "https://mskorus.vercel.app/"
     },
     {
       "title": "POLONEZ AUTODRIVE",
       "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
-      "description": "Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80's vibe 'coloring book' like animation with built-in GUI to play with scene colors and models. Turn on some music and have fun with coloring!",
+      "description": "Prosta trójwymiarowa animacja wykonana przy pomocy 3D Studio Max 2019 oraz Three.js. Wyeksportowane modele wraz z animacjami w formacie .fbx zostały wrzucone na scenę w klimacie Synthwave/lat 80 tworząc interaktywną kolorowankę. Wbudowane GUI umożliwia manipulację elementami sceny.",
       "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
       "demoLink": "https://skorczanfff.github.io/Polonez-Autodrive/"
     },
     {
       "title": "YET ANOTHER WEATHER APP",
       "technologies": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
-      "description": "Another 'weather application', but with a breath of fresh air. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.",
+      "description": "'Kolejna Aplikacja Pogodowa', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem. Niestety, projekt dostępny wyłącznie w wersji na komputer.",
       "repositoryLink": "https://github.com/SkorczanFFF/YetAnotherWeatherApp",
       "demoLink": "https://skorczanfff.github.io/YetAnotherWeatherApp/"
     }
