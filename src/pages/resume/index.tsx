@@ -79,6 +79,7 @@ interface ProjectData {
   repositoryLink: string;
   demoLink: string;
   repo: string;
+  demo: string;
 }
 
 const Project: React.FC<ProjectData> = ({
@@ -88,6 +89,7 @@ const Project: React.FC<ProjectData> = ({
   repositoryLink,
   demoLink,
   repo,
+  demo,
 }) => (
   <div className='ml-6 mt-6'>
     <p className='text-2xl font-[500] tracking-widest'>{title}</p>
@@ -111,7 +113,7 @@ const Project: React.FC<ProjectData> = ({
           target='_blank'
           rel='noreferrer'
         >
-          <BsGlobe2 className='text-2xl' /> web demo
+          <BsGlobe2 className='text-2xl' /> {demo}
         </a>
       </div>
     </div>
@@ -330,7 +332,7 @@ export default function CV(): JSX.Element {
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                           {languageData.headers.experience}
                         </p>
-                        <div className='ml-6 mt-3'>
+                        <div className='mx-6  mt-3'>
                           <p className='text-2xl font-[500] tracking-[5px]'>
                             {languageData.experience.company}
                           </p>
@@ -365,15 +367,14 @@ export default function CV(): JSX.Element {
                           {languageData.headers.education}
                         </p>
                         <div className='ml-6 mt-3'>
-                          <p className='text-2xl font-[500] tracking-[5px]'>
-                            UNIVERSITY OF SILESIA
+                          <p className='text-2xl font-[500] tracking-[3px]'>
+                            {languageData.education.university}
                           </p>
                           <p className='mb-4 mt-2 text-2xl tracking-[1px]'>
-                            INFORMATICS - Web Application Programming
+                            {languageData.education.field}
                           </p>
                           <div className='ml-1 flex items-center text-[22px]'>
-                            <BsDot /> Enigneer degree • October 2017 - June 2021{' '}
-                            <BsDot />
+                            <BsDot /> {languageData.education.degree} <BsDot />
                           </div>
                         </div>
                       </div>
@@ -383,7 +384,7 @@ export default function CV(): JSX.Element {
                       <div className='cv-arrow' />
                       <div className=' flex flex-col text-[#20252f]'>
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
-                          SELECTED PROJECTS
+                          {languageData.headers['selected-projects']}
                         </p>
                         {languageData.projects.map((project, index) => (
                           <Project
@@ -391,6 +392,11 @@ export default function CV(): JSX.Element {
                               selectedLanguage === 'english'
                                 ? 'repository'
                                 : 'repozytorium'
+                            }
+                            demo={
+                              selectedLanguage === 'english'
+                                ? 'web demo'
+                                : 'wersja demonstracyjna'
                             }
                             key={index}
                             {...project}
@@ -402,7 +408,7 @@ export default function CV(): JSX.Element {
                             <div className='cv-arrow -ml-[22px]' />
                             <div className=' flex flex-col text-[#20252f]'>
                               <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
-                                SKILLS AND TOOLS
+                                {languageData.headers.skills}
                               </p>
                               <div className='ml-[22px] mr-2 mt-6 flex flex-wrap justify-start gap-x-[25px] gap-y-2'>
                                 {technos.map((techno, index) => (
@@ -419,7 +425,7 @@ export default function CV(): JSX.Element {
                               </div>
                             </div>
                           </div>
-                          <div className='bottom-0 -ml-2 mr-2 mt-[90px] text-center text-[14px] leading-4 opacity-75'>
+                          <div className='bottom-0 -ml-2 mr-2 mt-[40px] text-center text-[14px] leading-4 opacity-75'>
                             {languageData.rodo}
                           </div>
                         </div>
