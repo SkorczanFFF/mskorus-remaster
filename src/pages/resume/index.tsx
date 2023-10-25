@@ -94,7 +94,7 @@ const Project: React.FC<ProjectData> = ({
   <div className='ml-6 mt-6'>
     <p className='text-2xl font-[500] tracking-widest'>{title}</p>
     <div className='flex flex-col'>
-      <div className='text-raspberry ml-2 mr-8 mt-2 flex items-center text-lg tracking-wide'>
+      <div className='ml-2 mr-8 mt-2 flex items-center text-lg tracking-wide text-[#4b4b4b]'>
         {technologies}
       </div>
       <p className='ml-2 mr-8 mt-2 flex items-center text-xl'>{description}</p>
@@ -183,47 +183,47 @@ export default function CV(): JSX.Element {
           </a>
         </div>
         {!isMobile && (
-          <div className='xxl:overflow-hidden m-10 mt-0 flex  h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
+          <div className='xxl:overflow-hidden m-10 mt-0 flex  h-[2015px] w-[1421px] justify-center overflow-scroll bg-[white]'>
             <div className='flex w-full'>
-              <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
+              <div className='flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-[white] from-0% via-[white] via-60% to-[white] to-100%'>
                 <div className='arrow-top-left white' />
                 <div className='flex flex-col items-center justify-center'>
-                  <p className='ml-[35px] mt-[26px] text-[3rem] font-[200] tracking-[32px] text-white'>
+                  <p className='-mb-[4px] ml-[35px] mt-[26px] text-[3rem] font-[200] tracking-[32px] text-black'>
                     MACIEJ
                   </p>
-                  <p className='z-10 ml-[30px] mt-[27px] text-[3.25rem] tracking-[23px] text-white'>
+                  <p className='z-10 ml-[30px] mt-[27px] text-[3.25rem] tracking-[23px] text-black'>
                     SKORUS
                   </p>
-                  <div className='to-raspberry via-raspberry -mt-[18px] h-[4px] w-full bg-gradient-to-r from-transparent' />
+                  <div className='to-primary-blue via-primary-blue -mt-[14px] h-[4px] w-full bg-gradient-to-r from-transparent' />
                 </div>
                 <div className='mt-[65px]'>
-                  <div className='h-[4px] w-[95%] bg-gradient-to-r from-white from-10% to-transparent to-100%' />
+                  <div className='from-primary-blue h-[4px] w-[95%] bg-gradient-to-r from-10% to-transparent to-100%' />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src='/cvphoto.png'
                     alt='Me'
                     className='mx-auto mt-[60px] w-[70%]'
                   />
-                  <div className='to-raspberry via-raspberry mt-[60px] h-[4px] w-full bg-gradient-to-r from-transparent' />
+                  <div className='to-primary-blue via-primary-blue mt-[60px] h-[4px] w-full bg-gradient-to-r from-transparent' />
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='mt-[7px] flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-primary-blue text-2xl font-[600] tracking-[3px]'>
                         {languageData.headers.about}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <p className='ml-6 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
+                    <p className='text-primary-blue ml-6 mr-9 mt-2 text-end text-lg tracking-[0px]'>
                       {languageData.aboutme}
                     </p>
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-primary-blue text-2xl font-[600] tracking-[3px]'>
                         {languageData.headers.contact}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <div className='mx-4 mr-9 mt-2 flex flex-col gap-1 text-end text-xl text-white'>
+                    <div className='text-primary-blue mx-4 mr-9 mt-2 flex flex-col gap-1 text-end text-xl'>
                       <a
                         href='mailto:skorusmaciej94@gmail.com'
                         className='hover:text-orange flex items-center gap-2 duration-150'
@@ -245,12 +245,12 @@ export default function CV(): JSX.Element {
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-primary-blue text-2xl font-[600] tracking-[3px]'>
                         {languageData.headers.languages.languages}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <div className='mx-4 mr-9 mt-2 flex flex-col text-end text-xl text-white'>
+                    <div className='text-primary-blue mx-4 mr-9 mt-2 flex flex-col text-end text-xl'>
                       <p className=''>
                         {languageData.headers.languages.english}
                       </p>
@@ -264,12 +264,12 @@ export default function CV(): JSX.Element {
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-primary-blue text-2xl font-[600] tracking-[3px]'>
                         {languageData.headers.links}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <div className='mx-4 mr-9 mt-2 flex flex-col items-end text-xl text-white'>
+                    <div className='text-primary-blue mx-4 mr-9 mt-2 flex flex-col items-end text-xl'>
                       <a
                         className='hover:text-orange flex items-center gap-2 duration-150'
                         href='https://github.com/SkorczanFFF'
@@ -298,12 +298,12 @@ export default function CV(): JSX.Element {
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-primary-blue text-2xl font-[600] tracking-[3px]'>
                         {languageData.headers.hobbies}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <div className='mx-4 mr-9 mt-3 flex flex-col items-center gap-5 text-end text-xl text-white'>
+                    <div className='text-primary-blue mx-4 mr-9 mt-3 flex flex-col items-center gap-5 text-end text-xl'>
                       <div className='flex w-[310px] justify-between'>
                         <GiGuitarBassHead className='text-6xl' />
                         <AiFillCar className='text-6xl' />
@@ -319,21 +319,24 @@ export default function CV(): JSX.Element {
                 </div>
               </div>
               <div className='flex flex-col'>
-                <div className='bg-primary-blue flex h-[90px] w-full items-center text-white'>
-                  <p className='right-0 ml-[100px] text-3xl font-[300] tracking-[15px]'>
+                <div className='text-primary-blue flex h-[90px] w-full items-center bg-[white]'>
+                  <p className='right-0 ml-[100px] text-3xl font-[300] tracking-[15px] text-black'>
                     JUNIOR FRONTEND DEVELOPER
                   </p>
                 </div>
                 <div className='flex'>
-                  <div className='bg-raspberry -mt-[1px] h-[1932px]'>
+                  <div className='bg-primary-blue -mt-[0px] h-[1932px]'>
                     <div className='arrow-top-left cv-blue' />
                   </div>
-                  <div className='flex h-[1931px] w-[1011px] flex-col bg-white'>
-                    <div className='mt-[54px]' />
+                  <div className='border-primary-blue flex h-[1930px] w-[1011px] flex-col border-t-[30px] bg-[white]'>
+                    <div className='-mt-[0px] h-[1932px] bg-[white]'>
+                      <div className='arrow-top-left-white blue' />
+                    </div>
+                    <div className='mt-[20px]' />
                     <div className='flex w-full'>
                       <div className='cv-arrow' />
                       <div className=' flex flex-col text-[#20252f]'>
-                        <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
+                        <p className='ml-4 text-3xl font-[500] tracking-[5px] text-black'>
                           {languageData.headers.experience}
                         </p>
                         <div className='mx-6  mt-3'>
@@ -342,7 +345,7 @@ export default function CV(): JSX.Element {
                           </p>
                           <div className='mb-4 mt-2 flex items-center gap-5 text-2xl tracking-[2px]'>
                             <p>{languageData.experience.position}</p>
-                            <p className='text-raspberry text-lg'>
+                            <p className='text-primary-blue text-lg'>
                               {languageData.experience.duration}
                             </p>
                           </div>
@@ -367,7 +370,7 @@ export default function CV(): JSX.Element {
                     <div className='mt-10 flex w-full'>
                       <div className='cv-arrow' />
                       <div className=' flex flex-col text-[#20252f]'>
-                        <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
+                        <p className='ml-4 text-3xl font-[500] tracking-[5px] text-black'>
                           {languageData.headers.education}
                         </p>
                         <div className='ml-6 mt-3'>
@@ -387,7 +390,7 @@ export default function CV(): JSX.Element {
                     <div className='mt-10 flex w-full'>
                       <div className='cv-arrow' />
                       <div className=' flex flex-col text-[#20252f]'>
-                        <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
+                        <p className='ml-4 text-3xl font-[500] tracking-[5px] text-black'>
                           {languageData.headers['selected-projects']}
                         </p>
                         {languageData.projects.map((project, index) => (
@@ -411,7 +414,7 @@ export default function CV(): JSX.Element {
                           <div className='mt-10 flex w-full'>
                             <div className='cv-arrow -ml-[22px]' />
                             <div className=' flex flex-col text-[#20252f]'>
-                              <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
+                              <p className='ml-4 text-3xl font-[500] tracking-[5px] text-black'>
                                 {languageData.headers.skills}
                               </p>
                               <div className='ml-[22px] mr-2 mt-6 flex flex-wrap justify-start gap-x-[25px] gap-y-2'>
@@ -429,7 +432,7 @@ export default function CV(): JSX.Element {
                               </div>
                             </div>
                           </div>
-                          <div className='bottom-0 -ml-2 mr-2 mt-[40px] text-center text-[14px] leading-4 opacity-75'>
+                          <div className='bottom-0 -ml-2 mr-2 mt-[36px] text-center text-[14px] leading-4 opacity-75'>
                             {languageData.rodo}
                           </div>
                         </div>

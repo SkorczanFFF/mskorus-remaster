@@ -183,7 +183,7 @@ body {
 }
 
 .white {
-  border-color: #e4e4e4 transparent transparent transparent;
+  border-color: #ffffff transparent transparent transparent;
 }
 
 .blue {
@@ -191,7 +191,7 @@ body {
 }
 
 .cv-blue {
-  border-color: #001a25 transparent transparent transparent;
+  border-color: #fff transparent transparent transparent;
 }
 
 .blue-hero {
@@ -249,12 +249,19 @@ body {
   border-width: 30px 30px 0 0;
 }
 
+.arrow-top-left-white {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 15px 0 0;
+}
+
 .cv-arrow {
   width: 0;
   height: 0;
   border-style: solid;
   border-width: 15px 0 15px 22px;
-  border-color: transparent transparent transparent #801834;
+  border-color: transparent transparent transparent #001a25;
 }
 
 .loader {
