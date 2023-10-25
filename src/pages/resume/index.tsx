@@ -410,7 +410,7 @@ export default function CV(): JSX.Element {
                           />
                         ))}
 
-                        <div className='flex h-full flex-col justify-between'>
+                        <div className='flex flex-col justify-between'>
                           <div className='mt-10 flex w-full'>
                             <div className='cv-arrow -ml-[22px]' />
                             <div className=' flex flex-col text-[#20252f]'>
@@ -432,7 +432,7 @@ export default function CV(): JSX.Element {
                               </div>
                             </div>
                           </div>
-                          <div className='bottom-0 -ml-2 mr-2 mt-[36px] text-center text-[14px] leading-4 opacity-75'>
+                          <div className='bottom-0 -ml-2 mb-[30px] mr-2 mt-[20px] text-center text-[14px] leading-4 opacity-75'>
                             {languageData.rodo}
                           </div>
                         </div>
