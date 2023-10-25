@@ -170,8 +170,12 @@ export default function CV(): JSX.Element {
           )}
 
           <a
-            href='/cv.pdf'
-            download='Maciej Skorus - CV'
+            href={`${selectedLanguage === 'english' ? '/eng.pdf' : '/pl.pdf'}`}
+            download={`${
+              selectedLanguage === 'english'
+                ? 'Maciej Skorus - CV[ENG]'
+                : 'Maciej Skorus - CV [PL]'
+            }`}
             className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
           >
             {languageData.headers.download}
