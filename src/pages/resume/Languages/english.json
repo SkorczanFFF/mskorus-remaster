@@ -25,7 +25,7 @@
       "1": "Development of decentralized app and auction system, integration with Smart Contracts and ImmutableX collections (marketplace, bridging between L1 and L2, transfers, etc.)",
       "2": "Working with Moralis and Firebase cloud functions and databases, TypeScript, Next.js and version control systems",
       "3": "Implementation of a new homepage, integration with Sanity CMS blog system, handling custom events on company apps and sites",
-      "4": "Cross-team collaboration in cross-national team for consistent user experience with products"
+      "4": "Cross-team collaboration in cross-national team for consistent user experience with company products"
     }
   },
   "education": {
@@ -37,7 +37,7 @@
     {
       "title": "MSKORUS - PORTFOLIO PAGE",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
-      "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume in two languages.",
+      "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume in English and Polish.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
       "demoLink": "https://mskorus.vercel.app/"
     },
