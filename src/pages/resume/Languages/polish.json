@@ -14,40 +14,44 @@
     "education": "EDUKACJA",
     "selected-projects": "WYBRANE PROJEKTY",
     "skills": "UMIEJĘTNOŚCI I NARZĘDZIA",
-    "download": "POBIERZ",
-    "repo": "repository"
+    "download": "POBIERZ"
   },
-  "aboutme": "Jestem programistą z głęboką pasją i ciekawością do najnowocześniejszych technologii internetowych. Dzięki pierwszemu zobytemu doświadczeniowi podczas tworzenia gry opartej o technologię Blockchain oraz hobbistycznym zainteresowaniu WebGL, moim celem jest tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomi przeglądarki internetowej. Nieustannie szukam nowych wyzwań w ciągle rozwijającym się świecie technologii. Aktualnie szukam nowego zespołu z którym mógłbym rozwijać, dzielić wiedzą i cieszyć ze wspólnych sukcesów.",
+  "aboutme": "Jestem programistą łączącym ciekawość z pasją do najnowocześniejszych technologii internetowych, który nieustannie poszukujE kolejnych wyzwań. Hobbistyczne zainteresowanie WebGL oraz pierwsze zdobyte doświadczenie podczas tworzenia gry opartej o technologię Blockchain, ukształtowało mój cel, którym stało się tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomu przeglądarki internetowej. Aktualnie szukam nowego zespołu z którym mógłbym się rozwijać, dzielić wiedzą i świętować wspólnie odniesione sukcesy.",
   "experience": {
     "company": "ANFATA GAMES SP. Z O.O.",
     "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
     "duration": "[ Wrzesień 2022 - Lipiec 2023 ]",
     "duties": {
-      "1": "Rozwój zdecentralizowanej aplikacji i systemu aukcyjnego, w tym integracja ze Smart Contractami",
-      "2": "Praca z Cloud Funkcjami baz danych Moralis i Firebase, TypeScript oraz Next.js",
+      "1": "Rozwój zdecentralizowanej aplikacji i systemu aukcyjnego, integracja ze Smart Contractami oraz kolekcjami ImmutableX (budowa marketplace, bridging pomiędzy L1 a L2, transfery itp.)",
+      "2": "Praca z Cloud Funkcjami baz danych Moralis i Firebase, TypeScript,Next.js oraz systemami kontroli wersji",
       "3": "Implementacja nowej strony głównej tworzonej gry, integracja z CMS Sanity, obsługa wydarzeń specjalnych",
-      "4": "Współpraca międzyzespołowa w zespole międzynarodowym dla spójnego efektu końcowego"
+      "4": "Współpraca międzyzespołowa w zespole międzynarodowym dla końcowej spójności tworzonych rozwiązań"
     }
+  },
+  "education": {
+    "university": "UŚ - Wydział Nauk Ścisłych i Technicznych",
+    "field": "INFORMATYKA - Programowanie Aplikacji Webowych",
+    "degree": "Inżynier • Październik 2017 - Czerwiec 2021"
   },
   "projects": [
     {
       "title": "MSKORUS - PORTFOLIO",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
-      "description": "Nowa wersja przestarzałej strony portfolio opartej na React. Aktualnie bazuje na Next.js, TypeScript oraz TailwindCSS. Elementy sceny WebGL są modelami wykonanymi w Blender, po czym zostały skonwertowane go komponentów JSX biblioteki React Three Fiber dla prostrzego operowania elementami sceny. Zawiera wbudowaną wersję webową CV.",
+      "description": "Przebudowana od podstaw przestarzała wersja mojego portfolio. Aktualnie bazuje na Next.js, TypeScript oraz TailwindCSS. Elementy sceny WebGL są modelami wykonanymi w Blender, następnie zostały skonwertowane do komponentów JSX biblioteki React Three Fiber dla prostrzego operowania elementami sceny. Zawiera wbudowaną wersję webową CV w języku polskim i angielskim.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
       "demoLink": "https://mskorus.vercel.app/"
     },
     {
       "title": "POLONEZ AUTODRIVE",
       "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
-      "description": "Prosta trójwymiarowa animacja wykonana przy pomocy 3D Studio Max 2019 oraz Three.js. Wyeksportowane modele wraz z animacjami w formacie .fbx zostały wrzucone na scenę w klimacie Synthwave/lat 80 tworząc interaktywną kolorowankę. Wbudowane GUI umożliwia manipulację elementami sceny.",
+      "description": "Prosta trójwymiarowa animacja wykonana przy pomocy 3D Studio Max 2019 oraz Three.js. Wyeksportowane modele wraz z animacjami w formacie .fbx zostały połączone w scenę klimacie Synthwave/lat 80 tworząc interaktywną kolorowankę. Wbudowane GUI umożliwia łatwą manipulację elementami sceny i jej kolorami.",
       "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
       "demoLink": "https://skorczanfff.github.io/Polonez-Autodrive/"
     },
     {
       "title": "YET ANOTHER WEATHER APP",
       "technologies": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
-      "description": "'Kolejna Aplikacja Pogodowa', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem. Niestety, projekt dostępny wyłącznie w wersji na komputer.",
+      "description": "'Kolejna Aplikacja Pogodowa', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem.",
       "repositoryLink": "https://github.com/SkorczanFFF/YetAnotherWeatherApp",
       "demoLink": "https://skorczanfff.github.io/YetAnotherWeatherApp/"
     }
