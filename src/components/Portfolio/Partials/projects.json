@@ -1,12 +1,12 @@
 [
   {
     "id": 0,
-    "pic": "/projects/mamami.jpg",
-    "title": "Mama.Mi HANDMADE [WIP]",
-    "technos": "PrestaShop • PHP • JavaScript • MySQL",
-    "description": "E-Commerce based on PrestaShop with handmade clothes for babies/kids",
+    "pic": "/projects/tba.jpg",
+    "title": "Poemz",
+    "technos": "React • Express • MongoDB • Node.js • GraphQL",
+    "description": "Fullstack application on MERN stack using GraphQL. Users will have ability to register, post poems and live comments. More info soon.",
     "live": "",
-    "git": ""
+    "git": "https://github.com/SkorczanFFF/poemz-mern-graphql"
   },
   {
     "id": 1,
