@@ -2,9 +2,9 @@
   {
     "id": 0,
     "pic": "/projects/tba.jpg",
-    "title": "Poemz",
+    "title": "Poemz [WIP]",
     "technos": "React • Express • MongoDB • Node.js • GraphQL",
-    "description": "Fullstack application on MERN stack using GraphQL. Users will have ability to register, post poems and live comments. More info soon.",
+    "description": "Fullstack application on MERN stack using GraphQL. Users will have ability to register, post poems and leave comments. More info soon.",
     "live": "",
     "git": "https://github.com/SkorczanFFF/poemz-mern-graphql"
   },
