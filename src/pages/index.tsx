@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 
 import About from '@/components/About/About';
 import Contact from '@/components/Contact/Contact';
+import Experience from '@/components/Experience/Experience';
 import Footer from '@/components/layout/Footer/Footer';
 import Layout from '@/components/layout/Layout';
 import Portfolio from '@/components/Portfolio/Portfolio';
@@ -27,7 +28,7 @@ export default function HomePage() {
       <main>
         <HeroNoSSR />
         <About />
-        {/* <Experience /> */}
+        <Experience />
         <Technos />
         <Portfolio />
         <Contact />

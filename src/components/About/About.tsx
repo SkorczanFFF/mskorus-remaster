@@ -11,13 +11,13 @@ export default function About(): JSX.Element {
       </h3>
       <div className=' flex w-full max-w-[450px] flex-col gap-3 text-white md:flex-col'>
         <div className='perspective-right ml-3 flex items-start'>
-          <h2 className='from-raspberry to-oranger font-mont w-auto justify-end bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
+          <h2 className='from-raspberry to-oranger font-mont gradient w-auto justify-end bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
             Hey, I'm Maciej.
           </h2>
         </div>
         <div className='perspective-left mr-3 flex justify-end'>
-          <h2 className='from-oranger to-raspberry font-mont bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
-            Junior Frontend Developer.
+          <h2 className='from-oranger to-raspberry font-mont gradient bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
+            Frontend Developer.
           </h2>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default function About(): JSX.Element {
         and deliver outstanding Web solutions.
       </h3>
 
-      <div className='mt-20 flex gap-10'>
+      <div className='mt-[100px] flex gap-10'>
         <a href='https://github.com/SkorczanFFF'>
           <BsGithub className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 text-7xl duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]' />
         </a>{' '}

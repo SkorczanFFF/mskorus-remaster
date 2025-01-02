@@ -321,7 +321,7 @@ export default function CV(): JSX.Element {
               <div className='flex flex-col'>
                 <div className='bg-primary-blue flex h-[90px] w-full items-center text-white'>
                   <p className='right-0 ml-[100px] text-3xl font-[300] tracking-[15px]'>
-                    JUNIOR FRONTEND DEVELOPER
+                    FRONTEND DEVELOPER
                   </p>
                 </div>
                 <div className='flex'>
