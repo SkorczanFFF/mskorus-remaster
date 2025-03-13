@@ -9,8 +9,58 @@ export default function Experience(): JSX.Element {
       <div>
         <h4 className='text-xl font-[500]'>BUSINESS SERVICE GALOP</h4>
         <div className='gradient mb-2 h-[2px] w-full'></div>
-        <p className='mt-2 text-sm'>
-          <p>- </p>
+        <p className='mt-2'>
+          <p className='mb-2'>
+            - Updating and expanding the internal event management system (PHP,
+            Smarty, MySQL, jQuery/Vanilla JS) with new functionalities, (e.g.
+            including proof verification, PDF report generation for companies
+            post-conference), system optimizations, and bug fixes.
+          </p>
+          <p className='mb-2'>
+            - Developing dedicated front-end solutions for medical events
+            (registration forms, linking with external APIs etc.).
+          </p>
+          <p className='mb-2'>
+            - Designing a new participant area within the conference system,
+            customized to client requirements.
+          </p>
+          <p className='mb-2'>
+            - Creating a mobile application for Zebra data collectors, enabling
+            QR code scanning with local data storage, an administrative panel,
+            and CSV export/sharing functionality (React Native, Expo).
+          </p>
+          <p className='mb-2'>
+            - Building a voting application with an administrative panel (PHP,
+            Vanilla JS, Chart.js).
+          </p>
+          <p className='mb-2'>
+            - Developing virtual stands with documentation for companies
+            (Vanilla JS, CSS).
+          </p>
+          <p className='mb-2'>
+            - Developing a web application for attendance tracking during event
+            sessions, supporting both self-scanning machines and Zebra mobile
+            scanners (Vanilla JS, PHP).
+          </p>
+          <p className='mb-2'>
+            - Creating custom solutions, improving the entire team's workflow.
+          </p>
+          <p className='mb-2'>
+            - Providing onsite IT support for colleagues and during business
+            trips (across Poland), ensuring the smooth operation of company
+            applications and maintaining hardware performance.
+          </p>
+          <p className='mb-2'>
+            - Assisting event participants as needed, including at international
+            conferences.
+          </p>
+          <p className='mb-2'>
+            - Cooperating with graphic designers (2D/3D) and the whole team.
+          </p>
+          <p className='mb-2'>
+            - Representing the IT department in online client meetings.
+          </p>
+          <p className='mb-2'>Serving as a company driver if needed.</p>
         </p>
       </div>
     ),
@@ -33,6 +83,9 @@ export default function Experience(): JSX.Element {
             system, handling custom events on company apps and sites
           </p>
           <p className='mb-2'>
+            - Created custom sites for events (e.g. Freemint)
+          </p>
+          <p className='mb-2'>
             - Cross-team collaboration in cross-national team for consistent
             user experience with company products
           </p>
@@ -49,7 +102,7 @@ export default function Experience(): JSX.Element {
       <h3 className='font-mont text-primary-blue left-0 top-[160px] py-10 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:-rotate-90 md:py-0'>
         WORK EXP
       </h3>
-      <div className=' flex w-full max-w-[800px]'>
+      <div className=' flex w-full max-w-[1100px]'>
         <div className='perspective-right flex flex-col'>
           {/* Tab Buttons */}
           <button
@@ -85,7 +138,7 @@ export default function Experience(): JSX.Element {
           </button>
         </div>
         {/* Dynamic Content */}
-        <div className='bg-primary-blue perspective-left border-raspberry min-h-[500px] w-full border-2 border-b-4 border-r-[3px] p-4 text-white shadow-sm'>
+        <div className='bg-primary-blue perspective-left border-raspberry max-h-[300px] w-full overflow-y-scroll border-2 border-b-4 border-r-[3px] p-4 text-white shadow-sm'>
           {tabContent[activeTab]}
         </div>
       </div>
