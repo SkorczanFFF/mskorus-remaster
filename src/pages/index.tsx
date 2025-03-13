@@ -5,7 +5,7 @@ import * as React from 'react';
 import 'aos/dist/aos.css';
 
 import About from '@/components/About/About';
-// import Contact from '@/components/Contact/Contact';
+import Contact from '@/components/Contact/Contact';
 import Experience from '@/components/Experience/Experience';
 import Footer from '@/components/layout/Footer/Footer';
 import Layout from '@/components/layout/Layout';
@@ -31,7 +31,7 @@ export default function HomePage() {
         <Experience />
         <Technos />
         <Portfolio />
-        {/* <Contact /> */}
+        <Contact />
         <Footer />
       </main>
     </Layout>

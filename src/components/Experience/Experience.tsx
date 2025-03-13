@@ -7,7 +7,10 @@ export default function Experience(): JSX.Element {
   const tabContent: Record<TabKeys, React.JSX.Element> = {
     BSG: (
       <div>
-        <h4 className='text-xl font-[500]'>BUSINESS SERVICE GALOP</h4>
+        <h4 className='flex justify-between text-xl font-[500]'>
+          <span>BUSINESS SERVICE GALOP</span>
+          <span className='text-[14px] font-[400]'>MAY 2024 - NOW</span>
+        </h4>
         <div className='gradient mb-2 h-[2px] w-full'></div>
         <p className='mt-2'>
           <p className='mb-2'>
@@ -60,13 +63,16 @@ export default function Experience(): JSX.Element {
           <p className='mb-2'>
             - Representing the IT department in online client meetings.
           </p>
-          <p className='mb-2'>Serving as a company driver if needed.</p>
+          <p className='mb-2'>- Serving as a company driver if needed.</p>
         </p>
       </div>
     ),
     ANFATA: (
       <div>
-        <h4 className='text-xl font-[500]'>ANFATA GAMES</h4>
+        <h4 className='flex justify-between text-xl font-[500]'>
+          <span>ANFATA GAMES</span>
+          <span className='text-[14px] font-[400]'>SEP 2022 - AUG 2023</span>
+        </h4>
         <div className='gradient mb-2 h-[2px] w-full'></div>
         <p className='mt-2'>
           <p className='mb-2'>
@@ -83,7 +89,7 @@ export default function Experience(): JSX.Element {
             system, handling custom events on company apps and sites
           </p>
           <p className='mb-2'>
-            - Created custom sites for events (e.g. Freemint)
+            - Created custom sites for events (e.g. Freemint page)
           </p>
           <p className='mb-2'>
             - Cross-team collaboration in cross-national team for consistent
@@ -138,7 +144,7 @@ export default function Experience(): JSX.Element {
           </button>
         </div>
         {/* Dynamic Content */}
-        <div className='bg-primary-blue perspective-left border-raspberry max-h-[300px] w-full overflow-y-scroll border-2 border-b-4 border-r-[3px] p-4 text-white shadow-sm'>
+        <div className='bg-primary-blue perspective-left border-raspberry max-h-[332px] w-full overflow-y-scroll border-2 border-b-4 border-r-[3px] p-4 text-white shadow-sm'>
           {tabContent[activeTab]}
         </div>
       </div>
