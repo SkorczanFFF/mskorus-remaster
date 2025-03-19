@@ -7,7 +7,7 @@ export default {
     extend: {
       fontFamily: {
         primary: ['Inter', ...defaultTheme.fontFamily.sans],
-        mont: ['Montserrat'],
+        mont: ['Space Grotesk'],
       },
       colors: {
         'primary-blue': '#001a25',

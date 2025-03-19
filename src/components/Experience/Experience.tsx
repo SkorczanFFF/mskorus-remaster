@@ -4,6 +4,7 @@ export default function Experience(): JSX.Element {
   const experiences = [
     {
       title: 'BUSINESS SERVICE GALOP',
+      job: 'Front-End Developer',
       date: 'MAY 2024 - NOW',
       icon: 'BSG.PNG',
       details: [
@@ -24,6 +25,7 @@ export default function Experience(): JSX.Element {
     },
     {
       title: 'ANFATA GAMES',
+      job: 'Junior Web3 Frontend Developer',
       date: 'SEP 2022 - AUG 2023',
       icon: 'ANFATA.png',
       details: [
@@ -97,6 +99,7 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
             expanded ? 'max-h-[1000px]' : 'max-h-[320px] overflow-hidden'
           }`}
         >
+          <span className='text-orange pb-4 text-[20px]'>{exp.job}</span>
           {exp.details.map((detail: string, i: number) => (
             <p key={i} className='mb-2'>
               - {detail}
