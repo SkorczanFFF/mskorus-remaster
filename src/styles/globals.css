@@ -82,7 +82,7 @@ body {
 
 .gradient-slow {
   background: linear-gradient(270deg, #972b1a, #801834);
-  background-size: 200% 400%;
+  background-size: 400% 200%;
   -webkit-animation: gradientAnimationX 7s ease infinite;
   -moz-animation: gradientAnimationX 7s ease infinite;
   animation: gradientAnimationX 7s ease infinite;

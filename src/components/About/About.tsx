@@ -25,8 +25,7 @@ export default function About(): JSX.Element {
         data-aos='zoom-out'
         className='bg-primary-blue font-mont text-real-white mx-3 mb-10 mt-20 max-w-[600px] px-4 py-2 text-center text-sm font-[400] tracking-wide'
       >
-        Driven by passion and curiosity for WebGL and Web3, my goal is to make
-        and deliver outstanding Web solutions.
+        WIP
       </h3>
 
       <div className='mt-[100px] flex gap-10'>

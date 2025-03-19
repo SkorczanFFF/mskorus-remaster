@@ -7,7 +7,7 @@ export default function Footer(): JSX.Element {
   return (
     <footer className='font-mont bg-primary-blue flex min-h-[20vh] w-full flex-col items-center overflow-hidden'>
       <div className='w-full min-w-[250px] px-2 xl:w-[1100px] xl:px-0'>
-        <div className='arrow-down white' />
+        {/* <div className='arrow-down white' /> */}
         <p className='font-mont relative ml-3 text-start text-2xl font-[400] text-white'>
           <span className='text-raspberry'>M</span>
           <span className='absolute left-5 tracking-wider text-white'>
