@@ -6,7 +6,7 @@ export default function About(): JSX.Element {
       id='about'
       className='font-mont relative flex h-[100%] w-full flex-col items-center justify-center overflow-hidden bg-white pb-10 md:pt-[200px]'
     >
-      <h3 className='font-mont text-primary-blue left-0 top-[140px] py-20 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:-rotate-90 md:py-0'>
+      <h3 className='font-mont text-primary-blue left-0 top-[140px] py-20 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
         ABOUT
       </h3>
       <div className=' flex w-full max-w-[450px] flex-col gap-3 text-white md:flex-col'>

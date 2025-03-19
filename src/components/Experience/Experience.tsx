@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function Experience(): JSX.Element {
   const experiences = [
     {
-      title: 'BUSINESS SERVICE GALOP',
-      job: 'Front-End Developer',
+      job: 'BUSINESS SERVICE GALOP',
+      title: 'Front-End Developer',
       date: 'MAY 2024 - NOW',
       icon: 'BSG.PNG',
       details: [
@@ -24,8 +24,8 @@ export default function Experience(): JSX.Element {
       ],
     },
     {
-      title: 'ANFATA GAMES',
-      job: 'Junior Web3 Frontend Developer',
+      job: 'ANFATA GAMES',
+      title: 'Junior Web3 Frontend Developer',
       date: 'SEP 2022 - AUG 2023',
       icon: 'ANFATA.png',
       details: [
@@ -44,7 +44,7 @@ export default function Experience(): JSX.Element {
       id='experience'
       className='font-mont relative flex h-[100%] w-full flex-col items-center justify-center overflow-hidden bg-white py-10 md:pt-[120px]'
     >
-      <h3 className='font-mont text-primary-blue left-0 top-[160px] py-10 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:-rotate-90 md:py-0'>
+      <h3 className='font-mont text-primary-blue -left-8 top-[160px] py-2 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
         WORK EXP
       </h3>
       <div className='flex w-full flex-col gap-[60px]'>
@@ -81,13 +81,7 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
         }`}
       >
         <h4 className='flex justify-between text-xl font-[500]'>
-          <span className='mb-2 flex items-center'>
-            <img
-              src={`./exp/${exp.icon}`}
-              className='mr-2 h-[18px] w-[18px]'
-            ></img>
-            {exp.title}
-          </span>
+          <span className='pb-4 text-[20px] text-white'>{exp.title}</span>
           <span className='text-[14px] font-[400]'>{exp.date}</span>
         </h4>
         <div className='gradient mb-2 h-[2px] w-full'></div>
@@ -96,12 +90,18 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
         <div
           ref={contentRef}
           className={`transition-all duration-300 ${
-            expanded ? 'max-h-[1000px]' : 'max-h-[320px] overflow-hidden'
+            expanded ? 'max-h-[1000px]' : 'max-h-[350px] overflow-hidden'
           }`}
         >
-          <span className='text-orange pb-4 text-[20px]'>{exp.job}</span>
+          <span className='mb-2 flex items-center text-[#bd372b]'>
+            <img
+              src={`./exp/${exp.icon}`}
+              className='mr-2 h-[18px] w-[18px]'
+            ></img>
+            {exp.job}
+          </span>
           {exp.details.map((detail: string, i: number) => (
-            <p key={i} className='mb-2'>
+            <p key={i} className='mb-2 font-[100]'>
               - {detail}
             </p>
           ))}
@@ -111,12 +111,12 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
       {isOverflowing && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className='text-primary-blue hover:bg-orange min-h-full bg-white text-center text-sm font-bold transition'
+          className='text-primary-blue hover:bg-primary-blue hover:text-orange min-h-full bg-white text-center text-sm font-bold transition hover:border-r-2'
         >
           <span
             style={{
               display: 'inline-block',
-              transform: 'rotate(-90deg)',
+              transform: 'rotate(90deg)',
               transformOrigin: 'center',
               letterSpacing: '4px',
               width: '100px',
