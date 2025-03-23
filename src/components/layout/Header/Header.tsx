@@ -45,14 +45,8 @@ export default function Header(): JSX.Element {
           className={`border-primary-blue bg-raspberry relative -z-50 -ml-[60px] h-[260px] w-[110vw] border-b backdrop-blur-[75px] duration-300 ${
             click ? 'mt-[305px]' : '-mt-[305px]'
           }`}
-          data-aos='fade-down'
-          data-aos-duration='750'
         >
-          <ul
-            className='my-5 flex flex-col items-center gap-5'
-            data-aos='fade-down'
-            data-aos-duration='950'
-          >
+          <ul className='my-5 flex flex-col items-center gap-5'>
             {links.map(({ href, label }) => (
               <Link
                 href={href}

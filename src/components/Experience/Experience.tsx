@@ -90,7 +90,7 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
         <div
           ref={contentRef}
           className={`transition-all duration-300 ${
-            expanded ? 'max-h-[1000px]' : 'max-h-[350px] overflow-hidden'
+            expanded ? 'max-h-[1200px]' : 'max-h-[350px] overflow-hidden'
           }`}
         >
           <span className='mb-2 flex items-center text-[#bd372b]'>
@@ -111,16 +111,17 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
       {isOverflowing && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className='text-primary-blue hover:bg-primary-blue hover:text-orange min-h-full bg-white text-center text-sm font-bold transition hover:border-r-2'
+          className='text-primary-blue hover:bg-primary-blue hover:text-orange min-h-full w-[50px] bg-white text-center text-sm font-bold transition-all duration-300 ease-in-out hover:w-[70px] hover:border-r-2'
         >
           <span
             style={{
-              display: 'inline-block',
+              display: 'flex',
               transform: 'rotate(90deg)',
               transformOrigin: 'center',
               letterSpacing: '4px',
-              width: '100px',
-              height: '40px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              whiteSpace: 'nowrap',
             }}
           >
             {expanded ? 'SHOW LESS' : 'SHOW MORE'}

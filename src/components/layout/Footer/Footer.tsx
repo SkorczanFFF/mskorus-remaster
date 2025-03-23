@@ -18,10 +18,7 @@ export default function Footer(): JSX.Element {
       </div>
       <div className='flex w-full items-center justify-center bg-white'>
         <div className='mx-5 flex w-[1000px] flex-col items-center justify-between gap-5 py-10 sm:flex-row sm:gap-0'>
-          <div
-            className='font-mont text-primary-blue flex w-full items-center gap-2'
-            data-aos='zoom-out-right'
-          >
+          <div className='font-mont text-primary-blue flex w-full items-center gap-2'>
             <IoMailOpenSharp className='hover:text-raspberry cursor-pointer text-8xl duration-150' />
             <div className='flex flex-col'>
               <h3 className='font-mont text-xl font-[500] tracking-wide'>
@@ -36,10 +33,7 @@ export default function Footer(): JSX.Element {
               </a>
             </div>
           </div>
-          <div
-            className='font-mont text-primary-blue flex w-full flex-row-reverse items-center gap-2'
-            data-aos='zoom-out-left'
-          >
+          <div className='font-mont text-primary-blue flex w-full flex-row-reverse items-center gap-2'>
             <IoDocumentTextSharp className='hover:text-raspberry cursor-pointer text-[82px] duration-150' />
             <div className='flex flex-col items-end '>
               <h3 className='font-mont text-xl font-[500] tracking-wide'>

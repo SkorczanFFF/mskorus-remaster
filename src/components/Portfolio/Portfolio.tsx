@@ -21,12 +21,7 @@ export default function Portfolio(): JSX.Element {
               project.id % 2 === 0 ? '' : 'xl:flex-row-reverse'
             }`}
           >
-            <a
-              rel='noopener noreferrer'
-              target='blank'
-              className='xl:w-1/2'
-              data-aos={project.id % 2 === 0 ? 'fade-left' : 'fade-right'}
-            >
+            <a rel='noopener noreferrer' target='blank' className='xl:w-1/2'>
               <img
                 src={project.pic}
                 alt=''
