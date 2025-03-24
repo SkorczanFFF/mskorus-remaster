@@ -3,7 +3,7 @@ const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
-  transpilePackages: ['three'],
+  transpilePackages: ['three', 'gsap'],
   reactStrictMode: true,
   swcMinify: true,
 

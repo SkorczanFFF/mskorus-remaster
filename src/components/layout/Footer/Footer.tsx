@@ -1,61 +1,58 @@
 import React from 'react';
-import { IoMailOpenSharp } from 'react-icons/io5';
-import { IoDocumentTextSharp } from 'react-icons/io5';
+import { IoLogoGithub, IoLogoLinkedin, IoMdMailOpen } from 'react-icons/io';
 
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
   return (
     <footer className='font-mont bg-primary-blue flex min-h-[20vh] w-full flex-col items-center overflow-hidden'>
-      <div className='w-full min-w-[250px] px-2 xl:w-[1100px] xl:px-0'>
-        {/* <div className='arrow-down white' /> */}
-        <p className='font-mont relative ml-3 text-start text-2xl font-[400] text-white'>
+      <div className='absolute -mt-[32px] flex w-full flex-col items-center'>
+        <p className='font-mont relative ml-3 w-full min-w-[250px] text-start text-2xl font-[400] text-white xl:w-[1200px] xl:px-0 '>
           <span className='text-raspberry'>M</span>
           <span className='absolute left-5 tracking-wider text-white'>
             SKORUS
           </span>
         </p>
-        <div className='gradient mb-2 h-[2px]' />
+        <div className='gradient h-[8px] w-full' />
+        <div className='arrow-down orange' />
       </div>
       <div className='flex w-full items-center justify-center bg-white'>
         <div className='mx-5 flex w-[1000px] flex-col items-center justify-between gap-5 py-10 sm:flex-row sm:gap-0'>
-          <div className='font-mont text-primary-blue flex w-full items-center gap-2'>
-            <IoMailOpenSharp className='hover:text-raspberry cursor-pointer text-8xl duration-150' />
-            <div className='flex flex-col'>
-              <h3 className='font-mont text-xl font-[500] tracking-wide'>
-                CONTACT
-              </h3>
-
+          <div className='flex flex-col items-center'>
+            <p className='text-primary-blue text-xl font-[400] tracking-wider'>
+              REACH ME THROUGH
+            </p>
+            <div className='flex gap-5 pt-4'>
+              <a
+                href='https://www.linkedin.com/in/maciej-skorus/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-primary-blue hover:text-raspberry text-5xl duration-200'
+              >
+                <IoLogoLinkedin />
+              </a>
               <a
                 href='mailto:skorusmaciej94@gmail.com'
-                className='hover:text-raspberry text-sm duration-150'
+                className='text-primary-blue hover:text-raspberry text-5xl duration-200'
               >
-                skorusmaciej94@gmail.com
+                <IoMdMailOpen />
+              </a>
+              <a
+                href='https://github.com/SkorczanFFF'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-primary-blue hover:text-raspberry text-[44px] duration-200'
+              >
+                <IoLogoGithub />
               </a>
             </div>
           </div>
-          <div className='font-mont text-primary-blue flex w-full flex-row-reverse items-center gap-2'>
-            <IoDocumentTextSharp className='hover:text-raspberry cursor-pointer text-[82px] duration-150' />
-            <div className='flex flex-col items-end '>
-              <h3 className='font-mont text-xl font-[500] tracking-wide'>
-                RESUME
-              </h3>
-
-              <a
-                href='/cv.pdf'
-                download='Maciej Skorus - CV'
-                className=' hover:text-raspberrier text-sm duration-150'
-              >
-                English (PDF)
-              </a>
-
-              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-              <a
-                href='/resume'
-                className=' hover:text-raspberrer text-sm duration-150'
-              >
-                English (WEB)
-              </a>
-            </div>
+          <div className='flex flex-col items-center'>
+            <p className='text-primary-blue text-sm font-[500] tracking-wider'>
+              LOCATION
+            </p>
+            <p className='text-primary-blue text-sm font-[300]'>
+              Wrocław, Poland
+            </p>
           </div>
         </div>
       </div>

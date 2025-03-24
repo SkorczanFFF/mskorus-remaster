@@ -51,7 +51,11 @@ export default function Portfolio(): JSX.Element {
               >
                 {project.technos}
               </p>
-              <p className={`mx-3 ${project.id % 2 === 0 ? '' : 'text-end'}`}>
+              <p
+                className={`mx-3 font-[200] leading-[22px] ${
+                  project.id % 2 === 0 ? '' : 'text-end'
+                }`}
+              >
                 {project.description}
               </p>
               {project.git !== '' && project.live !== '' && (
@@ -64,7 +68,7 @@ export default function Portfolio(): JSX.Element {
                     <AiFillGithub className='text-2xl' />
                     <a
                       href={project.git}
-                      target='blank'
+                      target='_blank'
                       rel='noopener noreferrer'
                     >
                       repo
@@ -74,7 +78,7 @@ export default function Portfolio(): JSX.Element {
                     <AiOutlineGlobal className='text-2xl' />
                     <a
                       href={project.live}
-                      target='blank'
+                      target='_blank'
                       rel='noopener noreferrer'
                     >
                       live demo
@@ -86,7 +90,44 @@ export default function Portfolio(): JSX.Element {
           </div>
         ))}
       </div>
-      <p className='mt-4 tracking-widest text-white'>STAY TUNED</p>
+      <div className='flex flex-col items-center justify-center'>
+        <p className='text-center tracking-[4px] text-white'>
+          NON WEB RELATED CORNER
+        </p>
+        <div className='border-1 mt-10 flex w-[80%] max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
+          <div className='flex w-full items-center justify-between'>
+            <div className='flex flex-col'>
+              <h4 className='text-xl font-[500] uppercase'>
+                Tibia Key Presser
+              </h4>
+              <p className='text-[14px] text-[#b6b6b6]'>
+                Python, Tkinter, pywinauto
+              </p>
+            </div>
+            <div className='flex gap-5'>
+              <a
+                href='https://github.com/SkorczanFFF/tibia-key-presser'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
+              >
+                <AiFillGithub className='text-2xl' />
+                <span>repo</span>
+              </a>
+            </div>
+          </div>
+          <div className='text-justify font-[300] leading-5'>
+            <p>
+              A Python automation tool for Tibia game that allows configuring up
+              to 8 key-delay pairs with customizable delays (0-10s). Features
+              include individual reset/delete functions, automatic game window
+              detection with character name display, dynamic UI feedback, and
+              simple Start/Stop controls for managing the automation process.
+            </p>
+          </div>
+        </div>
+      </div>
+      <p className='mb-4 mt-20 tracking-[8px] text-white'>STAY TUNED</p>
     </section>
   );
 }

@@ -164,6 +164,16 @@ body {
   transform: perspective(600px) rotateY(-5deg);
 }
 
+.perspective-right-alt {
+  transform: perspective(1200px) rotateY(5deg);
+  margin-right: -100px;
+}
+
+.perspective-left-alt {
+  transform: perspective(1200px) rotateY(-5deg);
+  margin-left: -100px;
+}
+
 @media screen and (max-width: 1280px) {
   .perspective-right {
     transform: perspective(1000px) rotateY(1deg);
@@ -184,6 +194,10 @@ body {
 
 .white {
   border-color: #e4e4e4 transparent transparent transparent;
+}
+
+.orange {
+  border-color: #8a2029 transparent transparent transparent;
 }
 
 .blue {

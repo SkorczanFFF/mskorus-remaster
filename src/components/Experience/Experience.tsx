@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { gsap, ScrollTrigger } from '@/lib/gsap'; // Update path based on your project structure
+
 export default function Experience(): JSX.Element {
   const experiences = [
     {
@@ -58,76 +60,147 @@ export default function Experience(): JSX.Element {
 
 function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
   const [expanded, setExpanded] = useState(false);
+  const [showButton, setShowButton] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [isOverflowing, setIsOverflowing] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Check if gsap is available (client-side only)
+    if (!gsap) return;
+
+    if (containerRef.current) {
+      gsap.set(containerRef.current, {
+        x: index % 2 === 0 ? 200 : -200,
+      });
+
+      gsap.to(containerRef.current, {
+        x: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2,
+          toggleActions: 'play none none reverse',
+          markers: true,
+          anticipatePin: 1,
+          fastScrollEnd: true,
+        },
+      });
+    }
+
+    return () => {
+      ScrollTrigger?.getAll().forEach((trigger: any) => trigger.kill());
+    };
+  }, [index]);
+
+  useEffect(() => {
+    // Check if gsap is available (client-side only)
+    if (!gsap) return;
+
+    if (containerRef.current && contentRef.current) {
+      const timeline = gsap.timeline();
+
+      if (expanded) {
+        timeline
+          .to(containerRef.current, {
+            maxWidth: '900px',
+            duration: 0.6,
+            ease: 'power2.inOut',
+          })
+          .to(
+            contentRef.current,
+            {
+              maxHeight: contentRef.current.scrollHeight,
+              duration: 0.6,
+              ease: 'power2.inOut',
+            },
+            '>-0.2'
+          );
+      } else {
+        timeline
+          .to(contentRef.current, {
+            maxHeight: exp.job === 'ANFATA GAMES' ? 'auto' : '264px',
+            duration: 0.6,
+            ease: 'power2.inOut',
+          })
+          .to(containerRef.current, {
+            maxWidth: '700px',
+            duration: 0.6,
+            ease: 'power2.inOut',
+          });
+      }
+    }
+  }, [expanded]);
 
   useEffect(() => {
     if (contentRef.current) {
-      setIsOverflowing(contentRef.current.scrollHeight > 500);
+      setShowButton(contentRef.current.scrollHeight > 350);
     }
   }, []);
 
   return (
     <div
-      className={`flex w-full max-w-[80%] py-0 text-justify text-white shadow-sm ${
+      className={`border-primary-blue flex w-full max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${
         index % 2 === 0
           ? 'gradient-slow self-end pl-10'
           : 'gradient-slow justify-end self-start pr-10'
       }`}
     >
-      <div
-        className={`bg-primary-blue max-w-[700px] p-10 transition-all duration-300 ${
-          expanded ? 'max-w-[1000px]' : 'overflow-hidden'
-        }`}
-      >
-        <h4 className='flex justify-between text-xl font-[500]'>
-          <span className='pb-4 text-[20px] text-white'>{exp.title}</span>
-          <span className='text-[14px] font-[400]'>{exp.date}</span>
-        </h4>
-        <div className='gradient mb-2 h-[2px] w-full'></div>
-
-        {/* Content container with expandable logic */}
+      <div ref={containerRef} className='flex'>
         <div
-          ref={contentRef}
-          className={`transition-all duration-300 ${
-            expanded ? 'max-h-[1200px]' : 'max-h-[350px] overflow-hidden'
+          className={`bg-primary-blue p-8 text-[14px] transition-all duration-300 ${
+            expanded ? 'max-w-[900px]' : ' overflow-hidden'
           }`}
         >
-          <span className='mb-2 flex items-center text-[#bd372b]'>
-            <img
-              src={`./exp/${exp.icon}`}
-              className='mr-2 h-[18px] w-[18px]'
-            ></img>
-            {exp.job}
-          </span>
-          {exp.details.map((detail: string, i: number) => (
-            <p key={i} className='mb-2 font-[100]'>
-              - {detail}
-            </p>
-          ))}
+          <h4 className='flex justify-between text-xl font-[500]'>
+            <span className='pb-2 text-[20px] text-white'>{exp.title}</span>
+            <span className='text-[14px] font-[400]'>{exp.date}</span>
+          </h4>
+          <div className='gradient mb-2 h-[2px] w-full'></div>
+
+          <div ref={contentRef} className='overflow-hidden'>
+            <span className='mb-2 flex items-center text-[#b6b6b6]'>
+              <img
+                src={`./exp/${exp.icon}`}
+                className='mr-2 h-[18px] w-[18px]'
+              ></img>
+              {exp.job}
+            </span>
+            {exp.details.map((detail: string, i: number) => (
+              <p key={i} className='mb-2 font-[300] leading-5 text-[#f8f8f8]'>
+                - {detail}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
-      {/* Expand/Collapse Button */}
-      {isOverflowing && (
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className='text-primary-blue hover:bg-primary-blue hover:text-orange min-h-full w-[50px] bg-white text-center text-sm font-bold transition-all duration-300 ease-in-out hover:w-[70px] hover:border-r-2'
-        >
-          <span
-            style={{
-              display: 'flex',
-              transform: 'rotate(90deg)',
-              transformOrigin: 'center',
-              letterSpacing: '4px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              whiteSpace: 'nowrap',
-            }}
+
+        {showButton && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className={`min-h-full text-center text-sm font-bold transition-all duration-300 ease-in-out ${
+              expanded
+                ? 'bg-primary-blue w-[70px] border-r-2 border-white text-white'
+                : 'text-primary-blue hover:bg-primary-blue w-[50px] border-r-2 border-white bg-white hover:w-[70px] hover:text-white'
+            }`}
           >
-            {expanded ? 'SHOW LESS' : 'SHOW MORE'}
-          </span>
-        </button>
-      )}
+            <span
+              style={{
+                display: 'flex',
+                transform: 'rotate(90deg)',
+                transformOrigin: 'center',
+                letterSpacing: '4px',
+                alignItems: 'center',
+                justifyContent: 'center',
+                whiteSpace: 'nowrap',
+                height: '70px',
+              }}
+            >
+              {expanded ? 'SHOW LESS' : 'SHOW MORE'}
+            </span>
+          </button>
+        )}
+      </div>
     </div>
   );
 }
