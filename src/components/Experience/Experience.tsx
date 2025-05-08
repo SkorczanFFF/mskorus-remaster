@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { gsap, ScrollTrigger } from '@/lib/gsap'; // Update path based on your project structure
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 
 export default function Experience(): JSX.Element {
   const experiences = [
@@ -10,17 +10,18 @@ export default function Experience(): JSX.Element {
       date: 'MAY 2024 - NOW',
       icon: 'BSG.PNG',
       details: [
-        'Updating and expanding the internal event management system with new functionalities, system optimizations, and bug fixes (PHP, Smarty, MySQL, jQuery/Vanilla JS).',
-        'Developing dedicated front-end solutions for medical events (registration forms, linking with external APIs, etc.).',
+        'Updating and expanding the internal event management system with new functionalities (e.g. proof verification, PDF report generation for companies post-conference), system optimizations, and bug fixes (PHP, Smarty, MySQL, jQuery/Vanilla JS).',
+        'Developing dedicated front-end solutions for medical events (registration forms, linking with external APIs etc.).',
         'Designing a new participant area within the conference system, customized to client requirements.',
         'Creating a mobile application for Zebra data collectors, enabling QR code scanning with local data storage, an administrative panel, and CSV export/sharing functionality (React Native, Expo).',
         'Building a voting application with an administrative panel (PHP, Vanilla JS, Chart.js).',
         'Developing virtual stands with documentation for companies (Vanilla JS, CSS).',
         'Developing a web application for attendance tracking during event sessions, supporting both self-scanning machines and Zebra mobile scanners (Vanilla JS, PHP).',
+        'Developing responsive and consistent mailings, compatible across all major email services.',
         "Creating custom solutions, improving the entire team's workflow.",
         'Providing onsite IT support for colleagues and during business trips (across Poland), ensuring the smooth operation of company applications and maintaining hardware performance.',
         'Assisting event participants as needed, including at international conferences.',
-        'Cooperating with backend developer, graphic designers (2D/3D) and the whole team.',
+        'Cooperating with backend developer, graphic designers (2D/3D) and whole team.',
         'Representing the IT department in online client meetings.',
         'Serving as a company driver if needed.',
       ],
@@ -31,12 +32,11 @@ export default function Experience(): JSX.Element {
       date: 'SEP 2022 - AUG 2023',
       icon: 'ANFATA.png',
       details: [
-        'Development of decentralized app and auction system, integration with Smart Contracts and ImmutableX collections (marketplace, bridging between L1 and L2, transfers, etc.).',
-        'Working with Moralis and Firebase cloud functions and databases, TypeScript, Next.js, and version control systems.',
-        'Implementation of a new homepage, integration with Sanity CMS blog system, handling custom events on company apps and sites.',
-        'Created custom sites for events (e.g. Freemint page).',
-        'Testing the alpha version of Pirates of the Arrland game',
-        'Cross-team collaboration in a cross-national team for consistent user experience with company products.',
+        'Developed a decentralized application integrated with Smart Contracts and ImmutableX collections, including building a marketplace, bridging NFTs between L1 and L2, enabling transfers between accounts, and implementing a live auction system.',
+        'Worked with Moralis and Firebase databases and cloud functions, using TypeScript, Next.js, GSAP, and version control systems like GitLab and Bitbucket.',
+        'Implemented a new homepage, integrated a Sanity CMS blog system, and built custom event-oriented websites and features across company platforms.',
+        'Performed manual testing of Pirates of the Arrland, including the 3D MOBA game and 2D strategic map components within the decentralized app.',
+        'Collaborated closely with cross-functional and international teams to deliver integrated Web3 experiences.',
       ],
     },
   ];
@@ -120,7 +120,7 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
       } else {
         timeline
           .to(contentRef.current, {
-            maxHeight: exp.job === 'ANFATA GAMES' ? 'auto' : '264px',
+            maxHeight: exp.job === 'ANFATA GAMES' ? 'auto' : '284px',
             duration: 0.6,
             ease: 'power2.inOut',
           })
@@ -168,7 +168,12 @@ function ExpandableExperience({ exp, index }: { exp: any; index: number }) {
               {exp.job}
             </span>
             {exp.details.map((detail: string, i: number) => (
-              <p key={i} className='mb-2 font-[300] leading-5 text-[#f8f8f8]'>
+              <p
+                key={i}
+                className={`${
+                  i === exp.details.length - 1 ? 'mb-1' : 'mb-2'
+                } font-[300] leading-4 text-[#f8f8f8]`}
+              >
                 - {detail}
               </p>
             ))}

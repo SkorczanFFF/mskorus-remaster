@@ -16,18 +16,42 @@
     "skills": "UMIEJĘTNOŚCI I NARZĘDZIA",
     "download": "POBIERZ"
   },
-  "aboutme": "Jestem programistą łączącym ciekawość z pasją do najnowocześniejszych technologii internetowych, który nieustannie poszukujE kolejnych wyzwań. Hobbistyczne zainteresowanie WebGL oraz pierwsze zdobyte doświadczenie podczas tworzenia gry opartej o technologię Blockchain, ukształtowało mój cel, którym stało się tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomu przeglądarki internetowej. Aktualnie szukam nowego zespołu z którym mógłbym się rozwijać, dzielić wiedzą i świętować wspólnie odniesione sukcesy.",
-  "experience": {
-    "company": "ANFATA GAMES SP. Z O.O.",
-    "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
-    "duration": "[ 1 rok ]",
-    "duties": {
-      "1": "Rozwój zdecentralizowanej aplikacji i systemu aukcyjnego, integracja ze Smart Contractami oraz kolekcjami ImmutableX (budowa marketplace, bridging pomiędzy L1 a L2, transfery itp.)",
-      "2": "Praca z Cloud Funkcjami baz danych Moralis i Firebase, TypeScript,Next.js oraz systemami kontroli wersji",
-      "3": "Implementacja nowej strony głównej tworzonej gry, integracja z CMS Sanity, obsługa wydarzeń specjalnych",
-      "4": "Współpraca międzyzespołowa w zespole międzynarodowym dla końcowej spójności tworzonych rozwiązań"
+  "aboutme": "Jestem programistą łączącym ciekawość z pasją do najnowocześniejszych technologii internetowych, który nieustannie poszukuję kolejnych wyzwań. Hobbistyczne zainteresowanie WebGL oraz pierwsze zdobyte doświadczenie podczas tworzenia gry opartej o technologię Blockchain, ukształtowało mój cel, którym stało się tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomu przeglądarki internetowej. Aktualnie szukam nowego zespołu z którym mógłbym się rozwijać, dzielić wiedzą i świętować wspólnie odniesione sukcesy.",
+  "experience": [
+    {
+      "company": "BUSINESS SERVICE GALOP",
+      "position": "Front-End Developer",
+      "duration": "maj 2024 – obecnie",
+      "duties": {
+        "1": "Rozbudowa i optymalizacja wewnętrznego systemu zarządzania wydarzeniami (PHP, Smarty, MySQL, jQuery/Vanilla JS), wdrażanie nowych funkcjonalności (np. weryfikacja materiałów, generowanie raportów PDF po konferencjach) oraz usuwanie błędów",
+        "2": "Tworzenie dedykowanych rozwiązań front-endowych dla wydarzeń medycznych (formularze rejestracyjne, integracja z zewnętrznymi API itp.)",
+        "3": "Projektowanie nowej strefy uczestnika w systemie konferencyjnym, dostosowanej do wymagań klientów",
+        "4": "Tworzenie aplikacji mobilnej na kolektory danych Zebra z obsługą skanowania kodów QR, lokalnym zapisem danych, panelem administracyjnym oraz możliwością eksportu/udostępniania CSV (React Native, Expo)",
+        "5": "Budowa aplikacji głosującej z panelem administracyjnym (PHP, Vanilla JS, Chart.js)",
+        "6": "Tworzenie wirtualnych stoisk z dokumentacją dla firm (Vanilla JS, CSS)",
+        "7": "Rozwój aplikacji webowej do śledzenia obecności podczas sesji wydarzeń, z obsługą zarówno urządzeń samoobsługowych, jak i mobilnych skanerów Zebra (Vanilla JS, PHP)",
+        "8": "Tworzenie responsywnych i spójnych mailingów kompatybilnych z najpopularniejszymi klientami pocztowymi",
+        "9": "Tworzenie niestandardowych rozwiązań usprawniających pracę zespołu",
+        "10": "Zapewnienie wsparcia IT dla zespołu i podczas delegacji służbowych w całej Polsce, dbanie o poprawne działanie aplikacji oraz sprzętu",
+        "11": "Pomoc uczestnikom wydarzeń, również podczas konferencji międzynarodowych",
+        "12": "Współpraca z programistą backendowym, grafikami 2D/3D oraz całym zespołem projektowym",
+        "13": "Reprezentowanie działu IT podczas spotkań online z klientami",
+        "14": "Pełnienie funkcji kierowcy służbowego w razie potrzeby"
+      }
+    },
+    {
+      "company": "ANFATA GAMES SP. Z O.O.",
+      "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
+      "duration": "[ 1 rok ]",
+      "duties": {
+        "1": "Rozwój zdecentralizowanej aplikacji z integracją Smart Contractów oraz kolekcji ImmutableX, w tym budowa marketplace’u, bridging NFT pomiędzy L1 i L2, transfery między kontami oraz system aukcji na żywo",
+        "2": "Praca z bazami danych i funkcjami chmurowymi Moralis i Firebase, wykorzystanie TypeScript, Next.js, GSAP oraz systemów kontroli wersji takich jak GitLab i Bitbucket",
+        "3": "Implementacja nowej strony głównej, integracja bloga opartego na CMS Sanity oraz tworzenie dedykowanych stron wydarzeń i funkcjonalności w ramach platform firmowych",
+        "4": "Manualne testowanie Pirates of the Arrland, w tym komponentów gry 3D typu MOBA oraz strategicznej mapy 2D w aplikacji zdecentralizowanej",
+        "5": "Ścisła współpraca z zespołami międzynarodowymi i interdyscyplinarnymi w celu dostarczania zintegrowanych doświadczeń Web3"
+      }
     }
-  },
+  ],
   "education": {
     "university": "UŚ - Wydział Nauk Ścisłych i Technicznych",
     "field": "INFORMATYKA - Programowanie Aplikacji Webowych",

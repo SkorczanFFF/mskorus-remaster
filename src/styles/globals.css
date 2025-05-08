@@ -314,3 +314,7 @@ body {
 ::selection {
   background-color: #801834;
 }
+
+li::marker {
+  padding-right: 10px;
+}

@@ -17,17 +17,41 @@
     "download": "DOWNLOAD"
   },
   "aboutme": "I am a motivated developer with a deep enthusiasm for cutting-edge web technologies, with a strong interest in WebGL. With my first experience in the Blockchain in game development industry and curiosity about the possibilities of web development, my goal is to create and deliver exceptional web experiences. I am constantly looking for new challenges in the evolving field of technology and currently looking for a new team to grow with and achieve something special and innovative together.",
-  "experience": {
-    "company": "ANFATA GAMES SP. Z O.O.",
-    "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
-    "duration": "[ 1 year ]",
-    "duties": {
-      "1": "Development of decentralized app and auction system, integration with Smart Contracts and ImmutableX collections (marketplace, bridging between L1 and L2, transfers, etc.)",
-      "2": "Working with Moralis and Firebase cloud functions and databases, TypeScript, Next.js and version control systems",
-      "3": "Implementation of a new homepage, integration with Sanity CMS blog system, handling custom events on company apps and sites",
-      "4": "Cross-team collaboration in cross-national team for consistent user experience with company products"
+  "experience": [
+    {
+      "company": "BUSINESS SERVICE GALOP",
+      "position": "Front-End Developer",
+      "duration": "May 2024 - present",
+      "duties": {
+        "1": "Updating and expanding the internal event management system (PHP, Smarty, MySQL, jQuery/Vanilla JS) with new functionalities, (e.g. proof verification, PDF report generation for companies post-conference), system optimizations, and bug fixes",
+        "2": "Developing dedicated front-end solutions for medical events (registration forms, linking with external APIs etc.)",
+        "3": "Designing a new participant area within the conference system, customized to client requirements",
+        "4": "Creating a mobile application for Zebra data collectors, enabling QR code scanning with local data storage, an administrative panel, and CSV export/sharing functionality (React Native, Expo)",
+        "5": "Building a voting application with an administrative panel (PHP, Vanilla JS, Chart.js)",
+        "6": "Developing virtual stands with documentation for companies (Vanilla JS, CSS)",
+        "7": "Developing a web application for attendance tracking during event sessions, supporting both self-scanning machines and Zebra mobile scanners (Vanilla JS, PHP)",
+        "8": "Developing responsive and consistent mailings, compatible across all major email services",
+        "9": "Creating custom solutions, improving the entire team's workflow",
+        "10": "Providing onsite IT support for colleagues and during business trips (across Poland), ensuring the smooth operation of company applications and maintaining hardware performance",
+        "11": "Assisting event participants as needed, including at international conferences",
+        "12": "Cooperating with backend developer, graphic designers (2D/3D) and whole team",
+        "13": "Representing the IT department in online client meetings",
+        "14": "Serving as a company driver if needed"
+      }
+    },
+    {
+      "company": "ANFATA GAMES SP. Z O.O.",
+      "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
+      "duration": "[ 1 year ]",
+      "duties": {
+        "1": "Developed a decentralized application integrated with Smart Contracts and ImmutableX collections, including building a marketplace, bridging NFTs between L1 and L2, enabling transfers between accounts, and implementing a live auction system.",
+        "2": "Worked with Moralis and Firebase databases and cloud functions, using TypeScript, Next.js, GSAP, and version control systems like GitLab and Bitbucket",
+        "3": "Implemented a new homepage, integrated a Sanity CMS blog system, and built custom event-oriented websites and features across company platforms",
+        "4": "Performed manual testing of Pirates of the Arrland, including the 3D MOBA game and 2D strategic map components within the decentralized app",
+        "5": "Collaborated closely with cross-functional and international teams to deliver integrated Web3 experiences"
+      }
     }
-  },
+  ],
   "education": {
     "university": "UNIVERSITY OF SILESIA",
     "field": "INFORMATICS - Web Application Programming",

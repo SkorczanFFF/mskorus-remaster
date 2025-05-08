@@ -90,40 +90,63 @@ export default function Portfolio(): JSX.Element {
           </div>
         ))}
       </div>
-      <div className='flex flex-col items-center justify-center'>
-        <p className='text-center tracking-[4px] text-white'>
-          NON WEB RELATED CORNER
-        </p>
-        <div className='border-1 mt-10 flex w-[80%] max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
-          <div className='flex w-full items-center justify-between'>
-            <div className='flex flex-col'>
-              <h4 className='text-xl font-[500] uppercase'>
-                Tibia Key Presser
-              </h4>
-              <p className='text-[14px] text-[#b6b6b6]'>
-                Python, Tkinter, pywinauto
-              </p>
-            </div>
-            <div className='flex gap-5'>
-              <a
-                href='https://github.com/SkorczanFFF/tibia-key-presser'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
-              >
-                <AiFillGithub className='text-2xl' />
-                <span>repo</span>
-              </a>
+      <div className='mt-20 flex flex-col items-center justify-center'>
+        <div className='flex max-w-[1200px] gap-5'>
+          <div className='border-1 text-primary-blue border-raspberry mt-10 flex max-h-[140px] min-w-[350px] max-w-[1200px] flex-col  justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-10 shadow-xl'>
+            <div className='font-[300] leading-5'>
+              <h1 className='text-4xl'>
+                <div className='nonweb-text text-end'>NON WEB</div>
+                <div className='related-text text-center'>RELATED</div>
+                <div className='corner-text text-end'>CORNER</div>
+              </h1>
             </div>
           </div>
-          <div className='text-justify font-[300] leading-5'>
-            <p>
-              A Python automation tool for Tibia game that allows configuring up
-              to 8 key-delay pairs with customizable delays (0-10s). Features
-              include individual reset/delete functions, automatic game window
-              detection with character name display, dynamic UI feedback, and
-              simple Start/Stop controls for managing the automation process.
-            </p>
+          <div className='border-1 mt-20 flex w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
+            <div className='flex w-full items-center justify-between'>
+              <div className='flex flex-col'>
+                <h4 className='text-xl font-[500] uppercase'>
+                  Tibia Key Presser
+                </h4>
+                <p className='text-[14px] text-[#b6b6b6]'>
+                  Python, Tkinter, pywinauto
+                </p>
+              </div>
+              <div className='flex gap-5'>
+                <a
+                  href='https://github.com/SkorczanFFF/tibia-key-presser'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
+                >
+                  <AiFillGithub className='text-2xl' />
+                  <span>repo</span>
+                </a>
+              </div>
+            </div>
+            <div className='text-justify font-[300] leading-5'>
+              <p>
+                A Python automation tool for Tibia (MMORPG) that allows
+                configuring up to 8 key-delay pairs with customizable delays
+                (0-10s). Features include individual reset/delete functions,
+                automatic game window detection with character name display,
+                dynamic UI feedback, and simple Start/Stop controls for managing
+                the automation process.
+              </p>
+            </div>
+          </div>
+
+          <div className='border-1 mb-10 flex h-auto w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
+            <div className='flex w-full items-center justify-between'>
+              <div className='flex flex-col'>
+                <h4 className='text-xl font-[500] uppercase'>
+                  Package Delivery SA:MP Server
+                </h4>
+                <p className='text-[14px] text-[#b6b6b6]'>Pawn, SA:MP</p>
+              </div>
+            </div>
+            <div className='text-justify font-[300] leading-5'>
+              <p>A Python automation tool for Tibia (MMORPG) that allows</p>
+            </div>
           </div>
         </div>
       </div>

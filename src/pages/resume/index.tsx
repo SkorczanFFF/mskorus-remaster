@@ -120,6 +120,24 @@ const Project: React.FC<ProjectData> = ({
   </div>
 );
 
+interface Experience {
+  company: string;
+  position: string;
+  duration: string;
+  duties: {
+    [key: string]: string;
+  };
+}
+
+interface LanguageData {
+  headers: {
+    experience: string;
+    // ... other headers
+  };
+  experience: Experience | Experience[];
+  // ... other data
+}
+
 export default function CV(): JSX.Element {
   const currentYear = new Date().getFullYear();
   const [selectedLanguage, setSelectedLanguage] = useState<string>('english');
@@ -336,31 +354,32 @@ export default function CV(): JSX.Element {
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                           {languageData.headers.experience}
                         </p>
-                        <div className='mx-6  mt-3'>
-                          <p className='text-2xl font-[500] tracking-[5px]'>
-                            {languageData.experience.company}
-                          </p>
-                          <div className='mb-4 mt-2 flex items-center gap-5 text-2xl tracking-[2px]'>
-                            <p>{languageData.experience.position}</p>
-                            <p className='text-raspberry text-lg'>
-                              {languageData.experience.duration}
+                        {(Array.isArray(languageData.experience)
+                          ? languageData.experience
+                          : [languageData.experience]
+                        ).map((exp, index) => (
+                          <div key={index} className='mx-6 mt-3'>
+                            <p className='text-2xl font-[500] tracking-[5px]'>
+                              {exp.company}
                             </p>
+                            <div className='mb-4 mt-2 flex items-center gap-5 text-2xl tracking-[2px]'>
+                              <p>{exp.position}</p>
+                              <p className='text-raspberry text-lg'>
+                                {exp.duration}
+                              </p>
+                            </div>
+                            <div className='ml-1 flex w-full flex-col items-start gap-2 text-xl'>
+                              {Object.entries(exp.duties).map(([key, duty]) => (
+                                <li
+                                  key={key}
+                                  className='m-0 p-0 leading-[20px]'
+                                >
+                                  {duty}
+                                </li>
+                              ))}
+                            </div>
                           </div>
-                          <div className='ml-1 flex w-full flex-col items-start gap-2 text-xl'>
-                            <li className='m-0 p-0'>
-                              {languageData.experience.duties[1]}
-                            </li>
-                            <li>{languageData.experience.duties[2]}</li>
-                            <li
-                            // className={`flex ${
-                            //   selectedLanguage == 'english' ? 'mr-10' : ''
-                            // }`}
-                            >
-                              {languageData.experience.duties[3]}
-                            </li>
-                            <li>{languageData.experience.duties[4]}</li>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
 

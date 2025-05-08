@@ -21,7 +21,7 @@ export default function Header(): JSX.Element {
 
   return (
     <header
-      className={`font-mont border-primary-blue sticky top-0 z-50 flex h-[45px] items-center justify-between border-b opacity-95 backdrop-blur-[100px]
+      className={`font-mont border-primary-blue sticky top-0 z-50 flex h-[45px] items-center justify-between border-b opacity-95 backdrop-blur-[10px]
       `}
     >
       {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}

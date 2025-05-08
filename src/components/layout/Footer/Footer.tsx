@@ -57,7 +57,7 @@ export default function Footer(): JSX.Element {
         </div>
       </div>
       <div className='gradient w-full text-center'>
-        <p className='p-2 text-xs tracking-wider text-white'>
+        <p className='p-1 text-xs tracking-wider text-white'>
           &copy; {currentYear} Maciej Skorus
         </p>
       </div>
