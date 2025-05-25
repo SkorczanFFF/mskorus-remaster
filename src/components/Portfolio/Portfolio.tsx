@@ -21,7 +21,12 @@ export default function Portfolio(): JSX.Element {
               project.id % 2 === 0 ? '' : 'xl:flex-row-reverse'
             }`}
           >
-            <a rel='noopener noreferrer' target='blank' className='xl:w-1/2'>
+            <a
+              href={project.live}
+              rel='noopener noreferrer'
+              target='blank'
+              className='xl:w-1/2'
+            >
               <img
                 src={project.pic}
                 alt=''
@@ -150,7 +155,7 @@ export default function Portfolio(): JSX.Element {
           </div>
         </div>
       </div>
-      <p className='mb-4 mt-20 tracking-[8px] text-white'>STAY TUNED</p>
+      <p className='mb-10 mt-[160px] tracking-[8px] text-white'>STAY TUNED</p>
     </section>
   );
 }
