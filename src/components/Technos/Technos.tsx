@@ -106,11 +106,11 @@ export default function Technos(): JSX.Element {
         {/* Row 2: Backend and Database */}
         <div className='flex w-full gap-8'>
           {/* Backend */}
-          <div className='flex w-2/3 flex-col'>
+          <div className='max-w-2/3 flex w-full flex-col'>
             <h4 className='mb-6 ml-6 self-start text-lg font-semibold capitalize'>
               backend
             </h4>
-            <div className='flex w-full justify-between'>
+            <div className='flex w-full gap-[20px]'>
               {techCategories.backend.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}
@@ -122,7 +122,7 @@ export default function Technos(): JSX.Element {
             <h4 className='mb-6 mr-6 self-end text-lg font-semibold capitalize'>
               database
             </h4>
-            <div className='flex w-full justify-between'>
+            <div className='flex w-full gap-[20px]'>
               {techCategories.database.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}
@@ -137,7 +137,7 @@ export default function Technos(): JSX.Element {
             <h4 className='mb-6 ml-6 self-start text-lg font-semibold capitalize'>
               design
             </h4>
-            <div className='flex w-[450px] justify-between'>
+            <div className='flex w-full gap-[20px]'>
               {techCategories.design.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}
@@ -149,7 +149,7 @@ export default function Technos(): JSX.Element {
             <h4 className='mb-6 mr-6 self-end text-lg font-semibold capitalize'>
               tools
             </h4>
-            <div className='flex w-full min-w-[700px] justify-between'>
+            <div className='flex w-full gap-[20px]'>
               {techCategories.tools.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}
