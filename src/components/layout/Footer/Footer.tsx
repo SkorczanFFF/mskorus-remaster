@@ -1,6 +1,10 @@
 import React from 'react';
+import { FaRegFilePdf } from 'react-icons/fa';
 import { IoLogoGithub, IoLogoLinkedin, IoMdMailOpen } from 'react-icons/io';
-
+const cvLinks = [
+  { href: '/pl.pdf', label: 'PL' },
+  { href: '/eng.pdf', label: 'EN' },
+];
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
   return (
@@ -47,12 +51,25 @@ export default function Footer(): JSX.Element {
             </div>
           </div>
           <div className='flex flex-col items-center'>
-            <p className='text-primary-blue text-sm font-[500] tracking-wider'>
-              LOCATION
+            <p className='text-primary-blue text-xl font-[400] tracking-wider'>
+              CURRICULUM VITAE
             </p>
-            <p className='text-primary-blue text-sm font-[300]'>
-              Wrocław, Poland
-            </p>
+            <div className='flex gap-4 pt-4'>
+              {cvLinks.map((link, index) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={`text-primary-blue hover:text-raspberry text-md flex items-center gap-1 font-[500] duration-200 ${
+                    index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                  }`}
+                >
+                  <FaRegFilePdf className='text-5xl' />
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

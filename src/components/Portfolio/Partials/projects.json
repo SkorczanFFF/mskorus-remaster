@@ -1,6 +1,15 @@
 [
   {
     "id": 0,
+    "pic": "/projects/polonez_autodrive.jpg",
+    "title": "POLONEZ AUTODRIVE",
+    "technos": "HTML • JavaScript • Three.js • 3D Studio Max",
+    "description": "A synthwave-style 3D animation with real-time model and color customization via a built-in GUI. Now includes a beta mini-game set in a retro, 80s-inspired environment. Features dynamic object spawning and models created in 3D Studio Max. Play some music and have fun!",
+    "live": "https://skorczanfff.github.io/Polonez-Autodrive/",
+    "git": "https://polonez-autodrive.vercel.app/"
+  },
+  {
+    "id": 1,
     "pic": "/projects/tba.jpg",
     "title": "Poemz [WIP]",
     "technos": "React • Express • MongoDB • Node.js • GraphQL",
@@ -9,7 +18,7 @@
     "git": "https://github.com/SkorczanFFF/poemz-mern-graphql"
   },
   {
-    "id": 1,
+    "id": 2,
     "pic": "/projects/portfolio.jpg",
     "title": "MSKORUS - my porftolio",
     "technos": "Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender",
@@ -17,15 +26,7 @@
     "live": "https://mskorus.vercel.app/",
     "git": "https://github.com/SkorczanFFF/mskorus-remaster"
   },
-  {
-    "id": 2,
-    "pic": "/projects/polonez_autodrive.jpg",
-    "title": "POLONEZ AUTODRIVE",
-    "technos": "HTML • JavaScript • Three.js • 3D Studio Max",
-    "description": "A synthwave-style 3D animation with real-time model and color customization via a built-in GUI. Now includes a beta mini-game set in a retro, 80s-inspired environment. Features dynamic object spawning and models created in 3D Studio Max. Play some music and have fun!",
-    "live": "https://skorczanfff.github.io/Polonez-Autodrive/",
-    "git": "https://polonez-autodrive.vercel.app/"
-  },
+
   {
     "id": 3,
     "pic": "/projects/YAWA.jpg",

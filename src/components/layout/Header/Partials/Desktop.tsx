@@ -11,7 +11,7 @@ interface DesktopProps {
 export default function Desktop({ links }: DesktopProps): JSX.Element {
   return (
     <>
-      <ul className='bg-raspberrybackdrop-blur-[10px] border-primary-blue hidden h-full max-h-[40px] items-center justify-between space-x-10 border-y-2 px-6 md:flex '>
+      <ul className=' hidden h-full max-h-[40px] items-center justify-between space-x-10 px-6 backdrop-blur-[10px] md:flex '>
         {links.map(({ href, label }) => (
           <Link
             href={href}

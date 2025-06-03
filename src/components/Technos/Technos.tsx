@@ -1,8 +1,13 @@
 import React from 'react';
-import { AiFillGithub, AiFillHtml5 } from 'react-icons/ai';
-import { BiLogoJava, BiLogoPhp } from 'react-icons/bi';
+import { BiLogoJava, BiLogoPhp, BiLogoVisualStudio } from 'react-icons/bi';
 import { GrMysql } from 'react-icons/gr';
-import { IoLogoCss3, IoLogoReact, IoLogoWordpress } from 'react-icons/io5';
+import {
+  IoLogoCss3,
+  IoLogoGithub,
+  IoLogoHtml5,
+  IoLogoReact,
+  IoLogoWordpress,
+} from 'react-icons/io5';
 import {
   SiAdobephotoshop,
   SiAutodesk,
@@ -19,18 +24,18 @@ import {
   SiPython,
   SiReact,
   SiRedux,
+  SiSanity,
   SiSass,
   SiTailwindcss,
   SiThreedotjs,
   SiTypescript,
-  SiVisualstudiocode,
   SiYarn,
 } from 'react-icons/si';
 
 export default function Technos(): JSX.Element {
   const techCategories = {
     frontend: [
-      { icon: <AiFillHtml5 className='text-5xl' />, label: 'HTML5' },
+      { icon: <IoLogoHtml5 className='text-5xl' />, label: 'HTML5' },
       { icon: <IoLogoCss3 className='text-5xl' />, label: 'CSS3' },
       { icon: <SiTypescript className='text-5xl' />, label: 'TypeScript' },
       { icon: <IoLogoReact className='text-5xl' />, label: 'React' },
@@ -48,6 +53,7 @@ export default function Technos(): JSX.Element {
       { icon: <SiLaravel className='text-5xl' />, label: 'Laravel' },
       { icon: <SiPython className='text-5xl' />, label: 'Python' },
       { icon: <IoLogoWordpress className='text-5xl' />, label: 'Wordpress' },
+      { icon: <SiSanity className='text-5xl' />, label: 'Sanity' },
     ],
     database: [
       { icon: <SiFirebase className='text-5xl' />, label: 'Firebase' },
@@ -61,10 +67,10 @@ export default function Technos(): JSX.Element {
       { icon: <SiCanva className='text-5xl' />, label: 'Canva' },
     ],
     tools: [
-      { icon: <AiFillGithub className='text-5xl' />, label: 'GitHub' },
+      { icon: <IoLogoGithub className='text-5xl' />, label: 'GitHub' },
       { icon: <SiBitbucket className='text-5xl' />, label: 'BitBucket' },
       { icon: <SiGitlab className='text-5xl' />, label: 'GitLab' },
-      { icon: <SiVisualstudiocode className='text-5xl' />, label: 'VS Code' },
+      { icon: <BiLogoVisualStudio className='text-5xl' />, label: 'VS Code' },
       { icon: <SiYarn className='text-5xl' />, label: 'Yarn' },
       { icon: <SiNpm className='text-5xl' />, label: 'npm' },
     ],
@@ -85,12 +91,12 @@ export default function Technos(): JSX.Element {
   return (
     <section
       id='technologies'
-      className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20'
+      className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20 pb-[120px]'
     >
       <h3 className='font-mont mb-10 font-[400] tracking-wider'>TECH STACK</h3>
 
       {/* Large screen layout (lg+) */}
-      <div className='hidden lg:flex lg:w-full lg:max-w-[1200px] lg:flex-col lg:gap-12'>
+      <div className='hidden lg:flex lg:w-full lg:max-w-[1200px] lg:flex-col lg:gap-8'>
         {/* Row 1: Frontend */}
         <div className='flex w-full flex-col'>
           {/* <h4 className='mb-6 self-center text-lg font-semibold capitalize'>
@@ -107,7 +113,7 @@ export default function Technos(): JSX.Element {
         <div className='flex w-full gap-8'>
           {/* Backend */}
           <div className='max-w-2/3 flex w-full flex-col'>
-            <h4 className='mb-6 ml-6 self-start text-lg font-semibold capitalize'>
+            <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
               backend
             </h4>
             <div className='flex w-full gap-[20px]'>
@@ -119,7 +125,7 @@ export default function Technos(): JSX.Element {
 
           {/* Database */}
           <div className='flex w-1/3 flex-col'>
-            <h4 className='mb-6 mr-6 self-end text-lg font-semibold capitalize'>
+            <h4 className='mb-2 mr-6 self-end text-lg font-semibold capitalize'>
               database
             </h4>
             <div className='flex w-full gap-[20px]'>
@@ -134,7 +140,7 @@ export default function Technos(): JSX.Element {
         <div className='flex w-full gap-10'>
           {/* Design */}
           <div className='flex flex-col'>
-            <h4 className='mb-6 ml-6 self-start text-lg font-semibold capitalize'>
+            <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
               design
             </h4>
             <div className='flex w-full gap-[20px]'>
@@ -146,7 +152,7 @@ export default function Technos(): JSX.Element {
 
           {/* Tools */}
           <div className='flex flex-col'>
-            <h4 className='mb-6 mr-6 self-end text-lg font-semibold capitalize'>
+            <h4 className='mb-2 mr-6 self-end text-lg font-semibold capitalize'>
               tools
             </h4>
             <div className='flex w-full gap-[20px]'>

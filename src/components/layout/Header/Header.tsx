@@ -36,7 +36,7 @@ export default function Header(): JSX.Element {
           SKORUS
         </span>
       </a>
-      <div className='justify-betweenflex h-14 items-center'>
+      <div className='flex h-14 items-center justify-between'>
         <Mobile links={links} click={click} handleClick={handleClick} />
         <Desktop links={links} />
       </div>
