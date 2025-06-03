@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import { BiLogoPhp } from 'react-icons/bi';
 import { IoLogoGithub, IoLogoReact } from 'react-icons/io5';
@@ -18,15 +17,6 @@ import {
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 
 import experiencesData from '@/components/Experience/Partials/experiences.json';
-
-interface Experience {
-  title: string;
-  date: string;
-  icon: string;
-  job: string;
-  details: string[];
-  stack: string[];
-}
 
 const getTechIcon = (tech: string): JSX.Element | null => {
   const iconMap: { [key: string]: JSX.Element } = {
@@ -66,12 +56,7 @@ export default function Experience(): JSX.Element {
   );
 }
 
-interface ExperienceSectionProps {
-  exp: Experience;
-  index: number;
-}
-
-function ExperienceSection({ exp, index }: ExperienceSectionProps) {
+function ExperienceSection({ exp, index }: { exp: any; index: number }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -99,7 +84,7 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
     }
 
     return () => {
-      ScrollTrigger?.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger?.getAll().forEach((trigger: any) => trigger.kill());
     };
   }, [index]);
 
@@ -122,12 +107,10 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
           <div>
             <div className='flex justify-between'>
               <span className='mb-2 flex items-center text-[#b6b6b6]'>
-                <Image
-                  src={`/exp/${exp.icon}`}
-                  className='mr-2'
+                <img
+                  src={`./exp/${exp.icon}`}
+                  className='mr-2 h-[18px] w-[18px]'
                   alt={exp.job}
-                  width={18}
-                  height={18}
                 />
                 {exp.job}
               </span>

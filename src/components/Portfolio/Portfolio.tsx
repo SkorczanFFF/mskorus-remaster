@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { AiFillGithub, AiOutlineGlobal } from 'react-icons/ai';
 
@@ -28,12 +27,12 @@ export default function Portfolio(): JSX.Element {
               target='blank'
               className='xl:w-1/2'
             >
-              <Image
+              <img
                 src={project.pic}
-                alt={project.title}
-                width={800}
-                height={600}
-                className='h-full w-full object-cover'
+                alt=''
+                className={` perspective-right border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 ${
+                  project.id % 2 === 0 ? '' : 'perspective-left'
+                }`}
               />
             </a>
             <div
