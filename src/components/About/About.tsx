@@ -18,7 +18,7 @@ export default function About(): JSX.Element {
         </div>
         <div className='perspective-left mr-3 flex justify-end'>
           <h2 className='from-oranger to-raspberry font-mont gradient bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
-            Frontend Developer.
+            Skorus Maciej.
           </h2>
         </div>
       </div>
@@ -27,21 +27,11 @@ export default function About(): JSX.Element {
       </h3>
 
       <div className='mt-[100px] flex gap-10'>
-        <a
-          href='https://github.com/SkorczanFFF'
-          className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <BsGithub className='text-7xl' />
-        </a>
-        <a
-          href='https://www.linkedin.com/in/mskorus/'
-          className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <BsLinkedin className='text-7xl' />
+        <a href='https://github.com/SkorczanFFF'>
+          <BsGithub className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 text-7xl duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]' />
+        </a>{' '}
+        <a href='https://www.linkedin.com/in/mskorus/'>
+          <BsLinkedin className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 text-7xl duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]' />
         </a>
       </div>
     </section>
