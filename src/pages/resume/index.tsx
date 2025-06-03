@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import {
@@ -49,7 +50,20 @@ import {
 import english from './Languages/english.json';
 import polish from './Languages/polish.json';
 
-const technos = [
+interface TechIcon {
+  icon: JSX.Element;
+  label: string;
+}
+
+interface TechCategories {
+  frontend: TechIcon[];
+  backend: TechIcon[];
+  database: TechIcon[];
+  design: TechIcon[];
+  tools: TechIcon[];
+}
+
+const technos: TechIcon[] = [
   { icon: <IoLogoHtml5 className='text-5xl' />, label: 'HTML5' },
   { icon: <IoLogoCss3 className='text-5xl' />, label: 'CSS3' },
   { icon: <SiTypescript className='text-5xl' />, label: 'TypeScript' },
@@ -82,6 +96,22 @@ const technos = [
   { icon: <SiNpm className='text-5xl' />, label: 'npm' },
 ];
 
+interface Experience {
+  company: string;
+  position: string;
+  duration: string;
+  duties: {
+    [key: string]: string;
+  };
+}
+
+interface Education {
+  university: string;
+  field: string;
+  degree: string;
+  dates?: string;
+}
+
 interface ProjectData {
   title: string;
   technologies: string;
@@ -90,6 +120,31 @@ interface ProjectData {
   demoLink: string;
   repo: string;
   demo: string;
+}
+
+interface LanguageData {
+  headers: {
+    experience: string;
+    education: string;
+    languages: {
+      languages: string;
+      english: string;
+      russian: string;
+      polish: string;
+    };
+    about: string;
+    contact: string;
+    links: string;
+    hobbies: string;
+    skills: string;
+    'selected-projects': string;
+    download: string;
+  };
+  aboutme: string;
+  rodo: string;
+  experience: Experience[];
+  education: Education;
+  projects: ProjectData[];
 }
 
 const Project: React.FC<ProjectData> = ({
@@ -132,46 +187,10 @@ const Project: React.FC<ProjectData> = ({
   </div>
 );
 
-interface Experience {
-  company: string;
-  position: string;
-  duration: string;
-  duties: {
-    [key: string]: string;
-  };
-}
-
-interface Education {
-  university: string;
-  field: string;
-  degree: string;
-  dates: string;
-}
-
-interface LanguageData {
-  headers: {
-    experience: string;
-    education: string;
-    languages: {
-      languages: string;
-      english: string;
-      russian: string;
-      polish: string;
-    };
-  };
-  experience: Experience[];
-  education: {
-    university: string;
-    field: string;
-    degree: string;
-    dates: string;
-  };
-}
-
 export default function CV(): JSX.Element {
   const currentYear = new Date().getFullYear();
   const [selectedLanguage, setSelectedLanguage] = useState<string>('english');
-  const handleLanguageChange = (e: any) => {
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedLanguage(e.target.value);
   };
 
@@ -246,11 +265,12 @@ export default function CV(): JSX.Element {
                 </div>
                 <div className='mt-[65px] h-[100%]'>
                   <div className='h-[4px] w-[95%] bg-gradient-to-r from-white from-10% to-transparent to-100%' />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src='/cvphoto.png'
-                    alt='Me'
-                    className='mx-auto mt-[60px] w-[70%]'
+                  <Image
+                    src='/images/resume/profile.jpg'
+                    alt='Profile'
+                    width={200}
+                    height={200}
+                    className='mx-auto mt-[60px] h-[200px] w-[200px] rounded-full object-cover'
                   />
                   <div className='to-raspberry via-raspberry mt-[60px] h-[4px] w-full bg-gradient-to-r from-transparent' />
                   <div className='mt-5 flex flex-col items-end'>
@@ -308,9 +328,11 @@ export default function CV(): JSX.Element {
                       <p className='text-orange/75 text-lg brightness-200'>
                         {languageData.education.degree}
                       </p>
-                      <p className='text-orange/75 text-lg brightness-200'>
-                        {languageData.education.dates}
-                      </p>
+                      {languageData.education.dates && (
+                        <p className='text-orange/75 text-lg brightness-200'>
+                          {languageData.education.dates}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className='mt-5 flex flex-col items-end'>

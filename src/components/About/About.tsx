@@ -1,5 +1,6 @@
 import React from 'react';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
+
 export default function About(): JSX.Element {
   return (
     <section
@@ -26,11 +27,17 @@ export default function About(): JSX.Element {
       </h3>
 
       <div className='mt-[100px] flex gap-10'>
-        <a href='https://github.com/SkorczanFFF'>
-          <BsGithub className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 text-7xl duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]' />
-        </a>{' '}
-        <a href='https://www.linkedin.com/in/mskorus/'>
-          <BsLinkedin className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 text-7xl duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]' />
+        <a
+          href='https://github.com/SkorczanFFF'
+          className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
+        >
+          <BsGithub className='text-7xl' />
+        </a>
+        <a
+          href='https://www.linkedin.com/in/mskorus/'
+          className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]'
+        >
+          <BsLinkedin className='text-7xl' />
         </a>
       </div>
     </section>
