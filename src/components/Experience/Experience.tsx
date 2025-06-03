@@ -108,7 +108,7 @@ function ExperienceSection({ exp, index }: { exp: any; index: number }) {
             <div className='flex justify-between'>
               <span className='mb-2 flex items-center text-[#b6b6b6]'>
                 <img
-                  src={`./exp/${exp.icon}`}
+                  src={`/exp/${exp.icon}`}
                   className='mr-2 h-[18px] w-[18px]'
                   alt={exp.job}
                 />
