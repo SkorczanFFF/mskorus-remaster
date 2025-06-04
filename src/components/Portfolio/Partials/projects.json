@@ -5,7 +5,7 @@
     "title": "POLONEZ AUTODRIVE",
     "technos": "HTML • JavaScript • Three.js • 3D Studio Max",
     "description": "A synthwave-style 3D animation with real-time model and color customization via a built-in GUI. Now includes a beta mini-game set in a retro, 80s-inspired environment. Features dynamic object spawning and models created in 3D Studio Max. Play some music and have fun!",
-    "live": "https://skorczanfff.github.io/Polonez-Autodrive/",
+    "live": "https://polonez-autodrive.vercel.app/",
     "git": "https://polonez-autodrive.vercel.app/"
   },
   {
@@ -33,7 +33,7 @@
     "title": "Yet Another Weather App",
     "technos": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
     "description": "Another `weather application`, but in a new edition. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.",
-    "live": "https://skorczanfff.github.io/YetAnotherWeatherApp/",
+    "live": "https://polonez-autodrive.vercel.app/",
     "git": "https://github.com/SkorczanFFF/YetAnotherWeatherApp/"
   },
 

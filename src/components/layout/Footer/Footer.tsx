@@ -1,10 +1,17 @@
 import React from 'react';
-import { FaRegFilePdf } from 'react-icons/fa';
-import { IoLogoGithub, IoLogoLinkedin, IoMdMailOpen } from 'react-icons/io';
+
+import {
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  PdfIcon,
+} from '@/lib/shared/Icons';
+
 const cvLinks = [
   { href: '/pl.pdf', label: 'PL' },
   { href: '/eng.pdf', label: 'EN' },
 ];
+
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
   return (
@@ -32,13 +39,13 @@ export default function Footer(): JSX.Element {
                 rel='noopener noreferrer'
                 className='text-primary-blue hover:text-raspberry text-5xl duration-200'
               >
-                <IoLogoLinkedin />
+                <LinkedinIcon />
               </a>
               <a
                 href='mailto:skorusmaciej94@gmail.com'
                 className='text-primary-blue hover:text-raspberry text-5xl duration-200'
               >
-                <IoMdMailOpen />
+                <MailIcon />
               </a>
               <a
                 href='https://github.com/SkorczanFFF'
@@ -46,7 +53,7 @@ export default function Footer(): JSX.Element {
                 rel='noopener noreferrer'
                 className='text-primary-blue hover:text-raspberry text-[44px] duration-200'
               >
-                <IoLogoGithub />
+                <GithubIcon />
               </a>
             </div>
           </div>
@@ -65,7 +72,7 @@ export default function Footer(): JSX.Element {
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  <FaRegFilePdf className='text-5xl' />
+                  <PdfIcon className='text-5xl' />
                   {link.label}
                 </a>
               ))}

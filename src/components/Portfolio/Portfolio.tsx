@@ -1,5 +1,6 @@
 import React from 'react';
-import { AiFillGithub, AiOutlineGlobal } from 'react-icons/ai';
+
+import { GithubIcon, GlobalIcon } from '@/lib/shared/Icons';
 
 import projects from './Partials/projects.json';
 
@@ -70,7 +71,7 @@ export default function Portfolio(): JSX.Element {
                   } gap-5`}
                 >
                   <div className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
-                    <AiFillGithub className='text-2xl' />
+                    <GithubIcon className='text-2xl' />
                     <a
                       href={project.git}
                       target='_blank'
@@ -80,7 +81,7 @@ export default function Portfolio(): JSX.Element {
                     </a>
                   </div>
                   <div className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
-                    <AiOutlineGlobal className='text-2xl' />
+                    <GlobalIcon className='text-2xl' />
                     <a
                       href={project.live}
                       target='_blank'
@@ -123,7 +124,7 @@ export default function Portfolio(): JSX.Element {
                   rel='noopener noreferrer'
                   className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
                 >
-                  <AiFillGithub className='text-2xl' />
+                  <GithubIcon className='text-2xl' />
                   <span>repo</span>
                 </a>
               </div>

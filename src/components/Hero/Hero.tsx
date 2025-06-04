@@ -11,6 +11,7 @@ import { easing } from 'maath';
 import React, { Suspense } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
+import { Object3D } from 'three';
 
 import Scene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
@@ -25,7 +26,7 @@ function Rig() {
         15 + Math.cos(state.pointer.x) * 10,
       ],
       0.2,
-      delta
+      delta,
     );
     state.camera.lookAt(0, 0, 0);
   });
@@ -76,7 +77,7 @@ export default function Hero(): JSX.Element {
           <Suspense fallback={<Loader />}>
             {!isMobile ? (
               <>
-                <EffectComposer disableNormalPass>
+                <EffectComposer enableNormalPass={false}>
                   <N8AO aoRadius={5} intensity={15} />
                   <TiltShift2 blur={0.125} />
                 </EffectComposer>
@@ -85,13 +86,13 @@ export default function Hero(): JSX.Element {
                     intensity={8}
                     position={[10, 5, 0]}
                     scale={[15, 50, 1]}
-                    onUpdate={(self) => self.lookAt(0, 0, 0)}
+                    onUpdate={(self: Object3D) => self.lookAt(0, 0, 0)}
                   />
                 </Environment>
               </>
             ) : (
               <>
-                <EffectComposer disableNormalPass>
+                <EffectComposer enableNormalPass={false}>
                   <N8AO aoRadius={0} intensity={15} halfRes={true} />
                 </EffectComposer>
                 <spotLight intensity={1} position={[10, 10, 20]} />

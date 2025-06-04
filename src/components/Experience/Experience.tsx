@@ -1,38 +1,48 @@
 import React, { useEffect, useRef } from 'react';
-import { BiLogoPhp } from 'react-icons/bi';
-import { IoLogoGithub, IoLogoReact } from 'react-icons/io5';
-import {
-  SiBitbucket,
-  SiFirebase,
-  SiGitlab,
-  SiJavascript,
-  SiLaravel,
-  SiMysql,
-  SiNextdotjs,
-  SiSanity,
-  SiTailwindcss,
-  SiTypescript,
-} from 'react-icons/si';
 
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import {
+  BitbucketIcon,
+  FirebaseIcon,
+  GithubIcon,
+  GitlabIcon,
+  JavascriptIcon,
+  LaravelIcon,
+  MysqlIcon,
+  NextjsIcon,
+  PhpIcon,
+  ReactIcon,
+  SanityIcon,
+  TailwindIcon,
+  TypescriptIcon,
+} from '@/lib/shared/Icons';
 
 import experiencesData from '@/components/Experience/Partials/experiences.json';
 
+interface ExperienceData {
+  title: string;
+  date: string;
+  job: string;
+  icon: string;
+  stack: string[];
+  details: string[];
+}
+
 const getTechIcon = (tech: string): JSX.Element | null => {
   const iconMap: { [key: string]: JSX.Element } = {
-    PHP: <BiLogoPhp className='text-xl' />,
-    MySQL: <SiMysql className='text-xl' />,
-    Laravel: <SiLaravel className='text-xl' />,
-    'React Native': <IoLogoReact className='text-xl' />,
-    'Vanilla JS': <SiJavascript className='text-xl' />,
-    TypeScript: <SiTypescript className='text-xl' />,
-    'Next.js': <SiNextdotjs className='text-xl' />,
-    TailwindCSS: <SiTailwindcss className='text-xl' />,
-    Git: <IoLogoGithub className='text-xl' />,
-    'Sanity CMS': <SiSanity className='text-xl' />,
-    Firebase: <SiFirebase className='text-xl' />,
-    GitLab: <SiGitlab className='text-xl' />,
-    Bitbucket: <SiBitbucket className='text-xl' />,
+    PHP: <PhpIcon className='text-xl' />,
+    MySQL: <MysqlIcon className='text-xl' />,
+    Laravel: <LaravelIcon className='text-xl' />,
+    'React Native': <ReactIcon className='text-xl' />,
+    'Vanilla JS': <JavascriptIcon className='text-xl' />,
+    TypeScript: <TypescriptIcon className='text-xl' />,
+    'Next.js': <NextjsIcon className='text-xl' />,
+    TailwindCSS: <TailwindIcon className='text-xl' />,
+    Git: <GithubIcon className='text-xl' />,
+    'Sanity CMS': <SanityIcon className='text-xl' />,
+    Firebase: <FirebaseIcon className='text-xl' />,
+    GitLab: <GitlabIcon className='text-xl' />,
+    Bitbucket: <BitbucketIcon className='text-xl' />,
   };
 
   return iconMap[tech] || null;
@@ -56,7 +66,12 @@ export default function Experience(): JSX.Element {
   );
 }
 
-function ExperienceSection({ exp, index }: { exp: any; index: number }) {
+interface ExperienceSectionProps {
+  exp: ExperienceData;
+  index: number;
+}
+
+function ExperienceSection({ exp, index }: ExperienceSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -76,7 +91,6 @@ function ExperienceSection({ exp, index }: { exp: any; index: number }) {
           end: 'bottom top',
           scrub: 2,
           toggleActions: 'play none none reverse',
-          markers: true,
           anticipatePin: 1,
           fastScrollEnd: true,
         },
@@ -84,7 +98,9 @@ function ExperienceSection({ exp, index }: { exp: any; index: number }) {
     }
 
     return () => {
-      ScrollTrigger?.getAll().forEach((trigger: any) => trigger.kill());
+      ScrollTrigger?.getAll().forEach((trigger: ScrollTrigger) =>
+        trigger.kill(),
+      );
     };
   }, [index]);
 
@@ -115,7 +131,7 @@ function ExperienceSection({ exp, index }: { exp: any; index: number }) {
                 {exp.job}
               </span>
               <div className='flex justify-between'>
-                {exp.stack.map((tech: string, i: number) => {
+                {exp.stack.map((tech, i) => {
                   const icon = getTechIcon(tech);
                   return icon ? (
                     <span
@@ -128,7 +144,7 @@ function ExperienceSection({ exp, index }: { exp: any; index: number }) {
                 })}
               </div>
             </div>
-            {exp.details.map((detail: string, i: number) => (
+            {exp.details.map((detail, i) => (
               <p
                 key={i}
                 className={`${

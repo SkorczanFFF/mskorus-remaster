@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withTM = require('next-transpile-modules')(['three']);
+
 const nextConfig = {
   eslint: {
     dirs: ['src'],
@@ -34,8 +37,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withTM = require('next-transpile-modules')(['three']);
-module.exports = withTM();
+module.exports = withTM(nextConfig);

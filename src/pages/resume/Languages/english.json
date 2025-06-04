@@ -55,7 +55,7 @@
       "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
       "description": "Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80's vibe 'coloring book' like animation with built-in GUI to play with scene colors and models. Turn on some music and have fun with coloring!",
       "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
-      "demoLink": "https://skorczanfff.github.io/Polonez-Autodrive/"
+      "demoLink": "https://polonez-autodrive.vercel.app/"
     },
     {
       "title": "MSKORUS - PORTFOLIO PAGE",

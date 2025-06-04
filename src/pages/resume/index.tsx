@@ -1,85 +1,86 @@
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { isMobile } from 'react-device-detect';
+
 import {
-  AiFillCar,
-  AiFillCompass,
-  AiFillFilePdf,
-  AiFillMail,
-} from 'react-icons/ai';
-import { BiLogoJava, BiLogoPhp, BiLogoVisualStudio } from 'react-icons/bi';
-import { BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
-import { GiGuitarBassHead } from 'react-icons/gi';
-import { GrMysql } from 'react-icons/gr';
-import { HiChip, HiMusicNote } from 'react-icons/hi';
-import { HiMiniLanguage } from 'react-icons/hi2';
-import {
-  IoCallSharp,
-  IoLogoCss3,
-  IoLogoGithub,
-  IoLogoHtml5,
-  IoLogoReact,
-  IoLogoWordpress,
-} from 'react-icons/io5';
-import {
-  SiAdobephotoshop,
-  SiAutodesk,
-  SiBitbucket,
-  SiBlender,
-  SiCanva,
-  SiFirebase,
-  SiGitlab,
-  SiLaravel,
-  SiMongodb,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiNpm,
-  SiPython,
-  SiReact,
-  SiRedux,
-  SiSanity,
-  SiSass,
-  SiTailwindcss,
-  SiThreedotjs,
-  SiTypescript,
-  SiVercel,
-  SiYarn,
-} from 'react-icons/si';
+  AutodeskIcon,
+  BitbucketIcon,
+  BlenderIcon,
+  CallIcon,
+  CanvaIcon,
+  CarIcon,
+  ChipIcon,
+  CompassIcon,
+  CssIcon,
+  FirebaseIcon,
+  GithubIcon,
+  GitlabIcon,
+  GlobeIcon,
+  GuitarIcon,
+  HtmlIcon,
+  JavaIcon,
+  LanguageIcon,
+  LaravelIcon,
+  LinkedinIcon,
+  MailIcon,
+  MongodbIcon,
+  MusicIcon,
+  MysqlIcon,
+  NextjsIcon,
+  NodejsIcon,
+  NpmIcon,
+  PdfIcon,
+  PhotoshopIcon,
+  PhpIcon,
+  PythonIcon,
+  ReactIcon,
+  ReactNativeIcon,
+  ReduxIcon,
+  SanityIcon,
+  SassIcon,
+  TailwindIcon,
+  ThreejsIcon,
+  TypescriptIcon,
+  VercelIcon,
+  VsCodeIcon,
+  WordpressIcon,
+  YarnIcon,
+} from '@/lib/shared/Icons';
 
 import english from './Languages/english.json';
 import polish from './Languages/polish.json';
 
 const technos = [
-  { icon: <IoLogoHtml5 className='text-5xl' />, label: 'HTML5' },
-  { icon: <IoLogoCss3 className='text-5xl' />, label: 'CSS3' },
-  { icon: <SiTypescript className='text-5xl' />, label: 'TypeScript' },
-  { icon: <IoLogoReact className='text-5xl' />, label: 'React' },
-  { icon: <SiNextdotjs className='text-5xl' />, label: 'Next.js' },
-  { icon: <SiReact className='text-5xl' />, label: 'React Native' },
-  { icon: <SiRedux className='text-5xl' />, label: 'Redux' },
-  { icon: <SiThreedotjs className='text-5xl' />, label: 'Three.js' },
-  { icon: <SiTailwindcss className='text-5xl' />, label: 'TailwindCSS' },
-  { icon: <SiSass className='text-5xl' />, label: 'Sass' },
-  { icon: <BiLogoPhp className='text-5xl' />, label: 'PHP' },
-  { icon: <SiNodedotjs className='text-5xl' />, label: 'Node.js' },
-  { icon: <BiLogoJava className='text-5xl' />, label: 'Java' },
-  { icon: <SiPython className='text-5xl' />, label: 'Python' },
-  { icon: <SiLaravel className='text-5xl' />, label: 'Laravel' },
-  { icon: <IoLogoWordpress className='text-5xl' />, label: 'Wordpress' },
-  { icon: <SiSanity className='text-5xl' />, label: 'Sanity' },
-  { icon: <GrMysql className='text-5xl' />, label: 'MySQL' },
-  { icon: <SiFirebase className='text-5xl' />, label: 'Firebase' },
-  { icon: <SiMongodb className='text-5xl' />, label: 'MongoDB' },
-  { icon: <SiAdobephotoshop className='text-5xl' />, label: 'Photoshop' },
-  { icon: <SiAutodesk className='text-5xl' />, label: '3Ds Max' },
-  { icon: <SiBlender className='text-5xl' />, label: 'Blender' },
-  { icon: <SiCanva className='text-5xl' />, label: 'Canva' },
-  { icon: <IoLogoGithub className='text-5xl' />, label: 'GitHub' },
-  { icon: <SiBitbucket className='text-5xl' />, label: 'BitBucket' },
-  { icon: <SiGitlab className='text-5xl' />, label: 'GitLab' },
-  { icon: <BiLogoVisualStudio className='text-5xl' />, label: 'VS Code' },
-  { icon: <SiYarn className='text-5xl' />, label: 'Yarn' },
-  { icon: <SiNpm className='text-5xl' />, label: 'npm' },
+  { icon: <HtmlIcon className='text-5xl' />, label: 'HTML5' },
+  { icon: <CssIcon className='text-5xl' />, label: 'CSS3' },
+  { icon: <TypescriptIcon className='text-5xl' />, label: 'TypeScript' },
+  { icon: <ReactIcon className='text-5xl' />, label: 'React' },
+  { icon: <NextjsIcon className='text-5xl' />, label: 'Next.js' },
+  { icon: <ReactNativeIcon className='text-5xl' />, label: 'React Native' },
+  { icon: <ReduxIcon className='text-5xl' />, label: 'Redux' },
+  { icon: <ThreejsIcon className='text-5xl' />, label: 'Three.js' },
+  { icon: <TailwindIcon className='text-5xl' />, label: 'TailwindCSS' },
+  { icon: <SassIcon className='text-5xl' />, label: 'Sass' },
+  { icon: <PhpIcon className='text-5xl' />, label: 'PHP' },
+  { icon: <NodejsIcon className='text-5xl' />, label: 'Node.js' },
+  { icon: <JavaIcon className='text-5xl' />, label: 'Java' },
+  { icon: <PythonIcon className='text-5xl' />, label: 'Python' },
+  { icon: <LaravelIcon className='text-5xl' />, label: 'Laravel' },
+  { icon: <WordpressIcon className='text-5xl' />, label: 'Wordpress' },
+  { icon: <SanityIcon className='text-5xl' />, label: 'Sanity' },
+  { icon: <MysqlIcon className='text-5xl' />, label: 'MySQL' },
+  { icon: <FirebaseIcon className='text-5xl' />, label: 'Firebase' },
+  { icon: <MongodbIcon className='text-5xl' />, label: 'MongoDB' },
+  { icon: <PhotoshopIcon className='text-5xl' />, label: 'Photoshop' },
+  { icon: <AutodeskIcon className='text-5xl' />, label: '3Ds Max' },
+  { icon: <BlenderIcon className='text-5xl' />, label: 'Blender' },
+  { icon: <CanvaIcon className='text-5xl' />, label: 'Canva' },
+  { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
+  { icon: <BitbucketIcon className='text-5xl' />, label: 'BitBucket' },
+  { icon: <GitlabIcon className='text-5xl' />, label: 'GitLab' },
+  { icon: <VsCodeIcon className='text-5xl' />, label: 'VS Code' },
+  { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
+  { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
 ];
 
 interface ProjectData {
@@ -117,7 +118,7 @@ const Project: React.FC<ProjectData> = ({
           target='_blank'
           rel='noreferrer'
         >
-          <IoLogoGithub className='text-3xl' /> {repo}
+          <GithubIcon className='text-3xl' /> {repo}
         </a>
         <a
           className='hover:text-raspberry flex cursor-pointer items-center gap-2 duration-150'
@@ -125,7 +126,7 @@ const Project: React.FC<ProjectData> = ({
           target='_blank'
           rel='noreferrer'
         >
-          <BsGlobe2 className='text-2xl' /> {demo}
+          <GlobeIcon className='text-2xl' /> {demo}
         </a>
       </div>
     </div>
@@ -141,24 +142,25 @@ interface Experience {
   };
 }
 
-interface Education {
-  university: string;
-  field: string;
-  degree: string;
-  dates: string;
-}
-
 interface LanguageData {
   headers: {
-    experience: string;
-    education: string;
+    about: string;
+    contact: string;
     languages: {
       languages: string;
       english: string;
       russian: string;
       polish: string;
     };
+    links: string;
+    hobbies: string;
+    experience: string;
+    education: string;
+    'selected-projects': string;
+    skills: string;
+    download: string;
   };
+  aboutme: string;
   experience: Experience[];
   education: {
     university: string;
@@ -166,12 +168,14 @@ interface LanguageData {
     degree: string;
     dates: string;
   };
+  projects: ProjectData[];
+  rodo: string;
 }
 
 export default function CV(): JSX.Element {
   const currentYear = new Date().getFullYear();
   const [selectedLanguage, setSelectedLanguage] = useState<string>('english');
-  const handleLanguageChange = (e: any) => {
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedLanguage(e.target.value);
   };
 
@@ -227,7 +231,7 @@ export default function CV(): JSX.Element {
             className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
           >
             {languageData.headers.download}
-            <AiFillFilePdf className='ml-1 text-lg' />
+            <PdfIcon className='ml-1 text-lg' />
           </a>
         </div>
         {!isMobile && (
@@ -278,7 +282,7 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        skorusmaciej94@gmail.com <AiFillMail />
+                        skorusmaciej94@gmail.com <MailIcon />
                       </a>
                       <a
                         href='tel:+48668366648'
@@ -287,7 +291,7 @@ export default function CV(): JSX.Element {
                         rel='noreferrer'
                       >
                         +48 668 366 648
-                        <IoCallSharp />
+                        <CallIcon />
                       </a>
                     </div>
                   </div>
@@ -347,7 +351,7 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        /skorczanFFF <BsGithub className='-mt-[2px]' />
+                        /skorczanFFF <GithubIcon className='-mt-[2px]' />
                       </a>
                       <a
                         className='hover:text-orange flex items-center gap-2 duration-150'
@@ -355,7 +359,7 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        /mskorus <BsLinkedin className='-mt-[2px]' />
+                        /mskorus <LinkedinIcon className='-mt-[2px]' />
                       </a>
                       <a
                         className='hover:text-orange flex items-center gap-2 duration-150'
@@ -363,7 +367,7 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        mskorus.vercel.app <SiVercel className='-mt-[2px]' />
+                        mskorus.vercel.app <VercelIcon className='-mt-[2px]' />
                       </a>
                     </div>
                   </div>
@@ -377,14 +381,14 @@ export default function CV(): JSX.Element {
                     <div className=' flex h-[100%] flex-col justify-between'>
                       <div className='mx-4 mr-5 mt-3 flex flex-col items-center gap-5 text-end text-xl text-white'>
                         <div className='flex w-[310px] justify-between'>
-                          <GiGuitarBassHead className='text-6xl' />
-                          <AiFillCar className='text-6xl' />
-                          <HiMusicNote className='text-6xl' />
+                          <GuitarIcon className='text-6xl' />
+                          <CarIcon className='text-6xl' />
+                          <MusicIcon className='text-6xl' />
                         </div>
                         <div className='flex w-[310px] justify-between'>
-                          <AiFillCompass className='text-6xl' />
-                          <HiChip className='text-6xl' />
-                          <HiMiniLanguage className='text-6xl' />
+                          <CompassIcon className='text-6xl' />
+                          <ChipIcon className='text-6xl' />
+                          <LanguageIcon className='text-6xl' />
                         </div>
                       </div>
                       {/* <div className='mx-4 text-justify text-[12px] leading-4 text-white/40 opacity-75'>

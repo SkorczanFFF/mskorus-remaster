@@ -44,7 +44,7 @@
       "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
       "duration": "[ 1 rok ]",
       "duties": {
-        "1": "Rozwój zdecentralizowanej aplikacji z integracją Smart Contractów oraz kolekcji ImmutableX, w tym budowa marketplace’u, bridging NFT pomiędzy L1 i L2, transfery między kontami oraz system aukcji na żywo",
+        "1": "Rozwój zdecentralizowanej aplikacji z integracją Smart Contractów oraz kolekcji ImmutableX, w tym budowa marketplace'u, bridging NFT pomiędzy L1 i L2, transfery między kontami oraz system aukcji na żywo",
         "2": "Praca z bazami danych i funkcjami chmurowymi Moralis i Firebase, wykorzystanie TypeScript, Next.js, GSAP oraz systemów kontroli wersji takich jak GitLab i Bitbucket",
         "3": "Implementacja nowej strony głównej, integracja bloga opartego na CMS Sanity oraz tworzenie dedykowanych stron wydarzeń i funkcjonalności w ramach platform firmowych",
         "4": "Manualne testowanie Pirates of the Arrland, w tym komponentów gry 3D typu MOBA oraz strategicznej mapy 2D w aplikacji zdecentralizowanej",
@@ -55,7 +55,8 @@
   "education": {
     "university": "UŚ - Wydział Nauk Ścisłych i Technicznych",
     "field": "INFORMATYKA - Programowanie Aplikacji Webowych",
-    "degree": "Inżynier • Październik 2017 - Czerwiec 2021"
+    "degree": "Inżynier",
+    "dates": "Październik 2017 - Czerwiec 2021"
   },
   "projects": [
     {
@@ -70,7 +71,7 @@
       "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
       "description": "Prosta trójwymiarowa animacja wykonana przy pomocy 3D Studio Max 2019 oraz Three.js. Wyeksportowane modele wraz z animacjami w formacie .fbx zostały połączone w scenę klimacie Synthwave/lat 80 tworząc interaktywną kolorowankę. Wbudowane GUI umożliwia łatwą manipulację elementami sceny i jej kolorami.",
       "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
-      "demoLink": "https://skorczanfff.github.io/Polonez-Autodrive/"
+      "demoLink": "https://polonez-autodrive.vercel.app/"
     },
     {
       "title": "YET ANOTHER WEATHER APP",
