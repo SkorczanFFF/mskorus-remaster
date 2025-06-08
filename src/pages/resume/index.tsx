@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
+import { useReactToPrint } from 'react-to-print';
 
 import {
   AutodeskIcon,
@@ -78,7 +79,7 @@ const technos = [
   { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
   { icon: <BitbucketIcon className='text-5xl' />, label: 'BitBucket' },
   { icon: <GitlabIcon className='text-5xl' />, label: 'GitLab' },
-  { icon: <VsCodeIcon className='text-5xl' />, label: 'VS Code' },
+  { icon: <VsCodeIcon className='text-5xl' />, label: 'CursorAI' },
   { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
   { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
 ];
@@ -108,7 +109,7 @@ const Project: React.FC<ProjectData> = ({
       <div className='text-raspberry ml-2 mr-8 mt-2 flex items-center text-lg tracking-wide'>
         {technologies}
       </div>
-      <p className='ml-2 mr-8 mt-2 flex items-center text-xl leading-[20px]'>
+      <p className='ml-2 mr-8 mt-2 flex items-center text-xl leading-[20px] text-justify'>
         {description}
       </p>
       <div className='ml-4 mt-2 flex gap-10 text-xl'>
@@ -178,7 +179,8 @@ export default function CV(): JSX.Element {
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedLanguage(e.target.value);
   };
-
+  const contentRef = useRef<HTMLDivElement>(null);
+  const reactToPrintFn = useReactToPrint({ contentRef });
   const languageData = selectedLanguage === 'english' ? english : polish;
 
   return (
@@ -215,19 +217,14 @@ export default function CV(): JSX.Element {
                 className='hover:bg-orange bg-raspberry focus:bg-orange overflow-visible border-transparent py-0 text-xs tracking-wider text-white ring-gray-300 duration-150'
               >
                 <option value='english'>English</option>
-                <option value='polish'>Polski</option>
+                <option value='polish'>Polish</option>
               </select>
               -
             </div>
           )}
 
           <a
-            href={`${selectedLanguage === 'english' ? '/eng.pdf' : '/pl.pdf'}`}
-            download={`${
-              selectedLanguage === 'english'
-                ? 'Maciej Skorus - CV[ENG]'
-                : 'Maciej Skorus - CV [PL]'
-            }`}
+            onClick={reactToPrintFn}
             className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
           >
             {languageData.headers.download}
@@ -236,7 +233,7 @@ export default function CV(): JSX.Element {
         </div>
         {!isMobile && (
           <div className='xxl:overflow-hidden m-10 mt-0 flex  h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
-            <div className='flex w-full'>
+            <div className='flex w-full' ref={contentRef}>
               <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
                 <div className='arrow-top-left white' />
                 <div className='flex flex-col items-center justify-center'>
@@ -441,7 +438,7 @@ export default function CV(): JSX.Element {
                               {Object.entries(exp.duties).map(([key, duty]) => (
                                 <li
                                   key={key}
-                                  className='m-0 p-0 leading-[20px]'
+                                  className='m-0 p-0 leading-[20px] text-justify'
                                 >
                                   {duty}
                                 </li>
@@ -497,7 +494,7 @@ export default function CV(): JSX.Element {
                               </div>
                             </div>
                           </div>
-                          <div className='bottom-0 -ml-2 mr-2 mt-[10px] text-center text-[14px] leading-4 opacity-75'>
+                          <div className='bottom-0 -ml-2 mr-2 mt-[10px] px-4 text-center text-[14px] leading-4 opacity-75'>
                             {languageData.rodo}
                           </div>
                         </div>

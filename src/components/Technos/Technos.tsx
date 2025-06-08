@@ -71,7 +71,7 @@ export default function Technos(): JSX.Element {
       { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
       { icon: <BitbucketIcon className='text-5xl' />, label: 'BitBucket' },
       { icon: <GitlabIcon className='text-5xl' />, label: 'GitLab' },
-      { icon: <VsCodeIcon className='text-5xl' />, label: 'VS Code' },
+      { icon: <VsCodeIcon className='text-5xl' />, label: 'CursorAI' },
       { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
       { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
     ],

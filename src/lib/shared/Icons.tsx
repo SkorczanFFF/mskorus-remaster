@@ -7,8 +7,8 @@ import {
   AiFillMail,
   AiOutlineGlobal,
 } from 'react-icons/ai';
-import { BiLogoJava, BiLogoPhp, BiLogoVisualStudio } from 'react-icons/bi';
-import { BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
+import { BiLogoJava, BiLogoPhp } from 'react-icons/bi';
+import { BsCursorFill, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
 import { GiGuitarBassHead } from 'react-icons/gi';
 import { GrMysql } from 'react-icons/gr';
 import { HiChip, HiMusicNote } from 'react-icons/hi';
@@ -100,7 +100,7 @@ export const BlenderIcon = SiBlender as IconType;
 export const CanvaIcon = SiCanva as IconType;
 
 // Development Tool Icons
-export const VsCodeIcon = BiLogoVisualStudio as IconType;
+export const VsCodeIcon = BsCursorFill as IconType;
 export const GitlabIcon = SiGitlab as IconType;
 export const BitbucketIcon = SiBitbucket as IconType;
 export const NpmIcon = SiNpm as IconType;
