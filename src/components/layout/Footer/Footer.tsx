@@ -25,7 +25,7 @@ export default function Footer(): JSX.Element {
         </p>
         <div className='gradient h-[8px] w-full' />
         <div className='arrow-down orange' />
-        <div className='arrow-down ' />
+        <div className='arrow-down blue absolute top-[30px]' />
       </div>
       <div className='flex w-full items-center justify-center bg-white'>
         <div className='mx-5 flex w-[1000px] flex-col items-center justify-between gap-5 py-10 sm:flex-row sm:gap-0'>
