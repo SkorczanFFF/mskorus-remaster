@@ -16,7 +16,7 @@
     "skills": "SKILLS AND TOOLS",
     "download": "DOWNLOAD"
   },
-  "aboutme": "",
+  "aboutme": "Versatile and open-minded developer focused on building engaging, user-centered frontend solutions, with solid hands-on experience in backend work. Skilled in Web3 development for the gaming industry and in crafting custom platforms and tools for the medical events sector, backed by a strong foundation in IT support. Personally passionate about WebGL, 3D graphics, and building automation scripts and tools to streamline workflows",
   "experience": [
     {
       "company": "BUSINESS SERVICE GALOP",
@@ -52,7 +52,7 @@
   "projects": [
     {
       "title": "POLONEZ AUTODRIVE",
-      "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
+      "technologies": "JavaScript • Three.js • 3D Studio Max 2019",
       "description": "Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80's vibe 'coloring book' like animation with built-in GUI to play with scene colors and models. Turn on some music and have fun with coloring!",
       "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
       "demoLink": "https://polonez-autodrive.vercel.app/"
@@ -60,7 +60,7 @@
     {
       "title": "MSKORUS - PORTFOLIO PAGE",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
-      "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume in English and Polish.",
+      "description": "Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for better itneractivity. Pure React Three Fiber and web experiments battleground.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
       "demoLink": "https://mskorus.vercel.app/"
     },

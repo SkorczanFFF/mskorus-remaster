@@ -41,15 +41,18 @@ export default function Portfolio(): JSX.Element {
                 project.id % 2 === 0 ? 'perspective-left' : ' perspective-right'
               }`}
             >
-              <p
-                className={`hover:text-primary-blue my-3 w-auto cursor-pointer bg-gradient-to-r p-2 text-xl font-[400] duration-75 md:text-2xl lg:text-3xl ${
-                  project.id % 2 === 0
-                    ? 'from-raspberry to-oranger'
-                    : 'to-raspberry from-oranger text-end'
-                }`}
-              >
-                {project.title}
-              </p>
+              {' '}
+              <a href={project.git} target='_blank' rel='noopener noreferrer'>
+                <p
+                  className={`hover:text-primary-blue my-3 w-auto cursor-pointer bg-gradient-to-r p-2 text-xl font-[400] duration-75 md:text-2xl lg:text-3xl ${
+                    project.id % 2 === 0
+                      ? 'from-raspberry to-oranger'
+                      : 'to-raspberry from-oranger text-end'
+                  }`}
+                >
+                  {project.title}
+                </p>
+              </a>
               <p
                 className={`mx-3 mb-2 text-gray-400 ${
                   project.id % 2 === 0 ? '' : 'text-end'

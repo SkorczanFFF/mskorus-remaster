@@ -16,42 +16,34 @@
     "skills": "UMIEJĘTNOŚCI I NARZĘDZIA",
     "download": "POBIERZ"
   },
-  "aboutme": "Jestem programistą łączącym ciekawość z pasją do najnowocześniejszych technologii internetowych, który nieustannie poszukuję kolejnych wyzwań. Hobbistyczne zainteresowanie WebGL oraz pierwsze zdobyte doświadczenie podczas tworzenia gry opartej o technologię Blockchain, ukształtowało mój cel, którym stało się tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomu przeglądarki internetowej. Aktualnie szukam nowego zespołu z którym mógłbym się rozwijać, dzielić wiedzą i świętować wspólnie odniesione sukcesy.",
+  "aboutme": "Wszechstronny i otwarty na nowe wyzwania developer, skoncentrowany na tworzeniu angażujących, zorientowanych na użytkownika rozwiązań frontendowych, z solidnym doświadczeniem w pracy po stronie backendu. Posiada umiejętności w zakresie rozwoju Web3 w branży gier oraz tworzenia dedykowanych rozwiązań dla sektora wydarzeń medycznych, oraz silnym zapleczem w obszarze wsparcia IT. Prywatnie pasjonat WebGL, grafiki 3D oraz tworzenia skryptów i narzędzi.",
   "experience": [
     {
       "company": "BUSINESS SERVICE GALOP",
       "position": "Front-End Developer",
-      "duration": "maj 2024 – obecnie",
+      "duration": "Maj 2024 - obecnie",
       "duties": {
-        "1": "Rozbudowa i optymalizacja wewnętrznego systemu zarządzania wydarzeniami (PHP, Smarty, MySQL, jQuery/Vanilla JS), wdrażanie nowych funkcjonalności (np. weryfikacja materiałów, generowanie raportów PDF po konferencjach) oraz usuwanie błędów",
-        "2": "Tworzenie dedykowanych rozwiązań front-endowych dla wydarzeń medycznych (formularze rejestracyjne, integracja z zewnętrznymi API itp.)",
-        "3": "Projektowanie nowej strefy uczestnika w systemie konferencyjnym, dostosowanej do wymagań klientów",
-        "4": "Tworzenie aplikacji mobilnej na kolektory danych Zebra z obsługą skanowania kodów QR, lokalnym zapisem danych, panelem administracyjnym oraz możliwością eksportu/udostępniania CSV (React Native, Expo)",
-        "5": "Budowa aplikacji głosującej z panelem administracyjnym (PHP, Vanilla JS, Chart.js)",
-        "6": "Tworzenie wirtualnych stoisk z dokumentacją dla firm (Vanilla JS, CSS)",
-        "7": "Rozwój aplikacji webowej do śledzenia obecności podczas sesji wydarzeń, z obsługą zarówno urządzeń samoobsługowych, jak i mobilnych skanerów Zebra (Vanilla JS, PHP)",
-        "8": "Tworzenie responsywnych i spójnych mailingów kompatybilnych z najpopularniejszymi klientami pocztowymi",
-        "9": "Tworzenie niestandardowych rozwiązań usprawniających pracę zespołu",
-        "10": "Zapewnienie wsparcia IT dla zespołu i podczas delegacji służbowych w całej Polsce, dbanie o poprawne działanie aplikacji oraz sprzętu",
-        "11": "Pomoc uczestnikom wydarzeń, również podczas konferencji międzynarodowych",
-        "12": "Współpraca z programistą backendowym, grafikami 2D/3D oraz całym zespołem projektowym",
-        "13": "Reprezentowanie działu IT podczas spotkań online z klientami",
-        "14": "Pełnienie funkcji kierowcy służbowego w razie potrzeby"
+        "1": "Aktualizacja i rozbudowa wewnętrznego systemu zarządzania wydarzeniami o nowe funkcjonalności, optymalizacje oraz poprawki błędów; zaprojektowanie nowej strefy uczestnika zintegrowanej ze stronami wydarzeń; stworzenie dedykowanej instancji systemu dostosowanej do potrzeb kluczowego klienta, obsługującej różnorodne kursy i wydarzenia medyczne",
+        "2": "Tworzenie dedykowanych rozwiązań front-endowych dla wydarzeń medycznych (dostosowane formularze rejestracyjne i strony internetowe, strefy uczestnika, integracje z API), platformy VOD oraz responsywnych mailingów kompatybilnych ze wszystkimi głównymi usługami pocztowymi",
+        "3": "Opracowanie aplikacji mobilnej dla kolektorów danych Zebra (skanowanie kodów QR z lokalnym zapisem danych) oraz aplikacji webowej do rejestracji obecności na sesjach wydarzeń, obsługujących zarówno kioski do samodzielnego skanowania, jak i skanery Zebra",
+        "4": "Stworzenie konfigurowalnej aplikacji do głosowania na żywo z panelem administracyjnym i wynikami w czasie rzeczywistym; opracowanie wirtualnych stoisk wystawców z dokumentacją dla firm partnerskich",
+        "5": "Świadczenie wsparcia IT na miejscu podczas wydarzeń w całej Polsce, zapewniając płynne działanie systemów i niezawodność sprzętu; pomoc uczestnikom wydarzeń w razie potrzeby, również podczas konferencji międzynarodowych; reprezentowanie działu IT podczas międzynarodowych spotkań oraz okazjonalne pełnienie funkcji kierowcy firmowego"
       }
     },
     {
-      "company": "ANFATA GAMES SP. Z O.O.",
-      "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
-      "duration": "[ 1 rok ]",
+      "company": "ANFATA GAMES",
+      "position": "Junior Web3 Frontend Developer",
+      "duration": "Wrzesień 2022 - Sierpień 2023",
       "duties": {
-        "1": "Rozwój zdecentralizowanej aplikacji z integracją Smart Contractów oraz kolekcji ImmutableX, w tym budowa marketplace'u, bridging NFT pomiędzy L1 i L2, transfery między kontami oraz system aukcji na żywo",
-        "2": "Praca z bazami danych i funkcjami chmurowymi Moralis i Firebase, wykorzystanie TypeScript, Next.js, GSAP oraz systemów kontroli wersji takich jak GitLab i Bitbucket",
-        "3": "Implementacja nowej strony głównej, integracja bloga opartego na CMS Sanity oraz tworzenie dedykowanych stron wydarzeń i funkcjonalności w ramach platform firmowych",
-        "4": "Manualne testowanie Pirates of the Arrland, w tym komponentów gry 3D typu MOBA oraz strategicznej mapy 2D w aplikacji zdecentralizowanej",
-        "5": "Ścisła współpraca z zespołami międzynarodowymi i interdyscyplinarnymi w celu dostarczania zintegrowanych doświadczeń Web3"
+        "1": "Tworzenie zdecentralizowanej aplikacji zintegrowanej ze Smart Contracts i kolekcjami ImmutableX, w tym budowa marketplace’u, mostkowanie NFT między L1 i L2, umożliwienie transferów między kontami oraz wdrożenie systemu aukcji na żywo",
+        "2": "Praca z bazami danych Moralis i Firebase oraz funkcjami w chmurze, z wykorzystaniem TypeScript, Next.js, GSAP i systemów kontroli wersji takich jak GitLab i Bitbucket",
+        "3": "Wdrożenie nowej strony głównej, integracja bloga opartego na Sanity CMS oraz tworzenie dedykowanych stron i funkcjonalności związanych z wydarzeniami w ramach platform firmy",
+        "4": "Manualne testowanie gry Pirates of the Arrland, w tym komponentów 3D MOBA oraz 2D mapy strategicznej w ramach zdecentralizowanej aplikacji",
+        "5": "Ścisła współpraca w międzynarodowym i interdyscyplinarnym zespole"
       }
     }
   ],
+
   "education": {
     "university": "UŚ - Wydział Nauk Ścisłych i Technicznych",
     "field": "INFORMATYKA - Programowanie Aplikacji Webowych",

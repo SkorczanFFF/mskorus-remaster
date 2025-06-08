@@ -25,8 +25,17 @@ export default function About(): JSX.Element {
         </div>
       </div>
 
-      <h3 className='bg-primary-blue font-mont text-real-white mx-3 mb-10 mt-20 max-w-[600px] px-4 py-2 text-center text-sm font-[400] tracking-wide'>
-        WIP
+      <h3 className=' font-mont text-primary-blue mx-3 mb-10 mt-20 leading-7 max-w-[720px] px-4 py-2 text-[21px] text-sm font-[400] tracking-wide text-center'>
+        <b>Versatile and open-minded</b> developer focused on building engaging,
+        user-centered frontend solutions, with solid hands-on experience in
+        backend work. Skilled in <b>Web3 development for the gaming industry</b>{' '}
+        and in
+        <b>crafting custom platforms and tools for the medical events sector</b>
+        , backed by a strong foundation in <b>IT support</b>. Personally
+        passionate about
+        <b> WebGL</b>, <b>3D graphics</b>, and building{' '}
+        <b>automation scripts and tools</b>
+        to streamline workflows.
       </h3>
 
       <div className='mt-[100px] flex gap-10'>

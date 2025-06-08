@@ -203,7 +203,7 @@ export default function CV(): JSX.Element {
           {isMobile ? (
             <p className='text-white'>Download resume in PDF format</p>
           ) : (
-            <div className='my-auto flex h-[28px]'>
+            <div className='my-auto flex h-[28px] mr-2'>
               <label
                 htmlFor='language-select'
                 className='mr-2 mt-[3px] text-sm text-white'
@@ -214,25 +214,24 @@ export default function CV(): JSX.Element {
                 id='language-select'
                 value={selectedLanguage}
                 onChange={handleLanguageChange}
-                className='hover:bg-orange bg-raspberry focus:bg-orange overflow-visible border-transparent py-0 text-xs tracking-wider text-white ring-gray-300 duration-150'
+                className='hover:bg-orange bg-raspberry focus:bg-orange overflow-visible border-transparent py-0 text-xs tracking-wider text-white ring-gray-300 duration-150 min-w-[100px] cursor-pointer'
               >
                 <option value='english'>English</option>
                 <option value='polish'>Polish</option>
               </select>
-              -
             </div>
           )}
 
           <a
             onClick={reactToPrintFn}
-            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
+            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'
           >
             {languageData.headers.download}
             <PdfIcon className='ml-1 text-lg' />
           </a>
         </div>
         {!isMobile && (
-          <div className='xxl:overflow-hidden m-10 mt-0 flex  h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
+          <div className='xxl:overflow-hidden m-10 mt-0 flex h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
             <div className='flex w-full' ref={contentRef}>
               <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
                 <div className='arrow-top-left white' />
@@ -261,7 +260,7 @@ export default function CV(): JSX.Element {
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <p className='ml-6 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
+                    <p className='ml-6 mr-8 mt-2 text-end text-[20px] tracking-[0px] leading-6 text-white'>
                       {languageData.aboutme}
                     </p>
                   </div>
@@ -376,7 +375,7 @@ export default function CV(): JSX.Element {
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
                     <div className=' flex h-[100%] flex-col justify-between'>
-                      <div className='mx-4 mr-5 mt-3 flex flex-col items-center gap-5 text-end text-xl text-white'>
+                      <div className='mx-4 mr-7 mt-3 flex flex-col items-center gap-5 text-end text-xl text-white'>
                         <div className='flex w-[310px] justify-between'>
                           <GuitarIcon className='text-6xl' />
                           <CarIcon className='text-6xl' />
@@ -397,12 +396,12 @@ export default function CV(): JSX.Element {
               </div>
               <div className='flex flex-col'>
                 <div className='bg-primary-blue flex h-[90px] w-full items-center text-white'>
-                  <p className='right-0 mx-auto text-4xl font-[300] tracking-[15px]'>
+                  <p className='right-0 mx-auto text-4xl font-[400] tracking-[15px]'>
                     FRONTEND DEVELOPER
                   </p>
                 </div>
                 <div className='flex'>
-                  <div className='bg-raspberry -mt-[1px] h-[1932px]'>
+                  <div className='bg-raspberry h-[1932px]'>
                     <div className='arrow-top-left cv-blue' />
                   </div>
                   <div className='flex h-[1931px] w-[1011px] flex-col bg-white'>
@@ -473,9 +472,9 @@ export default function CV(): JSX.Element {
                         ))}
 
                         <div className='flex h-full flex-col justify-between'>
-                          <div className='mt-10 flex w-full'>
+                          <div className='mt-10 flex w-full -ml-[18px]'>
                             <div className='cv-arrow -ml-[22px]' />
-                            <div className=' flex flex-col text-[#20252f]'>
+                            <div className=' flex flex-col text-[#20252f] -mt-[5px]'>
                               <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                                 {languageData.headers.skills}
                               </p>

@@ -3,17 +3,17 @@
     "id": 0,
     "pic": "/projects/polonez_autodrive.jpg",
     "title": "POLONEZ AUTODRIVE",
-    "technos": "HTML • JavaScript • Three.js • 3D Studio Max",
-    "description": "A synthwave-style 3D animation with real-time model and color customization via a built-in GUI. Now includes a beta mini-game set in a retro, 80s-inspired environment. Features dynamic object spawning and models created in 3D Studio Max. Play some music and have fun!",
+    "technos": "JavaScript • Three.js • 3D Studio Max",
+    "description": "A synthwave-style 3D coloring-book like animation with real-time model and color customization of the scene via a built-in GUI. Built with creativity and models from 3D Studio Max. Now includes a beta overtaking mini-game.",
     "live": "https://polonez-autodrive.vercel.app/",
-    "git": "https://polonez-autodrive.vercel.app/"
+    "git": "https://github.com/SkorczanFFF/Polonez-Autodrive"
   },
   {
     "id": 1,
     "pic": "/projects/tba.jpg",
     "title": "Poemz [WIP]",
     "technos": "React • Express • MongoDB • Node.js • GraphQL",
-    "description": "Fullstack application on MERN stack using GraphQL. Users will have ability to register, post poems and leave comments. More info soon.",
+    "description": "Fullstack application on MERN stack using GraphQL, featuring basic web app functionality and user authentication. Main purpose of this project was to focus on backend development to learn more about GraphQL. Still work in progress, more info coming soon.",
     "live": "",
     "git": "https://github.com/SkorczanFFF/poemz-mern-graphql"
   },
@@ -22,7 +22,7 @@
     "pic": "/projects/portfolio.jpg",
     "title": "MSKORUS - my porftolio",
     "technos": "Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender",
-    "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume.",
+    "description": "Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for better itneractivity. Pure React Three Fiber and web experiments battleground.",
     "live": "https://mskorus.vercel.app/",
     "git": "https://github.com/SkorczanFFF/mskorus-remaster"
   },
@@ -31,8 +31,8 @@
     "id": 3,
     "pic": "/projects/YAWA.jpg",
     "title": "Yet Another Weather App",
-    "technos": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
-    "description": "Another `weather application`, but in a new edition. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.",
+    "technos": "React • JavaScript • Sass • Vanta.js • Open-Meteo API",
+    "description": "Another `weather application`, but built slightly differently. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Lately, API chaged from OpenWeather to Open-Meteo. Unfortunately, still desktop only. ",
     "live": "https://polonez-autodrive.vercel.app/",
     "git": "https://github.com/SkorczanFFF/YetAnotherWeatherApp/"
   },
