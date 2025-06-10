@@ -76,10 +76,6 @@ const createDesktopIcosphereMaterial = () => (
   />
 );
 
-interface SceneProps extends React.HTMLAttributes<HTMLDivElement> {
-  // Add any specific props if needed
-}
-
 const Scene = (props: GroupProps) => {
   const { nodes } = useLoader(GLTFLoader, '/models/diax.glb') as GLTFResult;
   const group = useRef<THREE.Group | null>(null);
@@ -141,8 +137,8 @@ const Scene = (props: GroupProps) => {
     }
 
     setClickCount((prev) => {
-      const newCount = prev + 1;
-      if (newCount === 3) {
+      const clickCount = prev + 1;
+      if (clickCount === 3) {
         // Trigger explosion on third click
         const randomScale = Math.random() * (300 - 250) + 250;
         Object.values(icosphereRefs.current).forEach((ref) => {
@@ -188,7 +184,7 @@ const Scene = (props: GroupProps) => {
 
         hasExploded.current = true;
       }
-      return newCount;
+      return clickCount;
     });
   }, []);
 

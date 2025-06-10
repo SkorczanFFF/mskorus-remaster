@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { isMobile } from 'react-device-detect';
-import { useReactToPrint } from 'react-to-print';
 
 import {
   AutodeskIcon,
@@ -179,8 +178,6 @@ export default function CV(): JSX.Element {
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedLanguage(e.target.value);
   };
-  const contentRef = useRef<HTMLDivElement>(null);
-  const reactToPrintFn = useReactToPrint({ contentRef });
   const languageData = selectedLanguage === 'english' ? english : polish;
 
   return (
@@ -222,17 +219,14 @@ export default function CV(): JSX.Element {
             </div>
           )}
 
-          <a
-            onClick={reactToPrintFn}
-            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'
-          >
+          <a className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'>
             {languageData.headers.download}
             <PdfIcon className='ml-1 text-lg' />
           </a>
         </div>
         {!isMobile && (
           <div className='xxl:overflow-hidden m-10 mt-0 flex h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
-            <div className='flex w-full' ref={contentRef}>
+            <div className='flex w-full'>
               <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
                 <div className='arrow-top-left white' />
                 <div className='flex flex-col items-center justify-center'>

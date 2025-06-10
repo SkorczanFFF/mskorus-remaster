@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 import {
   AutodeskIcon,
   BitbucketIcon,
@@ -34,6 +35,82 @@ import {
 } from '@/lib/shared/Icons';
 
 export default function Technos(): JSX.Element {
+  const frontendRef = useRef<HTMLDivElement>(null);
+  const backendRef = useRef<HTMLDivElement>(null);
+  const databaseRef = useRef<HTMLDivElement>(null);
+  const designRef = useRef<HTMLDivElement>(null);
+  const toolsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Set initial state for all icons
+    gsap.set('.tech-icon', { opacity: 0 });
+
+    // Frontend row animation (fade in)
+    const frontendIcons = frontendRef.current?.querySelectorAll('.tech-icon');
+    if (frontendIcons) {
+      gsap.to(frontendIcons, {
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: frontendRef.current,
+          start: 'top 80%',
+          markers: true,
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }
+
+    // Backend and Database row animation
+    const backendIcons = backendRef.current?.querySelectorAll('.tech-icon');
+    const databaseIcons = databaseRef.current?.querySelectorAll('.tech-icon');
+    if (backendIcons && databaseIcons) {
+      gsap.to([...Array.from(backendIcons), ...Array.from(databaseIcons)], {
+        x: 0,
+        opacity: 1,
+        stagger: {
+          each: 0.1,
+          from: 'end', // 👈 animates from the last element
+        },
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: backendRef.current,
+          start: 'top 80%',
+          markers: true,
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }
+
+    // Design and Tools row animation
+    const designIcons = designRef.current?.querySelectorAll('.tech-icon');
+    const toolsIcons = toolsRef.current?.querySelectorAll('.tech-icon');
+    if (designIcons && toolsIcons) {
+      gsap.to([...Array.from(designIcons), ...Array.from(toolsIcons)], {
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: designRef.current,
+          start: 'top 80%',
+          markers: true,
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   const techCategories = {
     frontend: [
       { icon: <HtmlIcon className='text-5xl' />, label: 'HTML5' },
@@ -77,13 +154,16 @@ export default function Technos(): JSX.Element {
     ],
   };
 
-  // Render a single tech icon component
+  // Modify TechIcon component to ensure proper color visibility
   const TechIcon = ({
     tech,
   }: {
     tech: { icon: JSX.Element; label: string };
   }) => (
-    <div className='text-primary-blue hover:text-raspberry flex w-[75px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px]'>
+    <div
+      className='tech-icon text-primary-blue hover:text-raspberry flex w-[75px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px]'
+      style={{ willChange: 'opacity' }}
+    >
       {tech.icon}
       <span className='text-center text-xs'>{tech.label}</span>
     </div>
@@ -99,10 +179,7 @@ export default function Technos(): JSX.Element {
       {/* Large screen layout (lg+) */}
       <div className='hidden lg:flex lg:w-full lg:max-w-[1200px] lg:flex-col lg:gap-8'>
         {/* Row 1: Frontend */}
-        <div className='flex w-full flex-col'>
-          {/* <h4 className='mb-6 self-center text-lg font-semibold capitalize'>
-            frontend
-          </h4> */}
+        <div className='flex w-full flex-col' ref={frontendRef}>
           <div className='flex w-full justify-between'>
             {techCategories.frontend.map((tech, idx) => (
               <TechIcon key={idx} tech={tech} />
@@ -113,7 +190,7 @@ export default function Technos(): JSX.Element {
         {/* Row 2: Backend and Database */}
         <div className='flex w-full gap-8'>
           {/* Backend */}
-          <div className='max-w-2/3 flex w-full flex-col'>
+          <div className='max-w-2/3 flex w-full flex-col' ref={backendRef}>
             <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
               backend
             </h4>
@@ -125,7 +202,7 @@ export default function Technos(): JSX.Element {
           </div>
 
           {/* Database */}
-          <div className='flex w-1/3 flex-col'>
+          <div className='flex w-1/3 flex-col' ref={databaseRef}>
             <h4 className='mb-2 mr-6 self-end text-lg font-semibold capitalize'>
               database
             </h4>
@@ -140,7 +217,7 @@ export default function Technos(): JSX.Element {
         {/* Row 3: Design and Tools */}
         <div className='flex w-full gap-10'>
           {/* Design */}
-          <div className='flex flex-col'>
+          <div className='flex flex-col' ref={designRef}>
             <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
               design
             </h4>
@@ -152,7 +229,7 @@ export default function Technos(): JSX.Element {
           </div>
 
           {/* Tools */}
-          <div className='flex flex-col'>
+          <div className='flex flex-col' ref={toolsRef}>
             <h4 className='mb-2 mr-6 self-end text-lg font-semibold capitalize'>
               tools
             </h4>
