@@ -133,45 +133,6 @@ const Project: React.FC<ProjectData> = ({
   </div>
 );
 
-interface Experience {
-  company: string;
-  position: string;
-  duration: string;
-  duties: {
-    [key: string]: string;
-  };
-}
-
-interface LanguageData {
-  headers: {
-    about: string;
-    contact: string;
-    languages: {
-      languages: string;
-      english: string;
-      russian: string;
-      polish: string;
-    };
-    links: string;
-    hobbies: string;
-    experience: string;
-    education: string;
-    'selected-projects': string;
-    skills: string;
-    download: string;
-  };
-  aboutme: string;
-  experience: Experience[];
-  education: {
-    university: string;
-    field: string;
-    degree: string;
-    dates: string;
-  };
-  projects: ProjectData[];
-  rodo: string;
-}
-
 export default function CV(): JSX.Element {
   const currentYear = new Date().getFullYear();
   const [selectedLanguage, setSelectedLanguage] = useState<string>('english');
