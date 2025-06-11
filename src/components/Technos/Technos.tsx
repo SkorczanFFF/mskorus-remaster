@@ -46,20 +46,20 @@ export default function Technos(): JSX.Element {
     gsap.registerPlugin(ScrollTrigger);
 
     // Set initial state for all icons
-    gsap.set('.tech-icon', { opacity: 0 });
+    gsap.set('.tech-icon', { opacity: 0, scale: 1.4 });
 
     // Frontend row animation (fade in)
     const frontendIcons = frontendRef.current?.querySelectorAll('.tech-icon');
     if (frontendIcons) {
       gsap.to(frontendIcons, {
         opacity: 1,
+        scale: 1,
         stagger: 0.1,
         duration: 0.8,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: frontendRef.current,
           start: 'top 80%',
-          markers: true,
           toggleActions: 'play none none reverse',
         },
       });
@@ -72,6 +72,7 @@ export default function Technos(): JSX.Element {
       gsap.to([...Array.from(backendIcons), ...Array.from(databaseIcons)], {
         x: 0,
         opacity: 1,
+        scale: 1,
         stagger: {
           each: 0.1,
           from: 'end', // 👈 animates from the last element
@@ -81,7 +82,6 @@ export default function Technos(): JSX.Element {
         scrollTrigger: {
           trigger: backendRef.current,
           start: 'top 80%',
-          markers: true,
           toggleActions: 'play none none reverse',
         },
       });
@@ -93,13 +93,13 @@ export default function Technos(): JSX.Element {
     if (designIcons && toolsIcons) {
       gsap.to([...Array.from(designIcons), ...Array.from(toolsIcons)], {
         opacity: 1,
+        scale: 1,
         stagger: 0.1,
         duration: 0.8,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: designRef.current,
           start: 'top 80%',
-          markers: true,
           toggleActions: 'play none none reverse',
         },
       });
