@@ -13,19 +13,19 @@ export default function About(): JSX.Element {
       </h3>
 
       <div className='flex w-full max-w-[450px] flex-col gap-3 text-white md:flex-col'>
-        <div className='perspective-right ml-3 flex items-start'>
+        <div className='perspective-right ml-10 flex items-start'>
           <h2 className='from-raspberry to-oranger font-mont gradient w-auto justify-end bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
             Hey, I'm Maciej.
           </h2>
         </div>
-        <div className='perspective-left mr-3 flex justify-end'>
+        <div className='perspective-left mr-10 flex justify-end'>
           <h2 className='from-oranger to-raspberry font-mont gradient bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
             Skorus Maciej.
           </h2>
         </div>
       </div>
 
-      <h3 className=' font-mont text-primary-blue mx-3 mb-10 mt-20 leading-7 max-w-[730px] px-4 py-2 text-[21px] text-sm font-[400] tracking-wide text-center'>
+      <h3 className=' font-mont text-primary-blue mb-10 mt-20 leading-7 max-w-[770px] px-10 py-2 text-[21px] text-sm font-[400] tracking-wide text-center'>
         <b className='text-raspberry'>Versatile and open-minded</b> developer
         focused on building engaging, user-centered frontend solutions, with
         solid hands-on experience in backend work. Skilled in{' '}

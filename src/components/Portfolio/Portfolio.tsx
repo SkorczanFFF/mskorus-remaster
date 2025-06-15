@@ -1,10 +1,44 @@
-import React from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 
 import { GithubIcon, GlobalIcon } from '@/lib/shared/Icons';
 
 import projects from './Partials/projects.json';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Portfolio(): JSX.Element {
+  const projectRefs = useRef<(HTMLImageElement | null)[]>([]);
+
+  useEffect(() => {
+    projectRefs.current.forEach((img, index) => {
+      if (!img) return;
+
+      const isEven = index % 2 === 0;
+      const xOffset = isEven ? -100 : 100;
+
+      gsap.fromTo(
+        img,
+        {
+          opacity: 0,
+          x: xOffset,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top bottom-=100',
+            toggleActions: 'play none none reverse',
+          },
+        },
+      );
+    });
+  }, []);
+
   return (
     <section
       id='portfolio'
@@ -14,8 +48,8 @@ export default function Portfolio(): JSX.Element {
       <h3 className='font-mont -left-[45px] top-[190px] text-xl font-[400] leading-3 tracking-[10px] text-white md:absolute md:rotate-90'>
         PORTFOLIO
       </h3>
-      <div className='xxl:w-[1200px] my-[60px] flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:my-20 md:w-[550px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
-        {projects.map((project) => (
+      <div className='xxl:w-[1200px] my-[60px] flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:my-20 md:w-[620px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
+        {projects.map((project, index) => (
           <div
             key={project.id}
             className={`flex flex-col drop-shadow-[0_5px_5px_#80183430] xl:flex-row ${
@@ -29,10 +63,15 @@ export default function Portfolio(): JSX.Element {
               className='xl:w-1/2'
             >
               <img
+                ref={(el) => {
+                  projectRefs.current[index] = el;
+                }}
                 src={project.pic}
                 alt=''
-                className={` perspective-right border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 ${
-                  project.id % 2 === 0 ? '' : 'perspective-left'
+                className={`border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 ${
+                  project.id % 2 === 0
+                    ? 'perspective-right'
+                    : 'perspective-left'
                 }`}
               />
             </a>
@@ -99,67 +138,85 @@ export default function Portfolio(): JSX.Element {
           </div>
         ))}
       </div>
-      <div className='mt-20 flex flex-col items-center justify-center'>
-        <div className='flex max-w-[1200px] gap-5'>
-          <div className='border-1 text-primary-blue border-raspberry mt-10 flex max-h-[140px] min-w-[350px] max-w-[1200px] flex-col  justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-10 shadow-xl'>
+      <div className='mt-20 flex w-full flex-col items-center justify-center px-5 md:px-10 lg:px-20'>
+        <div className='flex w-full max-w-[1160px] flex-col gap-5 lg:flex-row md:max-w-[600px]'>
+          <div className='border-1 text-primary-blue border-raspberry mt-10 flex max-h-[140px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-5 shadow-xl md:p-10'>
             <div className='font-[300] leading-5'>
-              <h1 className='text-4xl'>
+              <h1 className='text-2xl md:text-3xl lg:text-4xl'>
                 <div className='nonweb-text text-end'>NON WEB</div>
                 <div className='related-text text-center'>RELATED</div>
                 <div className='corner-text text-end'>CORNER</div>
               </h1>
             </div>
           </div>
-          <div className='border-1 mt-20 flex w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
-            <div className='flex w-full items-center justify-between'>
-              <div className='flex flex-col'>
-                <h4 className='text-xl font-[500] uppercase'>
-                  Tibia Key Presser
-                </h4>
-                <p className='text-[14px] text-[#b6b6b6]'>
-                  Python, Tkinter, pywinauto
+          <div className='flex flex-col lg:flex-row gap-5'>
+            <div className='border-1 lg:mt-20 flex w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
+              <div className='flex w-full items-center justify-between'>
+                <div className='flex flex-col'>
+                  <h4 className='text-xl font-[500] uppercase'>
+                    Tibia Key Presser
+                  </h4>
+                  <p className='text-[14px] text-[#b6b6b6]'>
+                    Python, Tkinter, pywinauto
+                  </p>
+                </div>
+                <div className='flex gap-5'>
+                  <a
+                    href='https://github.com/SkorczanFFF/tibia-key-presser'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
+                  >
+                    <GithubIcon className='text-2xl' />
+                    <span>repo</span>
+                  </a>
+                </div>
+              </div>
+              <div className='text-justify font-[300] leading-5'>
+                <p>
+                  A lightweight Python-based automation tool for Tibia (MMORPG),
+                  developed for personal use to assist with magic skill training
+                  on Open Tibia Servers. It supports up to eight key-delay pairs
+                  with customizable delays from 0 to 10 seconds, along with
+                  individual reset and delete options. The tool automatically
+                  detects the Tibia game window, provides dynamic UI feedback,
+                  and offers simple Start/Stop controls. Designed for efficiency
+                  and minimal resource usage, it runs perfectly in the
+                  background, without interrupting other activities and games.
                 </p>
               </div>
-              <div className='flex gap-5'>
-                <a
-                  href='https://github.com/SkorczanFFF/tibia-key-presser'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
-                >
-                  <GithubIcon className='text-2xl' />
-                  <span>repo</span>
-                </a>
-              </div>
             </div>
-            <div className='text-justify font-[300] leading-5'>
-              <p>
-                A Python automation tool for Tibia (MMORPG) that allows
-                configuring up to 8 key-delay pairs with customizable delays
-                (0-10s). Features include individual reset/delete functions,
-                automatic game window detection with character name display,
-                dynamic UI feedback, and simple Start/Stop controls for managing
-                the automation process.
-              </p>
-            </div>
-          </div>
 
-          <div className='border-1 mb-10 flex h-auto w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
-            <div className='flex w-full items-center justify-between'>
-              <div className='flex flex-col'>
-                <h4 className='text-xl font-[500] uppercase'>
-                  Package Delivery SA:MP Server
-                </h4>
-                <p className='text-[14px] text-[#b6b6b6]'>Pawn, SA:MP</p>
+            <div className='border-1 mb-10 flex h-auto w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
+              <div className='flex w-full items-center justify-between'>
+                <div className='flex flex-col'>
+                  <h4 className='text-xl font-[500] uppercase'>
+                    Package Delivery SA:MP Server
+                  </h4>
+                  <p className='text-[14px] text-[#b6b6b6]'>PawnC, SA:MP</p>
+                </div>
               </div>
-            </div>
-            <div className='text-justify font-[300] leading-5'>
-              <p>A Python automation tool for Tibia (MMORPG) that allows</p>
+              <div className='text-justify font-[300] leading-5'>
+                <p>
+                  A package delivery system for a San Andreas Multiplayer
+                  server, created for fun and educational purposes with a
+                  friend. The system includes features for picking up and
+                  delivering packages, a map divided into package delivery
+                  regions, and dedicated loading/unloading hubs in each city.
+                  <br /> To enhance realism and immersion, the system also
+                  includes additional scripts such as random tire punctures and
+                  a post-shift vehicle condition report. Future plans include
+                  expanding the system with housing, personal vehicles, and more
+                  in-game functionalities.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <p className='mb-10 mt-[160px] tracking-[8px] text-white'>STAY TUNED</p>
+      <p className='mb-10 mt-[60px] md:mt-[160px] tracking-[8px] text-white'>
+        STAY TUNED
+      </p>
     </section>
   );
 }

@@ -12,6 +12,7 @@ import {
   ChipIcon,
   CompassIcon,
   CssIcon,
+  CursorIcon,
   FirebaseIcon,
   GithubIcon,
   GitlabIcon,
@@ -42,7 +43,6 @@ import {
   ThreejsIcon,
   TypescriptIcon,
   VercelIcon,
-  VsCodeIcon,
   WordpressIcon,
   YarnIcon,
 } from '@/lib/shared/Icons';
@@ -78,7 +78,7 @@ const technos = [
   { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
   { icon: <BitbucketIcon className='text-5xl' />, label: 'BitBucket' },
   { icon: <GitlabIcon className='text-5xl' />, label: 'GitLab' },
-  { icon: <VsCodeIcon className='text-5xl' />, label: 'CursorAI' },
+  { icon: <CursorIcon className='text-5xl' />, label: 'CursorAI' },
   { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
   { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
 ];

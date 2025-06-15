@@ -100,7 +100,7 @@ export const BlenderIcon = SiBlender as IconType;
 export const CanvaIcon = SiCanva as IconType;
 
 // Development Tool Icons
-export const VsCodeIcon = BsCursorFill as IconType;
+export const CursorIcon = BsCursorFill as IconType;
 export const GitlabIcon = SiGitlab as IconType;
 export const BitbucketIcon = SiBitbucket as IconType;
 export const NpmIcon = SiNpm as IconType;
