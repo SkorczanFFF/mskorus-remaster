@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { WarningIcon } from '@/lib/shared/Icons';
+
 export default function UnderConstruction(): JSX.Element | null {
   const [isVisible, setIsVisible] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
@@ -17,10 +19,11 @@ export default function UnderConstruction(): JSX.Element | null {
         isClosing ? 'opacity-0' : 'opacity-100'
       }`}
     >
+      <WarningIcon className='h-5 w-5 danger-animation' />
       <span className='text-sm'>This page is still under construction</span>
       <button
         onClick={handleClose}
-        className='ml-2 flex h-5 w-5 items-center justify-center rounded-full bg-white/20 hover:bg-white/30'
+        className='ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-white/20 hover:bg-white/30'
         aria-label='Close notice'
       >
         <svg

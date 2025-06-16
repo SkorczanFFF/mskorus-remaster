@@ -9,6 +9,7 @@ import {
 } from 'react-icons/ai';
 import { BiLogoJava, BiLogoPhp } from 'react-icons/bi';
 import { BsCursorFill, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
+import { FaExclamationTriangle } from 'react-icons/fa';
 import { GiGuitarBassHead } from 'react-icons/gi';
 import { GrMysql } from 'react-icons/gr';
 import { HiChip, HiMusicNote } from 'react-icons/hi';
@@ -52,6 +53,7 @@ type IconType = React.FC<React.SVGProps<SVGSVGElement>>;
 // Navigation Icons
 export const CloseIcon = AiFillCloseSquare as IconType;
 export const HamburgerIcon = RxHamburgerMenu as IconType;
+export const WarningIcon = FaExclamationTriangle as IconType;
 
 // Social & Contact Icons
 export const GithubIcon = BsGithub as IconType;

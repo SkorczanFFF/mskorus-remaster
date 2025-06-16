@@ -8,11 +8,12 @@ import {
 import { Canvas, useFrame } from '@react-three/fiber';
 import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
 import { easing } from 'maath';
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 import { Object3D } from 'three';
 
+import MobileScene from '@/components/Hero/Partials/MobileScene';
 import Scene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
@@ -49,7 +50,11 @@ export default function Hero(): JSX.Element {
     triggerOnce: false,
     threshold: 0.01,
   });
-  // const glProps = isMobile ? { antialias: false } : { antialias: true };
+  const [isModelBroken, setIsModelBroken] = useState(false);
+
+  const handleModelBreak = () => {
+    setIsModelBroken(true);
+  };
 
   return (
     <section
@@ -89,6 +94,9 @@ export default function Hero(): JSX.Element {
                     onUpdate={(self: Object3D) => self.lookAt(0, 0, 0)}
                   />
                 </Environment>
+                <Float floatIntensity={2}>
+                  <Scene onBreak={handleModelBreak} isBroken={isModelBroken} />
+                </Float>
               </>
             ) : (
               <>
@@ -97,12 +105,11 @@ export default function Hero(): JSX.Element {
                 </EffectComposer>
                 <spotLight intensity={1} position={[10, 10, 20]} />
                 <spotLight intensity={1} position={[0, -15, 10]} />
+                <Float floatIntensity={2}>
+                  <MobileScene />
+                </Float>
               </>
             )}
-
-            <Float floatIntensity={2}>
-              <Scene />
-            </Float>
           </Suspense>
         </Canvas>
       ) : (

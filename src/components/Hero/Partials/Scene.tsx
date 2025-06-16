@@ -1,5 +1,5 @@
 import { MeshTransmissionMaterial } from '@react-three/drei';
-import { GroupProps, useLoader, useThree } from '@react-three/fiber';
+import { useLoader, useThree } from '@react-three/fiber';
 import gsap from 'gsap';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -76,7 +76,12 @@ const createDesktopIcosphereMaterial = () => (
   />
 );
 
-const Scene = (props: GroupProps) => {
+interface SceneProps {
+  onBreak?: () => void;
+  isBroken?: boolean;
+}
+
+const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
   const { nodes } = useLoader(GLTFLoader, '/models/diax.glb') as GLTFResult;
   const group = useRef<THREE.Group | null>(null);
   const maciejRef = useRef<THREE.Group | null>(null);
@@ -87,6 +92,7 @@ const Scene = (props: GroupProps) => {
   const hasExploded = useRef(false);
   const isResetting = useRef(false);
   const handleClickRef = useRef<() => void>();
+  const [hasCollapsed, setHasCollapsed] = useState(false);
 
   // Store initial positions and rotations
   const initialStates = useRef<{
@@ -357,9 +363,22 @@ const Scene = (props: GroupProps) => {
   // Memoize the main group scale
   const groupScale = useMemo(() => (isMobile ? 1.15 : 1.5), [isMobile]);
 
+  const handlePointerDown = () => {
+    if (!hasCollapsed) {
+      setHasCollapsed(true);
+      onBreak?.();
+    }
+  };
+
   return (
     <>
-      <group ref={group} {...props} dispose={null} scale={groupScale}>
+      <group
+        ref={group}
+        {...props}
+        dispose={null}
+        scale={groupScale}
+        onPointerDown={handlePointerDown}
+      >
         <group position={[0.058, 0.269, -2.375]} scale={0.904} ref={maciejRef}>
           <mesh
             castShadow
