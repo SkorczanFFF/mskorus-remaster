@@ -20,6 +20,7 @@ import {
   IoLogoReact,
   IoLogoWordpress,
 } from 'react-icons/io5';
+import { PiCursorFill } from 'react-icons/pi';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import {
   SiAdobephotoshop,
@@ -114,3 +115,5 @@ export const GuitarIcon = GiGuitarBassHead as IconType;
 export const ChipIcon = HiChip as IconType;
 export const MusicIcon = HiMusicNote as IconType;
 export const LanguageIcon = HiMiniLanguage as IconType;
+
+export const CustomCursorIcon = PiCursorFill as IconType;
