@@ -139,8 +139,8 @@ export default function Portfolio(): JSX.Element {
         ))}
       </div>
       <div className='mt-20 flex w-full flex-col items-center justify-center px-5 md:px-10 lg:px-20'>
-        <div className='flex w-full max-w-[1160px] flex-col gap-5 lg:flex-row md:max-w-[600px]'>
-          <div className='border-1 text-primary-blue border-raspberry mt-10 flex max-h-[140px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-5 shadow-xl md:p-10'>
+        <div className='flex w-full md:max-w-[580px] lg:max-w-[1160px] flex-col gap-5 lg:flex-row max-w-[600px]'>
+          <div className='border-1 text-primary-blue border-raspberry mt-10 flex max-h-[140px] min-w-[300px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-5 shadow-xl md:p-10'>
             <div className='font-[300] leading-5'>
               <h1 className='text-2xl md:text-3xl lg:text-4xl'>
                 <div className='nonweb-text text-end'>NON WEB</div>
@@ -149,7 +149,7 @@ export default function Portfolio(): JSX.Element {
               </h1>
             </div>
           </div>
-          <div className='flex flex-col lg:flex-row gap-5'>
+          <div className='flex flex-col xl:flex-row gap-5'>
             <div className='border-1 lg:mt-20 flex w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
               <div className='flex w-full items-center justify-between'>
                 <div className='flex flex-col'>
@@ -214,7 +214,7 @@ export default function Portfolio(): JSX.Element {
           </div>
         </div>
       </div>
-      <p className='mb-10 mt-[60px] md:mt-[160px] tracking-[8px] text-white'>
+      <p className='mb-10 mt-[60px] lg:mt-[160px] tracking-[8px] text-white'>
         STAY TUNED
       </p>
     </section>

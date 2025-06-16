@@ -25,7 +25,7 @@ export default function About(): JSX.Element {
         </div>
       </div>
 
-      <h3 className=' font-mont text-primary-blue mb-10 mt-20 leading-7 max-w-[770px] px-10 py-2 text-[21px] text-sm font-[400] tracking-wide text-center'>
+      <h3 className=' font-mont text-primary-blue mb-10 mt-[100px] leading-7 max-w-[770px] md:px-10 px-6 py-2 text-[21px] text-sm font-[400] tracking-wide text-center'>
         <b className='text-raspberry'>Versatile and open-minded</b> developer
         focused on building engaging, user-centered frontend solutions, with
         solid hands-on experience in backend work. Skilled in{' '}

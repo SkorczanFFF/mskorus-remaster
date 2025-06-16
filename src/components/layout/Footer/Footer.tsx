@@ -50,7 +50,7 @@ export default function Footer(): JSX.Element {
         <div className='arrow-down blue absolute top-[30px]' />
       </div>
       <div className='flex flex-col w-full items-center justify-center bg-white'>
-        <div className='mx-5 flex w-[1000px] flex-col gap-5 py-10 sm:gap-0'>
+        <div className='mx-5 flex w-[1000px] flex-col gap-5 md:py-10 pb-20 sm:gap-0'>
           <div className='flex items-center justify-center'>
             <p
               ref={getInTouchRef}

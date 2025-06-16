@@ -57,7 +57,7 @@ export default function Experience(): JSX.Element {
       <h3 className='font-mont text-primary-blue -left-8 top-[160px] py-2 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
         WORK EXP
       </h3>
-      <div className='flex h-full w-full flex-col gap-[60px]'>
+      <div className='flex h-full w-full flex-col gap-[60px] py-10 md:py-0'>
         {experiencesData.experiences.map((exp, index) => (
           <ExperienceSection key={index} exp={exp} index={index} />
         ))}
@@ -78,23 +78,40 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
     if (!gsap) return;
 
     if (containerRef.current) {
-      gsap.set(containerRef.current, {
-        x: index % 2 === 0 ? 200 : -200,
-      });
+      const isSmallScreen = window.innerWidth < 1024;
+      const isMediumScreen =
+        window.innerWidth >= 1024 && window.innerWidth < 1280;
 
-      gsap.to(containerRef.current, {
-        x: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 2,
-          toggleActions: 'play none none reverse',
-          anticipatePin: 1,
-          fastScrollEnd: true,
-        },
-      });
+      if (isSmallScreen) {
+        // Disable scroll trigger for small screens
+        gsap.set(containerRef.current, { x: 0 });
+      } else {
+        // Set initial position based on screen size
+        gsap.set(containerRef.current, {
+          x:
+            index % 2 === 0
+              ? isMediumScreen
+                ? 100
+                : 200
+              : isMediumScreen
+                ? -100
+                : -200,
+        });
+
+        gsap.to(containerRef.current, {
+          x: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 2,
+            toggleActions: 'play none none reverse',
+            anticipatePin: 1,
+            fastScrollEnd: true,
+          },
+        });
+      }
     }
 
     return () => {
@@ -106,16 +123,18 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
 
   return (
     <div
-      className={`border-primary-blue flex h-full w-full max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${
+      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${
         index % 2 === 0
-          ? 'gradient-slow self-end pl-10'
-          : 'gradient-slow justify-end self-start pr-10'
+          ? 'gradient-slow self-end pl-2 md:pl-10'
+          : 'gradient-slow justify-end self-start pr-2 md:pr-10'
       }`}
     >
       <div ref={containerRef} className='flex w-full max-w-[750px]'>
-        <div className='bg-primary-blue flex-1 p-6 py-4 text-[14px]'>
-          <h4 className='flex justify-between text-xl font-[500]'>
-            <span className='pb-2 text-[20px] text-white'>{exp.title}</span>
+        <div className='bg-primary-blue flex-1 p-6 py-4 text-[14px] lg:mx-auto'>
+          <h4 className='flex flex-col md:flex-row md:justify-between text-xl font-[500]'>
+            <span className='pb-0 sm:pb-2 text-[20px] text-white'>
+              {exp.title}
+            </span>
             <span className='text-[14px] font-[400]'>{exp.date}</span>
           </h4>
           <div className='gradient mb-2 h-[2px] w-full'></div>
