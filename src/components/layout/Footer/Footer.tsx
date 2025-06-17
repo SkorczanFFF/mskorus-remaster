@@ -37,11 +37,14 @@ export default function Footer(): JSX.Element {
   }, []);
 
   return (
-    <footer className='font-mont bg-primary-blue flex min-h-[20vh] w-full flex-col items-center overflow-hidden'>
+    <footer
+      id='contact'
+      className='font-mont bg-primary-blue flex min-h-[20vh] w-full flex-col items-center overflow-hidden'
+    >
       <div className='absolute -mt-[32px] flex w-full flex-col items-center'>
-        <p className='font-mont relative ml-3 w-full min-w-[250px] text-start text-2xl font-[400] text-white xl:w-[1200px] xl:px-0 '>
+        <p className='font-mont relative pl-3 w-full min-w-[250px] text-start text-2xl font-[400] text-white xl:w-[1200px] xl:px-0 xl:pl-0'>
           <span className='text-raspberry'>M</span>
-          <span className='absolute left-5 tracking-wider text-white'>
+          <span className='absolute left-[30px] xl:left-[18px] tracking-wider text-white'>
             SKORUS
           </span>
         </p>
@@ -54,7 +57,7 @@ export default function Footer(): JSX.Element {
           <div className='flex items-center justify-center'>
             <p
               ref={getInTouchRef}
-              className='text-primary-blue text-3xl font-[500] tracking-wider my-[60px] md:my-10'
+              className='text-primary-blue text-3xl font-[500] tracking-wider my-[60px] mt-[80px] md:my-10'
             >
               GET IN TOUCH
             </p>

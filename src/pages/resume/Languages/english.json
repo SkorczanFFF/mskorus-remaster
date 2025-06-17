@@ -16,7 +16,7 @@
     "skills": "SKILLS AND TOOLS",
     "download": "DOWNLOAD"
   },
-  "aboutme": "Versatile and open-minded developer focused on building engaging, user-centered frontend solutions, with solid hands-on experience in backend work. Skilled in Web3 development for the gaming industry and in crafting custom platforms and tools for the medical events sector, backed by a strong foundation in IT support. Personally passionate about WebGL, 3D graphics, and building automation scripts and tools to streamline workflows",
+  "aboutme": "Versatile and open-minded developer focused on building engaging, user-centered frontend solutions, with solid hands-on experience in backend work. Skilled in Web3 development for the gaming industry and in crafting custom platforms and tools for the medical events sector, backed by a strong foundation in IT support. Personally passionate about WebGL, modding, and building useful and entertaining code, not only frontend centered",
   "experience": [
     {
       "company": "BUSINESS SERVICE GALOP",
@@ -24,7 +24,7 @@
       "duration": "May 2024 - present",
       "duties": {
         "1": "Updating and expanding the internal event management system with new functionalities, system optimizations, and bug fixes; designed a new participant zone integrated into the event websites; created a dedicated system instance tailored to the needs of a major client, supporting diverse medical courses and events",
-        "2": "Developing dedicated front-end solutions for medical events (customized registration forms and websites, participant zones, API integrations), VOD platform and responsive mailings compatible across all major email services",
+        "2": "Developing a management system for the Endoscopy Section and a VoD platform for purchasing and accessing recorded conference content, dedicated front-end solutions for medical events (customized registration forms and websites, participant zones, API integrations) and responsive mailings compatible across all major email services",
         "3": "Developed a mobile application for Zebra data collectors (QR code scanning with local data storage) and a web application for attendance tracking during event sessions, supporting both self-scanning kiosks and Zebra scanners",
         "4": "Built a customizable live voting application with an administrative panel and real-time results; developed virtual exhibitor booths with documentation for partner companies",
         "5": "Providing onsite IT support during events across Poland, ensuring smooth operation of software systems and hardware reliability; assisting event participants when needed, including at international conferences; representing the IT department during international meetings and occasionally serving as a company driver"
@@ -60,7 +60,7 @@
     {
       "title": "MSKORUS - PORTFOLIO PAGE",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
-      "description": "Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for better itneractivity. Pure React Three Fiber and web experiments battleground.",
+      "description": "Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier itneractivity. Pure web experiments and React Three Fiber battleground.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
       "demoLink": "https://mskorus.vercel.app/"
     },
@@ -68,7 +68,7 @@
     {
       "title": "YET ANOTHER WEATHER APP",
       "technologies": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
-      "description": "Another 'weather application', but with a breath of fresh air. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Lately, API chaged from OpenWeather to Open-Meteo. Unfortunately, still desktop only.",
+      "description": "Another `weather application` — but with a twist. Weather data is displayed for a selected city or via user geolocation, with an interface enriched by interactive elements tied to the current weather conditions and background. Recently, the backend switched from OpenWeather to Open-Meteo. It was into liquid glass style before it became cool. Still desktop-only for now.",
       "repositoryLink": "https://github.com/SkorczanFFF/YetAnotherWeatherApp",
       "demoLink": "https://skorczanfff.github.io/YetAnotherWeatherApp/"
     }

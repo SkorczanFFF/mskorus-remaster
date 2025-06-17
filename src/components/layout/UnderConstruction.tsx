@@ -15,12 +15,12 @@ export default function UnderConstruction(): JSX.Element | null {
 
   return (
     <div
-      className={`fixed bottom-1 right-1 z-50 m-5 flex items-center gap-1 rounded-[2px] bg-raspberry p-2 text-white shadow-lg transition-opacity duration-300 ${
+      className={`fixed bottom-1 right-1 z-50 m-2 flex items-center gap-1 rounded-[2px] gradient-slow p-2 text-white shadow-lg transition-opacity duration-300 border-2 border-[#ffc400bd] ${
         isClosing ? 'opacity-0' : 'opacity-100'
       }`}
     >
       <WarningIcon className='h-5 w-5 danger-animation' />
-      <span className='text-sm'>This page is still under construction</span>
+      <span className='text-sm'>This page is currently under construction</span>
       <button
         onClick={handleClose}
         className='ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-white/20 hover:bg-white/30'

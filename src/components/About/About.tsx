@@ -40,10 +40,8 @@ export default function About(): JSX.Element {
         , backed by a strong foundation in{' '}
         <b className='text-raspberry'>IT support</b>. Personally passionate
         about
-        <b className='text-raspberry'> WebGL</b>,{' '}
-        <b className='text-raspberry'>3D graphics</b>, and building{' '}
-        <b className='text-raspberry'>automation scripts and tools </b>
-        to streamline workflows.
+        <b className='text-raspberry'> WebGL, modding, and building</b> useful
+        and entertaining code, not only frontend centered.
       </h3>
 
       <div className='mt-[100px] flex gap-10'>

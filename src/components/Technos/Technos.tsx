@@ -45,64 +45,74 @@ export default function Technos(): JSX.Element {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-    // Set initial state for all icons
-    gsap.set('.tech-icon', { opacity: 0, scale: 1.4 });
+    // Set initial state for all icons - visible by default
+    gsap.set('.tech-icon', { opacity: 1, scale: 1 });
 
-    // Frontend row animation (fade in)
-    const frontendIcons = frontendRef.current?.querySelectorAll('.tech-icon');
-    if (frontendIcons) {
-      gsap.to(frontendIcons, {
-        opacity: 1,
-        scale: 1,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: frontendRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-    }
+    // Only run animations if screen width is less than 1280px
+    if (window.innerWidth > 1280) {
+      // Frontend row animation (fade in)
+      const frontendIcons = frontendRef.current?.querySelectorAll('.tech-icon');
+      if (frontendIcons) {
+        gsap.to(frontendIcons, {
+          opacity: 1,
+          scale: 1,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: frontendRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+      }
 
-    // Backend and Database row animation
-    const backendIcons = backendRef.current?.querySelectorAll('.tech-icon');
-    const databaseIcons = databaseRef.current?.querySelectorAll('.tech-icon');
-    if (backendIcons && databaseIcons) {
-      gsap.to([...Array.from(backendIcons), ...Array.from(databaseIcons)], {
-        x: 0,
-        opacity: 1,
-        scale: 1,
-        stagger: {
-          each: 0.1,
-          from: 'end', // 👈 animates from the last element
-        },
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: backendRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-    }
+      // Backend and Database row animation
+      const backendIcons = backendRef.current?.querySelectorAll('.tech-icon');
+      const databaseIcons = databaseRef.current?.querySelectorAll('.tech-icon');
+      if (backendIcons && databaseIcons) {
+        gsap.fromTo(
+          [...Array.from(backendIcons), ...Array.from(databaseIcons)],
+          { opacity: 0, scale: 1.4 },
+          {
+            opacity: 1,
+            scale: 1,
+            stagger: {
+              each: 0.1,
+              from: 'end',
+            },
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: backendRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          },
+        );
+      }
 
-    // Design and Tools row animation
-    const designIcons = designRef.current?.querySelectorAll('.tech-icon');
-    const toolsIcons = toolsRef.current?.querySelectorAll('.tech-icon');
-    if (designIcons && toolsIcons) {
-      gsap.to([...Array.from(designIcons), ...Array.from(toolsIcons)], {
-        opacity: 1,
-        scale: 1,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: designRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+      // Design and Tools row animation
+      const designIcons = designRef.current?.querySelectorAll('.tech-icon');
+      const toolsIcons = toolsRef.current?.querySelectorAll('.tech-icon');
+      if (designIcons && toolsIcons) {
+        gsap.fromTo(
+          [...Array.from(designIcons), ...Array.from(toolsIcons)],
+          { opacity: 0, scale: 1.4 },
+          {
+            opacity: 1,
+            scale: 1,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: designRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          },
+        );
+      }
     }
 
     // Cleanup function
@@ -176,8 +186,8 @@ export default function Technos(): JSX.Element {
     >
       <h3 className='font-mont mb-10 font-[400] tracking-wider'>TECH STACK</h3>
 
-      {/* Large screen layout (lg+) */}
-      <div className='hidden lg:flex lg:w-full lg:max-w-[1200px] lg:flex-col lg:gap-8'>
+      {/* Large screen layout (xl+) */}
+      <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         {/* Row 1: Frontend */}
         <div className='flex w-full flex-col' ref={frontendRef}>
           <div className='flex w-full justify-between'>
@@ -188,7 +198,7 @@ export default function Technos(): JSX.Element {
         </div>
 
         {/* Row 2: Backend and Database */}
-        <div className='flex w-full gap-8'>
+        <div className='flex w-full gap-8 xl:flex-row'>
           {/* Backend */}
           <div className='max-w-2/3 flex w-full flex-col' ref={backendRef}>
             <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
@@ -215,7 +225,7 @@ export default function Technos(): JSX.Element {
         </div>
 
         {/* Row 3: Design and Tools */}
-        <div className='flex w-full gap-10'>
+        <div className='flex w-full gap-10 xl:flex-row'>
           {/* Design */}
           <div className='flex flex-col' ref={designRef}>
             <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
@@ -242,23 +252,14 @@ export default function Technos(): JSX.Element {
         </div>
       </div>
 
-      {/* Small/medium screen layout */}
-      <div className='mx-10 md: mx-0 my-10 flex w-full flex-col gap-10 md:max-w-[700px] lg:hidden'>
+      {/* Small/medium/large screen layout (under xl) */}
+      <div className='px-4 md:px-0 my-10 flex w-full flex-col gap-10 md:max-w-[740px] lg:max-w-[900px] xl:hidden'>
         {Object.entries(techCategories).map(([category, techs], index) => (
-          <div
-            key={category}
-            className={`flex w-full flex-col ${
-              index % 2 === 0 ? 'md:items-start' : 'md:items-end'
-            } items-center`}
-          >
+          <div key={category} className='flex w-full flex-col  items-center'>
             <h4 className='mb-6 text-lg font-semibold capitalize'>
               {category}
             </h4>
-            <div
-              className={`flex flex-wrap gap-4 ${
-                index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
-              } justify-center`}
-            >
+            <div className='flex flex-wrap gap-4 md:gap-2  justify-center'>
               {techs.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}
