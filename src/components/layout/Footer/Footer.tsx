@@ -57,7 +57,7 @@ export default function Footer(): JSX.Element {
           <div className='flex items-center justify-center'>
             <p
               ref={getInTouchRef}
-              className='text-primary-blue text-3xl font-[500] tracking-wider my-[60px] mt-[80px] md:my-10'
+              className='text-primary-blue text-3xl font-[500] tracking-wider my-[60px] mt-[100px] md:mb-10 md:mt-[70px]'
             >
               GET IN TOUCH
             </p>

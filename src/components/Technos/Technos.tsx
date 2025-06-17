@@ -182,7 +182,7 @@ export default function Technos(): JSX.Element {
   return (
     <section
       id='technologies'
-      className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20 pb-[120px]'
+      className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20 pb-[120px] pt-10 md:pt-20'
     >
       <h3 className='font-mont mb-10 font-[400] tracking-wider'>TECH STACK</h3>
 

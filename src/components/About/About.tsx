@@ -1,8 +1,52 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { GithubIcon, LinkedinIcon } from '@/lib/shared/Icons';
 
 export default function About(): JSX.Element {
+  const firstHeadingRef = useRef<HTMLDivElement>(null);
+  const secondHeadingRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!gsap) return;
+
+    // First heading animation (from left)
+    if (firstHeadingRef.current) {
+      gsap.set(firstHeadingRef.current, { x: 50 });
+      gsap.to(firstHeadingRef.current, {
+        x: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: firstHeadingRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2,
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }
+
+    // Second heading animation (from right)
+    if (secondHeadingRef.current) {
+      gsap.set(secondHeadingRef.current, { x: -50 });
+      gsap.to(secondHeadingRef.current, {
+        x: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: secondHeadingRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2,
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <section
       id='about'
@@ -13,12 +57,12 @@ export default function About(): JSX.Element {
       </h3>
 
       <div className='flex w-full max-w-[450px] flex-col gap-3 text-white md:flex-col'>
-        <div className='perspective-right ml-10 flex items-start'>
+        <div ref={firstHeadingRef} className='ml-10 flex items-start'>
           <h2 className='from-raspberry to-oranger font-mont gradient w-auto justify-end bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
             Hey, I'm Maciej.
           </h2>
         </div>
-        <div className='perspective-left mr-10 flex justify-end'>
+        <div ref={secondHeadingRef} className='mr-10 flex justify-end'>
           <h2 className='from-oranger to-raspberry font-mont gradient bg-gradient-to-r px-6 py-3 text-xl font-[500]'>
             Skorus Maciej.
           </h2>

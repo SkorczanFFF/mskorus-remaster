@@ -52,7 +52,7 @@ export default function Experience(): JSX.Element {
   return (
     <section
       id='experience'
-      className='font-mont relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white py-10 md:pt-[120px]'
+      className='font-mont relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white py-20 md:pt-[120px]'
     >
       <h3 className='font-mont text-primary-blue -left-8 top-[160px] py-2 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
         WORK EXP

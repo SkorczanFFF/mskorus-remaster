@@ -18,50 +18,59 @@ export default function Header(): JSX.Element {
   const [click, setClick] = useState<boolean>(false);
   const handleClick = () => {
     setClick((prevClick) => !prevClick);
+    if (!click) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   };
 
   return (
-    <header
-      className={`font-mont sticky top-0 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px]
-      `}
-    >
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a
-        href='/'
-        className='hover:text-raspberry text-primary-blue relative drop-shadow-[0_5px_5px_#ffffff30] duration-200 hover:drop-shadow-[0_5px_5px_#80183466]'
+    <>
+      <header
+        className={`font-mont sticky top-0 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px]
+        ${click ? 'bg-transparent' : ''}`}
       >
-        <span className='text-raspberry hover:text-primary-blue mx-4 text-xl duration-300'>
-          M
-        </span>
-        <span className='text-real-white absolute left-4 z-10 mx-4 text-xl font-[500] tracking-wide duration-150'>
-          SKORUS
-        </span>
-      </a>
-      <div className='flex h-14 items-center justify-between'>
-        <Mobile links={links} click={click} handleClick={handleClick} />
-        <Desktop links={links} />
-      </div>
-      {click && (
-        <div
-          className={`border-primary-blue bg-raspberry relative -z-50 -ml-[60px] h-[260px] w-[110vw] border-b backdrop-blur-[75px] duration-300 ${
-            click ? 'mt-[305px]' : '-mt-[305px]'
-          }`}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a
+          href='/'
+          className='hover:text-raspberry text-primary-blue relative drop-shadow-[0_5px_5px_#ffffff30] duration-200 hover:drop-shadow-[0_5px_5px_#80183466]'
         >
-          <ul className='my-5 flex flex-col items-center gap-5'>
+          <span className='text-raspberry hover:text-primary-blue mx-4 text-xl duration-300'>
+            M
+          </span>
+          <span className='text-real-white absolute left-4 z-10 mx-4 text-xl font-[500] tracking-wide duration-150'>
+            SKORUS
+          </span>
+        </a>
+        <div className='flex h-14 items-center justify-between'>
+          <Mobile links={links} click={click} handleClick={handleClick} />
+          <Desktop links={links} />
+        </div>
+      </header>
+
+      {/* Full screen mobile menu */}
+      <div
+        className={`bg-raspberry fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[75px] transition-transform duration-300 lg:hidden
+          ${click ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+        <nav className='flex h-full w-full flex-col items-center justify-center'>
+          <ul className='flex flex-col items-center space-y-8'>
             {links.map(({ href, label }) => (
-              <Link
-                href={href}
-                scroll={false}
-                key={`${href}${label}`}
-                className='text-real-white hover:text-real-white text-md uppercase tracking-widest drop-shadow-[0_2px_2px_#001a25] duration-150 hover:tracking-[0.195em] hover:drop-shadow-[0_5px_5px_#972b1a]'
-                onClick={handleClick}
-              >
-                <li>{label}</li>
-              </Link>
+              <li key={`${href}${label}`} className='text-center'>
+                <Link
+                  href={href}
+                  scroll={false}
+                  className='text-real-white hover:text-real-white text-3xl font-light uppercase tracking-widest drop-shadow-[0_2px_2px_#001a25] transition-all duration-300 hover:tracking-[0.2em] hover:drop-shadow-[0_5px_5px_#972b1a]'
+                  onClick={handleClick}
+                >
+                  {label}
+                </Link>
+              </li>
             ))}
           </ul>
-        </div>
-      )}
-    </header>
+        </nav>
+      </div>
+    </>
   );
 }

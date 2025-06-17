@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { CloseIcon, HamburgerIcon } from '@/lib/shared/Icons';
-
 interface LinkItem {
   href: string;
   label: string;
@@ -18,20 +16,28 @@ export default function Mobile({
   handleClick,
 }: MobileProps): JSX.Element {
   return (
-    <>
-      <div className='flex w-full cursor-pointer md:hidden'>
-        {click ? (
-          <CloseIcon
-            className='text-raspberry absolute right-[10px] mt-2 h-10 w-10 text-4xl'
-            onClick={handleClick}
-          />
-        ) : (
-          <HamburgerIcon
-            className='text-real-white absolute right-3 mt-2 h-10 w-9 text-4xl'
-            onClick={handleClick}
-          />
-        )}
-      </div>
-    </>
+    <button
+      onClick={handleClick}
+      className='relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden'
+      aria-label='Toggle Menu'
+    >
+      <span
+        className={`h-[2px] w-6 transform transition-all duration-300 ease-in-out ${
+          click ? 'translate-y-[7px] rotate-45 bg-real-white' : 'bg-real-white'
+        }`}
+      />
+      <span
+        className={`h-[2px] w-6 transition-all duration-300 ease-in-out ${
+          click ? 'opacity-0 bg-raspberry' : 'bg-real-white'
+        }`}
+      />
+      <span
+        className={`h-[2px] w-6 transform transition-all duration-300 ease-in-out ${
+          click
+            ? '-translate-y-[7px] -rotate-45 bg-real-white'
+            : 'bg-real-white'
+        }`}
+      />
+    </button>
   );
 }
