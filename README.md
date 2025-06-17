@@ -22,10 +22,8 @@ But also I used some packages like:
 - react-intersection-observer
 - react-device-detect
 - react-icons
-- @emailjs/browser
 - react-toastify
-- aos
 
 ### TODO
 
-- better WebGL background text
+- WebGL rework

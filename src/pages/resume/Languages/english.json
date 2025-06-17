@@ -16,42 +16,59 @@
     "skills": "SKILLS AND TOOLS",
     "download": "DOWNLOAD"
   },
-  "aboutme": "I am a motivated developer with a deep enthusiasm for cutting-edge web technologies, with a strong interest in WebGL. With my first experience in the Blockchain in game development industry and curiosity about the possibilities of web development, my goal is to create and deliver exceptional web experiences. I am constantly looking for new challenges in the evolving field of technology and currently looking for a new team to grow with and achieve something special and innovative together.",
-  "experience": {
-    "company": "ANFATA GAMES SP. Z O.O.",
-    "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
-    "duration": "[ 1 year ]",
-    "duties": {
-      "1": "Development of decentralized app and auction system, integration with Smart Contracts and ImmutableX collections (marketplace, bridging between L1 and L2, transfers, etc.)",
-      "2": "Working with Moralis and Firebase cloud functions and databases, TypeScript, Next.js and version control systems",
-      "3": "Implementation of a new homepage, integration with Sanity CMS blog system, handling custom events on company apps and sites",
-      "4": "Cross-team collaboration in cross-national team for consistent user experience with company products"
+  "aboutme": "Versatile and open-minded developer focused on building engaging, user-centered frontend solutions, with solid hands-on experience in backend work. Skilled in Web3 development for the gaming industry and in crafting custom platforms and tools for the medical events sector, backed by a strong foundation in IT support. Personally passionate about WebGL, modding, and building useful and entertaining code, not only frontend centered",
+  "experience": [
+    {
+      "company": "BUSINESS SERVICE GALOP",
+      "position": "Front-End Developer",
+      "duration": "May 2024 - present",
+      "duties": {
+        "1": "Updating and expanding the internal event management system with new functionalities, system optimizations, and bug fixes; designed a new participant zone integrated into the event websites; created a dedicated system instance tailored to the needs of a major client, supporting diverse medical courses and events",
+        "2": "Developing a management system for the Endoscopy Section and a VoD platform for purchasing and accessing recorded conference content, dedicated front-end solutions for medical events (customized registration forms and websites, participant zones, API integrations) and responsive mailings compatible across all major email services",
+        "3": "Developed a mobile application for Zebra data collectors (QR code scanning with local data storage) and a web application for attendance tracking during event sessions, supporting both self-scanning kiosks and Zebra scanners",
+        "4": "Built a customizable live voting application with an administrative panel and real-time results; developed virtual exhibitor booths with documentation for partner companies",
+        "5": "Providing onsite IT support during events across Poland, ensuring smooth operation of software systems and hardware reliability; assisting event participants when needed, including at international conferences; representing the IT department during international meetings and occasionally serving as a company driver"
+      }
+    },
+    {
+      "company": "ANFATA GAMES",
+      "position": "Junior Web3 Frontend Developer",
+      "duration": "Sep 2022 - Aug 2023",
+      "duties": {
+        "1": "Developed a decentralized application integrated with Smart Contracts and ImmutableX collections, including building a marketplace, bridging NFTs between L1 and L2, enabling transfers between accounts, and implementing a live auction system.",
+        "2": "Worked with Moralis and Firebase databases and cloud functions, using TypeScript, Next.js, GSAP, and version control systems like GitLab and Bitbucket",
+        "3": "Implemented a new homepage, integrated a Sanity CMS blog system, and built custom event-oriented websites and features across company platforms",
+        "4": "Performed manual testing of Pirates of the Arrland, including the 3D MOBA game and 2D strategic map components within the decentralized app",
+        "5": "Collaborated closely in cross-functional and international team to deliver integrated Web3 experiences"
+      }
     }
-  },
+  ],
   "education": {
     "university": "UNIVERSITY OF SILESIA",
-    "field": "INFORMATICS - Web Application Programming",
-    "degree": "Enigneer degree • October 2017 - June 2021"
+    "field": "Web Application Programming",
+    "degree": "Enigneer degree",
+    "dates": "October 2017 - June 2021"
   },
   "projects": [
     {
+      "title": "POLONEZ AUTODRIVE",
+      "technologies": "JavaScript • Three.js • 3D Studio Max 2019",
+      "description": "A synthwave style 3D coloring-book like animation with real-time model and color customization of the scene via a built-in GUI. Built with creativity and models from 3D Studio Max. Now includes a beta overtaking mini-game. Play some music and have fun!",
+      "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
+      "demoLink": "https://polonez-autodrive.vercel.app/"
+    },
+    {
       "title": "MSKORUS - PORTFOLIO PAGE",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
-      "description": "Remaster of my deprecated React portfolio page. Now it's based on Next.js with TailwindCSS and TypeScript. Some parts of WebGL scene are GLTF models made in Blender and converted to React Three Fiber JSX components for better operating. Now features built-in web version of resume in English and Polish.",
+      "description": "Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier itneractivity. Pure web experiments and React Three Fiber battleground.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
       "demoLink": "https://mskorus.vercel.app/"
     },
-    {
-      "title": "POLONEZ AUTODRIVE",
-      "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
-      "description": "Simple Three.js scene made with 3D Studio Max 2019. Models with animations were exported to .fbx files and baked into Synthwave/80's vibe 'coloring book' like animation with built-in GUI to play with scene colors and models. Turn on some music and have fun with coloring!",
-      "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
-      "demoLink": "https://skorczanfff.github.io/Polonez-Autodrive/"
-    },
+
     {
       "title": "YET ANOTHER WEATHER APP",
       "technologies": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
-      "description": "Another 'weather application', but with a breath of fresh air. Weather informations are displayed for the selected city or by geolocation of the user, and the interface has been enriched with additional possibilities to interact with displayed weather data and background. Unfortunately, still desktop only.",
+      "description": "Another `weather application` — but with a twist. Weather data is displayed for a selected city or via user geolocation, with an interface enriched by interactive elements tied to the current weather conditions and background. Recently, the backend switched from OpenWeather to Open-Meteo. It was into liquid glass style before it became cool. Still desktop-only for now.",
       "repositoryLink": "https://github.com/SkorczanFFF/YetAnotherWeatherApp",
       "demoLink": "https://skorczanfff.github.io/YetAnotherWeatherApp/"
     }

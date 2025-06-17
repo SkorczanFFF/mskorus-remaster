@@ -1,0 +1,52 @@
+{
+  "experiences": [
+    {
+      "job": "BUSINESS SERVICE GALOP",
+      "title": "Front-End Developer",
+      "date": "MAY 2024 - NOW",
+      "stack": [
+        "PHP",
+        "MySQL",
+        "Laravel",
+        "React Native",
+        "Vanilla JS",
+        "TypeScript",
+        "Next.js",
+        "TailwindCSS",
+        "Git"
+      ],
+      "icon": "BSG.png",
+      "details": [
+        "Updating and expanding the internal event management system with new functionalities, system optimizations, and bug fixes; designed a new participant zone integrated into the event websites; created a dedicated system instance tailored to the needs of a major client, supporting diverse medical courses and events",
+        "Developing a management system for the Endoscopy Section and a VoD platform for purchasing and accessing recorded conference content, dedicated front-end solutions for medical events (customized registration forms and websites, participant zones, API integrations) and responsive mailings compatible across all major email services",
+        "Developed a mobile application for Zebra data collectors (QR code scanning with local data storage) and a web application for attendance tracking during event sessions, supporting both self-scanning kiosks and Zebra scanners",
+        "Built a customizable live voting application with an administrative panel and real-time results; developed virtual exhibitor booths with documentation for partner companies",
+        "Providing onsite IT support during events across Poland, ensuring smooth operation of software systems and hardware reliability; assisting event participants when needed, including at international conferences; representing the IT department during international meetings and occasionally serving as a company driver"
+      ]
+    },
+    {
+      "job": "ANFATA GAMES",
+      "title": "Junior Web3 Frontend Developer",
+      "date": "SEP 2022 - AUG 2023",
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "GSAP",
+        "Sanity CMS",
+        "Moralis",
+        "Firebase",
+        "Web3",
+        "TailwindCSS",
+        "Git"
+      ],
+      "icon": "ANFATA.png",
+      "details": [
+        "Developed a decentralized application integrated with Smart Contracts and ImmutableX collections, including building a marketplace, bridging NFTs between L1 and L2, enabling transfers between accounts, and implementing a live auction system.",
+        "Worked with Moralis and Firebase databases and cloud functions, using TypeScript, Next.js, GSAP, and version control systems like GitLab and Bitbucket.",
+        "Implemented a new homepage, integrated a Sanity CMS blog system, and built custom event-oriented websites and features across company platforms.",
+        "Performed manual testing of Pirates of the Arrland, including the 3D MOBA game and 2D strategic map components within the decentralized app.",
+        "Collaborated closely with cross-functional and international team to deliver integrated Web3 experiences."
+      ]
+    }
+  ]
+}

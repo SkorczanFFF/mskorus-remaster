@@ -16,22 +16,39 @@
     "skills": "UMIEJĘTNOŚCI I NARZĘDZIA",
     "download": "POBIERZ"
   },
-  "aboutme": "Jestem programistą łączącym ciekawość z pasją do najnowocześniejszych technologii internetowych, który nieustannie poszukujE kolejnych wyzwań. Hobbistyczne zainteresowanie WebGL oraz pierwsze zdobyte doświadczenie podczas tworzenia gry opartej o technologię Blockchain, ukształtowało mój cel, którym stało się tworzenie i dostarczanie wyjątkowych doświadczeń dostępnych z poziomu przeglądarki internetowej. Aktualnie szukam nowego zespołu z którym mógłbym się rozwijać, dzielić wiedzą i świętować wspólnie odniesione sukcesy.",
-  "experience": {
-    "company": "ANFATA GAMES SP. Z O.O.",
-    "position": "JUNIOR WEB 3.0 FRONTEND DEVELOPER",
-    "duration": "[ 1 rok ]",
-    "duties": {
-      "1": "Rozwój zdecentralizowanej aplikacji i systemu aukcyjnego, integracja ze Smart Contractami oraz kolekcjami ImmutableX (budowa marketplace, bridging pomiędzy L1 a L2, transfery itp.)",
-      "2": "Praca z Cloud Funkcjami baz danych Moralis i Firebase, TypeScript,Next.js oraz systemami kontroli wersji",
-      "3": "Implementacja nowej strony głównej tworzonej gry, integracja z CMS Sanity, obsługa wydarzeń specjalnych",
-      "4": "Współpraca międzyzespołowa w zespole międzynarodowym dla końcowej spójności tworzonych rozwiązań"
+  "aboutme": "Wszechstronny i otwarty na nowe wyzwania developer, skoncentrowany na tworzeniu angażujących, zorientowanych na użytkownika rozwiązań frontendowych, z solidnym doświadczeniem w pracy po stronie backendu. Posiada umiejętności w zakresie rozwoju Web3 w branży gier oraz tworzenia dedykowanych rozwiązań dla sektora wydarzeń medycznych, oraz silnym zapleczem w obszarze wsparcia IT. Prywatnie pasjonat WebGL, grafiki 3D oraz tworzenia skryptów i narzędzi.",
+  "experience": [
+    {
+      "company": "BUSINESS SERVICE GALOP",
+      "position": "Front-End Developer",
+      "duration": "Maj 2024 - obecnie",
+      "duties": {
+        "1": "Aktualizacja i rozbudowa wewnętrznego systemu zarządzania wydarzeniami o nowe funkcjonalności, optymalizacje oraz poprawki błędów; zaprojektowanie nowej strefy uczestnika zintegrowanej ze stronami wydarzeń; stworzenie dedykowanej instancji systemu dostosowanej do potrzeb kluczowego klienta, obsługującej różnorodne kursy i wydarzenia medyczne",
+        "2": "Tworzenie dedykowanych rozwiązań front-endowych dla wydarzeń medycznych (dostosowane formularze rejestracyjne i strony internetowe, strefy uczestnika, integracje z API), platformy VOD oraz responsywnych mailingów kompatybilnych ze wszystkimi głównymi usługami pocztowymi",
+        "3": "Opracowanie aplikacji mobilnej dla kolektorów danych Zebra (skanowanie kodów QR z lokalnym zapisem danych) oraz aplikacji webowej do rejestracji obecności na sesjach wydarzeń, obsługujących zarówno kioski do samodzielnego skanowania, jak i skanery Zebra",
+        "4": "Stworzenie konfigurowalnej aplikacji do głosowania na żywo z panelem administracyjnym i wynikami w czasie rzeczywistym; opracowanie wirtualnych stoisk wystawców z dokumentacją dla firm partnerskich",
+        "5": "Świadczenie wsparcia IT na miejscu podczas wydarzeń w całej Polsce, zapewniając płynne działanie systemów i niezawodność sprzętu; pomoc uczestnikom wydarzeń w razie potrzeby, również podczas konferencji międzynarodowych; reprezentowanie działu IT podczas międzynarodowych spotkań oraz okazjonalne pełnienie funkcji kierowcy firmowego"
+      }
+    },
+    {
+      "company": "ANFATA GAMES",
+      "position": "Junior Web3 Frontend Developer",
+      "duration": "Wrzesień 2022 - Sierpień 2023",
+      "duties": {
+        "1": "Tworzenie zdecentralizowanej aplikacji zintegrowanej ze Smart Contracts i kolekcjami ImmutableX, w tym budowa marketplace’u, mostkowanie NFT między L1 i L2, umożliwienie transferów między kontami oraz wdrożenie systemu aukcji na żywo",
+        "2": "Praca z bazami danych Moralis i Firebase oraz funkcjami w chmurze, z wykorzystaniem TypeScript, Next.js, GSAP i systemów kontroli wersji takich jak GitLab i Bitbucket",
+        "3": "Wdrożenie nowej strony głównej, integracja bloga opartego na Sanity CMS oraz tworzenie dedykowanych stron i funkcjonalności związanych z wydarzeniami w ramach platform firmy",
+        "4": "Manualne testowanie gry Pirates of the Arrland, w tym komponentów 3D MOBA oraz 2D mapy strategicznej w ramach zdecentralizowanej aplikacji",
+        "5": "Ścisła współpraca w międzynarodowym i interdyscyplinarnym zespole"
+      }
     }
-  },
+  ],
+
   "education": {
     "university": "UŚ - Wydział Nauk Ścisłych i Technicznych",
     "field": "INFORMATYKA - Programowanie Aplikacji Webowych",
-    "degree": "Inżynier • Październik 2017 - Czerwiec 2021"
+    "degree": "Inżynier",
+    "dates": "Październik 2017 - Czerwiec 2021"
   },
   "projects": [
     {
@@ -46,7 +63,7 @@
       "technologies": "HTML • JavaScript • Three.js • 3D Studio Max 2019",
       "description": "Prosta trójwymiarowa animacja wykonana przy pomocy 3D Studio Max 2019 oraz Three.js. Wyeksportowane modele wraz z animacjami w formacie .fbx zostały połączone w scenę klimacie Synthwave/lat 80 tworząc interaktywną kolorowankę. Wbudowane GUI umożliwia łatwą manipulację elementami sceny i jej kolorami.",
       "repositoryLink": "https://github.com/SkorczanFFF/Polonez-Autodrive",
-      "demoLink": "https://skorczanfff.github.io/Polonez-Autodrive/"
+      "demoLink": "https://polonez-autodrive.vercel.app/"
     },
     {
       "title": "YET ANOTHER WEATHER APP",

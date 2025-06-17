@@ -1,75 +1,86 @@
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { isMobile } from 'react-device-detect';
+
 import {
-  AiFillCar,
-  AiFillCompass,
-  AiFillFilePdf,
-  AiFillGithub,
-  AiFillHtml5,
-  AiFillMail,
-} from 'react-icons/ai';
-import { BiLogoJava } from 'react-icons/bi';
-import { BsDot, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
-import { GiGuitarBassHead } from 'react-icons/gi';
-import { GrMysql } from 'react-icons/gr';
-import { HiChip, HiMusicNote } from 'react-icons/hi';
-import { HiMiniLanguage } from 'react-icons/hi2';
-import {
-  IoCallSharp,
-  IoLogoCss3,
-  IoLogoReact,
-  IoLogoWordpress,
-} from 'react-icons/io5';
-import {
-  SiAdobephotoshop,
-  SiAutodesk,
-  SiBitbucket,
-  SiBlender,
-  SiFirebase,
-  SiGitlab,
-  SiMongodb,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiNpm,
-  SiRedux,
-  SiSass,
-  SiTailwindcss,
-  SiThreedotjs,
-  SiTypescript,
-  SiVercel,
-  SiVisualstudiocode,
-  SiYarn,
-} from 'react-icons/si';
+  AutodeskIcon,
+  BitbucketIcon,
+  BlenderIcon,
+  CallIcon,
+  CanvaIcon,
+  CarIcon,
+  ChipIcon,
+  CompassIcon,
+  CssIcon,
+  CursorIcon,
+  FirebaseIcon,
+  GithubIcon,
+  GitlabIcon,
+  GlobeIcon,
+  GuitarIcon,
+  HtmlIcon,
+  JavaIcon,
+  LanguageIcon,
+  LaravelIcon,
+  LinkedinIcon,
+  MailIcon,
+  MongodbIcon,
+  MusicIcon,
+  MysqlIcon,
+  NextjsIcon,
+  NodejsIcon,
+  NpmIcon,
+  PdfIcon,
+  PhotoshopIcon,
+  PhpIcon,
+  PythonIcon,
+  ReactIcon,
+  ReactNativeIcon,
+  ReduxIcon,
+  SanityIcon,
+  SassIcon,
+  TailwindIcon,
+  ThreejsIcon,
+  TypescriptIcon,
+  VercelIcon,
+  WordpressIcon,
+  YarnIcon,
+} from '@/lib/shared/Icons';
 
 import english from './Languages/english.json';
 import polish from './Languages/polish.json';
 
 const technos = [
-  { icon: <AiFillHtml5 className='text-5xl' />, label: 'HTML5' },
-  { icon: <SiTypescript className='text-5xl' />, label: 'TypeScript' },
-  { icon: <SiNextdotjs className='text-5xl' />, label: 'Next.js' },
-  { icon: <IoLogoReact className='text-5xl' />, label: 'React' },
-  { icon: <SiRedux className='text-5xl' />, label: 'Redux' },
-  { icon: <SiThreedotjs className='text-5xl' />, label: 'Three.js' },
-  { icon: <IoLogoCss3 className='text-5xl' />, label: 'CSS3' },
-  { icon: <SiTailwindcss className='text-5xl' />, label: 'Tailwind' },
-  { icon: <SiSass className='text-5xl' />, label: 'Sass' },
-  { icon: <SiFirebase className='text-5xl' />, label: 'Firebase' },
-  { icon: <SiMongodb className='text-5xl' />, label: 'MongoDB' },
-  { icon: <GrMysql className='text-5xl' />, label: 'MySQL' },
-  { icon: <SiNodedotjs className='text-5xl' />, label: 'Node.js' },
-  { icon: <BiLogoJava className='text-5xl' />, label: 'Java' },
-  { icon: <IoLogoWordpress className='text-5xl' />, label: 'Wordpress' },
-  { icon: <SiAdobephotoshop className='text-5xl' />, label: 'Photoshop' },
-  { icon: <SiAutodesk className='text-5xl' />, label: '3Ds Max' },
-  { icon: <SiBlender className='text-5xl' />, label: 'Blender' },
-  { icon: <AiFillGithub className='text-5xl' />, label: 'GitHub' },
-  { icon: <SiBitbucket className='text-5xl' />, label: 'BitBucket' },
-  { icon: <SiGitlab className='text-5xl' />, label: 'GitLab' },
-  { icon: <SiVisualstudiocode className='text-5xl' />, label: 'VS Code' },
-  { icon: <SiYarn className='text-5xl' />, label: 'Yarn' },
-  { icon: <SiNpm className='text-5xl' />, label: 'npm' },
+  { icon: <HtmlIcon className='text-5xl' />, label: 'HTML5' },
+  { icon: <CssIcon className='text-5xl' />, label: 'CSS3' },
+  { icon: <TypescriptIcon className='text-5xl' />, label: 'TypeScript' },
+  { icon: <ReactIcon className='text-5xl' />, label: 'React' },
+  { icon: <NextjsIcon className='text-5xl' />, label: 'Next.js' },
+  { icon: <ReactNativeIcon className='text-5xl' />, label: 'React Native' },
+  { icon: <ReduxIcon className='text-5xl' />, label: 'Redux' },
+  { icon: <ThreejsIcon className='text-5xl' />, label: 'Three.js' },
+  { icon: <TailwindIcon className='text-5xl' />, label: 'TailwindCSS' },
+  { icon: <SassIcon className='text-5xl' />, label: 'Sass' },
+  { icon: <PhpIcon className='text-5xl' />, label: 'PHP' },
+  { icon: <NodejsIcon className='text-5xl' />, label: 'Node.js' },
+  { icon: <JavaIcon className='text-5xl' />, label: 'Java' },
+  { icon: <PythonIcon className='text-5xl' />, label: 'Python' },
+  { icon: <LaravelIcon className='text-5xl' />, label: 'Laravel' },
+  { icon: <WordpressIcon className='text-5xl' />, label: 'Wordpress' },
+  { icon: <SanityIcon className='text-5xl' />, label: 'Sanity' },
+  { icon: <MysqlIcon className='text-5xl' />, label: 'MySQL' },
+  { icon: <FirebaseIcon className='text-5xl' />, label: 'Firebase' },
+  { icon: <MongodbIcon className='text-5xl' />, label: 'MongoDB' },
+  { icon: <PhotoshopIcon className='text-5xl' />, label: 'Photoshop' },
+  { icon: <AutodeskIcon className='text-5xl' />, label: '3Ds Max' },
+  { icon: <BlenderIcon className='text-5xl' />, label: 'Blender' },
+  { icon: <CanvaIcon className='text-5xl' />, label: 'Canva' },
+  { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
+  { icon: <BitbucketIcon className='text-5xl' />, label: 'BitBucket' },
+  { icon: <GitlabIcon className='text-5xl' />, label: 'GitLab' },
+  { icon: <CursorIcon className='text-5xl' />, label: 'CursorAI' },
+  { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
+  { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
 ];
 
 interface ProjectData {
@@ -97,7 +108,9 @@ const Project: React.FC<ProjectData> = ({
       <div className='text-raspberry ml-2 mr-8 mt-2 flex items-center text-lg tracking-wide'>
         {technologies}
       </div>
-      <p className='ml-2 mr-8 mt-2 flex items-center text-xl'>{description}</p>
+      <p className='ml-2 mr-8 mt-2 flex items-center text-xl leading-[20px] text-justify'>
+        {description}
+      </p>
       <div className='ml-4 mt-2 flex gap-10 text-xl'>
         <a
           className='hover:text-raspberry flex cursor-pointer items-center gap-2 duration-150'
@@ -105,7 +118,7 @@ const Project: React.FC<ProjectData> = ({
           target='_blank'
           rel='noreferrer'
         >
-          <AiFillGithub className='text-3xl' /> {repo}
+          <GithubIcon className='text-3xl' /> {repo}
         </a>
         <a
           className='hover:text-raspberry flex cursor-pointer items-center gap-2 duration-150'
@@ -113,7 +126,7 @@ const Project: React.FC<ProjectData> = ({
           target='_blank'
           rel='noreferrer'
         >
-          <BsGlobe2 className='text-2xl' /> {demo}
+          <GlobeIcon className='text-2xl' /> {demo}
         </a>
       </div>
     </div>
@@ -123,10 +136,9 @@ const Project: React.FC<ProjectData> = ({
 export default function CV(): JSX.Element {
   const currentYear = new Date().getFullYear();
   const [selectedLanguage, setSelectedLanguage] = useState<string>('english');
-  const handleLanguageChange = (e: any) => {
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedLanguage(e.target.value);
   };
-
   const languageData = selectedLanguage === 'english' ? english : polish;
 
   return (
@@ -147,9 +159,16 @@ export default function CV(): JSX.Element {
           }`}
         >
           {isMobile ? (
-            <p className='text-white'>Download resume in PDF format</p>
+            <a
+              className='text-white'
+              href='/maciej-skorus-en-cv.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Download resume in PDF format
+            </a>
           ) : (
-            <div className='my-auto flex h-[28px]'>
+            <div className='my-auto flex h-[28px] mr-2'>
               <label
                 htmlFor='language-select'
                 className='mr-2 mt-[3px] text-sm text-white'
@@ -160,43 +179,39 @@ export default function CV(): JSX.Element {
                 id='language-select'
                 value={selectedLanguage}
                 onChange={handleLanguageChange}
-                className='hover:bg-orange bg-raspberry focus:bg-orange overflow-visible border-transparent py-0 text-xs tracking-wider text-white ring-gray-300 duration-150'
+                className='hover:bg-orange bg-raspberry focus:bg-orange overflow-visible border-transparent py-0 text-xs tracking-wider text-white ring-gray-300 duration-150 min-w-[100px] cursor-pointer'
               >
                 <option value='english'>English</option>
-                <option value='polish'>Polski</option>
+                <option value='polish'>Polish</option>
               </select>
-              -
             </div>
           )}
 
           <a
-            href={`${selectedLanguage === 'english' ? '/eng.pdf' : '/pl.pdf'}`}
-            download={`${
-              selectedLanguage === 'english'
-                ? 'Maciej Skorus - CV[ENG]'
-                : 'Maciej Skorus - CV [PL]'
-            }`}
-            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150'
+            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'
+            href='/maciej-skorus-en-cv.pdf'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             {languageData.headers.download}
-            <AiFillFilePdf className='ml-1 text-lg' />
+            <PdfIcon className='ml-1 text-lg' />
           </a>
         </div>
         {!isMobile && (
-          <div className='xxl:overflow-hidden m-10 mt-0 flex  h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
+          <div className='xxl:overflow-hidden m-10 mt-0 flex h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
             <div className='flex w-full'>
               <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
                 <div className='arrow-top-left white' />
                 <div className='flex flex-col items-center justify-center'>
-                  <p className='ml-[35px] mt-[26px] text-[3rem] font-[200] tracking-[32px] text-white'>
+                  <p className='ml-[35px] mt-[23px] text-[3rem] font-[200] tracking-[32px] text-white'>
                     MACIEJ
                   </p>
-                  <p className='z-10 ml-[30px] mt-[27px] text-[3.25rem] tracking-[23px] text-white'>
+                  <p className='z-10 ml-[30px] mt-[27px] text-[3.25rem] tracking-[26px] text-white'>
                     SKORUS
                   </p>
-                  <div className='to-raspberry via-raspberry -mt-[18px] h-[4px] w-full bg-gradient-to-r from-transparent' />
+                  <div className='to-raspberry via-raspberry -mt-[14px] h-[4px] w-full bg-gradient-to-r from-transparent' />
                 </div>
-                <div className='mt-[65px]'>
+                <div className='mt-[65px] h-[100%]'>
                   <div className='h-[4px] w-[95%] bg-gradient-to-r from-white from-10% to-transparent to-100%' />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -212,7 +227,7 @@ export default function CV(): JSX.Element {
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <p className='ml-6 mr-9 mt-2 text-end text-lg tracking-[0px] text-white'>
+                    <p className='ml-6 mr-8 mt-2 text-end text-[20px] tracking-[0px] leading-6 text-white'>
                       {languageData.aboutme}
                     </p>
                   </div>
@@ -230,7 +245,7 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        skorusmaciej94@gmail.com <AiFillMail />
+                        skorusmaciej94@gmail.com <MailIcon />
                       </a>
                       <a
                         href='tel:+48668366648'
@@ -239,8 +254,30 @@ export default function CV(): JSX.Element {
                         rel='noreferrer'
                       >
                         +48 668 366 648
-                        <IoCallSharp />
+                        <CallIcon />
                       </a>
+                    </div>
+                  </div>
+                  <div className='mt-5 flex flex-col items-end'>
+                    <div className='flex items-center justify-end gap-3'>
+                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                        {languageData.headers.education}
+                      </p>
+                      <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
+                    </div>
+                    <div className='mx-4 mr-9 mt-2 flex flex-col text-end text-xl text-white'>
+                      <p className='font-[500] '>
+                        {languageData.education.university}
+                      </p>
+                      <p className='text-white/80'>
+                        {languageData.education.field}
+                      </p>
+                      <p className='text-orange/75 text-lg brightness-200'>
+                        {languageData.education.degree}
+                      </p>
+                      <p className='text-orange/75 text-lg brightness-200'>
+                        {languageData.education.dates}
+                      </p>
                     </div>
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
@@ -262,6 +299,7 @@ export default function CV(): JSX.Element {
                       </p>
                     </div>
                   </div>
+
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
                       <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
@@ -276,7 +314,7 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        /skorczanFFF <BsGithub className='-mt-[2px]' />
+                        /skorczanFFF <GithubIcon className='-mt-[2px]' />
                       </a>
                       <a
                         className='hover:text-orange flex items-center gap-2 duration-150'
@@ -284,7 +322,7 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        /mskorus <BsLinkedin className='-mt-[2px]' />
+                        /mskorus <LinkedinIcon className='-mt-[2px]' />
                       </a>
                       <a
                         className='hover:text-orange flex items-center gap-2 duration-150'
@@ -292,101 +330,94 @@ export default function CV(): JSX.Element {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        mskorus.vercel.app <SiVercel className='-mt-[2px]' />
+                        mskorus.vercel.app <VercelIcon className='-mt-[2px]' />
                       </a>
                     </div>
                   </div>
-                  <div className='mt-5 flex flex-col items-end'>
+                  <div className='mt-5 flex h-[35.5%] max-h-[100%] flex-col items-end justify-between'>
                     <div className='flex items-center justify-end gap-3'>
                       <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
                         {languageData.headers.hobbies}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
-                    <div className='mx-4 mr-9 mt-3 flex flex-col items-center gap-5 text-end text-xl text-white'>
-                      <div className='flex w-[310px] justify-between'>
-                        <GiGuitarBassHead className='text-6xl' />
-                        <AiFillCar className='text-6xl' />
-                        <HiMusicNote className='text-6xl' />
+                    <div className=' flex h-[100%] flex-col justify-between'>
+                      <div className='mx-4 mr-7 mt-3 flex flex-col items-center gap-5 text-end text-xl text-white'>
+                        <div className='flex w-[310px] justify-between'>
+                          <GuitarIcon className='text-6xl' />
+                          <CarIcon className='text-6xl' />
+                          <MusicIcon className='text-6xl' />
+                        </div>
+                        <div className='flex w-[310px] justify-between'>
+                          <CompassIcon className='text-6xl' />
+                          <ChipIcon className='text-6xl' />
+                          <LanguageIcon className='text-6xl' />
+                        </div>
                       </div>
-                      <div className='flex w-[310px] justify-between'>
-                        <AiFillCompass className='text-6xl' />
-                        <HiChip className='text-6xl' />
-                        <HiMiniLanguage className='text-6xl' />
-                      </div>
+                      {/* <div className='mx-4 text-justify text-[12px] leading-4 text-white/40 opacity-75'>
+                        {languageData.rodo}
+                      </div> */}
                     </div>
                   </div>
                 </div>
               </div>
               <div className='flex flex-col'>
                 <div className='bg-primary-blue flex h-[90px] w-full items-center text-white'>
-                  <p className='right-0 ml-[100px] text-3xl font-[300] tracking-[15px]'>
-                    JUNIOR FRONTEND DEVELOPER
+                  <p className='right-0 mx-auto text-4xl font-[400] tracking-[15px]'>
+                    FRONTEND DEVELOPER
                   </p>
                 </div>
                 <div className='flex'>
-                  <div className='bg-raspberry -mt-[1px] h-[1932px]'>
+                  <div className='bg-raspberry h-[1932px]'>
                     <div className='arrow-top-left cv-blue' />
                   </div>
                   <div className='flex h-[1931px] w-[1011px] flex-col bg-white'>
-                    <div className='mt-[54px]' />
+                    <div className='mt-[20px]' />
                     <div className='flex w-full'>
                       <div className='cv-arrow' />
-                      <div className=' flex flex-col text-[#20252f]'>
+                      <div className=' -mt-[4px] flex flex-col text-[#20252f]'>
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                           {languageData.headers.experience}
                         </p>
-                        <div className='mx-6  mt-3'>
-                          <p className='text-2xl font-[500] tracking-[5px]'>
-                            {languageData.experience.company}
-                          </p>
-                          <div className='mb-4 mt-2 flex items-center gap-5 text-2xl tracking-[2px]'>
-                            <p>{languageData.experience.position}</p>
-                            <p className='text-raspberry text-lg'>
-                              {languageData.experience.duration}
-                            </p>
+                        {(Array.isArray(languageData.experience)
+                          ? languageData.experience
+                          : [languageData.experience]
+                        ).map((exp, index) => (
+                          <div
+                            key={index}
+                            className={`mx-5 ${
+                              index % 2 === 0 ? 'mt-1' : 'mt-3'
+                            }`}
+                          >
+                            <div className='mb-4 mt-2 flex items-center justify-between gap-5 text-2xl tracking-[2px]'>
+                              <p className='text-2xl font-[500] tracking-[5px]'>
+                                {exp.company}
+                              </p>
+                              <div className='flex items-center justify-end'>
+                                <p className='text-[20px] '>{exp.position}</p>
+                                <p className='text-raspberry ml-2 mt-[2px] text-lg'>
+                                  {exp.duration}
+                                </p>
+                              </div>
+                            </div>
+                            <div className=' flex w-full flex-col items-start gap-2 text-xl'>
+                              {Object.entries(exp.duties).map(([key, duty]) => (
+                                <li
+                                  key={key}
+                                  className='m-0 p-0 leading-[20px] text-justify'
+                                >
+                                  {duty}
+                                </li>
+                              ))}
+                            </div>
                           </div>
-                          <div className='ml-1 flex w-full flex-col items-start gap-2 text-xl'>
-                            <li className='m-0 p-0'>
-                              {languageData.experience.duties[1]}
-                            </li>
-                            <li>{languageData.experience.duties[2]}</li>
-                            <li
-                            // className={`flex ${
-                            //   selectedLanguage == 'english' ? 'mr-10' : ''
-                            // }`}
-                            >
-                              {languageData.experience.duties[3]}
-                            </li>
-                            <li>{languageData.experience.duties[4]}</li>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
 
                     <div className='mt-10 flex w-full'>
                       <div className='cv-arrow' />
-                      <div className=' flex flex-col text-[#20252f]'>
-                        <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
-                          {languageData.headers.education}
-                        </p>
-                        <div className='ml-6 mt-3'>
-                          <p className='text-2xl font-[500] tracking-[3px]'>
-                            {languageData.education.university}
-                          </p>
-                          <p className='mb-4 mt-2 text-2xl tracking-[1px]'>
-                            {languageData.education.field}
-                          </p>
-                          <div className='ml-1 flex items-center text-[22px]'>
-                            <BsDot /> {languageData.education.degree} <BsDot />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className='mt-10 flex w-full'>
-                      <div className='cv-arrow' />
-                      <div className=' flex flex-col text-[#20252f]'>
+                      <div className=' -mt-[5px] flex flex-col text-[#20252f]'>
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                           {languageData.headers['selected-projects']}
                         </p>
@@ -408,9 +439,9 @@ export default function CV(): JSX.Element {
                         ))}
 
                         <div className='flex h-full flex-col justify-between'>
-                          <div className='mt-10 flex w-full'>
+                          <div className='mt-10 flex w-full ml-[4px]'>
                             <div className='cv-arrow -ml-[22px]' />
-                            <div className=' flex flex-col text-[#20252f]'>
+                            <div className=' flex flex-col text-[#20252f] -mt-[5px]'>
                               <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                                 {languageData.headers.skills}
                               </p>
@@ -429,7 +460,7 @@ export default function CV(): JSX.Element {
                               </div>
                             </div>
                           </div>
-                          <div className='bottom-0 -ml-2 mr-2 mt-[30px] text-center text-[14px] leading-4 opacity-75'>
+                          <div className='bottom-0 -ml-2 mr-2 mt-[10px] px-4 text-center text-[14px] leading-4 opacity-75'>
                             {languageData.rodo}
                           </div>
                         </div>

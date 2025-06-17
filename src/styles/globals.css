@@ -82,7 +82,7 @@ body {
 
 .gradient-slow {
   background: linear-gradient(270deg, #972b1a, #801834);
-  background-size: 200% 400%;
+  background-size: 400% 200%;
   -webkit-animation: gradientAnimationX 7s ease infinite;
   -moz-animation: gradientAnimationX 7s ease infinite;
   animation: gradientAnimationX 7s ease infinite;
@@ -164,6 +164,16 @@ body {
   transform: perspective(600px) rotateY(-5deg);
 }
 
+.perspective-right-alt {
+  transform: perspective(1200px) rotateY(5deg);
+  margin-right: -100px;
+}
+
+.perspective-left-alt {
+  transform: perspective(1200px) rotateY(-5deg);
+  margin-left: -100px;
+}
+
 @media screen and (max-width: 1280px) {
   .perspective-right {
     transform: perspective(1000px) rotateY(1deg);
@@ -186,8 +196,12 @@ body {
   border-color: #e4e4e4 transparent transparent transparent;
 }
 
+.orange {
+  border-color: #8a2029 transparent transparent transparent;
+}
+
 .blue {
-  border-color: #141827 transparent transparent transparent;
+  border-color: #001a25 transparent transparent transparent;
 }
 
 .cv-blue {
@@ -253,7 +267,7 @@ body {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 15px 0 15px 22px;
+  border-width: 12px 0 12px 18px;
   border-color: transparent transparent transparent #801834;
 }
 
@@ -299,4 +313,28 @@ body {
 
 ::selection {
   background-color: #801834;
+}
+
+li::marker {
+  padding-right: 10px;
+}
+
+@keyframes danger-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+.danger-animation {
+  animation: danger-pulse 2s infinite;
+  color: #ffdd44;
 }
