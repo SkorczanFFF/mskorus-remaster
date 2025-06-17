@@ -4,11 +4,6 @@ import React, { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const cvLinks = [
-  { href: '/pl.pdf', label: 'PL' },
-  { href: '/eng.pdf', label: 'EN' },
-];
-
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();
   const getInTouchRef = useRef<HTMLParagraphElement>(null);

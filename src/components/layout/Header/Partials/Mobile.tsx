@@ -28,7 +28,7 @@ export default function Mobile({
       />
       <span
         className={`h-[2px] w-6 transition-all duration-300 ease-in-out ${
-          click ? 'opacity-0 bg-raspberry' : 'bg-real-white'
+          click ? 'opacity-0 bg-real-white' : 'bg-real-white'
         }`}
       />
       <span

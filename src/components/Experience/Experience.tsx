@@ -52,12 +52,12 @@ export default function Experience(): JSX.Element {
   return (
     <section
       id='experience'
-      className='font-mont relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white py-20 md:pt-[120px]'
+      className='font-mont relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white py-20 md:pt-[120px] pb-10'
     >
       <h3 className='font-mont text-primary-blue -left-8 top-[160px] py-2 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
         WORK EXP
       </h3>
-      <div className='flex h-full w-full flex-col gap-[60px] py-10 md:py-0'>
+      <div className='flex h-full w-full flex-col gap-[60px] pt-20 md:py-0 pb-0'>
         {experiencesData.experiences.map((exp, index) => (
           <ExperienceSection key={index} exp={exp} index={index} />
         ))}
@@ -130,8 +130,8 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
       }`}
     >
       <div ref={containerRef} className='flex w-full max-w-[750px]'>
-        <div className='bg-primary-blue flex-1 p-6 py-4 text-[14px] lg:mx-auto'>
-          <h4 className='flex flex-col md:flex-row md:justify-between text-xl font-[500]'>
+        <div className='bg-primary-blue flex-1 p-6 md:py-4 text-[14px] lg:mx-auto'>
+          <h4 className='flex flex-col sm:flex-row sm:justify-between text-xl font-[500]'>
             <span className='pb-0 sm:pb-2 text-[20px] text-white'>
               {exp.title}
             </span>
@@ -140,7 +140,7 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
           <div className='gradient mb-2 h-[2px] w-full'></div>
 
           <div>
-            <div className='flex justify-between'>
+            <div className={`flex justify-between flex-col sm:flex-row `}>
               <span className='mb-2 flex items-center text-[#b6b6b6]'>
                 <img
                   src={`/exp/${exp.icon}`}
@@ -149,7 +149,7 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
                 />
                 {exp.job}
               </span>
-              <div className='flex justify-between'>
+              <div className='flex justify-between mb-2 sm:mb-0'>
                 {exp.stack.map((tech, i) => {
                   const icon = getTechIcon(tech);
                   return icon ? (

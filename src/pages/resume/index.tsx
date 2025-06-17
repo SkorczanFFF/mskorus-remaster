@@ -159,7 +159,14 @@ export default function CV(): JSX.Element {
           }`}
         >
           {isMobile ? (
-            <p className='text-white'>Download resume in PDF format</p>
+            <a
+              className='text-white'
+              href='/maciej-skorus-en-cv.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Download resume in PDF format
+            </a>
           ) : (
             <div className='my-auto flex h-[28px] mr-2'>
               <label
@@ -180,7 +187,12 @@ export default function CV(): JSX.Element {
             </div>
           )}
 
-          <a className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'>
+          <a
+            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'
+            href='/maciej-skorus-en-cv.pdf'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             {languageData.headers.download}
             <PdfIcon className='ml-1 text-lg' />
           </a>

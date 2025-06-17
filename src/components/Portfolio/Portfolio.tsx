@@ -150,7 +150,7 @@ export default function Portfolio(): JSX.Element {
             </div>
           </div>
           <div className='flex flex-col xl:flex-row gap-5'>
-            <div className='border-1 lg:mt-20 flex w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
+            <div className='border-1 lg:mt-20 flex w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-6 md:p-10 text-white shadow-xl'>
               <div className='flex w-full items-center justify-between'>
                 <div className='flex flex-col'>
                   <h4 className='text-xl font-[500] uppercase'>
@@ -187,7 +187,7 @@ export default function Portfolio(): JSX.Element {
               </div>
             </div>
 
-            <div className='border-1 mb-10 flex h-auto w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-10 text-white shadow-xl'>
+            <div className='border-1 mb-10 flex h-auto w-full max-w-[1500px] flex-col items-center justify-center gap-2 border-[gradient] p-6 md:p-10 text-white shadow-xl'>
               <div className='flex w-full items-center justify-between'>
                 <div className='flex flex-col'>
                   <h4 className='text-xl font-[500] uppercase'>

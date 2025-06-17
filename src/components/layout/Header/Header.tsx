@@ -28,8 +28,9 @@ export default function Header(): JSX.Element {
   return (
     <>
       <header
-        className={`font-mont sticky top-0 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px]
-        ${click ? 'bg-transparent' : ''}`}
+        className={`font-mont sticky top-0 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px] ${
+          click ? 'bg-transparent' : ''
+        }`}
       >
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
@@ -51,8 +52,9 @@ export default function Header(): JSX.Element {
 
       {/* Full screen mobile menu */}
       <div
-        className={`bg-raspberry fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[75px] transition-transform duration-300 lg:hidden
-          ${click ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`bg-raspberry fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[75px] transition-transform duration-300 lg:hidden ${
+          click ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
         <nav className='flex h-full w-full flex-col items-center justify-center'>
           <ul className='flex flex-col items-center space-y-8'>
