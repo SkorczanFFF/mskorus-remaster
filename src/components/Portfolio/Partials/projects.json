@@ -33,7 +33,7 @@
     "title": "Yet Another Weather App",
     "technos": "React • JavaScript • Sass • Vanta.js • Open-Meteo API",
     "description": "Another `weather application` — but with a twist. Weather data is displayed for a selected city or via user geolocation, with an interface enriched by interactive elements tied to the current weather conditions and background. Recently, the backend switched from OpenWeather to Open-Meteo. It was into liquid glass style before it became cool. Still desktop-only for now.",
-    "live": "https://polonez-autodrive.vercel.app/",
+    "live": "https://yet-another-weather-app.vercel.app/",
     "git": "https://github.com/SkorczanFFF/YetAnotherWeatherApp/"
   },
 
