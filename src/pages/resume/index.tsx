@@ -161,7 +161,7 @@ export default function CV(): JSX.Element {
           {isMobile ? (
             <a
               className='text-white'
-              href='/maciej-skorus-en-cv.pdf'
+              href='/Maciej Skorus - CV [ENG].pdf'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -189,7 +189,7 @@ export default function CV(): JSX.Element {
 
           <a
             className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'
-            href='/maciej-skorus-en-cv.pdf'
+            href='/Maciej Skorus - CV [ENG].pdf'
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -460,7 +460,9 @@ export default function CV(): JSX.Element {
                               </div>
                             </div>
                           </div>
-                          <div className='bottom-0 -ml-2 mr-2 mt-[10px] px-4 text-center text-[14px] leading-4 opacity-75'>
+                          <div
+                            className={`bottom-0 -ml-2 mr-2 ${selectedLanguage === 'english' ? 'mt-[10px]' : 'mt-[2px]'} px-4 text-center text-[14px] leading-4 opacity-75`}
+                          >
                             {languageData.rodo}
                           </div>
                         </div>
