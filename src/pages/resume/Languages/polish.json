@@ -67,7 +67,7 @@
     },
     {
       "title": "YET ANOTHER WEATHER APP",
-      "technologies": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
+      "technologies": "React • JavaScript • Sass • Vanta.js • Open-Meteo API",
       "description": "'Kolejna Aplikacja Pogodowa', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem.",
       "repositoryLink": "https://github.com/SkorczanFFF/YetAnotherWeatherApp",
       "demoLink": "https://yet-another-weather-app.vercel.app/"
