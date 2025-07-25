@@ -67,7 +67,7 @@
 
     {
       "title": "YET ANOTHER WEATHER APP",
-      "technologies": "React • JavaScript • Sass • Vanta.js • OpenWeather API",
+      "technologies": "React • JavaScript • Sass • Vanta.js • Open-Meteo API",
       "description": "Another `weather application` — but with a twist. Weather data is displayed for a selected city or via user geolocation, with an interface enriched by interactive elements tied to the current weather conditions and background. Recently, the backend switched from OpenWeather to Open-Meteo. It was into liquid glass style before it became cool. Still desktop-only for now.",
       "repositoryLink": "https://github.com/SkorczanFFF/YetAnotherWeatherApp",
       "demoLink": "https://yet-another-weather-app.vercel.app/"
