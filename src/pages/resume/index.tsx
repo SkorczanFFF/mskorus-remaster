@@ -374,7 +374,7 @@ export default function CV(): JSX.Element {
                   <div className='flex h-[1931px] w-[1011px] flex-col bg-white'>
                     <div className='mt-[20px]' />
                     <div className='flex w-full'>
-                      <div className='cv-arrow' />
+                      <div className='cv-arrow -ml-[1px]' />
                       <div className=' -mt-[4px] flex flex-col text-[#20252f]'>
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                           {languageData.headers.experience}
@@ -416,7 +416,7 @@ export default function CV(): JSX.Element {
                     </div>
 
                     <div className='mt-10 flex w-full'>
-                      <div className='cv-arrow' />
+                      <div className='cv-arrow -ml-[1px]' />
                       <div className=' -mt-[5px] flex flex-col text-[#20252f]'>
                         <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                           {languageData.headers['selected-projects']}
@@ -440,7 +440,7 @@ export default function CV(): JSX.Element {
 
                         <div className='flex h-full flex-col justify-between'>
                           <div className='mt-10 flex w-full ml-[4px]'>
-                            <div className='cv-arrow -ml-[22px]' />
+                            <div className='cv-arrow -ml-[23px]' />
                             <div className=' flex flex-col text-[#20252f] -mt-[5px]'>
                               <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
                                 {languageData.headers.skills}
