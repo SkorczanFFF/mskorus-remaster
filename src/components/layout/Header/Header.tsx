@@ -29,7 +29,7 @@ export default function Header(): JSX.Element {
     <>
       <header
         className={`font-mont sticky top-0 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px] ${
-          click ? 'bg-transparent' : ''
+          click ? 'opacity-0' : 'opacity-95'
         }`}
       >
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}

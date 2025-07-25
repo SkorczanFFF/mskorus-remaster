@@ -372,6 +372,7 @@ export default function CV(): JSX.Element {
                 <div className='flex'>
                   <div className='bg-raspberry h-[1932px]'>
                     <div className='arrow-top-left cv-blue' />
+                    <div className='arrow-top-left cv-blue absolute left-[498px] top-[202px] scale-110 z-[1001]' />
                   </div>
                   <div className='flex h-[1931px] w-[1011px] flex-col bg-white'>
                     <div className='mt-[20px]' />
