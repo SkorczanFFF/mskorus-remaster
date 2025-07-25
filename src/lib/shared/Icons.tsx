@@ -17,6 +17,7 @@ import { HiMiniLanguage } from 'react-icons/hi2';
 import {
   IoCallSharp,
   IoLogoCss3,
+  IoLogoDocker,
   IoLogoHtml5,
   IoLogoReact,
   IoLogoWordpress,
@@ -28,14 +29,17 @@ import {
   SiBitbucket,
   SiBlender,
   SiCanva,
+  SiFigma,
   SiFirebase,
   SiGitlab,
+  SiGreensock,
   SiJavascript,
   SiLaravel,
   SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
   SiNpm,
+  SiPostgresql,
   SiPython,
   SiReact,
   SiRedux,
@@ -85,11 +89,13 @@ export const HtmlIcon = IoLogoHtml5 as IconType;
 export const CssIcon = IoLogoCss3 as IconType;
 export const TailwindIcon = SiTailwindcss as IconType;
 export const SassIcon = SiSass as IconType;
+export const GsapIcon = SiGreensock as IconType;
 
 // Database Icons
 export const MysqlIcon = GrMysql as IconType;
 export const MongodbIcon = SiMongodb as IconType;
 export const FirebaseIcon = SiFirebase as IconType;
+export const PostgresqlIcon = SiPostgresql as IconType;
 
 // CMS Icons
 export const WordpressIcon = IoLogoWordpress as IconType;
@@ -100,6 +106,7 @@ export const PhotoshopIcon = SiAdobephotoshop as IconType;
 export const AutodeskIcon = SiAutodesk as IconType;
 export const BlenderIcon = SiBlender as IconType;
 export const CanvaIcon = SiCanva as IconType;
+export const FigmaIcon = SiFigma as IconType;
 
 // Development Tool Icons
 export const CursorIcon = BsCursorFill as IconType;
@@ -108,6 +115,7 @@ export const BitbucketIcon = SiBitbucket as IconType;
 export const NpmIcon = SiNpm as IconType;
 export const YarnIcon = SiYarn as IconType;
 export const VercelIcon = SiVercel as IconType;
+export const DockerIcon = IoLogoDocker as IconType;
 
 // Hobby & Interest Icons
 export const CarIcon = AiFillCar as IconType;

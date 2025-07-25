@@ -3,14 +3,15 @@ import React, { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import {
   AutodeskIcon,
-  BitbucketIcon,
   BlenderIcon,
   CanvaIcon,
   CssIcon,
   CursorIcon,
+  DockerIcon,
+  FigmaIcon,
   FirebaseIcon,
   GithubIcon,
-  GitlabIcon,
+  GsapIcon,
   HtmlIcon,
   JavaIcon,
   LaravelIcon,
@@ -21,6 +22,7 @@ import {
   NpmIcon,
   PhotoshopIcon,
   PhpIcon,
+  PostgresqlIcon,
   PythonIcon,
   ReactIcon,
   ReactNativeIcon,
@@ -133,6 +135,7 @@ export default function Technos(): JSX.Element {
       { icon: <ThreejsIcon className='text-5xl' />, label: 'Three.js' },
       { icon: <TailwindIcon className='text-5xl' />, label: 'TailwindCSS' },
       { icon: <SassIcon className='text-5xl' />, label: 'Sass' },
+      { icon: <GsapIcon className='text-5xl' />, label: 'GSAP' },
     ],
     backend: [
       { icon: <PhpIcon className='text-5xl' />, label: 'PHP' },
@@ -147,17 +150,18 @@ export default function Technos(): JSX.Element {
       { icon: <MysqlIcon className='text-5xl' />, label: 'MySQL' },
       { icon: <MongodbIcon className='text-5xl' />, label: 'MongoDB' },
       { icon: <FirebaseIcon className='text-5xl' />, label: 'Firebase' },
+      { icon: <PostgresqlIcon className='text-5xl' />, label: 'PostgreSQL' },
     ],
     design: [
       { icon: <PhotoshopIcon className='text-5xl' />, label: 'Photoshop' },
       { icon: <AutodeskIcon className='text-5xl' />, label: '3Ds Max' },
       { icon: <BlenderIcon className='text-5xl' />, label: 'Blender' },
+      { icon: <FigmaIcon className='text-5xl' />, label: 'Figma' },
       { icon: <CanvaIcon className='text-5xl' />, label: 'Canva' },
     ],
     tools: [
+      { icon: <DockerIcon className='text-5xl' />, label: 'Docker' },
       { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
-      { icon: <BitbucketIcon className='text-5xl' />, label: 'BitBucket' },
-      { icon: <GitlabIcon className='text-5xl' />, label: 'GitLab' },
       { icon: <CursorIcon className='text-5xl' />, label: 'CursorAI' },
       { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
       { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
@@ -198,13 +202,13 @@ export default function Technos(): JSX.Element {
         </div>
 
         {/* Row 2: Backend and Database */}
-        <div className='flex w-full gap-8 xl:flex-row'>
+        <div className='flex w-full gap-6 xl:flex-row'>
           {/* Backend */}
           <div className='max-w-2/3 flex w-full flex-col' ref={backendRef}>
             <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
               backend
             </h4>
-            <div className='flex w-full gap-[20px]'>
+            <div className='flex w-full gap-[12px]'>
               {techCategories.backend.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}
@@ -216,7 +220,7 @@ export default function Technos(): JSX.Element {
             <h4 className='mb-2 mr-6 self-end text-lg font-semibold capitalize'>
               database
             </h4>
-            <div className='flex w-full gap-[20px]'>
+            <div className='flex w-full gap-[10px]'>
               {techCategories.database.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}

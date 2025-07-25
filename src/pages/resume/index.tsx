@@ -4,7 +4,6 @@ import { isMobile } from 'react-device-detect';
 
 import {
   AutodeskIcon,
-  BitbucketIcon,
   BlenderIcon,
   CallIcon,
   CanvaIcon,
@@ -13,10 +12,12 @@ import {
   CompassIcon,
   CssIcon,
   CursorIcon,
+  DockerIcon,
+  FigmaIcon,
   FirebaseIcon,
   GithubIcon,
-  GitlabIcon,
   GlobeIcon,
+  GsapIcon,
   GuitarIcon,
   HtmlIcon,
   JavaIcon,
@@ -44,7 +45,6 @@ import {
   TypescriptIcon,
   VercelIcon,
   WordpressIcon,
-  YarnIcon,
 } from '@/lib/shared/Icons';
 
 import english from './Languages/english.json';
@@ -61,6 +61,7 @@ const technos = [
   { icon: <ThreejsIcon className='text-5xl' />, label: 'Three.js' },
   { icon: <TailwindIcon className='text-5xl' />, label: 'TailwindCSS' },
   { icon: <SassIcon className='text-5xl' />, label: 'Sass' },
+  { icon: <GsapIcon className='text-5xl' />, label: 'GSAP' },
   { icon: <PhpIcon className='text-5xl' />, label: 'PHP' },
   { icon: <NodejsIcon className='text-5xl' />, label: 'Node.js' },
   { icon: <JavaIcon className='text-5xl' />, label: 'Java' },
@@ -71,15 +72,16 @@ const technos = [
   { icon: <MysqlIcon className='text-5xl' />, label: 'MySQL' },
   { icon: <FirebaseIcon className='text-5xl' />, label: 'Firebase' },
   { icon: <MongodbIcon className='text-5xl' />, label: 'MongoDB' },
+  // { icon: <PostgresqlIcon className='text-5xl' />, label: 'PostgreSQL' },
   { icon: <PhotoshopIcon className='text-5xl' />, label: 'Photoshop' },
   { icon: <AutodeskIcon className='text-5xl' />, label: '3Ds Max' },
   { icon: <BlenderIcon className='text-5xl' />, label: 'Blender' },
   { icon: <CanvaIcon className='text-5xl' />, label: 'Canva' },
+  { icon: <FigmaIcon className='text-5xl' />, label: 'Figma' },
+  { icon: <DockerIcon className='text-5xl' />, label: 'Docker' },
   { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
-  { icon: <BitbucketIcon className='text-5xl' />, label: 'BitBucket' },
-  { icon: <GitlabIcon className='text-5xl' />, label: 'GitLab' },
   { icon: <CursorIcon className='text-5xl' />, label: 'CursorAI' },
-  { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
+  // { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
   { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
 ];
 
@@ -199,7 +201,7 @@ export default function CV(): JSX.Element {
         </div>
         {!isMobile && (
           <div className='xxl:overflow-hidden m-10 mt-0 flex h-[2015px] w-[1421px] justify-center overflow-scroll bg-white'>
-            <div className='flex w-full'>
+            <div className='flex w-full bg-primary-blue'>
               <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
                 <div className='arrow-top-left white' />
                 <div className='flex flex-col items-center justify-center'>
@@ -370,6 +372,7 @@ export default function CV(): JSX.Element {
                 <div className='flex'>
                   <div className='bg-raspberry h-[1932px]'>
                     <div className='arrow-top-left cv-blue' />
+                    <div className='arrow-top-left cv-blue absolute left-[498px] top-[202px] scale-110 z-[1001]' />
                   </div>
                   <div className='flex h-[1931px] w-[1011px] flex-col bg-white'>
                     <div className='mt-[20px]' />
