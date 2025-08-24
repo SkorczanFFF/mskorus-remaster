@@ -125,46 +125,103 @@ export default function Technos(): JSX.Element {
 
   const techCategories = {
     frontend: [
-      { icon: <HtmlIcon className='text-5xl' />, label: 'HTML5' },
-      { icon: <CssIcon className='text-5xl' />, label: 'CSS3' },
-      { icon: <TypescriptIcon className='text-5xl' />, label: 'TypeScript' },
-      { icon: <ReactIcon className='text-5xl' />, label: 'React' },
-      { icon: <NextjsIcon className='text-5xl' />, label: 'Next.js' },
-      { icon: <ReactNativeIcon className='text-5xl' />, label: 'React Native' },
-      { icon: <ReduxIcon className='text-5xl' />, label: 'Redux' },
-      { icon: <ThreejsIcon className='text-5xl' />, label: 'Three.js' },
-      { icon: <TailwindIcon className='text-5xl' />, label: 'TailwindCSS' },
-      { icon: <SassIcon className='text-5xl' />, label: 'Sass' },
-      { icon: <GsapIcon className='text-5xl' />, label: 'GSAP' },
+      { icon: <HtmlIcon className='sm:text-5xl text-4xl' />, label: 'HTML5' },
+      { icon: <CssIcon className='sm:text-5xl text-4xl' />, label: 'CSS3' },
+      {
+        icon: <TypescriptIcon className='sm:text-5xl text-4xl' />,
+        label: 'TypeScript',
+      },
+      { icon: <ReactIcon className='sm:text-5xl text-4xl' />, label: 'React' },
+      {
+        icon: <NextjsIcon className='sm:text-5xl text-4xl' />,
+        label: 'Next.js',
+      },
+      {
+        icon: <ReactNativeIcon className='sm:text-5xl text-4xl' />,
+        label: 'React Native',
+      },
+      { icon: <ReduxIcon className='sm:text-5xl text-4xl' />, label: 'Redux' },
+      {
+        icon: <ThreejsIcon className='sm:text-5xl text-4xl' />,
+        label: 'Three.js',
+      },
+      {
+        icon: <TailwindIcon className='sm:text-5xl text-4xl' />,
+        label: 'TailwindCSS',
+      },
+      { icon: <SassIcon className='sm:text-5xl text-4xl' />, label: 'Sass' },
+      { icon: <GsapIcon className='sm:text-5xl text-4xl' />, label: 'GSAP' },
     ],
     backend: [
-      { icon: <PhpIcon className='text-5xl' />, label: 'PHP' },
-      { icon: <NodejsIcon className='text-5xl' />, label: 'Node.js' },
-      { icon: <PythonIcon className='text-5xl' />, label: 'Python' },
-      { icon: <JavaIcon className='text-5xl' />, label: 'Java' },
-      { icon: <LaravelIcon className='text-5xl' />, label: 'Laravel' },
-      { icon: <WordpressIcon className='text-5xl' />, label: 'Wordpress' },
-      { icon: <SanityIcon className='text-5xl' />, label: 'Sanity' },
+      { icon: <PhpIcon className='sm:text-5xl text-4xl' />, label: 'PHP' },
+      {
+        icon: <NodejsIcon className='sm:text-5xl text-4xl' />,
+        label: 'Node.js',
+      },
+      {
+        icon: <PythonIcon className='sm:text-5xl text-4xl' />,
+        label: 'Python',
+      },
+      { icon: <JavaIcon className='sm:text-5xl text-4xl' />, label: 'Java' },
+      {
+        icon: <LaravelIcon className='sm:text-5xl text-4xl' />,
+        label: 'Laravel',
+      },
+      {
+        icon: <WordpressIcon className='sm:text-5xl text-4xl' />,
+        label: 'Wordpress',
+      },
+      {
+        icon: <SanityIcon className='sm:text-5xl text-4xl' />,
+        label: 'Sanity',
+      },
     ],
     database: [
-      { icon: <MysqlIcon className='text-5xl' />, label: 'MySQL' },
-      { icon: <MongodbIcon className='text-5xl' />, label: 'MongoDB' },
-      { icon: <FirebaseIcon className='text-5xl' />, label: 'Firebase' },
-      { icon: <PostgresqlIcon className='text-5xl' />, label: 'PostgreSQL' },
+      { icon: <MysqlIcon className='sm:text-5xl text-4xl' />, label: 'MySQL' },
+      {
+        icon: <MongodbIcon className='sm:text-5xl text-4xl' />,
+        label: 'MongoDB',
+      },
+      {
+        icon: <FirebaseIcon className='sm:text-5xl text-4xl' />,
+        label: 'Firebase',
+      },
+      {
+        icon: <PostgresqlIcon className='sm:text-5xl text-4xl' />,
+        label: 'PostgreSQL',
+      },
     ],
     design: [
-      { icon: <PhotoshopIcon className='text-5xl' />, label: 'Photoshop' },
-      { icon: <AutodeskIcon className='text-5xl' />, label: '3Ds Max' },
-      { icon: <BlenderIcon className='text-5xl' />, label: 'Blender' },
-      { icon: <FigmaIcon className='text-5xl' />, label: 'Figma' },
-      { icon: <CanvaIcon className='text-5xl' />, label: 'Canva' },
+      {
+        icon: <PhotoshopIcon className='sm:text-5xl text-4xl' />,
+        label: 'Photoshop',
+      },
+      {
+        icon: <AutodeskIcon className='sm:text-5xl text-4xl' />,
+        label: '3Ds Max',
+      },
+      {
+        icon: <BlenderIcon className='sm:text-5xl text-4xl' />,
+        label: 'Blender',
+      },
+      { icon: <FigmaIcon className='sm:text-5xl text-4xl' />, label: 'Figma' },
+      { icon: <CanvaIcon className='sm:text-5xl text-4xl' />, label: 'Canva' },
     ],
     tools: [
-      { icon: <DockerIcon className='text-5xl' />, label: 'Docker' },
-      { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
-      { icon: <CursorIcon className='text-5xl' />, label: 'CursorAI' },
-      { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
-      { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
+      {
+        icon: <DockerIcon className='sm:text-5xl text-4xl' />,
+        label: 'Docker',
+      },
+      {
+        icon: <GithubIcon className='sm:text-5xl text-4xl' />,
+        label: 'GitHub',
+      },
+      {
+        icon: <CursorIcon className='sm:text-5xl text-4xl' />,
+        label: 'CursorAI',
+      },
+      { icon: <YarnIcon className='sm:text-5xl text-4xl' />, label: 'Yarn' },
+      { icon: <NpmIcon className='sm:text-5xl text-4xl' />, label: 'npm' },
     ],
   };
 
@@ -263,7 +320,7 @@ export default function Technos(): JSX.Element {
             <h4 className='mb-6 text-lg font-semibold capitalize'>
               {category}
             </h4>
-            <div className='flex flex-wrap gap-4 md:gap-2  justify-center'>
+            <div className='flex flex-wrap gap-4 md:gap-2 md:gap-y-8 justify-center gap-y-8'>
               {techs.map((tech, idx) => (
                 <TechIcon key={idx} tech={tech} />
               ))}

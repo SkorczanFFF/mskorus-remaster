@@ -63,9 +63,9 @@ const MobileScene = (props: any) => {
           <meshPhysicalMaterial
             roughness={0.45}
             transmission={2}
-            thickness={1.5}
+            thickness={3.5}
             transparent
-            opacity={0.75}
+            opacity={1.3}
             color={0xffffff}
             clearcoat={1}
           />
