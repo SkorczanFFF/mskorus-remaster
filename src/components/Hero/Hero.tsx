@@ -8,7 +8,7 @@ import {
 import { Canvas, useFrame } from '@react-three/fiber';
 import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
 import { easing } from 'maath';
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 import { Object3D } from 'three';
@@ -51,6 +51,14 @@ export default function Hero(): JSX.Element {
     threshold: 0.01,
   });
   const [isModelBroken, setIsModelBroken] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isClientMobile, setIsClientMobile] = useState(false);
+
+  // Ensure client-side only rendering to prevent hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+    setIsClientMobile(isMobile);
+  }, []);
 
   const handleModelBreak = () => {
     setIsModelBroken(true);
@@ -62,7 +70,7 @@ export default function Hero(): JSX.Element {
       id='home'
       className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
     >
-      {inView ? (
+      {isMounted && inView ? (
         <Canvas
           shadows
           camera={{ position: [0, 0, -21], fov: 50 }}
@@ -80,7 +88,7 @@ export default function Hero(): JSX.Element {
             angle={0.2}
           />
           <Suspense fallback={<Loader />}>
-            {!isMobile ? (
+            {!isClientMobile ? (
               <>
                 <EffectComposer enableNormalPass={false}>
                   <N8AO aoRadius={5} intensity={15} />

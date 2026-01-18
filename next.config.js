@@ -1,14 +1,7 @@
 /** @type {import('next').NextConfig} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withTM = require('next-transpile-modules')(['three']);
-
 const nextConfig = {
-  eslint: {
-    dirs: ['src'],
-  },
   transpilePackages: ['three', 'gsap'],
   reactStrictMode: true,
-  swcMinify: true,
 
   // Uncoment to add domain whitelist
   // images: {
@@ -17,7 +10,8 @@ const nextConfig = {
   //   ],
   // },
 
-  // SVGR
+  // SVGR - Webpack config for SVG handling
+  // Note: Next.js 16 uses Turbopack by default, but webpack is still supported
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -35,6 +29,10 @@ const nextConfig = {
 
     return config;
   },
+
+  // Add empty turbopack config to silence warning
+  // SVGR webpack config will still work when using --webpack flag
+  turbopack: {},
 };
 
-module.exports = withTM(nextConfig);
+module.exports = nextConfig;

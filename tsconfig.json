@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,31 +16,24 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./public/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "~/*": [
+        "./public/*"
+      ]
     },
     "incremental": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "src/components/Hero/Partials/DesktopScene.jsx",
-    "src/components/Hero/Partials/Blob.jsx",
-    "src/components/Hero/Partials/Blob/vertexShader.ts",
-    "src/components/Hero/Partials/Blob/fragmentShader.ts",
-    "src/components/Hero/Partials/Blob/Blob.jsx",
-    "src/components/Hero/Partials/Blob/Blob.js",
-    "src/components/Hero/Hero.tsx",
-    "src/components/Hero/Godrays.jsx"
+    "**/*.tsx"
   ],
-  "exclude": ["node_modules"],
-  "moduleResolution": ["node_modules", ".next", "node"],
-  "dependencies": {
-    "@types/three": "^0.149.0",
-    "three": "^0.150.1"
-  }
+  "exclude": [
+    "node_modules"
+  ]
 }
