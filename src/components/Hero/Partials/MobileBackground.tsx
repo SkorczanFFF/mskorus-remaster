@@ -3,7 +3,6 @@ import React from 'react';
 
 import { colors } from '@/components/Hero/Partials/colors';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MobileBackground = (props: any) => {
   return (
     <>

@@ -54,7 +54,6 @@ export default function Hero(): JSX.Element {
   const [isMounted, setIsMounted] = useState(false);
   const [isClientMobile, setIsClientMobile] = useState(false);
 
-  // Ensure client-side only rendering to prevent hydration mismatch
   useEffect(() => {
     setIsMounted(true);
     setIsClientMobile(isMobile);

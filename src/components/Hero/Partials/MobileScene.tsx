@@ -6,7 +6,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { colors } from '@/components/Hero/Partials/colors';
 import MobileBackground from '@/components/Hero/Partials/MobileBackground';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MobileScene = (props: any) => {
   const { nodes } = useLoader(GLTFLoader, '/models/desktopScene.glb');
   const group = useRef<THREE.Group>();

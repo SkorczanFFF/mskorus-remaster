@@ -32,7 +32,6 @@ export default function Header(): JSX.Element {
           click ? 'opacity-0' : 'opacity-95'
         }`}
       >
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
           href='/'
           className='hover:text-raspberry text-primary-blue relative drop-shadow-[0_5px_5px_#ffffff30] duration-200 hover:drop-shadow-[0_5px_5px_#80183466]'
@@ -50,7 +49,6 @@ export default function Header(): JSX.Element {
         </div>
       </header>
 
-      {/* Full screen mobile menu */}
       <div
         className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${
           click ? 'translate-x-0' : 'translate-x-full'

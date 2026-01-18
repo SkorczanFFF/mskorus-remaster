@@ -72,7 +72,6 @@ const technos = [
   { icon: <MysqlIcon className='text-5xl' />, label: 'MySQL' },
   { icon: <FirebaseIcon className='text-5xl' />, label: 'Firebase' },
   { icon: <MongodbIcon className='text-5xl' />, label: 'MongoDB' },
-  // { icon: <PostgresqlIcon className='text-5xl' />, label: 'PostgreSQL' },
   { icon: <PhotoshopIcon className='text-5xl' />, label: 'Photoshop' },
   { icon: <AutodeskIcon className='text-5xl' />, label: '3Ds Max' },
   { icon: <BlenderIcon className='text-5xl' />, label: 'Blender' },
@@ -81,7 +80,6 @@ const technos = [
   { icon: <DockerIcon className='text-5xl' />, label: 'Docker' },
   { icon: <GithubIcon className='text-5xl' />, label: 'GitHub' },
   { icon: <CursorIcon className='text-5xl' />, label: 'CursorAI' },
-  // { icon: <YarnIcon className='text-5xl' />, label: 'Yarn' },
   { icon: <NpmIcon className='text-5xl' />, label: 'npm' },
 ];
 

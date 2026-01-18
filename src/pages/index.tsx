@@ -24,7 +24,6 @@ export default function HomePage() {
         <Experience />
         <Technos />
         <Portfolio />
-        {/* <Contact /> */}
         <Footer />
       </main>
       <UnderConstruction />

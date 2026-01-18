@@ -23,7 +23,6 @@ interface GLTFResult {
 
 type Vector3Tuple = [number, number, number];
 
-// Original positions for the icosphere parts
 const originalPositions = {
   part1: [3.598, -1.416, -2.543],
   part2: [2.478, -1.068, -2.281],
@@ -37,9 +36,8 @@ const originalPositions = {
   part10: [-3.381, -0.357, -4.275],
   part11: [1.67, -1.257, -5.512],
   part12: [2.824, 1.264, -2.902],
-} as const;
+  } as const;
 
-// Function to scale positions by percentage
 const scalePosition = (
   position: readonly number[],
   scale: number,
@@ -48,10 +46,8 @@ const scalePosition = (
   return position.map((coord) => coord * scaleFactor) as Vector3Tuple;
 };
 
-// Current scale percentage
 const SCALE_PERCENTAGE = 98.2;
 
-// Memoized materials
 const createMobileIcosphereMaterial = () => (
   <meshPhysicalMaterial
     roughness={0.45}
@@ -94,7 +90,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
   const handleClickRef = useRef<() => void>();
   const [hasCollapsed, setHasCollapsed] = useState(false);
 
-  // Store initial positions and rotations
   const initialStates = useRef<{
     [key: string]: {
       position: THREE.Vector3;
@@ -102,7 +97,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     };
   }>({});
 
-  // Function to store initial states
   const storeInitialStates = useCallback(() => {
     Object.entries(icosphereRefs.current).forEach(([key, ref]) => {
       if (ref) {
@@ -128,12 +122,10 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     }
   }, []);
 
-  // Store initial states on mount
   React.useEffect(() => {
     storeInitialStates();
   }, [storeInitialStates]);
 
-  // Function to handle click on any icosphere part
   const handleIcosphereClick = useCallback(() => {
     if (hasExploded.current) {
       if (handleClickRef.current) {
@@ -145,7 +137,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     setClickCount((prev) => {
       const clickCount = prev + 1;
       if (clickCount === 3) {
-        // Trigger explosion on third click
         const randomScale = Math.random() * (300 - 250) + 250;
         Object.values(icosphereRefs.current).forEach((ref) => {
           if (ref) {
@@ -171,7 +162,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
           }
         });
 
-        // Animate maciej and skorus text forward with linear easing
         if (maciejRef.current && skorusRef.current) {
           gsap.to(maciejRef.current.position, {
             z: maciejRef.current.position.z + 1,
@@ -194,14 +184,12 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     });
   }, []);
 
-  // Function to reset positions
   const resetPositions = useCallback(() => {
     if (isResetting.current || !hasExploded.current) return;
     isResetting.current = true;
     let completedResets = 0;
     const totalParts = Object.keys(icosphereRefs.current).length;
 
-    // Reset each icosphere part with staggered timing
     Object.entries(icosphereRefs.current).forEach(([key, ref], index) => {
       if (ref && initialStates.current[key]) {
         const delay = index * 0.1; // Stagger the resets
@@ -225,7 +213,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
           onComplete: () => {
             completedResets++;
             if (completedResets === totalParts) {
-              // All parts are reset, trigger explosion again
               hasExploded.current = false;
               isResetting.current = false;
               handleIcosphereClick();
@@ -266,17 +253,14 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     }
   }, [handleIcosphereClick]);
 
-  // Set up the reset handler
   React.useEffect(() => {
     handleClickRef.current = resetPositions;
   }, [resetPositions]);
 
-  // Optimize renderer
   useMemo(() => {
     gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   }, [gl]);
 
-  // Memoize materials
   const maciejMaterial = useMemo(
     () => (
       <meshStandardMaterial
@@ -323,7 +307,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     [],
   );
 
-  // Memoize IcospherePart component
   const IcospherePart = useCallback(
     ({
       partNumber,
@@ -360,7 +343,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     ],
   );
 
-  // Memoize the main group scale
   const groupScale = useMemo(() => (isMobile ? 1.15 : 1.5), [isMobile]);
 
   const handlePointerDown = () => {
@@ -401,7 +383,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
           </mesh>
         </group>
 
-        {/* Memoize the array of IcosphereParts */}
         {useMemo(
           () => (
             <>
@@ -437,5 +418,4 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
   );
 };
 
-// Memoize the entire Scene component
 export default React.memo(Scene);

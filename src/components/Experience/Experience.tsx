@@ -73,6 +73,7 @@ interface ExperienceSectionProps {
 
 function ExperienceSection({ exp, index }: ExperienceSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<ScrollTrigger | null>(null);
 
   useEffect(() => {
     if (!gsap) return;
@@ -83,10 +84,8 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
         window.innerWidth >= 1024 && window.innerWidth < 1280;
 
       if (isSmallScreen) {
-        // Disable scroll trigger for small screens
         gsap.set(containerRef.current, { x: 0 });
       } else {
-        // Set initial position based on screen size
         gsap.set(containerRef.current, {
           x:
             index % 2 === 0
@@ -98,7 +97,7 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
                 : -200,
         });
 
-        gsap.to(containerRef.current, {
+        const tween = gsap.to(containerRef.current, {
           x: 0,
           ease: 'none',
           scrollTrigger: {
@@ -111,23 +110,26 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
             fastScrollEnd: true,
           },
         });
+        if (tween.scrollTrigger) {
+          triggerRef.current = tween.scrollTrigger;
+        }
       }
     }
 
     return () => {
-      ScrollTrigger?.getAll().forEach((trigger: ScrollTrigger) =>
-        trigger.kill(),
-      );
+      if (triggerRef.current) {
+        triggerRef.current.kill();
+        triggerRef.current = null;
+      }
     };
   }, [index]);
 
   return (
     <div
-      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${
-        index % 2 === 0
+      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${index % 2 === 0
           ? 'gradient-slow self-end pl-2 md:pl-10'
           : 'gradient-slow justify-end self-start pr-2 md:pr-10'
-      }`}
+        }`}
     >
       <div ref={containerRef} className='flex w-full max-w-[750px]'>
         <div className='bg-primary-blue flex-1 p-6 md:py-4 text-[14px] lg:mx-auto'>
@@ -166,9 +168,8 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
             {exp.details.map((detail, i) => (
               <p
                 key={i}
-                className={`${
-                  i === exp.details.length - 1 ? 'mb-1' : 'mb-2'
-                } font-[300] leading-4 text-[#f8f8f8]`}
+                className={`${i === exp.details.length - 1 ? 'mb-1' : 'mb-2'
+                  } font-[300] leading-4 text-[#f8f8f8]`}
               >
                 - {detail}
               </p>

@@ -36,13 +36,12 @@
     "live": "https://yet-another-weather-app.vercel.app/",
     "git": "https://github.com/SkorczanFFF/YetAnotherWeatherApp/"
   },
-
   {
     "id": 4,
     "pic": "/projects/tba.jpg",
-    "title": "TO BE ANNOUCED",
+    "title": "TO BE ANNOUNCED",
     "technos": "",
-    "description": "- --- ....... -... . ....... .- -. -. --- ..- -.-. . -.. ",
+    "description": "- --- ....... -... . ....... .- -. -. --- ..- -. -.-. . -.. ",
     "live": "",
     "git": ""
   }

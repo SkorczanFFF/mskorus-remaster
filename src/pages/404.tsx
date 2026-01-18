@@ -4,7 +4,6 @@ import { RiAlarmWarningFill } from 'react-icons/ri';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-// Explicitly cast icon to React component (fix TS error in v5)
 const WarningIcon = RiAlarmWarningFill as React.FC<
   React.SVGProps<SVGSVGElement>
 >;

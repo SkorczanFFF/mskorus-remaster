@@ -6,14 +6,16 @@ import { GithubIcon, LinkedinIcon } from '@/lib/shared/Icons';
 export default function About(): JSX.Element {
   const firstHeadingRef = useRef<HTMLDivElement>(null);
   const secondHeadingRef = useRef<HTMLDivElement>(null);
+  const triggersRef = useRef<ScrollTrigger[]>([]);
 
   useEffect(() => {
     if (!gsap) return;
 
-    // First heading animation (from left)
+    triggersRef.current = [];
+
     if (firstHeadingRef.current) {
       gsap.set(firstHeadingRef.current, { x: 50 });
-      gsap.to(firstHeadingRef.current, {
+      const tween1 = gsap.to(firstHeadingRef.current, {
         x: 0,
         ease: 'none',
         scrollTrigger: {
@@ -24,12 +26,14 @@ export default function About(): JSX.Element {
           toggleActions: 'play none none reverse',
         },
       });
+      if (tween1.scrollTrigger) {
+        triggersRef.current.push(tween1.scrollTrigger);
+      }
     }
 
-    // Second heading animation (from right)
     if (secondHeadingRef.current) {
       gsap.set(secondHeadingRef.current, { x: -50 });
-      gsap.to(secondHeadingRef.current, {
+      const tween2 = gsap.to(secondHeadingRef.current, {
         x: 0,
         ease: 'none',
         scrollTrigger: {
@@ -40,10 +44,14 @@ export default function About(): JSX.Element {
           toggleActions: 'play none none reverse',
         },
       });
+      if (tween2.scrollTrigger) {
+        triggersRef.current.push(tween2.scrollTrigger);
+      }
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      triggersRef.current.forEach((trigger) => trigger.kill());
+      triggersRef.current = [];
     };
   }, []);
 

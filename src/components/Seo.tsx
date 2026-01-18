@@ -1,20 +1,14 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-// !STARTERCONF Change these default meta
 const defaultMeta = {
   title: 'Maciej Skorus - Frontend Developer',
   siteName: 'Maciej Skorus - Frontend Developer',
   description: 'Maciej Skorus - Frontend Developer Portfolio Page',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://mskorus.vercel.app/',
   type: 'website',
   robots: 'follow, index',
-  /**
-   * No need to be filled, will be populated with openGraph function
-   * If you wish to use a normal image, just specify the path below
-   */
-  image: 'https://i.ibb.co/fMD6RwD/Bez-nazwy-1.png',
+  image: 'https://mskorus.vercel.app/favicon/large-og.ico',
 };
 
 type SeoProps = {
@@ -32,16 +26,6 @@ export default function Seo(props: SeoProps) {
     ? `${props.templateTitle} | ${meta.siteName}`
     : meta.title;
 
-  // Use siteName if there is templateTitle
-  // but show full title if there is none
-  // !STARTERCONF Follow config for opengraph, by deploying one on https://github.com/theodorusclarence/og
-  // ? Uncomment code below if you want to use default open graph
-  // meta['image'] = openGraph({
-  //   description: meta.description,
-  //   siteName: props.templateTitle ? meta.siteName : meta.title,
-  //   templateTitle: props.templateTitle,
-  // });
-
   return (
     <Head>
       <title>{meta.title}</title>
@@ -49,16 +33,12 @@ export default function Seo(props: SeoProps) {
       <meta content={meta.description} name='description' />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
-      {/* Open Graph */}
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />
       <meta property='og:title' content={meta.title} />
       <meta name='image' property='og:image' content={meta.image} />
-      {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-      {/* // !STARTERCONF Remove or change to your handle */}
-      {/* <meta name='twitter:site' content='@th_clarence' /> */}
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
@@ -70,16 +50,14 @@ export default function Seo(props: SeoProps) {
             property='og:publish_date'
             content={meta.date}
           />
-          {/* // !STARTERCONF Remove or change to your name */}
           <meta
             name='author'
             property='article:author'
-            content='Theodorus Clarence'
+            content='Maciej Skorus'
           />
         </>
       )}
 
-      {/* Favicons */}
       {favicons.map((linkProps) => (
         <link key={linkProps.href} {...linkProps} />
       ))}
@@ -90,8 +68,6 @@ export default function Seo(props: SeoProps) {
   );
 }
 
-// !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-// ! then replace the whole /public/favicon folder and favicon.ico
 const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   {
     rel: 'apple-touch-icon',
