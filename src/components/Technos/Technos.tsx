@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
-import { gsap, ScrollTrigger } from '@/lib/gsap';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
+import { gsap } from '@/lib/gsap';
 import {
   AutodeskIcon,
   BlenderIcon,
@@ -42,91 +43,81 @@ export default function Technos(): JSX.Element {
   const databaseRef = useRef<HTMLDivElement>(null);
   const designRef = useRef<HTMLDivElement>(null);
   const toolsRef = useRef<HTMLDivElement>(null);
-  const triggersRef = useRef<ScrollTrigger[]>([]);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    triggersRef.current = [];
-
+  useScrollTriggers(() => {
     gsap.set('.tech-icon', { opacity: 1, scale: 1 });
 
-    if (window.innerWidth > 1280) {
-      const frontendIcons = frontendRef.current?.querySelectorAll('.tech-icon');
-      if (frontendIcons) {
-        const tween1 = gsap.to(frontendIcons, {
+    if (window.innerWidth <= 1280) {
+      return [];
+    }
+
+    const triggers = [];
+
+    const frontendIcons = frontendRef.current?.querySelectorAll('.tech-icon');
+    if (frontendIcons) {
+      const tween1 = gsap.to(frontendIcons, {
+        opacity: 1,
+        scale: 1,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: frontendRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+      triggers.push(tween1.scrollTrigger);
+    }
+
+    const backendIcons = backendRef.current?.querySelectorAll('.tech-icon');
+    const databaseIcons = databaseRef.current?.querySelectorAll('.tech-icon');
+    if (backendIcons && databaseIcons) {
+      const tween2 = gsap.fromTo(
+        [...Array.from(backendIcons), ...Array.from(databaseIcons)],
+        { opacity: 0, scale: 1.4 },
+        {
+          opacity: 1,
+          scale: 1,
+          stagger: {
+            each: 0.1,
+            from: 'end',
+          },
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: backendRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        },
+      );
+      triggers.push(tween2.scrollTrigger);
+    }
+
+    const designIcons = designRef.current?.querySelectorAll('.tech-icon');
+    const toolsIcons = toolsRef.current?.querySelectorAll('.tech-icon');
+    if (designIcons && toolsIcons) {
+      const tween3 = gsap.fromTo(
+        [...Array.from(designIcons), ...Array.from(toolsIcons)],
+        { opacity: 0, scale: 1.4 },
+        {
           opacity: 1,
           scale: 1,
           stagger: 0.1,
           duration: 0.8,
           ease: 'power2.out',
           scrollTrigger: {
-            trigger: frontendRef.current,
+            trigger: designRef.current,
             start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
-        });
-        if (tween1.scrollTrigger) {
-          triggersRef.current.push(tween1.scrollTrigger);
-        }
-      }
-
-      const backendIcons = backendRef.current?.querySelectorAll('.tech-icon');
-      const databaseIcons = databaseRef.current?.querySelectorAll('.tech-icon');
-      if (backendIcons && databaseIcons) {
-        const tween2 = gsap.fromTo(
-          [...Array.from(backendIcons), ...Array.from(databaseIcons)],
-          { opacity: 0, scale: 1.4 },
-          {
-            opacity: 1,
-            scale: 1,
-            stagger: {
-              each: 0.1,
-              from: 'end',
-            },
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: backendRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse',
-            },
-          },
-        );
-        if (tween2.scrollTrigger) {
-          triggersRef.current.push(tween2.scrollTrigger);
-        }
-      }
-
-      const designIcons = designRef.current?.querySelectorAll('.tech-icon');
-      const toolsIcons = toolsRef.current?.querySelectorAll('.tech-icon');
-      if (designIcons && toolsIcons) {
-        const tween3 = gsap.fromTo(
-          [...Array.from(designIcons), ...Array.from(toolsIcons)],
-          { opacity: 0, scale: 1.4 },
-          {
-            opacity: 1,
-            scale: 1,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: designRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse',
-            },
-          },
-        );
-        if (tween3.scrollTrigger) {
-          triggersRef.current.push(tween3.scrollTrigger);
-        }
-      }
+        },
+      );
+      triggers.push(tween3.scrollTrigger);
     }
 
-    return () => {
-      triggersRef.current.forEach((trigger) => trigger.kill());
-      triggersRef.current = [];
-    };
+    return triggers;
   }, []);
 
   const techCategories = {

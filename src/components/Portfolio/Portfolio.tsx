@@ -1,24 +1,22 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
+import { gsap } from '@/lib/gsap';
 import { GithubIcon, GlobalIcon } from '@/lib/shared/Icons';
 
 import projects from './Partials/projects.json';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Portfolio(): JSX.Element {
   const projectRefs = useRef<(HTMLImageElement | null)[]>([]);
 
-  useEffect(() => {
-    projectRefs.current.forEach((img, index) => {
-      if (!img) return;
+  useScrollTriggers(() => {
+    return projectRefs.current.map((img, index) => {
+      if (!img) return undefined;
 
       const isEven = index % 2 === 0;
       const xOffset = isEven ? -100 : 100;
 
-      gsap.fromTo(
+      const tween = gsap.fromTo(
         img,
         {
           opacity: 0,
@@ -36,6 +34,8 @@ export default function Portfolio(): JSX.Element {
           },
         },
       );
+
+      return tween.scrollTrigger;
     });
   }, []);
 

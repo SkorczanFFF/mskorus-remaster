@@ -1,8 +1,6 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import React, { useEffect, useRef } from 'react';
 
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from '@/lib/gsap';
 
 export default function Footer(): JSX.Element {
   const currentYear = new Date().getFullYear();

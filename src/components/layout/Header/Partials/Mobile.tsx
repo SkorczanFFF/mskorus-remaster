@@ -7,12 +7,12 @@ interface LinkItem {
 
 interface MobileProps {
   links: LinkItem[];
-  click: boolean;
+  isMenuOpen: boolean;
   handleClick: () => void;
 }
 
 export default function Mobile({
-  click,
+  isMenuOpen,
   handleClick,
 }: MobileProps): JSX.Element {
   return (
@@ -23,17 +23,17 @@ export default function Mobile({
     >
       <span
         className={`h-[2px] w-6 transform transition-all duration-300 ease-in-out ${
-          click ? 'translate-y-[7px] rotate-45 bg-real-white' : 'bg-real-white'
+          isMenuOpen ? 'translate-y-[7px] rotate-45 bg-real-white' : 'bg-real-white'
         }`}
       />
       <span
         className={`h-[2px] w-6 transition-all duration-300 ease-in-out ${
-          click ? 'opacity-0 bg-real-white' : 'bg-real-white'
+          isMenuOpen ? 'opacity-0 bg-real-white' : 'bg-real-white'
         }`}
       />
       <span
         className={`h-[2px] w-6 transform transition-all duration-300 ease-in-out ${
-          click
+          isMenuOpen
             ? '-translate-y-[7px] -rotate-45 bg-real-white'
             : 'bg-real-white'
         }`}

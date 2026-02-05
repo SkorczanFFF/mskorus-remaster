@@ -6,9 +6,8 @@ import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
+import Background from '@/components/Hero/Partials/Background';
 import { colors } from '@/components/Hero/Partials/colors';
-import DesktopBackground from '@/components/Hero/Partials/DesktopBackground';
-import MobileBackground from '@/components/Hero/Partials/MobileBackground';
 
 interface GLTFResult {
   nodes: {
@@ -412,7 +411,7 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
           [scaledPositions],
         )}
 
-        {isMobile ? <MobileBackground /> : <DesktopBackground />}
+        {<Background variant={isMobile ? 'mobile' : 'desktop'} />}
       </group>
     </>
   );

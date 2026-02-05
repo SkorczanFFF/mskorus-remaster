@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
-import { gsap, ScrollTrigger } from '@/lib/gsap';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
+import { gsap } from '@/lib/gsap';
 import {
   BitbucketIcon,
   FirebaseIcon,
@@ -73,55 +74,45 @@ interface ExperienceSectionProps {
 
 function ExperienceSection({ exp, index }: ExperienceSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<ScrollTrigger | null>(null);
 
-  useEffect(() => {
-    if (!gsap) return;
+  useScrollTriggers(() => {
+    if (!containerRef.current) return [];
 
-    if (containerRef.current) {
-      const isSmallScreen = window.innerWidth < 1024;
-      const isMediumScreen =
-        window.innerWidth >= 1024 && window.innerWidth < 1280;
+    const isSmallScreen = window.innerWidth < 1024;
+    const isMediumScreen =
+      window.innerWidth >= 1024 && window.innerWidth < 1280;
 
-      if (isSmallScreen) {
-        gsap.set(containerRef.current, { x: 0 });
-      } else {
-        gsap.set(containerRef.current, {
-          x:
-            index % 2 === 0
-              ? isMediumScreen
-                ? 100
-                : 200
-              : isMediumScreen
-                ? -100
-                : -200,
-        });
-
-        const tween = gsap.to(containerRef.current, {
-          x: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 2,
-            toggleActions: 'play none none reverse',
-            anticipatePin: 1,
-            fastScrollEnd: true,
-          },
-        });
-        if (tween.scrollTrigger) {
-          triggerRef.current = tween.scrollTrigger;
-        }
-      }
+    if (isSmallScreen) {
+      gsap.set(containerRef.current, { x: 0 });
+      return [];
     }
 
-    return () => {
-      if (triggerRef.current) {
-        triggerRef.current.kill();
-        triggerRef.current = null;
-      }
-    };
+    gsap.set(containerRef.current, {
+      x:
+        index % 2 === 0
+          ? isMediumScreen
+            ? 100
+            : 200
+          : isMediumScreen
+            ? -100
+            : -200,
+    });
+
+    const tween = gsap.to(containerRef.current, {
+      x: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+        toggleActions: 'play none none reverse',
+        anticipatePin: 1,
+        fastScrollEnd: true,
+      },
+    });
+
+    return [tween.scrollTrigger];
   }, [index]);
 
   return (
