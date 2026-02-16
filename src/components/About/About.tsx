@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { GithubIcon, LinkedinIcon } from '@/lib/shared/Icons';
 
-export default function About(): JSX.Element {
+export default function About(): React.JSX.Element {
   const firstHeadingRef = useRef<HTMLDivElement>(null);
   const secondHeadingRef = useRef<HTMLDivElement>(null);
   const triggersRef = useRef<ScrollTrigger[]>([]);

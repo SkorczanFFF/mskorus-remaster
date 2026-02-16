@@ -37,7 +37,7 @@ import {
   YarnIcon,
 } from '@/lib/shared/Icons';
 
-export default function Technos(): JSX.Element {
+export default function Technos(): React.JSX.Element {
   const frontendRef = useRef<HTMLDivElement>(null);
   const backendRef = useRef<HTMLDivElement>(null);
   const databaseRef = useRef<HTMLDivElement>(null);
@@ -225,7 +225,7 @@ export default function Technos(): JSX.Element {
   const TechIcon = ({
     tech,
   }: {
-    tech: { icon: JSX.Element; label: string };
+    tech: { icon: React.JSX.Element; label: string };
   }) => (
     <div
       className='tech-icon text-primary-blue hover:text-raspberry flex w-[75px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px]'

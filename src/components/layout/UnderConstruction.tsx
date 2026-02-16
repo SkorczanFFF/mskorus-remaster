@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { WarningIcon } from '@/lib/shared/Icons';
 
-export default function UnderConstruction(): JSX.Element | null {
+export default function UnderConstruction(): React.JSX.Element | null {
   const [isVisible, setIsVisible] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
 

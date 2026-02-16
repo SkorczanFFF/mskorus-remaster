@@ -29,8 +29,8 @@ interface ExperienceData {
   details: string[];
 }
 
-const getTechIcon = (tech: string): JSX.Element | null => {
-  const iconMap: { [key: string]: JSX.Element } = {
+const getTechIcon = (tech: string): React.JSX.Element | null => {
+  const iconMap: { [key: string]: React.JSX.Element } = {
     PHP: <PhpIcon className='text-xl' />,
     MySQL: <MysqlIcon className='text-xl' />,
     Laravel: <LaravelIcon className='text-xl' />,
@@ -49,7 +49,7 @@ const getTechIcon = (tech: string): JSX.Element | null => {
   return iconMap[tech] || null;
 };
 
-export default function Experience(): JSX.Element {
+export default function Experience(): React.JSX.Element {
   return (
     <section
       id='experience'

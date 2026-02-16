@@ -14,7 +14,7 @@ const links = [
   { href: '/resume', label: 'Resume' },
 ];
 
-export default function Header(): JSX.Element {
+export default function Header(): React.JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {

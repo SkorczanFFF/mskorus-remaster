@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import { gsap } from '@/lib/gsap';
 
-export default function Footer(): JSX.Element {
+export default function Footer(): React.JSX.Element {
   const currentYear = new Date().getFullYear();
   const getInTouchRef = useRef<HTMLParagraphElement>(null);
 

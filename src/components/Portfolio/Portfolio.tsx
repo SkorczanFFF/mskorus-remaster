@@ -6,7 +6,7 @@ import { GithubIcon, GlobalIcon } from '@/lib/shared/Icons';
 
 import projects from './Partials/projects.json';
 
-export default function Portfolio(): JSX.Element {
+export default function Portfolio(): React.JSX.Element {
   const projectRefs = useRef<(HTMLImageElement | null)[]>([]);
 
   useScrollTriggers(() => {

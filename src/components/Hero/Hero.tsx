@@ -45,7 +45,7 @@ function Loader() {
   );
 }
 
-export default function Hero(): JSX.Element {
+export default function Hero(): React.JSX.Element {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.01,

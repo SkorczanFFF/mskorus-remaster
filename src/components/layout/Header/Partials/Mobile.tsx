@@ -14,7 +14,7 @@ interface MobileProps {
 export default function Mobile({
   isMenuOpen,
   handleClick,
-}: MobileProps): JSX.Element {
+}: MobileProps): React.JSX.Element {
   return (
     <button
       onClick={handleClick}

@@ -133,7 +133,7 @@ const Project: React.FC<ProjectData> = ({
   </div>
 );
 
-export default function CV(): JSX.Element {
+export default function CV(): React.JSX.Element {
   const currentYear = new Date().getFullYear();
   const [selectedLanguage, setSelectedLanguage] = useState<string>('english');
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
