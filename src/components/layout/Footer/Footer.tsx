@@ -1,15 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 import { gsap } from '@/lib/gsap';
+import { GithubIcon, LinkedinIcon, MailIcon } from '@/lib/shared/Icons';
+
+const contactLinks = [
+  { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/mskorus/', icon: LinkedinIcon },
+  { label: 'EMAIL', href: 'mailto:skorusmaciej94@gmail.com', icon: MailIcon },
+  { label: 'GITHUB', href: 'https://github.com/SkorczanFFF', icon: GithubIcon },
+] as const;
 
 export default function Footer(): React.JSX.Element {
   const currentYear = new Date().getFullYear();
   const getInTouchRef = useRef<HTMLParagraphElement>(null);
 
-  useEffect(() => {
-    if (!getInTouchRef.current) return;
+  useScrollTriggers(() => {
+    if (!getInTouchRef.current) return [];
 
-    gsap.fromTo(
+    const tween = gsap.fromTo(
       getInTouchRef.current,
       {
         opacity: 0,
@@ -27,6 +35,8 @@ export default function Footer(): React.JSX.Element {
         },
       },
     );
+
+    return [tween.scrollTrigger];
   }, []);
 
   return (
@@ -56,33 +66,19 @@ export default function Footer(): React.JSX.Element {
             </p>
           </div>
           <div className='flex items-center justify-center gap-0 md:flex-row flex-col md:gap-[60px] space-y-[60px] md:space-y-0 md:py-10'>
-            <a
-              href='https://www.linkedin.com/in/mskorus/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <div className='text-primary-blue text-xl rounded-[2px] font-[500] tracking-wider border-2 border-raspberry w-[200px] text-center py-4 hover:bg-raspberry hover:text-white duration-300 hover:rounded-xl'>
-                LINKEDIN
-              </div>
-            </a>
-            <a
-              href='mailto:skorusmaciej94@gmail.com'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <div className='text-primary-blue text-xl rounded-[2px] font-[500] tracking-wider border-2 border-raspberry w-[200px] text-center py-4 hover:bg-raspberry hover:text-white duration-300 hover:rounded-xl'>
-                EMAIL
-              </div>
-            </a>
-            <a
-              href='https://github.com/SkorczanFFF'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <div className='text-primary-blue text-xl rounded-[2px] font-[500] tracking-wider border-2 border-raspberry w-[200px] text-center py-4 hover:bg-raspberry hover:text-white duration-300 hover:rounded-xl'>
-                GITHUB
-              </div>
-            </a>
+            {contactLinks.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label={label}
+                className='group text-primary-blue text-xl rounded-[2px] font-[500] tracking-wider border-2 border-raspberry w-[200px] text-center py-4 hover:bg-raspberry hover:text-white duration-300 hover:rounded-xl'
+              >
+                <span className='block group-hover:hidden'>{label}</span>
+                <Icon className='hidden group-hover:block mx-auto text-3xl' />
+              </a>
+            ))}
           </div>
         </div>
       </div>

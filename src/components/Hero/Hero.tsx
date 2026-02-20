@@ -102,7 +102,7 @@ export default function Hero(): React.JSX.Element {
                   />
                 </Environment>
                 <Float floatIntensity={2}>
-                  <Scene onBreak={handleModelBreak} isBroken={isModelBroken} />
+                  <Scene onBreak={handleModelBreak} />
                 </Float>
               </>
             ) : (

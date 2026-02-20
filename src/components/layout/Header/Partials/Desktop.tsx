@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-interface LinkItem {
+export interface LinkItem {
   href: string;
   label: string;
 }

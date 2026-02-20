@@ -1,17 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
-import { gsap, ScrollTrigger } from '@/lib/gsap';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
+import { gsap } from '@/lib/gsap';
 import { GithubIcon, LinkedinIcon } from '@/lib/shared/Icons';
 
 export default function About(): React.JSX.Element {
   const firstHeadingRef = useRef<HTMLDivElement>(null);
   const secondHeadingRef = useRef<HTMLDivElement>(null);
-  const triggersRef = useRef<ScrollTrigger[]>([]);
 
-  useEffect(() => {
-    if (!gsap) return;
-
-    triggersRef.current = [];
+  useScrollTriggers(() => {
+    const triggers = [];
 
     if (firstHeadingRef.current) {
       gsap.set(firstHeadingRef.current, { x: 50 });
@@ -26,9 +24,7 @@ export default function About(): React.JSX.Element {
           toggleActions: 'play none none reverse',
         },
       });
-      if (tween1.scrollTrigger) {
-        triggersRef.current.push(tween1.scrollTrigger);
-      }
+      triggers.push(tween1.scrollTrigger);
     }
 
     if (secondHeadingRef.current) {
@@ -44,15 +40,10 @@ export default function About(): React.JSX.Element {
           toggleActions: 'play none none reverse',
         },
       });
-      if (tween2.scrollTrigger) {
-        triggersRef.current.push(tween2.scrollTrigger);
-      }
+      triggers.push(tween2.scrollTrigger);
     }
 
-    return () => {
-      triggersRef.current.forEach((trigger) => trigger.kill());
-      triggersRef.current = [];
-    };
+    return triggers;
   }, []);
 
   return (

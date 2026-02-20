@@ -3,7 +3,7 @@ import React from 'react';
 
 import { colors } from '@/components/Hero/Partials/colors';
 
-type Vector3Tuple = [number, number, number];
+export type Vector3Tuple = [number, number, number];
 
 interface TextConfig {
   text: string;

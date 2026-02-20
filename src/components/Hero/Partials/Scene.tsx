@@ -6,7 +6,7 @@ import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
-import Background from '@/components/Hero/Partials/Background';
+import Background, { Vector3Tuple } from '@/components/Hero/Partials/Background';
 import { colors } from '@/components/Hero/Partials/colors';
 
 interface GLTFResult {
@@ -19,8 +19,6 @@ interface GLTFResult {
     [key: string]: THREE.Material;
   };
 }
-
-type Vector3Tuple = [number, number, number];
 
 const originalPositions = {
   part1: [3.598, -1.416, -2.543],
@@ -73,10 +71,9 @@ const createDesktopIcosphereMaterial = () => (
 
 interface SceneProps {
   onBreak?: () => void;
-  isBroken?: boolean;
 }
 
-const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
+const Scene = ({ onBreak }: SceneProps) => {
   const { nodes } = useLoader(GLTFLoader, '/models/diax.glb') as GLTFResult;
   const group = useRef<THREE.Group | null>(null);
   const maciejRef = useRef<THREE.Group | null>(null);
@@ -256,7 +253,7 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     handleClickRef.current = resetPositions;
   }, [resetPositions]);
 
-  useMemo(() => {
+  React.useEffect(() => {
     gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   }, [gl]);
 
@@ -342,7 +339,7 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     ],
   );
 
-  const groupScale = useMemo(() => (isMobile ? 1.15 : 1.5), [isMobile]);
+  const groupScale = isMobile ? 1.15 : 1.5;
 
   const handlePointerDown = () => {
     if (!hasCollapsed) {
@@ -355,7 +352,6 @@ const Scene = ({ onBreak, isBroken = false, ...props }: SceneProps) => {
     <>
       <group
         ref={group}
-        {...props}
         dispose={null}
         scale={groupScale}
         onPointerDown={handlePointerDown}

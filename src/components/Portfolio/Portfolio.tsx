@@ -59,7 +59,7 @@ export default function Portfolio(): React.JSX.Element {
             <a
               href={project.live}
               rel='noopener noreferrer'
-              target='blank'
+              target='_blank'
               className='xl:w-1/2'
             >
               <img
