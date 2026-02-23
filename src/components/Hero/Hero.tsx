@@ -45,7 +45,7 @@ function Loader() {
   );
 }
 
-export default function Hero(): JSX.Element {
+export default function Hero(): React.JSX.Element {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.01,
@@ -67,7 +67,7 @@ export default function Hero(): JSX.Element {
     <section
       ref={ref}
       id='home'
-      className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
+      className='font-mont -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
     >
       {isMounted && inView ? (
         <Canvas
@@ -102,7 +102,7 @@ export default function Hero(): JSX.Element {
                   />
                 </Environment>
                 <Float floatIntensity={2}>
-                  <Scene onBreak={handleModelBreak} isBroken={isModelBroken} />
+                  <Scene onBreak={handleModelBreak} />
                 </Float>
               </>
             ) : (

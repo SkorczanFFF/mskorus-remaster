@@ -10,15 +10,24 @@
   },
   {
     "id": 1,
-    "pic": "/projects/tba.jpg",
-    "title": "Poemz [WIP]",
-    "technos": "React • Express • MongoDB • Node.js • GraphQL",
-    "description": "Fullstack application on MERN stack using GraphQL, featuring basic web app functionality and user authentication. Main purpose of this project was to focus on backend development to learn more about GraphQL. Still work in progress, more info coming soon.",
-    "live": "",
-    "git": "https://github.com/SkorczanFFF/poemz-mern-graphql"
+    "pic": "/projects/VAT-OFF.jpg",
+    "title": "VAT-OFF",
+    "technos": "JavaScript • Chrome Extension API • CSS",
+    "description": "Chrome extension that shows prices excluding VAT when you hover over them on any website. It detects prices on the page and displays the net amount in a tooltip and in the extension popup. Supports 120+ countries with preconfigured currencies and VAT rates, and allows custom VAT rate and currency. Features a built-in VAT calculator (GROSS/NET) in the popup. Available on the Chrome Web Store.",
+    "live": "https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl",
+    "git": "https://github.com/SkorczanFFF/VAT-OFF"
   },
   {
     "id": 2,
+    "pic": "/projects/tba.jpg",
+    "title": "Chandrastic [WIP]",
+    "technos": "React • TypeScript • CSS • Python • FastAPI • Pillow",
+    "description": "Chandrastic is a local wrapper for the Chandra OCR LLM. The project sets up backend and frontend and allows you to display and communicate with the backend OCR. Accepts images and PDF files. Processed data can be displayed via Markdown, HTML, or JSON. Extracts text, tables, and images.",
+    "live": "",
+    "git": ""
+  },
+  {
+    "id": 3,
     "pic": "/projects/portfolio.jpg",
     "title": "MSKORUS - my porftolio",
     "technos": "Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender",
@@ -26,9 +35,8 @@
     "live": "https://mskorus.vercel.app/",
     "git": "https://github.com/SkorczanFFF/mskorus-remaster"
   },
-
   {
-    "id": 3,
+    "id": 4,
     "pic": "/projects/YAWA.jpg",
     "title": "Yet Another Weather App",
     "technos": "React • JavaScript • Sass • Vanta.js • Open-Meteo API",
@@ -37,7 +45,7 @@
     "git": "https://github.com/SkorczanFFF/YetAnotherWeatherApp/"
   },
   {
-    "id": 4,
+    "id": 6,
     "pic": "/projects/tba.jpg",
     "title": "TO BE ANNOUNCED",
     "technos": "",

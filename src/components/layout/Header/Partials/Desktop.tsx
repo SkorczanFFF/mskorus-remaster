@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-interface LinkItem {
+export interface LinkItem {
   href: string;
   label: string;
 }
@@ -8,10 +8,10 @@ interface LinkItem {
 interface DesktopProps {
   links: LinkItem[];
 }
-export default function Desktop({ links }: DesktopProps): JSX.Element {
+export default function Desktop({ links }: DesktopProps): React.JSX.Element {
   return (
     <>
-      <ul className=' hidden h-full max-h-[40px] items-center justify-between space-x-10 px-6 backdrop-blur-[10px] lg:flex '>
+      <ul className=' hidden h-full max-h-[40px] items-center justify-between space-x-10 px-6 lg:flex '>
         {links.map(({ href, label }) => (
           <Link
             href={href}

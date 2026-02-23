@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as React from 'react';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
@@ -16,9 +17,9 @@ export default function NotFoundPage() {
       <main>
         <section className='bg-white'>
           <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
-            <WarningIcon className='drop-shadow-glow animate-flicker text-red-500' />
+            <WarningIcon className='text-red-500' />
             <h1 className='mt-8 text-4xl md:text-6xl'>Page Not Found</h1>
-            Back to Home
+            <Link href='/' className='mt-4 text-lg text-blue-600 underline hover:text-blue-800'>Back to Home</Link>
           </div>
         </section>
       </main>

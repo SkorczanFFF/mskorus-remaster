@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Desktop from '@/components/layout/Header/Partials/Desktop';
 import Mobile from '@/components/layout/Header/Partials/Mobile';
@@ -14,45 +14,48 @@ const links = [
   { href: '/resume', label: 'Resume' },
 ];
 
-export default function Header(): JSX.Element {
-  const [click, setClick] = useState<boolean>(false);
-  const handleClick = () => {
-    setClick((prevClick) => !prevClick);
-    if (!click) {
-      document.body.style.overflow = 'hidden';
-    } else {
+export default function Header(): React.JSX.Element {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    return () => {
       document.body.style.overflow = 'auto';
-    }
+    };
+  }, [isMenuOpen]);
+
+  const handleClick = () => {
+    setIsMenuOpen((prev) => !prev);
   };
 
   return (
     <>
       <header
-        className={`font-mont sticky top-0 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px] ${
-          click ? 'opacity-0' : 'opacity-95'
-        }`}
+        className={`font-mont sticky top-2 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183466] rounded-[3px] bg-[#001a2530] ${isMenuOpen ? 'opacity-0' : 'opacity-95'
+          }`}
       >
-        <a
-          href='/'
-          className='hover:text-raspberry text-primary-blue relative drop-shadow-[0_5px_5px_#ffffff30] duration-200 hover:drop-shadow-[0_5px_5px_#80183466]'
-        >
-          <span className='text-raspberry hover:text-primary-blue mx-4 text-xl duration-300 '>
-            M
-          </span>
-          <span className='text-real-white absolute left-4 z-10 mx-4 text-xl font-[500] tracking-wide duration-150'>
-            SKORUS
-          </span>
-        </a>
-        <div className='flex h-14 items-center justify-between'>
-          <Mobile links={links} click={click} handleClick={handleClick} />
-          <Desktop links={links} />
+        <div className='flex w-full items-center justify-between'>
+          <a
+            href='/'
+            className='hover:text-raspberry text-primary-blue relative drop-shadow-[0_5px_5px_#ffffff30] duration-200 hover:drop-shadow-[0_5px_5px_#80183466]'
+          >
+            <span className='text-raspberry hover:text-primary-blue mx-4 text-xl duration-300 drop-shadow-[0_5px_5px_#00000080]'>
+              M
+            </span>
+            <span className='text-real-white absolute left-4 z-10 mx-4 text-xl font-[500] tracking-wide duration-150'>
+              SKORUS
+            </span>
+          </a>
+          <div className='flex h-14 items-center justify-between'>
+            <Mobile links={links} isMenuOpen={isMenuOpen} handleClick={handleClick} />
+            <Desktop links={links} />
+          </div>
         </div>
       </header>
 
       <div
-        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${
-          click ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <nav className='flex h-full w-full flex-col items-center justify-center'>
           <ul className='flex flex-col items-center space-y-8'>
