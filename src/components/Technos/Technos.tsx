@@ -150,15 +150,16 @@ export default function Technos(): React.JSX.Element {
       { icon: <GsapIcon className='sm:text-5xl text-4xl' />, label: 'GSAP' },
     ],
     backend: [
+      {
+        icon: <PythonIcon className='sm:text-5xl text-4xl' />,
+        label: 'Python',
+      },
       { icon: <PhpIcon className='sm:text-5xl text-4xl' />, label: 'PHP' },
       {
         icon: <NodejsIcon className='sm:text-5xl text-4xl' />,
         label: 'Node.js',
       },
-      {
-        icon: <PythonIcon className='sm:text-5xl text-4xl' />,
-        label: 'Python',
-      },
+
       { icon: <JavaIcon className='sm:text-5xl text-4xl' />, label: 'Java' },
       {
         icon: <LaravelIcon className='sm:text-5xl text-4xl' />,

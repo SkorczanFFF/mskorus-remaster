@@ -22,20 +22,19 @@ export default function UnderConstruction(): React.JSX.Element | null {
 
   return (
     <div
-      className={`fixed bottom-1 right-1 z-50 m-2 flex items-center gap-1 rounded-[2px] gradient-slow p-2 text-white shadow-lg transition-opacity duration-300 border-2 border-[#ffc400bd] ${
-        isClosing ? 'opacity-0' : 'opacity-100'
-      }`}
+      className={`fixed bottom-1 right-1 z-50 m-2 flex items-center gap-1 text-white font-mont ${isClosing ? 'opacity-0' : 'opacity-100'
+        }`}
     >
-      <WarningIcon className='h-5 w-5 danger-animation' />
-      <span className='text-sm'>This page is currently under construction</span>
+      <WarningIcon className='h-6 w-6 danger-animation z-10' />
+      <span className='text-sm px-4 -ml-[14px] bg-oranger pb-[2px] opacity-90 backdrop-blur-[10px]'>This page is currently under construction</span>
       <button
         onClick={handleClose}
-        className='ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-white/20 hover:bg-white/30'
+        className='-ml-4 flex h-6 w-6 items-center justify-center rounded-sm bg-oranger hover:bg-raspberry z-10 border-[1px] border-white/20'
         aria-label='Close notice'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='h-3 w-3'
+          className='h-5 w-5'
           viewBox='0 0 20 20'
           fill='currentColor'
         >

@@ -67,7 +67,7 @@ export default function Hero(): React.JSX.Element {
     <section
       ref={ref}
       id='home'
-      className='font-mont -mt-[45px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
+      className='font-mont -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
     >
       {isMounted && inView ? (
         <Canvas
