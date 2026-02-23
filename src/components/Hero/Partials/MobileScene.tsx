@@ -1,4 +1,4 @@
-import { GroupProps, useLoader } from '@react-three/fiber';
+import { ThreeElements, useLoader } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -12,8 +12,14 @@ interface GLTFNodes {
   crystal: THREE.Mesh;
 }
 
-const MobileScene = (props: GroupProps) => {
-  const { nodes } = useLoader(GLTFLoader, '/models/desktopScene.glb') as { nodes: GLTFNodes };
+interface GLTFNodes {
+  maciej: THREE.Mesh;
+  skorus: THREE.Mesh;
+  crystal: THREE.Mesh;
+}
+
+const MobileScene = (props: ThreeElements['group']) => {
+  const { nodes } = useLoader(GLTFLoader, '/models/desktopScene.glb') as unknown as { nodes: GLTFNodes };
   const group = useRef<THREE.Group>(null);
 
   return (

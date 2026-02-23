@@ -1,5 +1,5 @@
 import { MeshTransmissionMaterial } from '@react-three/drei';
-import { useLoader, useThree } from '@react-three/fiber';
+import { ThreeElements, useLoader, useThree } from '@react-three/fiber';
 import gsap from 'gsap';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -33,7 +33,7 @@ const originalPositions = {
   part10: [-3.381, -0.357, -4.275],
   part11: [1.67, -1.257, -5.512],
   part12: [2.824, 1.264, -2.902],
-  } as const;
+} as const;
 
 const scalePosition = (
   position: readonly number[],
@@ -73,8 +73,8 @@ interface SceneProps {
   onBreak?: () => void;
 }
 
-const Scene = ({ onBreak }: SceneProps) => {
-  const { nodes } = useLoader(GLTFLoader, '/models/diax.glb') as GLTFResult;
+const Scene = ({ onBreak, ...props }: SceneProps & ThreeElements['group']) => {
+  const { nodes } = useLoader(GLTFLoader, '/models/diax.glb') as unknown as GLTFResult;
   const group = useRef<THREE.Group | null>(null);
   const maciejRef = useRef<THREE.Group | null>(null);
   const skorusRef = useRef<THREE.Group | null>(null);
@@ -83,7 +83,7 @@ const Scene = ({ onBreak }: SceneProps) => {
   const icosphereRefs = useRef<{ [key: string]: THREE.Group | null }>({});
   const hasExploded = useRef(false);
   const isResetting = useRef(false);
-  const handleClickRef = useRef<() => void>();
+  const handleClickRef = useRef<(() => void) | undefined>(undefined);
   const [hasCollapsed, setHasCollapsed] = useState(false);
 
   const initialStates = useRef<{
