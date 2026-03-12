@@ -23,7 +23,7 @@ export default function PortfolioProjectItem({
   index,
   imageRef,
 }: PortfolioProjectItemProps): React.JSX.Element {
-  const isEven = project.id % 2 === 0;
+  const isEven = index % 2 === 0;
 
   return (
     <div

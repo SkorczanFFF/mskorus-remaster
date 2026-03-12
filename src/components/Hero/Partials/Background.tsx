@@ -1,5 +1,8 @@
 import { Text } from '@react-three/drei';
-import React from 'react';
+import { useFrame } from '@react-three/fiber';
+import { easing } from 'maath';
+import React, { useRef } from 'react';
+import * as THREE from 'three';
 
 import { colors } from '@/components/Hero/Partials/colors';
 
@@ -10,6 +13,33 @@ interface TextConfig {
   fontSize: number;
   color: number | string;
   position: Vector3Tuple;
+}
+
+const SHIFT_STRENGTH = 4;
+const DAMP_SMOOTHING = 0.25;
+
+function AnimatedTextRow({ item, index }: { item: TextConfig; index: number }) {
+  const groupRef = useRef<THREE.Group>(null);
+  const direction = index % 2 === 0 ? 1 : -1;
+
+  useFrame((state, delta) => {
+    if (!groupRef.current) return;
+    const target = state.pointer.x * SHIFT_STRENGTH * direction;
+    easing.damp(groupRef.current.position, 'x', target, DAMP_SMOOTHING, delta);
+  });
+
+  return (
+    <group ref={groupRef}>
+      <Text
+        fontSize={item.fontSize}
+        letterSpacing={0}
+        color={item.color}
+        position={item.position}
+      >
+        {item.text}
+      </Text>
+    </group>
+  );
 }
 
 const desktopConfig: TextConfig[] = [
@@ -50,15 +80,7 @@ const Background = ({ variant }: BackgroundProps) => {
   return (
     <>
       {config.map((item, index) => (
-        <Text
-          key={index}
-          fontSize={item.fontSize}
-          letterSpacing={0}
-          color={item.color}
-          position={item.position}
-        >
-          {item.text}
-        </Text>
+        <AnimatedTextRow key={index} item={item} index={index} />
       ))}
     </>
   );
