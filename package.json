@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=24.0.0",
     "npm": ">=10.7.0"
   },
   "scripts": {
@@ -21,6 +21,7 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
+    "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "@react-three/postprocessing": "^3.0.4",
@@ -31,7 +32,7 @@
     "gsap": "^3.14.2",
     "hamburger-react": "^2.5.2",
     "lenis": "^1.3.17",
-    "next": "^16.1.6",
+    "next": "^16.1.7",
     "postprocessing": "^6.38.2",
     "react": "^19.2.4",
     "react-device-detect": "^2.2.3",
@@ -46,10 +47,12 @@
     "@commitlint/config-conventional": "^20.4.1",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/forms": "^0.5.11",
+    "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/jest": "^30.0.0",
     "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
     "autoprefixer": "^10.4.24",
@@ -60,6 +63,7 @@
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "eslint-plugin-unused-imports": "^4.3.0",
     "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.3.0",
     "lint-staged": "^16.2.7",
     "next-router-mock": "^1.0.5",
     "next-sitemap": "^4.2.3",

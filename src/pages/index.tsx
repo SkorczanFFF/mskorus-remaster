@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import * as React from 'react';
 
-import About from '@/components/About/About';
 import Experience from '@/components/Experience/Experience';
 import Footer from '@/components/layout/Footer/Footer';
 import Layout from '@/components/layout/Layout';
@@ -20,7 +19,6 @@ export default function HomePage() {
       <Seo />
       <main>
         <HeroNoSSR />
-        <About />
         <Experience />
         <Technos />
         <Portfolio />

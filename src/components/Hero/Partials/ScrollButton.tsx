@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function ScrollButton() {
   return (
-    <Link className='scroll-arrow' href='/#about' scroll={false}>
+    <Link className='scroll-arrow' href='/#experience' scroll={false}>
       <span />
       <span />
       <span />

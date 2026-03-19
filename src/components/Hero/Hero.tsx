@@ -3,15 +3,14 @@ import {
   Float,
   Html,
   Lightformer,
-  useProgress,
 } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
+import { Physics } from '@react-three/cannon';
 import { easing } from 'maath';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
-import { Object3D } from 'three';
+import { DefaultLoadingManager, Object3D } from 'three';
 
 import MobileScene from '@/components/Hero/Partials/MobileScene';
 import Scene from '@/components/Hero/Partials/Scene';
@@ -35,11 +34,49 @@ function Rig() {
 }
 
 function Loader() {
-  const { progress } = useProgress();
+  const textRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    const prevStart = DefaultLoadingManager.onStart;
+    const prevProgress = DefaultLoadingManager.onProgress;
+    const prevLoad = DefaultLoadingManager.onLoad;
+    const prevError = DefaultLoadingManager.onError;
+
+    const setProgressText = (loaded: number, total: number) => {
+      if (!textRef.current) return;
+      const pct = total > 0 ? Math.round((loaded / total) * 100) : 0;
+      textRef.current.textContent = `${pct}%`;
+    };
+
+    DefaultLoadingManager.onStart = (_url, loaded, total) => {
+      setProgressText(loaded, total);
+      if (prevStart) prevStart(_url, loaded, total);
+    };
+    DefaultLoadingManager.onProgress = (_url, loaded, total) => {
+      setProgressText(loaded, total);
+      if (prevProgress) prevProgress(_url, loaded, total);
+    };
+    DefaultLoadingManager.onLoad = () => {
+      if (textRef.current) textRef.current.textContent = '100%';
+      if (prevLoad) prevLoad();
+    };
+    DefaultLoadingManager.onError = (url) => {
+      if (textRef.current) textRef.current.textContent = 'ERR';
+      if (prevError) prevError(url);
+    };
+
+    return () => {
+      DefaultLoadingManager.onStart = prevStart;
+      DefaultLoadingManager.onProgress = prevProgress;
+      DefaultLoadingManager.onLoad = prevLoad;
+      DefaultLoadingManager.onError = prevError;
+    };
+  }, []);
+
   return (
     <Html center>
       <b className='m-auto text-4xl font-[400] text-[#801834]'>
-        {Math.round(progress)}%
+        <span ref={textRef}>0%</span>
       </b>
     </Html>
   );
@@ -50,7 +87,6 @@ export default function Hero(): React.JSX.Element {
     triggerOnce: false,
     threshold: 0.01,
   });
-  const [isModelBroken, setIsModelBroken] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isClientMobile, setIsClientMobile] = useState(false);
 
@@ -58,10 +94,6 @@ export default function Hero(): React.JSX.Element {
     setIsMounted(true);
     setIsClientMobile(isMobile);
   }, []);
-
-  const handleModelBreak = () => {
-    setIsModelBroken(true);
-  };
 
   return (
     <section
@@ -87,36 +119,37 @@ export default function Hero(): React.JSX.Element {
             angle={0.2}
           />
           <Suspense fallback={<Loader />}>
-            {!isClientMobile ? (
-              <>
-                <EffectComposer enableNormalPass={false}>
-                  <N8AO aoRadius={5} intensity={15} />
-                  <TiltShift2 blur={0.125} />
-                </EffectComposer>
-                <Environment preset='sunset'>
-                  <Lightformer
-                    intensity={8}
-                    position={[10, 5, 0]}
-                    scale={[15, 50, 1]}
-                    onUpdate={(self: Object3D) => self.lookAt(0, 0, 0)}
-                  />
-                </Environment>
-                <Float floatIntensity={2}>
-                  <Scene onBreak={handleModelBreak} />
-                </Float>
-              </>
-            ) : (
-              <>
-                <EffectComposer enableNormalPass={false}>
-                  <N8AO aoRadius={0} intensity={15} halfRes={true} />
-                </EffectComposer>
-                <spotLight intensity={1} position={[10, 10, 20]} />
-                <spotLight intensity={1} position={[0, -15, 10]} />
-                <Float floatIntensity={2}>
-                  <MobileScene />
-                </Float>
-              </>
-            )}
+            <Physics
+              gravity={[0, 0, 0]}
+              iterations={isClientMobile ? 12 : 20}
+              maxSubSteps={isClientMobile ? 2 : 3}
+              stepSize={1 / 60}
+              allowSleep
+            >
+              {!isClientMobile ? (
+                <>
+                  <Environment preset='sunset'>
+                    <Lightformer
+                      intensity={8}
+                      position={[10, 5, 0]}
+                      scale={[15, 50, 1]}
+                      onUpdate={(self: Object3D) => self.lookAt(0, 0, 0)}
+                    />
+                  </Environment>
+                  <Float floatIntensity={2}>
+                    <Scene />
+                  </Float>
+                </>
+              ) : (
+                <>
+                  <spotLight intensity={1} position={[10, 10, 20]} />
+                  <spotLight intensity={1} position={[0, -15, 10]} />
+                  <Float floatIntensity={2}>
+                    <MobileScene />
+                  </Float>
+                </>
+              )}
+            </Physics>
           </Suspense>
         </Canvas>
       ) : (

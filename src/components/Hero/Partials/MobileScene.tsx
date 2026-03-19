@@ -4,27 +4,32 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 import Background from '@/components/Hero/Partials/Background';
+import HeroAtoms from '@/components/Hero/Partials/HeroAtoms';
 import { colors } from '@/components/Hero/Partials/colors';
 
 interface GLTFNodes {
   maciej: THREE.Mesh;
   skorus: THREE.Mesh;
-  crystal: THREE.Mesh;
-}
-
-interface GLTFNodes {
-  maciej: THREE.Mesh;
-  skorus: THREE.Mesh;
-  crystal: THREE.Mesh;
 }
 
 const MobileScene = (props: ThreeElements['group']) => {
   const { nodes } = useLoader(GLTFLoader, '/models/desktopScene.glb') as unknown as { nodes: GLTFNodes };
   const group = useRef<THREE.Group>(null);
 
+  const orbitCenter = React.useMemo<[number, number, number]>(() => {
+    // Center between Maciej + Skorus nodes (positions are in this group's local space).
+    const maciejPos = new THREE.Vector3(-4.214, 0.287, -1.378);
+    const skorusPos = new THREE.Vector3(-4.163, -1.444, -1.392);
+    return [
+      (maciejPos.x + skorusPos.x) / 2,
+      (maciejPos.y + skorusPos.y) / 2,
+      (maciejPos.z + skorusPos.z) / 2,
+    ];
+  }, []);
+
   return (
     <>
-      <ambientLight intensity={1.8} />
+      <ambientLight intensity={4} />
       <pointLight position={[10, 10, 10]} intensity={2} />
       <pointLight position={[-10, 20, 10]} intensity={5} />
       <group ref={group} {...props} dispose={null} scale={1.15}>
@@ -58,24 +63,15 @@ const MobileScene = (props: ThreeElements['group']) => {
             emissive={new THREE.Color(0x000000)}
           />
         </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.crystal.geometry}
-          position={[-0.368, -0.146, -3.409]}
-          rotation={[0, -0.089, 0.168]}
-          scale={[3.322, 2.419, 2.524]}
-        >
-          <meshPhysicalMaterial
-            roughness={0.45}
-            transmission={2}
-            thickness={3.5}
-            transparent
-            opacity={1.3}
-            color={0xffffff}
-            clearcoat={1}
-          />
-        </mesh>
+        <HeroAtoms
+          count={12}
+          center={orbitCenter}
+          baseRadius={1.8}
+          attractionStrength={14}
+          pointerStrength={11}
+          repelRadius={3.2}
+          repelIntensity={1.4}
+        />
         <Background variant="mobile" />
       </group>
     </>
