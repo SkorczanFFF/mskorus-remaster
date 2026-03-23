@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface PortfolioCardLink {
+interface PortfolioCardLink {
   href: string;
   label: string;
   icon?: React.ReactNode;
@@ -27,7 +27,7 @@ export default function PortfolioCard({
     >
       <div className='flex w-full items-center justify-between'>
         <div className='flex flex-col'>
-          <h4 className='text-xl font-[500] uppercase'>{title}</h4>
+          <h4 className='text-xl font-medium uppercase'>{title}</h4>
           <p className='text-[14px] text-[#b6b6b6]'>{tech}</p>
         </div>
         {links.length > 0 && (
@@ -38,7 +38,7 @@ export default function PortfolioCard({
                 href={href}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
+                className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
               >
                 {icon}
                 <span>{label}</span>
@@ -47,7 +47,7 @@ export default function PortfolioCard({
           </div>
         )}
       </div>
-      <div className='text-justify font-[300] leading-5'>
+      <div className='text-justify font-light leading-5'>
         {typeof description === 'string' ? <p>{description}</p> : description}
       </div>
     </div>

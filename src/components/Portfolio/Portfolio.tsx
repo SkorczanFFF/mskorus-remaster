@@ -15,9 +15,8 @@ export default function Portfolio(): React.JSX.Element {
 
   useLayoutEffect(() => {
     const triggers: ScrollTrigger[] = [];
-    const CARD_OFFSET = 80; // match Tailwind space-20 (5rem)
+    const CARD_OFFSET = 80;
 
-    // Non-web cards: optional card2StartX/card2EndX for <=1280 (start 20px left, move further left on scroll)
     const setupCardScroll = (
       card1Start: number,
       card2Start: number,
@@ -65,25 +64,43 @@ export default function Portfolio(): React.JSX.Element {
     };
 
     const mm = gsap.matchMedia();
-    mm.add('(max-width: 1024px)', () => {
-      const cardTriggers: ScrollTrigger[] = [];
-      const secondCardOffset = 50;
-      setupCardScroll(CARD_OFFSET, secondCardOffset, cardTriggers, 2, 2);
-      return () => cardTriggers.forEach((t) => t.kill());
-    });
-    mm.add('(min-width: 1025px) and (max-width: 1280px)', () => {
-      const cardTriggers: ScrollTrigger[] = [];
-      const secondCardOffset = 50;
-      setupCardScroll(CARD_OFFSET, secondCardOffset, cardTriggers, 2, 2, {
-        start: -20,
-        end: -CARD_OFFSET,
+    const breakpoints: {
+      query: string;
+      card1Y: number;
+      card2Y: number;
+      scrub1: number;
+      scrub2: number;
+      card2X?: { start: number; end: number };
+    }[] = [
+      {
+        query: '(max-width: 1024px)',
+        card1Y: CARD_OFFSET,
+        card2Y: 50,
+        scrub1: 2,
+        scrub2: 2,
+      },
+      {
+        query: '(min-width: 1025px) and (max-width: 1280px)',
+        card1Y: CARD_OFFSET,
+        card2Y: 50,
+        scrub1: 2,
+        scrub2: 2,
+        card2X: { start: -20, end: -CARD_OFFSET },
+      },
+      {
+        query: '(min-width: 1281px)',
+        card1Y: CARD_OFFSET,
+        card2Y: -CARD_OFFSET,
+        scrub1: 2,
+        scrub2: 1.5,
+      },
+    ];
+    breakpoints.forEach(({ query, card1Y, card2Y, scrub1, scrub2, card2X }) => {
+      mm.add(query, () => {
+        const cardTriggers: ScrollTrigger[] = [];
+        setupCardScroll(card1Y, card2Y, cardTriggers, scrub1, scrub2, card2X);
+        return () => cardTriggers.forEach((t) => t.kill());
       });
-      return () => cardTriggers.forEach((t) => t.kill());
-    });
-    mm.add('(min-width: 1281px)', () => {
-      const cardTriggers: ScrollTrigger[] = [];
-      setupCardScroll(CARD_OFFSET, -CARD_OFFSET, cardTriggers, 2, 1.5);
-      return () => cardTriggers.forEach((t) => t.kill());
     });
 
     projectRefs.current.forEach((img, index) => {
@@ -125,10 +142,10 @@ export default function Portfolio(): React.JSX.Element {
   return (
     <section
       id='portfolio'
-      className='font-mont bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center overflow-hidden pb-20'
+      className='font-grotesk bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center overflow-hidden pb-20'
     >
       <div className='arrow-down white pt-[60px]' />
-      <h3 className='font-mont -left-[45px] top-[190px] text-xl font-[400] leading-3 tracking-[10px] text-white md:absolute md:rotate-90'>
+      <h3 className='font-grotesk -left-[45px] top-[190px] text-xl font-normal leading-3 tracking-[10px] text-white md:absolute md:rotate-90'>
         PORTFOLIO
       </h3>
       <div className='xxl:w-[1200px] my-[60px] flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:my-20 md:w-[620px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
@@ -145,12 +162,18 @@ export default function Portfolio(): React.JSX.Element {
       </div>
       <div className='mt-20 flex w-full flex-col items-center justify-center px-5 md:px-10 lg:px-20'>
         <div className='flex w-full md:max-w-[580px] lg:max-w-[1160px] flex-col gap-5 lg:flex-row max-w-[600px]'>
-          <div className='border-1 text-primary-blue border-oranger mt-10 flex max-h-[140px] min-w-[300px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-5 shadow-xl md:p-10'>
-            <div className='font-[300] leading-5'>
+          <div className='border-1 text-primary-blue border-orange-dark mt-10 flex max-h-[140px] min-w-[300px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-5 shadow-xl md:p-10'>
+            <div className='font-light leading-5'>
               <h1 className='text-2xl md:text-3xl lg:text-4xl'>
-                <div className='nonweb-text text-end text-raspberry'>NON WEB</div>
-                <div className='related-text text-center text-[#b2b2b2]'>RELATED</div>
-                <div className='corner-text text-end text-[#b2b2b2]'>CORNER</div>
+                <div className='nonweb-text text-end text-raspberry'>
+                  NON WEB
+                </div>
+                <div className='related-text text-center text-[#b2b2b2]'>
+                  RELATED
+                </div>
+                <div className='corner-text text-end text-[#b2b2b2]'>
+                  CORNER
+                </div>
               </h1>
             </div>
           </div>
@@ -170,7 +193,10 @@ export default function Portfolio(): React.JSX.Element {
                 ]}
               />
             </div>
-            <div ref={nonWebCard2Ref} className='min-[1025px]:max-[1280px]:-ml-20'>
+            <div
+              ref={nonWebCard2Ref}
+              className='min-[1025px]:max-[1280px]:-ml-20'
+            >
               <PortfolioCard
                 className='h-auto border-t-[2px] border-t-[#0C2835]'
                 title='Package Delivery SA:MP Server'

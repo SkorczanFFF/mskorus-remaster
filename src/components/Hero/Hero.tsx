@@ -1,21 +1,39 @@
-import {
-  Environment,
-  Float,
-  Html,
-  Lightformer,
-  useProgress,
-} from '@react-three/drei';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing';
+import { Float } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
-import React, { Suspense, useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
+import React, {
+  Component,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Object3D } from 'three';
 
-import MobileScene from '@/components/Hero/Partials/MobileScene';
 import Scene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
+
+class CanvasErrorBoundary extends Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className='flex h-full w-full items-center justify-center text-white'>
+          <p>3D scene could not be loaded.</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 function Rig() {
   useFrame((state, delta) => {
@@ -34,15 +52,27 @@ function Rig() {
   return null;
 }
 
-function Loader() {
-  const { progress } = useProgress();
-  return (
-    <Html center>
-      <b className='m-auto text-4xl font-[400] text-[#801834]'>
-        {Math.round(progress)}%
-      </b>
-    </Html>
-  );
+function FrameloopController({ inView }: { inView: boolean }) {
+  const setFrameloop = useThree((s) => s.setFrameloop);
+  const hasBeenVisible = React.useRef(false);
+
+  useEffect(() => {
+    if (inView) {
+      hasBeenVisible.current = true;
+      setFrameloop('always');
+    } else if (hasBeenVisible.current) {
+      setFrameloop('never');
+    }
+  }, [inView, setFrameloop]);
+
+  return null;
+}
+
+function SceneReadyNotifier({ onReady }: { onReady: () => void }) {
+  useEffect(() => {
+    requestAnimationFrame(() => onReady());
+  }, [onReady]);
+  return null;
 }
 
 export default function Hero(): React.JSX.Element {
@@ -50,78 +80,65 @@ export default function Hero(): React.JSX.Element {
     triggerOnce: false,
     threshold: 0.01,
   });
-  const [isModelBroken, setIsModelBroken] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [isClientMobile, setIsClientMobile] = useState(false);
+  const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    setIsClientMobile(isMobile);
   }, []);
 
-  const handleModelBreak = () => {
-    setIsModelBroken(true);
-  };
+  const handleReady = useCallback(() => setSceneReady(true), []);
 
   return (
     <section
       ref={ref}
       id='home'
-      className='font-mont -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
+      className='font-grotesk -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
     >
-      {isMounted && inView ? (
-        <Canvas
-          shadows
-          camera={{ position: [0, 0, -21], fov: 50 }}
-          dpr={[0.25, 1]}
-          eventPrefix='client'
-          gl={{ antialias: false }}
-          className='min-h-[97vh]'
-        >
-          <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />
-          <Rig />
-          <spotLight
-            position={[20, 20, 10]}
-            penumbra={1}
-            castShadow
-            angle={0.2}
-          />
-          <Suspense fallback={<Loader />}>
-            {!isClientMobile ? (
-              <>
-                <EffectComposer enableNormalPass={false}>
-                  <N8AO aoRadius={5} intensity={15} />
-                  <TiltShift2 blur={0.125} />
-                </EffectComposer>
-                <Environment preset='sunset'>
-                  <Lightformer
-                    intensity={8}
-                    position={[10, 5, 0]}
-                    scale={[15, 50, 1]}
-                    onUpdate={(self: Object3D) => self.lookAt(0, 0, 0)}
-                  />
-                </Environment>
-                <Float floatIntensity={2}>
-                  <Scene onBreak={handleModelBreak} />
+      {isMounted ? (
+        <CanvasErrorBoundary>
+          <div
+            className={`h-full w-full transition-opacity duration-700 ease-out ${sceneReady ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <Canvas
+              shadows
+              frameloop='always'
+              camera={{ position: [0, 0, -21], fov: 50 }}
+              dpr={[0.25, 1]}
+              eventPrefix='client'
+              gl={{ antialias: false }}
+              className='min-h-[97vh]'
+            >
+              <color
+                attach='background'
+                args={[0 / 3072, 26 / 3072, 37 / 3072]}
+              />
+              <FrameloopController inView={inView} />
+              <Rig />
+              <spotLight
+                position={[20, 20, 10]}
+                penumbra={1}
+                castShadow
+                angle={0.2}
+              />
+              <Suspense fallback={null}>
+                <SceneReadyNotifier onReady={handleReady} />
+                <Float floatIntensity={1} speed={0.8}>
+                  <Scene />
                 </Float>
-              </>
-            ) : (
-              <>
-                <EffectComposer enableNormalPass={false}>
-                  <N8AO aoRadius={0} intensity={15} halfRes={true} />
-                </EffectComposer>
-                <spotLight intensity={1} position={[10, 10, 20]} />
-                <spotLight intensity={1} position={[0, -15, 10]} />
-                <Float floatIntensity={2}>
-                  <MobileScene />
-                </Float>
-              </>
-            )}
-          </Suspense>
-        </Canvas>
+              </Suspense>
+            </Canvas>
+          </div>
+
+          {!sceneReady && (
+            <div className='absolute inset-0 flex items-center justify-center'>
+              <span className='loader' />
+            </div>
+          )}
+        </CanvasErrorBoundary>
       ) : (
-        <div className='w-100vw flex h-full items-center'>
-          <span className='loader'></span>
+        <div className='flex h-full w-full items-center justify-center'>
+          <span className='loader' />
         </div>
       )}
       <ScrollButton />

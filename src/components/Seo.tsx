@@ -5,7 +5,7 @@ const defaultMeta = {
   title: 'Maciej Skorus - Frontend Developer',
   siteName: 'Maciej Skorus - Frontend Developer',
   description: 'Maciej Skorus - Frontend Developer Portfolio Page',
-  url: 'https://mskorus.vercel.app/',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
   type: 'website',
   robots: 'follow, index',
   image: 'https://mskorus.vercel.app/favicon/large-og.ico',
@@ -63,7 +63,7 @@ export default function Seo(props: SeoProps) {
       ))}
       <meta name='msapplication-TileColor' content='#ffffff' />
       <meta name='msapplication-config' content='/favicon/browserconfig.xml' />
-      <meta name='theme-color' content='#ffffff' />
+      <meta name='theme-color' content='#001a25' />
     </Head>
   );
 }
@@ -76,15 +76,15 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   },
   {
     rel: 'icon',
-    type: 'image/png',
+    type: 'image/x-icon',
     sizes: '32x32',
-    href: '/favicon/favicon-32x32.png',
+    href: '/favicon/favicon32x32.ico',
   },
   {
     rel: 'icon',
-    type: 'image/png',
+    type: 'image/x-icon',
     sizes: '16x16',
-    href: '/favicon/favicon-16x16.png',
+    href: '/favicon/favicon16x16.ico',
   },
   { rel: 'manifest', href: '/favicon/site.webmanifest' },
   {

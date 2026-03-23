@@ -7,7 +7,7 @@ export default {
     extend: {
       fontFamily: {
         primary: ['Inter', ...defaultTheme.fontFamily.sans],
-        mont: ['Space Grotesk'],
+        grotesk: ['Space Grotesk'],
       },
       colors: {
         'primary-blue': '#001a25',
@@ -15,30 +15,19 @@ export default {
         'real-white': '#ffffff',
         white: '#e4e4e4',
         raspberry: '#801834',
-        raspberrer: '#820025',
+        'raspberry-dark': '#820025',
         orange: '#992210',
         shadow: '#161616',
-        oranger: '#972b1a',
+        'orange-dark': '#972b1a',
       },
     },
     screens: {
       xsm: '480px',
-      // => @media (min-width: 480px) { ... }
-
       sm: '640px',
-      // => @media (min-width: 640px) { ... }
-
       md: '768px',
-      // => @media (min-width: 768px) { ... }
-
       lg: '1024px',
-      // => @media (min-width: 1024px) { ... }
-
       xl: '1280px',
-      // => @media (min-width: 1280px) { ... }
-
       xxl: '1480px',
-      // => @media (min-width: 1480px) { ... }
     },
   },
   plugins: [require('@tailwindcss/forms')],

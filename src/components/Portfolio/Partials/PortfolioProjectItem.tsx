@@ -38,7 +38,7 @@ export default function PortfolioProjectItem({
         <img
           ref={imageRef}
           src={project.pic}
-          alt=''
+          alt={project.title}
           className={`border-orange w-full cursor-pointer border-2 duration-1000 hover:scale-[101%] hover:brightness-110 hover:saturate-150 ${isEven ? 'perspective-right' : 'perspective-left'}`}
         />
       </a>
@@ -47,7 +47,7 @@ export default function PortfolioProjectItem({
       >
         <a href={project.git} target='_blank' rel='noopener noreferrer'>
           <p
-            className={`hover:text-primary-blue my-3 w-auto cursor-pointer bg-gradient-to-r p-2 text-xl font-[400] duration-75 md:text-2xl lg:text-3xl ${isEven ? 'from-raspberry to-oranger' : 'to-raspberry from-oranger text-end'}`}
+            className={`hover:text-primary-blue my-3 w-auto cursor-pointer bg-gradient-to-r p-2 text-xl font-normal duration-75 md:text-2xl lg:text-3xl ${isEven ? 'from-raspberry to-orange-dark' : 'to-raspberry from-orange-dark text-end'}`}
           >
             {project.title}
           </p>
@@ -56,7 +56,7 @@ export default function PortfolioProjectItem({
           {project.technos}
         </p>
         <p
-          className={`mx-3 font-[200] leading-[22px] ${isEven ? '' : 'text-end'}`}
+          className={`mx-3 font-extralight leading-[22px] ${isEven ? '' : 'text-end'}`}
         >
           {project.description}
         </p>
@@ -64,23 +64,15 @@ export default function PortfolioProjectItem({
           <div
             className={`mx-5 mt-5 flex ${!isEven ? 'justify-end' : ''} gap-5`}
           >
-            <div className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
+            <div className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
               <GithubIcon className='text-2xl' />
-              <a
-                href={project.git}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href={project.git} target='_blank' rel='noopener noreferrer'>
                 repo
               </a>
             </div>
-            <div className='text-oranger flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
+            <div className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
               <GlobalIcon className='text-2xl' />
-              <a
-                href={project.live}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href={project.live} target='_blank' rel='noopener noreferrer'>
                 live demo
               </a>
             </div>

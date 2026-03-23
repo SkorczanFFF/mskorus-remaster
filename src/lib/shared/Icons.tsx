@@ -6,8 +6,9 @@ import {
   AiFillMail,
   AiOutlineGlobal,
 } from 'react-icons/ai';
-import { BiLogoJava, BiLogoPhp } from 'react-icons/bi';
+import { BiLogoJava } from 'react-icons/bi';
 import { BsCursorFill, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
+import { DiMongodb, DiPhotoshop, DiPhp } from 'react-icons/di';
 import { FaExclamationTriangle } from 'react-icons/fa';
 import { GiGuitarBassHead } from 'react-icons/gi';
 import { GrMysql } from 'react-icons/gr';
@@ -22,7 +23,6 @@ import {
   IoLogoWordpress,
 } from 'react-icons/io5';
 import {
-  SiAdobephotoshop,
   SiAutodesk,
   SiBitbucket,
   SiBlender,
@@ -33,7 +33,6 @@ import {
   SiGreensock,
   SiJavascript,
   SiLaravel,
-  SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
   SiNpm,
@@ -63,7 +62,7 @@ export const CallIcon = IoCallSharp as IconType;
 export const PdfIcon = AiFillFilePdf as IconType;
 
 export const JavaIcon = BiLogoJava as IconType;
-export const PhpIcon = BiLogoPhp as IconType;
+export const PhpIcon = DiPhp as IconType;
 export const TypescriptIcon = SiTypescript as IconType;
 export const PythonIcon = SiPython as IconType;
 export const JavascriptIcon = SiJavascript as IconType;
@@ -83,14 +82,14 @@ export const SassIcon = SiSass as IconType;
 export const GsapIcon = SiGreensock as IconType;
 
 export const MysqlIcon = GrMysql as IconType;
-export const MongodbIcon = SiMongodb as IconType;
+export const MongodbIcon = DiMongodb as IconType;
 export const FirebaseIcon = SiFirebase as IconType;
 export const PostgresqlIcon = SiPostgresql as IconType;
 
 export const WordpressIcon = IoLogoWordpress as IconType;
 export const SanityIcon = SiSanity as IconType;
 
-export const PhotoshopIcon = SiAdobephotoshop as IconType;
+export const PhotoshopIcon = DiPhotoshop as IconType;
 export const AutodeskIcon = SiAutodesk as IconType;
 export const BlenderIcon = SiBlender as IconType;
 export const CanvaIcon = SiCanva as IconType;

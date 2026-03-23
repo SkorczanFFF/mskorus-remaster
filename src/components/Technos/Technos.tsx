@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 
-import { useScrollTriggers } from '@/hooks/useScrollTriggers';
-import { gsap } from '@/lib/gsap';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 import {
   AutodeskIcon,
   BlenderIcon,
@@ -36,8 +35,115 @@ import {
   WordpressIcon,
   YarnIcon,
 } from '@/lib/shared/Icons';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
+
+type TechEntry = {
+  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  label: string;
+};
+
+const techCategories: Record<string, TechEntry[]> = {
+  frontend: [
+    { Icon: HtmlIcon, label: 'HTML5' },
+    { Icon: CssIcon, label: 'CSS3' },
+    { Icon: TypescriptIcon, label: 'TypeScript' },
+    { Icon: ReactIcon, label: 'React' },
+    { Icon: NextjsIcon, label: 'Next.js' },
+    { Icon: ReactNativeIcon, label: 'React Native' },
+    { Icon: ReduxIcon, label: 'Redux' },
+    { Icon: ThreejsIcon, label: 'Three.js' },
+    { Icon: TailwindIcon, label: 'TailwindCSS' },
+    { Icon: SassIcon, label: 'Sass' },
+    { Icon: GsapIcon, label: 'GSAP' },
+  ],
+  backend: [
+    { Icon: PythonIcon, label: 'Python' },
+    { Icon: PhpIcon, label: 'PHP' },
+    { Icon: NodejsIcon, label: 'Node.js' },
+    { Icon: JavaIcon, label: 'Java' },
+    { Icon: LaravelIcon, label: 'Laravel' },
+    { Icon: WordpressIcon, label: 'Wordpress' },
+    { Icon: SanityIcon, label: 'Sanity' },
+  ],
+  database: [
+    { Icon: MysqlIcon, label: 'MySQL' },
+    { Icon: MongodbIcon, label: 'MongoDB' },
+    { Icon: FirebaseIcon, label: 'Firebase' },
+    { Icon: PostgresqlIcon, label: 'PostgreSQL' },
+  ],
+  design: [
+    { Icon: PhotoshopIcon, label: 'Photoshop' },
+    { Icon: AutodeskIcon, label: '3Ds Max' },
+    { Icon: BlenderIcon, label: 'Blender' },
+    { Icon: FigmaIcon, label: 'Figma' },
+    { Icon: CanvaIcon, label: 'Canva' },
+  ],
+  tools: [
+    { Icon: DockerIcon, label: 'Docker' },
+    { Icon: GithubIcon, label: 'GitHub' },
+    { Icon: CursorIcon, label: 'CursorAI' },
+    { Icon: YarnIcon, label: 'Yarn' },
+    { Icon: NpmIcon, label: 'npm' },
+  ],
+};
+
+function TechIcon({ tech }: { tech: TechEntry }) {
+  return (
+    <div
+      className='tech-icon text-primary-blue hover:text-raspberry flex w-[75px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px]'
+      style={{ willChange: 'opacity' }}
+    >
+      <tech.Icon className='text-4xl sm:text-5xl' />
+      <span className='text-center text-xs'>{tech.label}</span>
+    </div>
+  );
+}
+
+function animateCategory(
+  refs: React.RefObject<HTMLDivElement | null>[],
+  triggerRef: React.RefObject<HTMLDivElement | null>,
+  options?: { useFromTo?: boolean; staggerFrom?: 'start' | 'end' },
+) {
+  const allIcons = refs.flatMap((r) =>
+    r.current ? gsap.utils.toArray<Element>('.tech-icon', r.current) : [],
+  );
+  if (!allIcons.length || !triggerRef.current) return undefined;
+
+  const anim = options?.useFromTo
+    ? gsap.fromTo(
+        allIcons,
+        { opacity: 0, scale: 1.4 },
+        {
+          opacity: 1,
+          scale: 1,
+          stagger: { each: 0.1, from: options.staggerFrom ?? 'start' },
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        },
+      )
+    : gsap.to(allIcons, {
+        opacity: 1,
+        scale: 1,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+  return anim.scrollTrigger ?? undefined;
+}
 
 export default function Technos(): React.JSX.Element {
+  const sectionRef = useRef<HTMLElement>(null);
   const frontendRef = useRef<HTMLDivElement>(null);
   const backendRef = useRef<HTMLDivElement>(null);
   const databaseRef = useRef<HTMLDivElement>(null);
@@ -45,210 +151,44 @@ export default function Technos(): React.JSX.Element {
   const toolsRef = useRef<HTMLDivElement>(null);
 
   useScrollTriggers(() => {
-    gsap.set('.tech-icon', { opacity: 1, scale: 1 });
+    if (sectionRef.current) {
+      gsap.set(gsap.utils.toArray('.tech-icon', sectionRef.current), {
+        opacity: 1,
+        scale: 1,
+      });
+    }
 
     if (window.innerWidth <= 1280) {
       return [];
     }
 
-    const triggers = [];
+    const triggers = [
+      animateCategory([frontendRef], frontendRef),
+      animateCategory([backendRef, databaseRef], backendRef, {
+        useFromTo: true,
+        staggerFrom: 'end',
+      }),
+      animateCategory([designRef, toolsRef], designRef, { useFromTo: true }),
+    ];
 
-    const frontendIcons = frontendRef.current?.querySelectorAll('.tech-icon');
-    if (frontendIcons) {
-      const tween1 = gsap.to(frontendIcons, {
-        opacity: 1,
-        scale: 1,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: frontendRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-      triggers.push(tween1.scrollTrigger);
-    }
-
-    const backendIcons = backendRef.current?.querySelectorAll('.tech-icon');
-    const databaseIcons = databaseRef.current?.querySelectorAll('.tech-icon');
-    if (backendIcons && databaseIcons) {
-      const tween2 = gsap.fromTo(
-        [...Array.from(backendIcons), ...Array.from(databaseIcons)],
-        { opacity: 0, scale: 1.4 },
-        {
-          opacity: 1,
-          scale: 1,
-          stagger: {
-            each: 0.1,
-            from: 'end',
-          },
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: backendRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        },
-      );
-      triggers.push(tween2.scrollTrigger);
-    }
-
-    const designIcons = designRef.current?.querySelectorAll('.tech-icon');
-    const toolsIcons = toolsRef.current?.querySelectorAll('.tech-icon');
-    if (designIcons && toolsIcons) {
-      const tween3 = gsap.fromTo(
-        [...Array.from(designIcons), ...Array.from(toolsIcons)],
-        { opacity: 0, scale: 1.4 },
-        {
-          opacity: 1,
-          scale: 1,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: designRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        },
-      );
-      triggers.push(tween3.scrollTrigger);
-    }
-
-    return triggers;
+    return triggers.filter((t): t is ScrollTrigger => t != null);
   }, []);
-
-  const techCategories = {
-    frontend: [
-      { icon: <HtmlIcon className='sm:text-5xl text-4xl' />, label: 'HTML5' },
-      { icon: <CssIcon className='sm:text-5xl text-4xl' />, label: 'CSS3' },
-      {
-        icon: <TypescriptIcon className='sm:text-5xl text-4xl' />,
-        label: 'TypeScript',
-      },
-      { icon: <ReactIcon className='sm:text-5xl text-4xl' />, label: 'React' },
-      {
-        icon: <NextjsIcon className='sm:text-5xl text-4xl' />,
-        label: 'Next.js',
-      },
-      {
-        icon: <ReactNativeIcon className='sm:text-5xl text-4xl' />,
-        label: 'React Native',
-      },
-      { icon: <ReduxIcon className='sm:text-5xl text-4xl' />, label: 'Redux' },
-      {
-        icon: <ThreejsIcon className='sm:text-5xl text-4xl' />,
-        label: 'Three.js',
-      },
-      {
-        icon: <TailwindIcon className='sm:text-5xl text-4xl' />,
-        label: 'TailwindCSS',
-      },
-      { icon: <SassIcon className='sm:text-5xl text-4xl' />, label: 'Sass' },
-      { icon: <GsapIcon className='sm:text-5xl text-4xl' />, label: 'GSAP' },
-    ],
-    backend: [
-      {
-        icon: <PythonIcon className='sm:text-5xl text-4xl' />,
-        label: 'Python',
-      },
-      { icon: <PhpIcon className='sm:text-5xl text-4xl' />, label: 'PHP' },
-      {
-        icon: <NodejsIcon className='sm:text-5xl text-4xl' />,
-        label: 'Node.js',
-      },
-
-      { icon: <JavaIcon className='sm:text-5xl text-4xl' />, label: 'Java' },
-      {
-        icon: <LaravelIcon className='sm:text-5xl text-4xl' />,
-        label: 'Laravel',
-      },
-      {
-        icon: <WordpressIcon className='sm:text-5xl text-4xl' />,
-        label: 'Wordpress',
-      },
-      {
-        icon: <SanityIcon className='sm:text-5xl text-4xl' />,
-        label: 'Sanity',
-      },
-    ],
-    database: [
-      { icon: <MysqlIcon className='sm:text-5xl text-4xl' />, label: 'MySQL' },
-      {
-        icon: <MongodbIcon className='sm:text-5xl text-4xl' />,
-        label: 'MongoDB',
-      },
-      {
-        icon: <FirebaseIcon className='sm:text-5xl text-4xl' />,
-        label: 'Firebase',
-      },
-      {
-        icon: <PostgresqlIcon className='sm:text-5xl text-4xl' />,
-        label: 'PostgreSQL',
-      },
-    ],
-    design: [
-      {
-        icon: <PhotoshopIcon className='sm:text-5xl text-4xl' />,
-        label: 'Photoshop',
-      },
-      {
-        icon: <AutodeskIcon className='sm:text-5xl text-4xl' />,
-        label: '3Ds Max',
-      },
-      {
-        icon: <BlenderIcon className='sm:text-5xl text-4xl' />,
-        label: 'Blender',
-      },
-      { icon: <FigmaIcon className='sm:text-5xl text-4xl' />, label: 'Figma' },
-      { icon: <CanvaIcon className='sm:text-5xl text-4xl' />, label: 'Canva' },
-    ],
-    tools: [
-      {
-        icon: <DockerIcon className='sm:text-5xl text-4xl' />,
-        label: 'Docker',
-      },
-      {
-        icon: <GithubIcon className='sm:text-5xl text-4xl' />,
-        label: 'GitHub',
-      },
-      {
-        icon: <CursorIcon className='sm:text-5xl text-4xl' />,
-        label: 'CursorAI',
-      },
-      { icon: <YarnIcon className='sm:text-5xl text-4xl' />, label: 'Yarn' },
-      { icon: <NpmIcon className='sm:text-5xl text-4xl' />, label: 'npm' },
-    ],
-  };
-
-  const TechIcon = ({
-    tech,
-  }: {
-    tech: { icon: React.JSX.Element; label: string };
-  }) => (
-    <div
-      className='tech-icon text-primary-blue hover:text-raspberry flex w-[75px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px]'
-      style={{ willChange: 'opacity' }}
-    >
-      {tech.icon}
-      <span className='text-center text-xs'>{tech.label}</span>
-    </div>
-  );
 
   return (
     <section
+      ref={sectionRef}
       id='technologies'
-      className='font-mont flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white py-20 pb-[120px] pt-10 md:pt-20'
+      className='font-grotesk flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px]'
     >
-      <h3 className='font-mont mb-10 font-[400] tracking-wider'>TECH STACK</h3>
+      <h3 className='font-grotesk mb-10 font-normal tracking-wider'>
+        TECH STACK
+      </h3>
 
       <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         <div className='flex w-full flex-col' ref={frontendRef}>
           <div className='flex w-full justify-between'>
-            {techCategories.frontend.map((tech, idx) => (
-              <TechIcon key={idx} tech={tech} />
+            {techCategories.frontend.map((tech) => (
+              <TechIcon key={tech.label} tech={tech} />
             ))}
           </div>
         </div>
@@ -259,8 +199,8 @@ export default function Technos(): React.JSX.Element {
               backend
             </h4>
             <div className='flex w-full gap-[12px]'>
-              {techCategories.backend.map((tech, idx) => (
-                <TechIcon key={idx} tech={tech} />
+              {techCategories.backend.map((tech) => (
+                <TechIcon key={tech.label} tech={tech} />
               ))}
             </div>
           </div>
@@ -270,8 +210,8 @@ export default function Technos(): React.JSX.Element {
               database
             </h4>
             <div className='flex w-full gap-[10px]'>
-              {techCategories.database.map((tech, idx) => (
-                <TechIcon key={idx} tech={tech} />
+              {techCategories.database.map((tech) => (
+                <TechIcon key={tech.label} tech={tech} />
               ))}
             </div>
           </div>
@@ -283,8 +223,8 @@ export default function Technos(): React.JSX.Element {
               design
             </h4>
             <div className='flex w-full gap-[20px]'>
-              {techCategories.design.map((tech, idx) => (
-                <TechIcon key={idx} tech={tech} />
+              {techCategories.design.map((tech) => (
+                <TechIcon key={tech.label} tech={tech} />
               ))}
             </div>
           </div>
@@ -294,8 +234,8 @@ export default function Technos(): React.JSX.Element {
               tools
             </h4>
             <div className='flex w-full gap-[20px]'>
-              {techCategories.tools.map((tech, idx) => (
-                <TechIcon key={idx} tech={tech} />
+              {techCategories.tools.map((tech) => (
+                <TechIcon key={tech.label} tech={tech} />
               ))}
             </div>
           </div>
@@ -303,14 +243,14 @@ export default function Technos(): React.JSX.Element {
       </div>
 
       <div className='px-4 md:px-0 my-10 flex w-full flex-col gap-10 md:max-w-[740px] lg:max-w-[900px] xl:hidden'>
-        {Object.entries(techCategories).map(([category, techs], index) => (
+        {Object.entries(techCategories).map(([category, techs]) => (
           <div key={category} className='flex w-full flex-col  items-center'>
             <h4 className='mb-6 text-lg font-semibold capitalize'>
               {category}
             </h4>
             <div className='flex flex-wrap gap-4 md:gap-2 md:gap-y-8 justify-center gap-y-8'>
-              {techs.map((tech, idx) => (
-                <TechIcon key={idx} tech={tech} />
+              {techs.map((tech) => (
+                <TechIcon key={tech.label} tech={tech} />
               ))}
             </div>
           </div>

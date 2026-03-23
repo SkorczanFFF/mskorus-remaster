@@ -103,7 +103,7 @@ const Project: React.FC<ProjectData> = ({
   demo,
 }) => (
   <div className='ml-6 mt-6'>
-    <p className='text-2xl font-[500] tracking-widest'>{title}</p>
+    <p className='text-2xl font-medium tracking-widest'>{title}</p>
     <div className='flex flex-col'>
       <div className='text-raspberry ml-2 mr-8 mt-2 flex items-center text-lg tracking-wide'>
         {technologies}
@@ -147,7 +147,7 @@ export default function CV(): React.JSX.Element {
         <title>Maciej Skorus - Resume - Frontend Developer</title>
       </Head>
       <section
-        className={`font-mont flex  flex-col items-center justify-between bg-gradient-to-b from-[#1A1A28] to-[#3a1323] ${
+        className={`font-grotesk flex  flex-col items-center justify-between bg-gradient-to-b from-[#1A1A28] to-[#3a1323] ${
           isMobile ? 'min-h-[95vh]' : 'min-h-[100vh]'
         }`}
       >
@@ -203,7 +203,7 @@ export default function CV(): React.JSX.Element {
               <div className='from-primary-blue via-primary-blue flex h-[2015px] w-[380px] flex-col bg-gradient-to-b from-0% via-60% to-[#172933] to-100%'>
                 <div className='arrow-top-left white' />
                 <div className='flex flex-col items-center justify-center'>
-                  <p className='ml-[35px] mt-[23px] text-[3rem] font-[200] tracking-[32px] text-white'>
+                  <p className='ml-[35px] mt-[23px] text-[3rem] font-extralight tracking-[32px] text-white'>
                     MACIEJ
                   </p>
                   <p className='z-10 ml-[30px] mt-[27px] text-[3.25rem] tracking-[26px] text-white'>
@@ -213,7 +213,7 @@ export default function CV(): React.JSX.Element {
                 </div>
                 <div className='mt-[65px] h-[100%]'>
                   <div className='h-[4px] w-[95%] bg-gradient-to-r from-white from-10% to-transparent to-100%' />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {}
                   <img
                     src='/cvphoto.png'
                     alt='Me'
@@ -222,7 +222,7 @@ export default function CV(): React.JSX.Element {
                   <div className='to-raspberry via-raspberry mt-[60px] h-[4px] w-full bg-gradient-to-r from-transparent' />
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='mt-[7px] flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-raspberry text-2xl font-semibold tracking-[3px]'>
                         {languageData.headers.about}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -233,7 +233,7 @@ export default function CV(): React.JSX.Element {
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-raspberry text-2xl font-semibold tracking-[3px]'>
                         {languageData.headers.contact}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -260,13 +260,13 @@ export default function CV(): React.JSX.Element {
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-raspberry text-2xl font-semibold tracking-[3px]'>
                         {languageData.headers.education}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
                     </div>
                     <div className='mx-4 mr-9 mt-2 flex flex-col text-end text-xl text-white'>
-                      <p className='font-[500] '>
+                      <p className='font-medium '>
                         {languageData.education.university}
                       </p>
                       <p className='text-white/80'>
@@ -282,7 +282,7 @@ export default function CV(): React.JSX.Element {
                   </div>
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-raspberry text-2xl font-semibold tracking-[3px]'>
                         {languageData.headers.languages.languages}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -302,7 +302,7 @@ export default function CV(): React.JSX.Element {
 
                   <div className='mt-5 flex flex-col items-end'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-raspberry text-2xl font-semibold tracking-[3px]'>
                         {languageData.headers.links}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -336,7 +336,7 @@ export default function CV(): React.JSX.Element {
                   </div>
                   <div className='mt-5 flex h-[35.5%] max-h-[100%] flex-col items-end justify-between'>
                     <div className='flex items-center justify-end gap-3'>
-                      <p className='text-raspberry text-2xl font-[600] tracking-[3px]'>
+                      <p className='text-raspberry text-2xl font-semibold tracking-[3px]'>
                         {languageData.headers.hobbies}
                       </p>
                       <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
@@ -354,16 +354,13 @@ export default function CV(): React.JSX.Element {
                           <LanguageIcon className='text-6xl' />
                         </div>
                       </div>
-                      {/* <div className='mx-4 text-justify text-[12px] leading-4 text-white/40 opacity-75'>
-                        {languageData.rodo}
-                      </div> */}
                     </div>
                   </div>
                 </div>
               </div>
               <div className='flex flex-col'>
                 <div className='bg-primary-blue flex h-[90px] w-full items-center text-white'>
-                  <p className='right-0 mx-auto text-4xl font-[400] tracking-[15px]'>
+                  <p className='right-0 mx-auto text-4xl font-normal tracking-[15px]'>
                     FRONTEND DEVELOPER
                   </p>
                 </div>
@@ -377,7 +374,7 @@ export default function CV(): React.JSX.Element {
                     <div className='flex w-full'>
                       <div className='cv-arrow -ml-[1px]' />
                       <div className=' -mt-[4px] flex flex-col text-[#20252f]'>
-                        <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
+                        <p className='text-raspberry ml-4 text-3xl font-medium tracking-[5px]'>
                           {languageData.headers.experience}
                         </p>
                         {(Array.isArray(languageData.experience)
@@ -391,7 +388,7 @@ export default function CV(): React.JSX.Element {
                             }`}
                           >
                             <div className='mb-4 mt-2 flex items-center justify-between gap-5 text-2xl tracking-[2px]'>
-                              <p className='text-2xl font-[500] tracking-[5px]'>
+                              <p className='text-2xl font-medium tracking-[5px]'>
                                 {exp.company}
                               </p>
                               <div className='flex items-center justify-end'>
@@ -419,7 +416,7 @@ export default function CV(): React.JSX.Element {
                     <div className='mt-10 flex w-full'>
                       <div className='cv-arrow -ml-[1px]' />
                       <div className=' -mt-[5px] flex flex-col text-[#20252f]'>
-                        <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
+                        <p className='text-raspberry ml-4 text-3xl font-medium tracking-[5px]'>
                           {languageData.headers['selected-projects']}
                         </p>
                         {languageData.projects.map((project, index) => (
@@ -443,7 +440,7 @@ export default function CV(): React.JSX.Element {
                           <div className='mt-10 flex w-full ml-[4px]'>
                             <div className='cv-arrow -ml-[23px]' />
                             <div className=' flex flex-col text-[#20252f] -mt-[5px]'>
-                              <p className='text-raspberry ml-4 text-3xl font-[500] tracking-[5px]'>
+                              <p className='text-raspberry ml-4 text-3xl font-medium tracking-[5px]'>
                                 {languageData.headers.skills}
                               </p>
                               <div className='ml-[22px] mr-2 mt-6 flex flex-wrap justify-start gap-x-[25px] gap-y-2'>

@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 
-import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 import { gsap } from '@/lib/gsap';
 import {
   BitbucketIcon,
@@ -17,6 +16,7 @@ import {
   TailwindIcon,
   TypescriptIcon,
 } from '@/lib/shared/Icons';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
 import experiencesData from '@/components/Experience/Partials/experiences.json';
 
@@ -53,12 +53,12 @@ export default function Experience(): React.JSX.Element {
   return (
     <section
       id='experience'
-      className='font-mont relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white py-20 md:pt-[120px] pb-10'
+      className='font-grotesk relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white'
     >
-      <h3 className='font-mont text-primary-blue -left-8 top-[160px] py-2 text-xl font-[500] leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
+      <h3 className='font-grotesk text-primary-blue -left-8 top-[160px] py-2 text-xl font-medium leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
         WORK EXP
       </h3>
-      <div className='flex h-full w-full flex-col gap-[60px] pt-20 md:py-0 pb-0'>
+      <div className='flex h-full w-full flex-col gap-[60px] -my-[200px]'>
         {experiencesData.experiences.map((exp, index) => (
           <ExperienceSection key={index} exp={exp} index={index} />
         ))}
@@ -117,18 +117,19 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
 
   return (
     <div
-      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${index % 2 === 0
+      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${
+        index % 2 === 0
           ? 'gradient-slow self-end pl-2 md:pl-10'
           : 'gradient-slow justify-end self-start pr-2 md:pr-10'
-        }`}
+      }`}
     >
       <div ref={containerRef} className='flex w-full max-w-[750px]'>
         <div className='bg-primary-blue flex-1 p-6 md:py-4 text-[14px] lg:mx-auto'>
-          <h4 className='flex flex-col sm:flex-row sm:justify-between text-xl font-[500]'>
+          <h4 className='flex flex-col sm:flex-row sm:justify-between text-xl font-medium'>
             <span className='pb-0 sm:pb-2 text-[20px] text-white'>
               {exp.title}
             </span>
-            <span className='text-[14px] font-[400]'>{exp.date}</span>
+            <span className='text-[14px] font-normal'>{exp.date}</span>
           </h4>
           <div className='gradient mb-2 h-[2px] w-full'></div>
 
@@ -159,8 +160,9 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
             {exp.details.map((detail, i) => (
               <p
                 key={i}
-                className={`${i === exp.details.length - 1 ? 'mb-1' : 'mb-2'
-                  } font-[300] leading-4 text-[#f8f8f8]`}
+                className={`${
+                  i === exp.details.length - 1 ? 'mb-1' : 'mb-2'
+                } font-light leading-4 text-[#f8f8f8]`}
               >
                 - {detail}
               </p>
