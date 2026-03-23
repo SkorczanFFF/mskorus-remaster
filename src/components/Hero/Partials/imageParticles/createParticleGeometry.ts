@@ -14,10 +14,7 @@ export function createParticleGeometry(
   targetWidth: number,
 ): ParticleGeometryResult {
   const quadPositions = new Float32Array([
-    -0.5, 0.5, 0,
-    0.5, 0.5, 0,
-    -0.5, -0.5, 0,
-    0.5, -0.5, 0,
+    -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0,
   ]);
   const quadUvs = new Float32Array([0, 0, 1, 0, 0, 1, 1, 1]);
   const quadIndices = new Uint16Array([0, 2, 1, 2, 3, 1]);
@@ -70,19 +67,35 @@ export function createParticleGeometry(
 
     const src = idx * 4;
     const greyVal =
-      (source[src] * 0.21 + source[src + 1] * 0.71 + source[src + 2] * 0.07) / 255;
+      (source[src] * 0.21 + source[src + 1] * 0.71 + source[src + 2] * 0.07) /
+      255;
     intensity[i] = THREE.MathUtils.clamp(greyVal, 0, 1);
   }
 
   const geometry = new THREE.InstancedBufferGeometry();
   geometry.instanceCount = instanceCount;
-  geometry.setAttribute('position', new THREE.BufferAttribute(quadPositions, 3));
+  geometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(quadPositions, 3),
+  );
   geometry.setAttribute('uv', new THREE.BufferAttribute(quadUvs, 2));
   geometry.setIndex(new THREE.BufferAttribute(quadIndices, 1));
-  geometry.setAttribute('offset', new THREE.InstancedBufferAttribute(offsets, 3, false));
-  geometry.setAttribute('sampleUv', new THREE.InstancedBufferAttribute(sampleUvs, 2, false));
-  geometry.setAttribute('pindex', new THREE.InstancedBufferAttribute(pindex, 1, false));
-  geometry.setAttribute('intensity', new THREE.InstancedBufferAttribute(intensity, 1, false));
+  geometry.setAttribute(
+    'offset',
+    new THREE.InstancedBufferAttribute(offsets, 3, false),
+  );
+  geometry.setAttribute(
+    'sampleUv',
+    new THREE.InstancedBufferAttribute(sampleUvs, 2, false),
+  );
+  geometry.setAttribute(
+    'pindex',
+    new THREE.InstancedBufferAttribute(pindex, 1, false),
+  );
+  geometry.setAttribute(
+    'intensity',
+    new THREE.InstancedBufferAttribute(intensity, 1, false),
+  );
   geometry.computeBoundingSphere();
 
   return {

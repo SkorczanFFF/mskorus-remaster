@@ -32,7 +32,13 @@ export function sampleTextureToParticleGeometry(
   canvas.width = 0;
   canvas.height = 0;
 
-  return createParticleGeometry(imageData, sampleWidth, sampleHeight, threshold, targetWidth);
+  return createParticleGeometry(
+    imageData,
+    sampleWidth,
+    sampleHeight,
+    threshold,
+    targetWidth,
+  );
 }
 
 export function getImageSourceFromTexture(texture: THREE.Texture): {
@@ -40,10 +46,16 @@ export function getImageSourceFromTexture(texture: THREE.Texture): {
   width: number;
   height: number;
 } | null {
-  const image = texture.image as HTMLImageElement | HTMLCanvasElement | ImageBitmap | undefined;
+  const image = texture.image as
+    | HTMLImageElement
+    | HTMLCanvasElement
+    | ImageBitmap
+    | undefined;
   if (!image) return null;
   const width =
-    'width' in image && typeof image.width === 'number' ? image.width : (image as HTMLImageElement).naturalWidth;
+    'width' in image && typeof image.width === 'number'
+      ? image.width
+      : (image as HTMLImageElement).naturalWidth;
   const height =
     'height' in image && typeof image.height === 'number'
       ? image.height

@@ -1,14 +1,18 @@
-import { ThreeElements, useFrame, useLoader, useThree } from '@react-three/fiber';
+import {
+  ThreeElements,
+  useFrame,
+  useLoader,
+  useThree,
+} from '@react-three/fiber';
 import React, { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
-
-import fragmentShader from '@/components/Hero/Partials/shaders/heroParticles.frag.glsl';
-import vertexShader from '@/components/Hero/Partials/shaders/heroParticles.vert.glsl';
 
 import {
   getImageSourceFromTexture,
   sampleTextureToParticleGeometry,
 } from '@/components/Hero/Partials/imageParticles/geometryFromImageSource';
+import fragmentShader from '@/components/Hero/Partials/shaders/heroParticles.frag.glsl';
+import vertexShader from '@/components/Hero/Partials/shaders/heroParticles.vert.glsl';
 
 export type ImageParticleFieldCoreProps = ThreeElements['group'] & {
   texture: THREE.Texture;
@@ -26,8 +30,15 @@ export type ImageParticleFieldCoreProps = ThreeElements['group'] & {
   hoverOpacity?: number;
 };
 
-function sampleAlphaMap(texture: THREE.Texture, sampleSize = 256): ImageData | null {
-  const src = texture.image as HTMLImageElement | HTMLCanvasElement | ImageBitmap | undefined;
+function sampleAlphaMap(
+  texture: THREE.Texture,
+  sampleSize = 256,
+): ImageData | null {
+  const src = texture.image as
+    | HTMLImageElement
+    | HTMLCanvasElement
+    | ImageBitmap
+    | undefined;
   if (!src) return null;
   const w = 'naturalWidth' in src ? src.naturalWidth : src.width;
   const h = 'naturalHeight' in src ? src.naturalHeight : src.height;
@@ -140,12 +151,15 @@ function ImageParticleFieldCore({
     uniforms.uOpacity.value += (targetOpacity - uniforms.uOpacity.value) * t;
 
     if (enableYawWobble && groupRef.current) {
-      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.18) * 0.045;
+      groupRef.current.rotation.y =
+        Math.sin(state.clock.elapsedTime * 0.18) * 0.045;
     }
 
     if (particleMeshRef.current) {
       raycaster.setFromCamera(pointer, camera);
-      const wPos = particleMeshRef.current.getWorldPosition(new THREE.Vector3());
+      const wPos = particleMeshRef.current.getWorldPosition(
+        new THREE.Vector3(),
+      );
       const zPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -wPos.z);
       const hit = new THREE.Vector3();
       if (raycaster.ray.intersectPlane(zPlane, hit)) {
@@ -160,8 +174,16 @@ function ImageParticleFieldCore({
 
   return (
     <group ref={groupRef} {...props}>
-      <mesh position={[particlesPosition[0], particlesPosition[1], particlesPosition[2] - 0.08]}>
-        <planeGeometry args={[geometryData.planeWidth, geometryData.planeHeight]} />
+      <mesh
+        position={[
+          particlesPosition[0],
+          particlesPosition[1],
+          particlesPosition[2] - 0.08,
+        ]}
+      >
+        <planeGeometry
+          args={[geometryData.planeWidth, geometryData.planeHeight]}
+        />
         <meshBasicMaterial
           map={texture}
           transparent
@@ -203,19 +225,32 @@ function ImageParticleFieldCore({
             hoveringRef.current = false;
           }}
         >
-          <planeGeometry args={[geometryData.planeWidth, geometryData.planeHeight]} />
-          <meshBasicMaterial transparent opacity={0.0001} depthWrite={false} depthTest={false} />
+          <planeGeometry
+            args={[geometryData.planeWidth, geometryData.planeHeight]}
+          />
+          <meshBasicMaterial
+            transparent
+            opacity={0.0001}
+            depthWrite={false}
+            depthTest={false}
+          />
         </mesh>
       ) : null}
     </group>
   );
 }
 
-export type ImageParticleFieldFromPathProps = Omit<ImageParticleFieldCoreProps, 'texture'> & {
+export type ImageParticleFieldFromPathProps = Omit<
+  ImageParticleFieldCoreProps,
+  'texture'
+> & {
   imagePath: string;
 };
 
-export function ImageParticleFieldFromPath({ imagePath, ...rest }: ImageParticleFieldFromPathProps) {
+export function ImageParticleFieldFromPath({
+  imagePath,
+  ...rest
+}: ImageParticleFieldFromPathProps) {
   const texture = useLoader(THREE.TextureLoader, imagePath);
   return <ImageParticleFieldCore texture={texture} {...rest} />;
 }

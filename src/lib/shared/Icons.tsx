@@ -33,7 +33,6 @@ import {
   SiGreensock,
   SiJavascript,
   SiLaravel,
-  SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
   SiNpm,

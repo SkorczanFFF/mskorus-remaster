@@ -38,8 +38,9 @@ export default function Header(): React.JSX.Element {
   return (
     <>
       <header
-        className={`font-grotesk sticky top-2 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183466] rounded-[3px] bg-[#001a2530] ${isMenuOpen ? 'opacity-0' : 'opacity-95'
-          }`}
+        className={`font-grotesk sticky top-2 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183466] rounded-[3px] bg-[#001a2530] ${
+          isMenuOpen ? 'opacity-0' : 'opacity-95'
+        }`}
       >
         <div className='flex w-full items-center justify-between'>
           <a
@@ -61,8 +62,9 @@ export default function Header(): React.JSX.Element {
       </header>
 
       <div
-        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
         <nav className='flex h-full w-full flex-col items-center justify-center'>
           <ul className='flex flex-col items-center space-y-8'>

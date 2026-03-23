@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 
-import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { GithubIcon, LinkedinIcon } from '@/lib/shared/Icons';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
 export default function About(): React.JSX.Element {
   const firstHeadingRef = useRef<HTMLDivElement>(null);
@@ -27,8 +27,10 @@ export default function About(): React.JSX.Element {
       triggers.push(tween.scrollTrigger);
     };
 
-    if (firstHeadingRef.current) createParallaxTween(firstHeadingRef.current, 50);
-    if (secondHeadingRef.current) createParallaxTween(secondHeadingRef.current, -50);
+    if (firstHeadingRef.current)
+      createParallaxTween(firstHeadingRef.current, 50);
+    if (secondHeadingRef.current)
+      createParallaxTween(secondHeadingRef.current, -50);
 
     return triggers;
   }, []);

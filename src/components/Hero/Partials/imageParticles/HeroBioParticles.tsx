@@ -2,9 +2,9 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
+import { rasterizeHeroBioToCanvas } from '@/components/Hero/Partials/imageParticles/rasterizeHeroBio';
 import bioFragShader from '@/components/Hero/Partials/shaders/bioParticles.frag.glsl';
 import bioVertShader from '@/components/Hero/Partials/shaders/bioParticles.vert.glsl';
-import { rasterizeHeroBioToCanvas } from '@/components/Hero/Partials/imageParticles/rasterizeHeroBio';
 
 const PARTICLE_COUNT = 8000;
 const DURATION = 20;
@@ -35,33 +35,27 @@ function buildParticleGeometry(): THREE.BufferGeometry {
     const i3 = i * 3;
     const i4 = i * 4;
 
-
     positions[i3] = 0;
     positions[i3 + 1] = 0;
     positions[i3 + 2] = 0;
 
     aOffset[i] = (i / PARTICLE_COUNT) * DURATION;
 
-
     aStartPosition[i3] = -12;
     aStartPosition[i3 + 1] = -2;
     aStartPosition[i3 + 2] = -1;
-
 
     aControlPoint1[i3] = randFloat(-37, 9);
     aControlPoint1[i3 + 1] = randFloat(-3, 22);
     aControlPoint1[i3 + 2] = randFloat(-6, -26);
 
-
     aControlPoint2[i3] = randFloat(-15, 25);
     aControlPoint2[i3 + 1] = randFloat(-25, 15);
     aControlPoint2[i3 + 2] = randFloat(-30, -15);
 
-
     aEndPosition[i3] = 25;
     aEndPosition[i3 + 1] = 10;
     aEndPosition[i3 + 2] = 2;
-
 
     axis.set(randFloat(-1, 1), randFloat(-1, 1), randFloat(-1, 1)).normalize();
     const angle = Math.PI * (16 + Math.floor(Math.random() * 17));
@@ -71,9 +65,8 @@ function buildParticleGeometry(): THREE.BufferGeometry {
     aAxisAngle[i4 + 2] = axis.z;
     aAxisAngle[i4 + 3] = angle;
 
-
     color.set(palette[Math.floor(Math.random() * palette.length)]);
-    color.multiplyScalar(randFloat(.85, 1.2));
+    color.multiplyScalar(randFloat(0.85, 1.2));
 
     aColor[i3] = color.r;
     aColor[i3 + 1] = color.g;
@@ -85,9 +78,18 @@ function buildParticleGeometry(): THREE.BufferGeometry {
 
   geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   geo.setAttribute('aOffset', new THREE.BufferAttribute(aOffset, 1));
-  geo.setAttribute('aStartPosition', new THREE.BufferAttribute(aStartPosition, 3));
-  geo.setAttribute('aControlPoint1', new THREE.BufferAttribute(aControlPoint1, 3));
-  geo.setAttribute('aControlPoint2', new THREE.BufferAttribute(aControlPoint2, 3));
+  geo.setAttribute(
+    'aStartPosition',
+    new THREE.BufferAttribute(aStartPosition, 3),
+  );
+  geo.setAttribute(
+    'aControlPoint1',
+    new THREE.BufferAttribute(aControlPoint1, 3),
+  );
+  geo.setAttribute(
+    'aControlPoint2',
+    new THREE.BufferAttribute(aControlPoint2, 3),
+  );
   geo.setAttribute('aEndPosition', new THREE.BufferAttribute(aEndPosition, 3));
   geo.setAttribute('aAxisAngle', new THREE.BufferAttribute(aAxisAngle, 4));
   geo.setAttribute('aColor', new THREE.BufferAttribute(aColor, 3));
@@ -192,12 +194,19 @@ export default function HeroBioParticles({
 
       <group position={position}>
         <mesh position={[0, 0, -0.08]}>
-          <planeGeometry args={[planeWidth + bgPadding + 0.08, planeHeight + bgPadding + 0.08]} />
+          <planeGeometry
+            args={[
+              planeWidth + bgPadding + 0.08,
+              planeHeight + bgPadding + 0.08,
+            ]}
+          />
           <meshBasicMaterial color='#801834' transparent opacity={0.5} />
         </mesh>
 
         <mesh position={[0, 0, -0.05]}>
-          <planeGeometry args={[planeWidth + bgPadding, planeHeight + bgPadding]} />
+          <planeGeometry
+            args={[planeWidth + bgPadding, planeHeight + bgPadding]}
+          />
           <meshBasicMaterial color='#000000' />
         </mesh>
 

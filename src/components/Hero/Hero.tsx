@@ -1,7 +1,13 @@
 import { Float } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
-import React, { Component, Suspense, useCallback, useEffect, useState } from 'react';
+import React, {
+  Component,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import Scene from '@/components/Hero/Partials/Scene';
@@ -103,7 +109,10 @@ export default function Hero(): React.JSX.Element {
               gl={{ antialias: false }}
               className='min-h-[97vh]'
             >
-              <color attach='background' args={[0 / 3072, 26 / 3072, 37 / 3072]} />
+              <color
+                attach='background'
+                args={[0 / 3072, 26 / 3072, 37 / 3072]}
+              />
               <FrameloopController inView={inView} />
               <Rig />
               <spotLight

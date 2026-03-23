@@ -10,7 +10,7 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint src",
     "lint:fix": "eslint src --fix && npm run format",
     "lint:strict": "eslint --max-warnings=10 src",
     "typecheck": "tsc --noEmit --incremental false",

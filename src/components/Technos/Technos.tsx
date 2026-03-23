@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 
-import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import {
   AutodeskIcon,
@@ -36,8 +35,12 @@ import {
   WordpressIcon,
   YarnIcon,
 } from '@/lib/shared/Icons';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
-type TechEntry = { Icon: React.FC<React.SVGProps<SVGSVGElement>>; label: string };
+type TechEntry = {
+  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  label: string;
+};
 
 const techCategories: Record<string, TechEntry[]> = {
   frontend: [
@@ -97,23 +100,36 @@ function TechIcon({ tech }: { tech: TechEntry }) {
 }
 
 function animateCategory(
-  refs: (React.RefObject<HTMLDivElement | null>)[],
+  refs: React.RefObject<HTMLDivElement | null>[],
   triggerRef: React.RefObject<HTMLDivElement | null>,
   options?: { useFromTo?: boolean; staggerFrom?: 'start' | 'end' },
 ) {
-  const allIcons = refs.flatMap(
-    (r) => (r.current ? gsap.utils.toArray<Element>('.tech-icon', r.current) : []),
+  const allIcons = refs.flatMap((r) =>
+    r.current ? gsap.utils.toArray<Element>('.tech-icon', r.current) : [],
   );
   if (!allIcons.length || !triggerRef.current) return undefined;
 
   const anim = options?.useFromTo
     ? gsap.fromTo(
-      allIcons,
-      { opacity: 0, scale: 1.4 },
-      {
+        allIcons,
+        { opacity: 0, scale: 1.4 },
+        {
+          opacity: 1,
+          scale: 1,
+          stagger: { each: 0.1, from: options.staggerFrom ?? 'start' },
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        },
+      )
+    : gsap.to(allIcons, {
         opacity: 1,
         scale: 1,
-        stagger: { each: 0.1, from: options.staggerFrom ?? 'start' },
+        stagger: 0.1,
         duration: 0.8,
         ease: 'power2.out',
         scrollTrigger: {
@@ -121,20 +137,7 @@ function animateCategory(
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
-      },
-    )
-    : gsap.to(allIcons, {
-      opacity: 1,
-      scale: 1,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
-      },
-    });
+      });
 
   return anim.scrollTrigger ?? undefined;
 }
@@ -149,7 +152,10 @@ export default function Technos(): React.JSX.Element {
 
   useScrollTriggers(() => {
     if (sectionRef.current) {
-      gsap.set(gsap.utils.toArray('.tech-icon', sectionRef.current), { opacity: 1, scale: 1 });
+      gsap.set(gsap.utils.toArray('.tech-icon', sectionRef.current), {
+        opacity: 1,
+        scale: 1,
+      });
     }
 
     if (window.innerWidth <= 1280) {
@@ -158,7 +164,10 @@ export default function Technos(): React.JSX.Element {
 
     const triggers = [
       animateCategory([frontendRef], frontendRef),
-      animateCategory([backendRef, databaseRef], backendRef, { useFromTo: true, staggerFrom: 'end' }),
+      animateCategory([backendRef, databaseRef], backendRef, {
+        useFromTo: true,
+        staggerFrom: 'end',
+      }),
       animateCategory([designRef, toolsRef], designRef, { useFromTo: true }),
     ];
 
@@ -171,7 +180,9 @@ export default function Technos(): React.JSX.Element {
       id='technologies'
       className='font-grotesk flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px]'
     >
-      <h3 className='font-grotesk mb-10 font-normal tracking-wider'>TECH STACK</h3>
+      <h3 className='font-grotesk mb-10 font-normal tracking-wider'>
+        TECH STACK
+      </h3>
 
       <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         <div className='flex w-full flex-col' ref={frontendRef}>

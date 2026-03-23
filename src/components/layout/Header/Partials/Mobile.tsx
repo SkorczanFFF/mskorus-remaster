@@ -14,18 +14,19 @@ export default function Mobile({
       aria-label='Toggle Menu'
     >
       <span
-        className={`h-[2px] w-6 transform bg-real-white transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-[7px] rotate-45' : ''
-          }`}
+        className={`h-[2px] w-6 transform bg-real-white transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'translate-y-[7px] rotate-45' : ''
+        }`}
       />
       <span
-        className={`h-[2px] w-6 bg-real-white transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : ''
-          }`}
+        className={`h-[2px] w-6 bg-real-white transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'opacity-0' : ''
+        }`}
       />
       <span
-        className={`h-[2px] w-6 transform bg-real-white transition-all duration-300 ease-in-out ${isMenuOpen
-            ? '-translate-y-[7px] -rotate-45'
-            : ''
-          }`}
+        className={`h-[2px] w-6 transform bg-real-white transition-all duration-300 ease-in-out ${
+          isMenuOpen ? '-translate-y-[7px] -rotate-45' : ''
+        }`}
       />
     </button>
   );

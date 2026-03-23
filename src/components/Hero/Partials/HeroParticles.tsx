@@ -16,7 +16,14 @@ function makeSoftDiscTexture(size = 64) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return null;
 
-  const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  const g = ctx.createRadialGradient(
+    size / 2,
+    size / 2,
+    0,
+    size / 2,
+    size / 2,
+    size / 2,
+  );
   g.addColorStop(0.0, 'rgba(255,255,255,1)');
   g.addColorStop(0.2, 'rgba(255,255,255,0.9)');
   g.addColorStop(0.55, 'rgba(255,255,255,0.25)');
@@ -125,7 +132,11 @@ const HeroParticles = ({
     const coreColor = new THREE.Color(0xffffff);
     const haloColor = new THREE.Color(0x801834);
 
-    const coreR = new THREE.Vector3(radius * 0.55, radius * 0.42, radius * 0.55);
+    const coreR = new THREE.Vector3(
+      radius * 0.55,
+      radius * 0.42,
+      radius * 0.55,
+    );
     const haloR = new THREE.Vector3(radius * 1.35, radius * 0.95, radius * 1.2);
 
     for (let i = 0; i < count; i++) {
@@ -139,7 +150,7 @@ const HeroParticles = ({
 
       const x = (Math.cos(angle + spin) * rr + randn() * 0.22) * (r.x / radius);
       const y = (Math.sin(angle + spin) * rr + randn() * 0.22) * (r.y / radius);
-      const z = (randn() * (isCore ? 0.18 : 0.26)) * (r.z);
+      const z = randn() * (isCore ? 0.18 : 0.26) * r.z;
 
       const i3 = i * 3;
       positions[i3] = x;
@@ -161,7 +172,11 @@ const HeroParticles = ({
     g.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     g.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    const sizeFactor = THREE.MathUtils.clamp(0.08 / Math.max(0.01, size), 0.35, 1);
+    const sizeFactor = THREE.MathUtils.clamp(
+      0.08 / Math.max(0.01, size),
+      0.35,
+      1,
+    );
     const opacity = (count <= 300 ? 0.92 : 0.82) * sizeFactor;
 
     return {
@@ -184,8 +199,10 @@ const HeroParticles = ({
 
     const targetX = pointer.x * 0.7;
     const targetY = pointer.y * 0.45;
-    groupRef.current.position.x += (targetX - groupRef.current.position.x) * (1 - Math.pow(0.001, delta));
-    groupRef.current.position.y += (targetY - groupRef.current.position.y) * (1 - Math.pow(0.001, delta));
+    groupRef.current.position.x +=
+      (targetX - groupRef.current.position.x) * (1 - Math.pow(0.001, delta));
+    groupRef.current.position.y +=
+      (targetY - groupRef.current.position.y) * (1 - Math.pow(0.001, delta));
 
     groupRef.current.rotation.y += delta * 0.06;
     groupRef.current.rotation.x += delta * 0.03;
@@ -193,7 +210,9 @@ const HeroParticles = ({
     const breathe = 1 + Math.sin(t) * 0.03;
     groupRef.current.scale.setScalar(breathe);
 
-    const attr = pointsRef.current.geometry.getAttribute('position') as THREE.BufferAttribute;
+    const attr = pointsRef.current.geometry.getAttribute(
+      'position',
+    ) as THREE.BufferAttribute;
     const arr = attr.array as Float32Array;
     const now = performance.now() * 0.001;
     const swirl = 0.35;
@@ -215,7 +234,8 @@ const HeroParticles = ({
 
       const wobX = Math.sin(now * (1.1 + seed * 2.2) + seed * 10) * jitter;
       const wobY = Math.cos(now * (1.0 + seed * 2.0) + seed * 7) * jitter;
-      const wobZ = Math.sin(now * (0.9 + seed * 1.8) + seed * 5) * (jitter * 0.65);
+      const wobZ =
+        Math.sin(now * (0.9 + seed * 1.8) + seed * 5) * (jitter * 0.65);
 
       arr[i3] = rx + wobX;
       arr[i3 + 1] = ry + wobY;
@@ -235,7 +255,10 @@ const HeroParticles = ({
     }
 
     if (raysMatRef.current) {
-      raysMatRef.current.opacity = Math.min(0.9, (0.18 + pulseRef.current * 0.12) * raysStrength);
+      raysMatRef.current.opacity = Math.min(
+        0.9,
+        (0.18 + pulseRef.current * 0.12) * raysStrength,
+      );
     }
   });
 
@@ -280,4 +303,3 @@ const HeroParticles = ({
 };
 
 export default React.memo(HeroParticles);
-

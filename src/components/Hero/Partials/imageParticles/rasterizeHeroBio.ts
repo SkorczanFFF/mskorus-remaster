@@ -47,7 +47,9 @@ export function computeWrappedHeroBioLines(
   return lines;
 }
 
-export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTMLCanvasElement {
+export function rasterizeHeroBioToCanvas(
+  options?: RasterizeHeroBioOptions,
+): HTMLCanvasElement {
   const maxWidthPx = options?.maxWidthPx ?? 580;
   const paddingPx = options?.paddingPx ?? 20;
   const fontPx = options?.fontPx ?? 15;
@@ -59,7 +61,8 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   const orangeDark = '#972b1a';
   const headingTextColor = '#e4e4e4';
 
-  const headingText = HERO_BIO_COPY.split(/\n\n+/)[0]?.trim() ?? "Hey, I'm Maciej.";
+  const headingText =
+    HERO_BIO_COPY.split(/\n\n+/)[0]?.trim() ?? "Hey, I'm Maciej.";
   const paragraphText = HERO_BIO_COPY.split(/\n\n+/)[1]?.trim() ?? '';
 
   type RichSpan = { text: string; color: string; weight: number };
@@ -83,7 +86,11 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
       if (idx === -1) continue;
 
       if (idx > cursor) {
-        spans.push({ text: paragraphText.slice(cursor, idx), color: fillStyle, weight: 400 });
+        spans.push({
+          text: paragraphText.slice(cursor, idx),
+          color: fillStyle,
+          weight: 400,
+        });
       }
       spans.push({ text: phrase, color: raspberry, weight: 600 });
       cursor = idx + phrase.length;
@@ -98,7 +105,9 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
     }
 
     const hasAnyBold = spans.some((s) => s.color === raspberry);
-    return hasAnyBold ? spans : [{ text: paragraphText, color: fillStyle, weight: 400 }];
+    return hasAnyBold
+      ? spans
+      : [{ text: paragraphText, color: fillStyle, weight: 400 }];
   })();
 
   type RichChunk = {
@@ -176,7 +185,7 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
 
   const headingFontPx = Math.round(fontPx * 1.18);
   const headingPaddingX = Math.round(fontPx * 0.95);
-  const headingPaddingY = Math.round(fontPx * 0.50);
+  const headingPaddingY = Math.round(fontPx * 0.5);
   const headingRadius = Math.round(fontPx * 0.55);
 
   ctx.font = `600 ${headingFontPx}px ${fontFamily}`;
@@ -204,7 +213,13 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   gradient.addColorStop(1, orangeDark);
   ctx2.fillStyle = gradient;
 
-  const roundedRect = (x: number, y: number, w: number, h: number, r: number) => {
+  const roundedRect = (
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    r: number,
+  ) => {
     const rr = Math.min(r, w / 2, h / 2);
     ctx2.beginPath();
     ctx2.moveTo(x + rr, y);
@@ -221,7 +236,11 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   ctx2.fillStyle = headingTextColor;
   ctx2.font = `600 ${headingFontPx}px ${fontFamily}`;
   ctx2.textBaseline = 'middle';
-  ctx2.fillText(headingText, pillX + (pillW - headingTextWidth) / 2, pillY + pillH / 2);
+  ctx2.fillText(
+    headingText,
+    pillX + (pillW - headingTextWidth) / 2,
+    pillY + pillH / 2,
+  );
 
   ctx2.textBaseline = 'top';
   let y = paragraphTop;
@@ -233,15 +252,16 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
     const spaceChunks = line.filter((c) => c.isSpace);
     const gaps = spaceChunks.length;
 
-    const justify = !isLastLine(li) && gaps > 0 && contentWidth > maxInner * 0.6;
-    const extraPerGap = justify ? (maxInner - contentWidth + gaps * spaceChunks[0].width) / gaps : 0;
+    const justify =
+      !isLastLine(li) && gaps > 0 && contentWidth > maxInner * 0.6;
+    const extraPerGap = justify
+      ? (maxInner - contentWidth + gaps * spaceChunks[0].width) / gaps
+      : 0;
 
     let x = paddingPx;
-    let gapIndex = 0;
     for (const chunk of line) {
       if (chunk.isSpace) {
         x += justify ? extraPerGap : chunk.width;
-        gapIndex++;
         continue;
       }
       ctx2.fillStyle = chunk.color;
@@ -253,7 +273,12 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   }
 
   const accentY = paragraphTop - Math.round(paddingPx * 0.2);
-  const accentGrad = ctx2.createLinearGradient(paddingPx, 0, maxWidthPx - paddingPx, 0);
+  const accentGrad = ctx2.createLinearGradient(
+    paddingPx,
+    0,
+    maxWidthPx - paddingPx,
+    0,
+  );
   accentGrad.addColorStop(0, raspberry);
   accentGrad.addColorStop(0.5, orangeDark);
   accentGrad.addColorStop(1, 'transparent');

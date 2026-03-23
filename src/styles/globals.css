@@ -11,7 +11,6 @@
   --color-orange-dark: #972b1a;
 }
 
-
 body {
   background-color: var(--color-primary-blue);
   scrollbar-width: thin;
@@ -35,15 +34,22 @@ body {
   cursor: pointer;
 }
 
-
 .gradient {
-  background: linear-gradient(270deg, var(--color-orange-dark), var(--color-raspberry));
+  background: linear-gradient(
+    270deg,
+    var(--color-orange-dark),
+    var(--color-raspberry)
+  );
   background-size: 200% 400%;
   animation: gradientAnimationX 7s ease infinite;
 }
 
 .gradient-slow {
-  background: linear-gradient(270deg, var(--color-orange-dark), var(--color-raspberry));
+  background: linear-gradient(
+    270deg,
+    var(--color-orange-dark),
+    var(--color-raspberry)
+  );
   background-size: 400% 200%;
   animation: gradientAnimationX 7s ease infinite;
 }
@@ -69,7 +75,6 @@ body {
 .perspective-left {
   transform: perspective(600px) rotateY(-5deg);
 }
-
 
 @media screen and (max-width: 1280px) {
   .perspective-right {
@@ -106,7 +111,8 @@ body {
 }
 
 .blue-hero {
-  border-color: transparent var(--color-white) var(--color-white) var(--color-white);
+  border-color: transparent var(--color-white) var(--color-white)
+    var(--color-white);
   margin-top: -20px;
   z-index: 20;
 }
@@ -199,7 +205,6 @@ body {
 }
 
 @keyframes escaleY {
-
   0%,
   80%,
   100% {

@@ -3,7 +3,9 @@ import React, { useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 
-import Background, { Vector3Tuple } from '@/components/Hero/Partials/Background';
+import Background, {
+  Vector3Tuple,
+} from '@/components/Hero/Partials/Background';
 import HeroBioParticles from '@/components/Hero/Partials/imageParticles/HeroBioParticles';
 import ImageParticleField from '@/components/Hero/Partials/imageParticles/ImageParticleField';
 
@@ -14,7 +16,8 @@ const Scene = (props: ThreeElements['group']) => {
   const groupScale = isMobile ? 1.15 : 1.5;
   const portraitGroupX = -12.65;
   const portraitWorldTargetX = -6;
-  const portraitParticlesLocalX = (portraitWorldTargetX - portraitGroupX) / groupScale;
+  const portraitParticlesLocalX =
+    (portraitWorldTargetX - portraitGroupX) / groupScale;
 
   return (
     <>

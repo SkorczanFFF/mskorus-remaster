@@ -66,21 +66,13 @@ export default function PortfolioProjectItem({
           >
             <div className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
               <GithubIcon className='text-2xl' />
-              <a
-                href={project.git}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href={project.git} target='_blank' rel='noopener noreferrer'>
                 repo
               </a>
             </div>
             <div className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
               <GlobalIcon className='text-2xl' />
-              <a
-                href={project.live}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href={project.live} target='_blank' rel='noopener noreferrer'>
                 live demo
               </a>
             </div>

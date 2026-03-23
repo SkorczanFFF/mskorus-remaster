@@ -64,10 +64,36 @@ export default function Portfolio(): React.JSX.Element {
     };
 
     const mm = gsap.matchMedia();
-    const breakpoints: { query: string; card1Y: number; card2Y: number; scrub1: number; scrub2: number; card2X?: { start: number; end: number } }[] = [
-      { query: '(max-width: 1024px)', card1Y: CARD_OFFSET, card2Y: 50, scrub1: 2, scrub2: 2 },
-      { query: '(min-width: 1025px) and (max-width: 1280px)', card1Y: CARD_OFFSET, card2Y: 50, scrub1: 2, scrub2: 2, card2X: { start: -20, end: -CARD_OFFSET } },
-      { query: '(min-width: 1281px)', card1Y: CARD_OFFSET, card2Y: -CARD_OFFSET, scrub1: 2, scrub2: 1.5 },
+    const breakpoints: {
+      query: string;
+      card1Y: number;
+      card2Y: number;
+      scrub1: number;
+      scrub2: number;
+      card2X?: { start: number; end: number };
+    }[] = [
+      {
+        query: '(max-width: 1024px)',
+        card1Y: CARD_OFFSET,
+        card2Y: 50,
+        scrub1: 2,
+        scrub2: 2,
+      },
+      {
+        query: '(min-width: 1025px) and (max-width: 1280px)',
+        card1Y: CARD_OFFSET,
+        card2Y: 50,
+        scrub1: 2,
+        scrub2: 2,
+        card2X: { start: -20, end: -CARD_OFFSET },
+      },
+      {
+        query: '(min-width: 1281px)',
+        card1Y: CARD_OFFSET,
+        card2Y: -CARD_OFFSET,
+        scrub1: 2,
+        scrub2: 1.5,
+      },
     ];
     breakpoints.forEach(({ query, card1Y, card2Y, scrub1, scrub2, card2X }) => {
       mm.add(query, () => {
@@ -139,9 +165,15 @@ export default function Portfolio(): React.JSX.Element {
           <div className='border-1 text-primary-blue border-orange-dark mt-10 flex max-h-[140px] min-w-[300px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-5 shadow-xl md:p-10'>
             <div className='font-light leading-5'>
               <h1 className='text-2xl md:text-3xl lg:text-4xl'>
-                <div className='nonweb-text text-end text-raspberry'>NON WEB</div>
-                <div className='related-text text-center text-[#b2b2b2]'>RELATED</div>
-                <div className='corner-text text-end text-[#b2b2b2]'>CORNER</div>
+                <div className='nonweb-text text-end text-raspberry'>
+                  NON WEB
+                </div>
+                <div className='related-text text-center text-[#b2b2b2]'>
+                  RELATED
+                </div>
+                <div className='corner-text text-end text-[#b2b2b2]'>
+                  CORNER
+                </div>
               </h1>
             </div>
           </div>
@@ -161,7 +193,10 @@ export default function Portfolio(): React.JSX.Element {
                 ]}
               />
             </div>
-            <div ref={nonWebCard2Ref} className='min-[1025px]:max-[1280px]:-ml-20'>
+            <div
+              ref={nonWebCard2Ref}
+              className='min-[1025px]:max-[1280px]:-ml-20'
+            >
               <PortfolioCard
                 className='h-auto border-t-[2px] border-t-[#0C2835]'
                 title='Package Delivery SA:MP Server'

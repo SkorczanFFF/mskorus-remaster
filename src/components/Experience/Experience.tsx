@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 
-import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 import { gsap } from '@/lib/gsap';
 import {
   BitbucketIcon,
@@ -17,6 +16,7 @@ import {
   TailwindIcon,
   TypescriptIcon,
 } from '@/lib/shared/Icons';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
 import experiencesData from '@/components/Experience/Partials/experiences.json';
 
@@ -117,10 +117,11 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
 
   return (
     <div
-      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${index % 2 === 0
-        ? 'gradient-slow self-end pl-2 md:pl-10'
-        : 'gradient-slow justify-end self-start pr-2 md:pr-10'
-        }`}
+      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${
+        index % 2 === 0
+          ? 'gradient-slow self-end pl-2 md:pl-10'
+          : 'gradient-slow justify-end self-start pr-2 md:pr-10'
+      }`}
     >
       <div ref={containerRef} className='flex w-full max-w-[750px]'>
         <div className='bg-primary-blue flex-1 p-6 md:py-4 text-[14px] lg:mx-auto'>
@@ -159,8 +160,9 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
             {exp.details.map((detail, i) => (
               <p
                 key={i}
-                className={`${i === exp.details.length - 1 ? 'mb-1' : 'mb-2'
-                  } font-light leading-4 text-[#f8f8f8]`}
+                className={`${
+                  i === exp.details.length - 1 ? 'mb-1' : 'mb-2'
+                } font-light leading-4 text-[#f8f8f8]`}
               >
                 - {detail}
               </p>

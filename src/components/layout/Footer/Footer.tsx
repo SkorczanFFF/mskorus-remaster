@@ -1,11 +1,15 @@
 import React, { useRef } from 'react';
 
 import { gsap } from '@/lib/gsap';
-import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 import { GithubIcon, LinkedinIcon, MailIcon } from '@/lib/shared/Icons';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
 const contactLinks = [
-  { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/mskorus/', icon: LinkedinIcon },
+  {
+    label: 'LINKEDIN',
+    href: 'https://www.linkedin.com/in/mskorus/',
+    icon: LinkedinIcon,
+  },
   { label: 'EMAIL', href: 'mailto:skorusmaciej94@gmail.com', icon: MailIcon },
   { label: 'GITHUB', href: 'https://github.com/SkorczanFFF', icon: GithubIcon },
 ] as const;
@@ -78,18 +82,36 @@ export default function Footer(): React.JSX.Element {
               ref={getInTouchWrapRef}
               className='relative text-primary-blue text-3xl font-medium tracking-wider my-[60px] mt-[100px] md:mb-10 md:mt-[70px] min-h-[3rem] w-full'
             >
-              <span className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' aria-hidden>
-                <span ref={getRef} className='inline-block origin-center whitespace-nowrap opacity-0'>
+              <span
+                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+                aria-hidden
+              >
+                <span
+                  ref={getRef}
+                  className='inline-block origin-center whitespace-nowrap opacity-0'
+                >
                   GET
                 </span>
               </span>
-              <span className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' aria-hidden>
-                <span ref={inRef} className='inline-block origin-center whitespace-nowrap opacity-0'>
+              <span
+                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+                aria-hidden
+              >
+                <span
+                  ref={inRef}
+                  className='inline-block origin-center whitespace-nowrap opacity-0'
+                >
                   IN
                 </span>
               </span>
-              <span className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' aria-hidden>
-                <span ref={touchRef} className='inline-block origin-center whitespace-nowrap opacity-0'>
+              <span
+                className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+                aria-hidden
+              >
+                <span
+                  ref={touchRef}
+                  className='inline-block origin-center whitespace-nowrap opacity-0'
+                >
                   TOUCH
                 </span>
               </span>
