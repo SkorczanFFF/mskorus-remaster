@@ -6,21 +6,12 @@ export type ParticleGeometryResult = {
   planeHeight: number;
 };
 
-export type CreateParticleGeometryOptions = {
-  /** Fixed angles per instance (length must match visible pixel count). If omitted, random angles are used. */
-  angleSeeds?: Float32Array;
-};
-
-/**
- * Builds instanced quad geometry from raster image data (bright opaque pixels → particles).
- */
 export function createParticleGeometry(
   imageData: ImageData,
   width: number,
   height: number,
   threshold: number,
   targetWidth: number,
-  options?: CreateParticleGeometryOptions,
 ): ParticleGeometryResult {
   const quadPositions = new Float32Array([
     -0.5, 0.5, 0,
@@ -43,11 +34,16 @@ export function createParticleGeometry(
     if (a > 16 && grey > threshold) visible.push(i);
   }
 
+  if (visible.length === 0) {
+    const emptyGeo = new THREE.InstancedBufferGeometry();
+    emptyGeo.instanceCount = 0;
+    return { geometry: emptyGeo, planeWidth: 0, planeHeight: 0 };
+  }
+
   const instanceCount = visible.length;
   const offsets = new Float32Array(instanceCount * 3);
   const sampleUvs = new Float32Array(instanceCount * 2);
   const pindex = new Float32Array(instanceCount);
-  const angle = new Float32Array(instanceCount);
   const intensity = new Float32Array(instanceCount);
 
   const cx = width * 0.5;
@@ -71,10 +67,6 @@ export function createParticleGeometry(
     sampleUvs[i2 + 1] = 1 - uvy;
 
     pindex[i] = i;
-    angle[i] =
-      options?.angleSeeds && options.angleSeeds.length === instanceCount
-        ? options.angleSeeds[i]!
-        : Math.random() * Math.PI * 2;
 
     const src = idx * 4;
     const greyVal =
@@ -90,7 +82,6 @@ export function createParticleGeometry(
   geometry.setAttribute('offset', new THREE.InstancedBufferAttribute(offsets, 3, false));
   geometry.setAttribute('sampleUv', new THREE.InstancedBufferAttribute(sampleUvs, 2, false));
   geometry.setAttribute('pindex', new THREE.InstancedBufferAttribute(pindex, 1, false));
-  geometry.setAttribute('angle', new THREE.InstancedBufferAttribute(angle, 1, false));
   geometry.setAttribute('intensity', new THREE.InstancedBufferAttribute(intensity, 1, false));
   geometry.computeBoundingSphere();
 

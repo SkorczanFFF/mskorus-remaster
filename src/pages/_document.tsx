@@ -5,13 +5,6 @@ export default function Document() {
     <Html lang='en' className='scroll-smooth'>
       <Head>
         <link
-          rel='preload'
-          href='/fonts/inter-var-latin.woff2'
-          as='font'
-          type='font/woff2'
-          crossOrigin='anonymous'
-        />
-        <link
           href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap'
           rel='stylesheet'
         />

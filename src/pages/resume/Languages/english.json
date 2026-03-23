@@ -60,7 +60,7 @@
     {
       "title": "MSKORUS - PORTFOLIO PAGE",
       "technologies": "Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender",
-      "description": "Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier itneractivity. Pure web experiments and React Three Fiber battleground.",
+      "description": "Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier interactivity. Pure web experiments and React Three Fiber battleground.",
       "repositoryLink": "https://github.com/SkorczanFFF/mskorus-remaster",
       "demoLink": "https://mskorus.vercel.app/"
     },

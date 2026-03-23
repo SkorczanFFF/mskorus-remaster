@@ -1,4 +1,4 @@
-import { ThreeElements, useFrame, useLoader } from '@react-three/fiber';
+import { ThreeElements, useFrame, useLoader, useThree } from '@react-three/fiber';
 import React, { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -15,14 +15,8 @@ export type ImageParticleFieldCoreProps = ThreeElements['group'] & {
   threshold?: number;
   targetWidth?: number;
   maxSampleWidth?: number;
-  /**
-   * Offset (relative to this field's `group`) for the shader particle mesh
-   * and its hover hit-plane. The bg plane stays at the group origin.
-   */
   particlesPosition?: [number, number, number];
-  /** Hit plane + hover-driven uniforms */
   enableHover?: boolean;
-  /** Subtle rotation.y wobble */
   enableYawWobble?: boolean;
   idleRandom?: number;
   hoverRandom?: number;
@@ -31,6 +25,41 @@ export type ImageParticleFieldCoreProps = ThreeElements['group'] & {
   idleOpacity?: number;
   hoverOpacity?: number;
 };
+
+function sampleAlphaMap(texture: THREE.Texture, sampleSize = 256): ImageData | null {
+  const src = texture.image as HTMLImageElement | HTMLCanvasElement | ImageBitmap | undefined;
+  if (!src) return null;
+  const w = 'naturalWidth' in src ? src.naturalWidth : src.width;
+  const h = 'naturalHeight' in src ? src.naturalHeight : src.height;
+  if (!w || !h) return null;
+
+  const scale = Math.min(1, sampleSize / Math.max(w, h));
+  const sw = Math.max(1, Math.round(w * scale));
+  const sh = Math.max(1, Math.round(h * scale));
+
+  const canvas = document.createElement('canvas');
+  canvas.width = sw;
+  canvas.height = sh;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+  ctx.drawImage(src as CanvasImageSource, 0, 0, sw, sh);
+  const data = ctx.getImageData(0, 0, sw, sh);
+  canvas.width = 0;
+  canvas.height = 0;
+  return data;
+}
+
+function isOpaqueAtUv(
+  alphaMap: ImageData,
+  u: number,
+  v: number,
+  alphaThreshold = 30,
+): boolean {
+  const px = Math.floor(u * (alphaMap.width - 1));
+  const py = Math.floor((1 - v) * (alphaMap.height - 1));
+  const idx = (py * alphaMap.width + px) * 4 + 3;
+  return alphaMap.data[idx] > alphaThreshold;
+}
 
 function ImageParticleFieldCore({
   texture,
@@ -49,7 +78,12 @@ function ImageParticleFieldCore({
   ...props
 }: ImageParticleFieldCoreProps) {
   const groupRef = useRef<THREE.Group>(null);
+  const particleMeshRef = useRef<THREE.Mesh>(null);
   const hoveringRef = useRef(false);
+  const alphaMap = useMemo(() => sampleAlphaMap(texture), [texture]);
+  const { camera, pointer } = useThree();
+  const raycaster = useMemo(() => new THREE.Raycaster(), []);
+  const localMouse = useMemo(() => new THREE.Vector3(0, 0, -9999), []);
 
   const geometryData = useMemo(() => {
     const src = getImageSourceFromTexture(texture);
@@ -72,6 +106,9 @@ function ImageParticleFieldCore({
       uSize: { value: idleSize },
       uOpacity: { value: idleOpacity },
       uTexture: { value: texture },
+      uMouse: { value: new THREE.Vector3(0, 0, -9999) },
+      uRepelRadius: { value: 1.2 },
+      uRepelStrength: { value: 0.5 },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- idle* are initial uniform seeds only
     [texture],
@@ -81,6 +118,13 @@ function ImageParticleFieldCore({
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.needsUpdate = true;
   }, [texture]);
+
+  useEffect(() => {
+    const geo = geometryData?.geometry;
+    return () => {
+      geo?.dispose();
+    };
+  }, [geometryData]);
 
   useFrame((state, delta) => {
     uniforms.uTime.value = state.clock.getElapsedTime();
@@ -98,13 +142,25 @@ function ImageParticleFieldCore({
     if (enableYawWobble && groupRef.current) {
       groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.18) * 0.045;
     }
+
+    if (particleMeshRef.current) {
+      raycaster.setFromCamera(pointer, camera);
+      const wPos = particleMeshRef.current.getWorldPosition(new THREE.Vector3());
+      const zPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -wPos.z);
+      const hit = new THREE.Vector3();
+      if (raycaster.ray.intersectPlane(zPlane, hit)) {
+        particleMeshRef.current.worldToLocal(hit);
+        localMouse.copy(hit);
+      }
+    }
+    uniforms.uMouse.value.copy(localMouse);
   });
 
   if (!geometryData) return null;
 
   return (
     <group ref={groupRef} {...props}>
-      <mesh position={[-6, 0, -0.08]}>
+      <mesh position={[particlesPosition[0], particlesPosition[1], particlesPosition[2] - 0.08]}>
         <planeGeometry args={[geometryData.planeWidth, geometryData.planeHeight]} />
         <meshBasicMaterial
           map={texture}
@@ -116,6 +172,7 @@ function ImageParticleFieldCore({
       </mesh>
 
       <mesh
+        ref={particleMeshRef}
         geometry={geometryData.geometry}
         position={particlesPosition}
         frustumCulled={false}
@@ -135,8 +192,12 @@ function ImageParticleFieldCore({
       {enableHover ? (
         <mesh
           position={particlesPosition}
-          onPointerEnter={() => {
-            hoveringRef.current = true;
+          onPointerMove={(e) => {
+            if (!alphaMap || !e.uv) {
+              hoveringRef.current = false;
+              return;
+            }
+            hoveringRef.current = isOpaqueAtUv(alphaMap, e.uv.x, e.uv.y);
           }}
           onPointerLeave={() => {
             hoveringRef.current = false;
@@ -154,7 +215,6 @@ export type ImageParticleFieldFromPathProps = Omit<ImageParticleFieldCoreProps, 
   imagePath: string;
 };
 
-/** Loads `imagePath` via TextureLoader (use inside Suspense). */
 export function ImageParticleFieldFromPath({ imagePath, ...rest }: ImageParticleFieldFromPathProps) {
   const texture = useLoader(THREE.TextureLoader, imagePath);
   return <ImageParticleFieldCore texture={texture} {...rest} />;
@@ -164,9 +224,6 @@ export type ImageParticleFieldProps =
   | ImageParticleFieldFromPathProps
   | (ImageParticleFieldCoreProps & { imagePath?: undefined });
 
-/**
- * Image-driven particle field: either `imagePath` (loaded) or `texture` (e.g. CanvasTexture).
- */
 export default function ImageParticleField(props: ImageParticleFieldProps) {
   if ('texture' in props && props.texture) {
     return <ImageParticleFieldCore {...props} />;
@@ -176,5 +233,3 @@ export default function ImageParticleField(props: ImageParticleFieldProps) {
   }
   return null;
 }
-
-export { ImageParticleFieldCore };

@@ -12,7 +12,6 @@ export function sampleTextureToParticleGeometry(
   threshold: number,
   targetWidth: number,
   maxSampleWidth: number,
-  angleSeeds?: Float32Array,
 ): ParticleGeometryResult | null {
   if (!naturalWidth || !naturalHeight) return null;
 
@@ -29,9 +28,11 @@ export function sampleTextureToParticleGeometry(
   ctx.clearRect(0, 0, sampleWidth, sampleHeight);
   ctx.drawImage(img, 0, 0, sampleWidth, sampleHeight);
   const imageData = ctx.getImageData(0, 0, sampleWidth, sampleHeight);
-  return createParticleGeometry(imageData, sampleWidth, sampleHeight, threshold, targetWidth, {
-    angleSeeds,
-  });
+
+  canvas.width = 0;
+  canvas.height = 0;
+
+  return createParticleGeometry(imageData, sampleWidth, sampleHeight, threshold, targetWidth);
 }
 
 export function getImageSourceFromTexture(texture: THREE.Texture): {

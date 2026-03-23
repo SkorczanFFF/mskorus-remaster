@@ -1,26 +1,18 @@
-export const HERO_BIO_COPY = `Hey, I'm Maciej.
+export const HERO_BIO_COPY = `Lorem Ipsum Dolor.
 
-Versatile and open-minded developer focused on building engaging, user-centered frontend solutions, with solid hands-on experience in backend work. Skilled in Web3 development for the gaming industry and in crafting custom platforms and tools for the medical events sector, backed by a strong foundation in IT support. Personally passionate about WebGL, modding, and building useful and entertaining code, not only frontend centered.`;
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.`;
 
 export type RasterizeHeroBioOptions = {
-  /** Logical width in CSS pixels (canvas pixel width) */
   maxWidthPx?: number;
   paddingPx?: number;
   fontPx?: number;
   lineHeight?: number;
-  /**
-   * Base (non-bold) paragraph color.
-   * Note: hero background is dark, so this defaults to a light text color (readable).
-   */
   fillStyle?: string;
   fontFamily?: string;
 };
 
 type MeasureContext = Pick<CanvasRenderingContext2D, 'measureText'>;
 
-/**
- * Word-wraps `HERO_BIO_COPY` using the given measure context (testable without canvas draw).
- */
 export function computeWrappedHeroBioLines(
   ctx: MeasureContext,
   options?: Pick<RasterizeHeroBioOptions, 'maxWidthPx' | 'paddingPx'>,
@@ -55,22 +47,16 @@ export function computeWrappedHeroBioLines(
   return lines;
 }
 
-/**
- * Stylized “About” bio text rasterized to a canvas.
- * - “Hey, I'm Maciej.” is drawn as a gradient pill (raspberry -> oranger) with light text.
- * - The paragraph has raspberry bold spans for the same phrases as in `src/components/About/About.tsx`.
- */
 export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTMLCanvasElement {
-  const maxWidthPx = options?.maxWidthPx ?? 480;
+  const maxWidthPx = options?.maxWidthPx ?? 580;
   const paddingPx = options?.paddingPx ?? 20;
   const fontPx = options?.fontPx ?? 15;
   const lineHeight = options?.lineHeight ?? 1.35;
   const fillStyle = options?.fillStyle ?? 'rgba(220, 235, 245, 0.95)';
   const fontFamily = options?.fontFamily ?? 'Montserrat, system-ui, sans-serif';
 
-  // About palette (see tailwind.config.ts)
   const raspberry = '#801834';
-  const oranger = '#972b1a';
+  const orangeDark = '#972b1a';
   const headingTextColor = '#e4e4e4';
 
   const headingText = HERO_BIO_COPY.split(/\n\n+/)[0]?.trim() ?? "Hey, I'm Maciej.";
@@ -79,11 +65,11 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   type RichSpan = { text: string; color: string; weight: number };
 
   const boldPhrases = [
-    'Versatile and open-minded',
-    'Web3 development for the gaming industry',
-    'crafting custom platforms and tools for the medical events sector',
-    'IT support',
-    'WebGL, modding, and building',
+    'omnis iste natus error',
+    'totam rem aperiam',
+    'inventore veritatis',
+    'magni dolores',
+    'voluptatem sequi nesciunt',
   ];
 
   const paragraphSpans: RichSpan[] = (() => {
@@ -92,7 +78,6 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
     let cursor = 0;
     const spans: RichSpan[] = [];
 
-    // Build spans by finding bold phrases in order of appearance.
     for (const phrase of boldPhrases) {
       const idx = paragraphText.indexOf(phrase, cursor);
       if (idx === -1) continue;
@@ -112,7 +97,6 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
       });
     }
 
-    // If none of the bold phrases were found, fall back to a single normal span.
     const hasAnyBold = spans.some((s) => s.color === raspberry);
     return hasAnyBold ? spans : [{ text: paragraphText, color: fillStyle, weight: 400 }];
   })();
@@ -127,16 +111,14 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
 
   const canvas = document.createElement('canvas');
   canvas.width = maxWidthPx;
-  canvas.height = 10; // placeholder; we set correct height after measuring.
+  canvas.height = 10;
 
   const ctx = canvas.getContext('2d');
   if (!ctx) return canvas;
 
-  // --- Measure + wrap paragraph into lines (rich, color-aware) ---
   const maxInner = maxWidthPx - paddingPx * 2;
 
   const chunkify = (span: RichSpan): Omit<RichChunk, 'width'>[] => {
-    // Preserve whitespace chunks so the wrapping works naturally.
     const parts = span.text.split(/(\s+)/);
     return parts
       .map((p) => p ?? '')
@@ -156,7 +138,6 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
     return ctx.measureText(chunk.text).width;
   };
 
-  // Wrap using width accumulation; line breaks only when adding a chunk would overflow.
   const lines: RichChunk[][] = [];
   let currentLine: RichChunk[] = [];
   let currentWidth = 0;
@@ -166,7 +147,6 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
     const chunk: RichChunk = { ...baseChunk, width: w };
 
     if (chunk.isSpace) {
-      // Skip leading spaces.
       if (currentWidth === 0) continue;
 
       if (currentWidth + chunk.width > maxInner) {
@@ -194,7 +174,6 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
 
   const lineHeightPx = fontPx * lineHeight;
 
-  // --- Measure heading pill ---
   const headingFontPx = Math.round(fontPx * 1.18);
   const headingPaddingX = Math.round(fontPx * 0.95);
   const headingPaddingY = Math.round(fontPx * 0.50);
@@ -212,7 +191,6 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   const textHeight = Math.max(1, lines.length) * lineHeightPx;
   const canvasHeight = Math.ceil(paragraphTop + textHeight + paddingPx);
 
-  // Resize to final height before drawing.
   canvas.height = canvasHeight;
 
   const ctx2 = canvas.getContext('2d');
@@ -221,10 +199,9 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   ctx2.clearRect(0, 0, canvas.width, canvas.height);
   ctx2.textBaseline = 'top';
 
-  // --- Draw heading pill with gradient ---
   const gradient = ctx2.createLinearGradient(pillX, 0, pillX + pillW, 0);
   gradient.addColorStop(0, raspberry);
-  gradient.addColorStop(1, oranger);
+  gradient.addColorStop(1, orangeDark);
   ctx2.fillStyle = gradient;
 
   const roundedRect = (x: number, y: number, w: number, h: number, r: number) => {
@@ -246,12 +223,27 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
   ctx2.textBaseline = 'middle';
   ctx2.fillText(headingText, pillX + (pillW - headingTextWidth) / 2, pillY + pillH / 2);
 
-  // --- Draw paragraph lines ---
   ctx2.textBaseline = 'top';
   let y = paragraphTop;
-  for (const line of lines) {
+  const isLastLine = (i: number) => i === lines.length - 1;
+
+  for (let li = 0; li < lines.length; li++) {
+    const line = lines[li];
+    const contentWidth = line.reduce((sum, c) => sum + c.width, 0);
+    const spaceChunks = line.filter((c) => c.isSpace);
+    const gaps = spaceChunks.length;
+
+    const justify = !isLastLine(li) && gaps > 0 && contentWidth > maxInner * 0.6;
+    const extraPerGap = justify ? (maxInner - contentWidth + gaps * spaceChunks[0].width) / gaps : 0;
+
     let x = paddingPx;
+    let gapIndex = 0;
     for (const chunk of line) {
+      if (chunk.isSpace) {
+        x += justify ? extraPerGap : chunk.width;
+        gapIndex++;
+        continue;
+      }
       ctx2.fillStyle = chunk.color;
       ctx2.font = `${chunk.weight} ${fontPx}px ${fontFamily}`;
       ctx2.fillText(chunk.text, x, y);
@@ -259,6 +251,14 @@ export function rasterizeHeroBioToCanvas(options?: RasterizeHeroBioOptions): HTM
     }
     y += lineHeightPx;
   }
+
+  const accentY = paragraphTop - Math.round(paddingPx * 0.2);
+  const accentGrad = ctx2.createLinearGradient(paddingPx, 0, maxWidthPx - paddingPx, 0);
+  accentGrad.addColorStop(0, raspberry);
+  accentGrad.addColorStop(0.5, orangeDark);
+  accentGrad.addColorStop(1, 'transparent');
+  ctx2.fillStyle = accentGrad;
+  ctx2.fillRect(paddingPx, accentY, maxInner, 2);
 
   return canvas;
 }

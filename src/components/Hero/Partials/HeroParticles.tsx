@@ -1,5 +1,5 @@
 import { ThreeElements, useFrame, useThree } from '@react-three/fiber';
-import React, { useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 type HeroParticlesProps = ThreeElements['group'] & {
@@ -45,7 +45,6 @@ function makeRadialRaysTexture(size = 256) {
 
   ctx.clearRect(0, 0, size, size);
 
-  // Soft base glow.
   const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, size / 2);
   glow.addColorStop(0.0, 'rgba(255,255,255,0.75)');
   glow.addColorStop(0.25, 'rgba(255,255,255,0.22)');
@@ -53,7 +52,6 @@ function makeRadialRaysTexture(size = 256) {
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, size, size);
 
-  // Rays.
   ctx.translate(cx, cy);
   const rayCount = 64;
   for (let i = 0; i < rayCount; i++) {
@@ -86,7 +84,6 @@ function makeRadialRaysTexture(size = 256) {
 }
 
 function randn() {
-  // Box–Muller transform
   let u = 0;
   let v = 0;
   while (u === 0) u = Math.random();
@@ -111,6 +108,13 @@ const HeroParticles = ({
   const sprite = useMemo(() => makeSoftDiscTexture(64), []);
   const raysSprite = useMemo(() => makeRadialRaysTexture(256), []);
 
+  useEffect(() => {
+    return () => {
+      sprite?.dispose();
+      raysSprite?.dispose();
+    };
+  }, [sprite, raysSprite]);
+
   const { geometry, baseOpacity, basePositions, seeds } = useMemo(() => {
     const coreCount = Math.round(count * 0.62);
 
@@ -128,8 +132,6 @@ const HeroParticles = ({
       const isCore = i < coreCount;
       const r = isCore ? coreR : haloR;
 
-      // Galaxy-ish distribution:
-      // - sample a radius and then create a loose spiral with randomness
       const s = Math.random();
       const rr = (isCore ? 0.25 + s * 0.45 : 0.35 + s * 0.65) * radius;
       const angle = Math.random() * Math.PI * 2;
@@ -144,7 +146,6 @@ const HeroParticles = ({
       positions[i3 + 1] = y;
       positions[i3 + 2] = z;
 
-      // Brand tint: mostly white, occasional raspberry highlights (more in halo).
       const c = isCore
         ? coreColor.clone().lerp(haloColor, Math.random() * 0.12)
         : coreColor.clone().lerp(haloColor, 0.18 + Math.random() * 0.35);
@@ -160,7 +161,6 @@ const HeroParticles = ({
     g.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     g.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Bigger point size = more fill-rate => reduce opacity a bit to avoid a blown-out blob.
     const sizeFactor = THREE.MathUtils.clamp(0.08 / Math.max(0.01, size), 0.35, 1);
     const opacity = (count <= 300 ? 0.92 : 0.82) * sizeFactor;
 
@@ -172,24 +172,27 @@ const HeroParticles = ({
     };
   }, [count, radius, size]);
 
+  useEffect(() => {
+    return () => {
+      geometry.dispose();
+    };
+  }, [geometry]);
+
   useFrame((_state, delta) => {
     if (!groupRef.current) return;
     if (!pointsRef.current) return;
 
-    // Pointer parallax (move whole cloud, no per-point raycasting).
     const targetX = pointer.x * 0.7;
     const targetY = pointer.y * 0.45;
     groupRef.current.position.x += (targetX - groupRef.current.position.x) * (1 - Math.pow(0.001, delta));
     groupRef.current.position.y += (targetY - groupRef.current.position.y) * (1 - Math.pow(0.001, delta));
 
-    // Gentle overall drift (keep small so motion feels organic, not rigid).
     groupRef.current.rotation.y += delta * 0.06;
     groupRef.current.rotation.x += delta * 0.03;
     const t = performance.now() * 0.0006;
     const breathe = 1 + Math.sin(t) * 0.03;
     groupRef.current.scale.setScalar(breathe);
 
-    // Per-particle organic motion (cheap CPU): swirl + jitter based on seed.
     const attr = pointsRef.current.geometry.getAttribute('position') as THREE.BufferAttribute;
     const arr = attr.array as Float32Array;
     const now = performance.now() * 0.001;
@@ -207,11 +210,9 @@ const HeroParticles = ({
       const cs = Math.cos(a);
       const sn = Math.sin(a);
 
-      // rotate around Z a bit (galaxy swirl)
       const rx = sx * cs - sy * sn;
       const ry = sx * sn + sy * cs;
 
-      // small wobble in all axes
       const wobX = Math.sin(now * (1.1 + seed * 2.2) + seed * 10) * jitter;
       const wobY = Math.cos(now * (1.0 + seed * 2.0) + seed * 7) * jitter;
       const wobZ = Math.sin(now * (0.9 + seed * 1.8) + seed * 5) * (jitter * 0.65);
@@ -223,7 +224,6 @@ const HeroParticles = ({
 
     attr.needsUpdate = true;
 
-    // Click/tap pulse (cheap: size + opacity bump).
     if (pulseRef.current > 0 && materialRef.current) {
       pulseRef.current = Math.max(0, pulseRef.current - delta * 2.2);
       const p = pulseRef.current;
@@ -234,7 +234,6 @@ const HeroParticles = ({
       materialRef.current.opacity = baseOpacity;
     }
 
-    // Rays spin + pulse.
     if (raysMatRef.current) {
       raysMatRef.current.opacity = Math.min(0.9, (0.18 + pulseRef.current * 0.12) * raysStrength);
     }
