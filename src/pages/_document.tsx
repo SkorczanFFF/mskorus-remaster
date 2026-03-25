@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang='en' className='scroll-smooth'>
       <Head>
         <link
-          href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap'
+          href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Unica+One&display=swap'
           rel='stylesheet'
         />
       </Head>

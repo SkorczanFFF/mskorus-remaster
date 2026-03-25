@@ -1,5 +1,5 @@
 import { ThreeElements, useLoader } from '@react-three/fiber';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 
@@ -11,17 +11,22 @@ import ImageParticleField from '@/components/Hero/Partials/imageParticles/ImageP
 
 useLoader.preload(THREE.TextureLoader, '/me.png');
 
-const Scene = (props: ThreeElements['group']) => {
+const Scene = (props: ThreeElements['group'] & { onReady?: () => void }) => {
+  const { onReady, ...groupProps } = props;
   const group = useRef<THREE.Group | null>(null);
+
+  useEffect(() => {
+    if (onReady) requestAnimationFrame(() => onReady());
+  }, [onReady]);
   const groupScale = isMobile ? 1.15 : 1.5;
-  const portraitGroupX = -12.65;
+  const portraitGroupX = -11;
   const portraitWorldTargetX = -6;
   const portraitParticlesLocalX =
     (portraitWorldTargetX - portraitGroupX) / groupScale;
 
   return (
     <>
-      <group ref={group} {...props} dispose={null} scale={groupScale}>
+      <group ref={group} {...groupProps} dispose={null} scale={groupScale}>
         <ImageParticleField
           position={[portraitGroupX, -0.629, -2.504] as Vector3Tuple}
           imagePath='/me.png'
@@ -30,9 +35,7 @@ const Scene = (props: ThreeElements['group']) => {
           maxSampleWidth={220}
           particlesPosition={[portraitParticlesLocalX, 0, 0]}
         />
-
         <HeroBioParticles />
-
         <Background variant={isMobile ? 'mobile' : 'desktop'} />
       </group>
     </>

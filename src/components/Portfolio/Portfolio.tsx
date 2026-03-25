@@ -4,11 +4,13 @@ import { gsap } from '@/lib/gsap';
 import { ScrollTrigger } from '@/lib/gsap';
 import { GithubIcon } from '@/lib/shared/Icons';
 
+import { useLocale } from '@/locale/LocaleContext';
+
 import PortfolioCard from './Partials/PortfolioCard';
 import PortfolioProjectItem from './Partials/PortfolioProjectItem';
-import projects from './Partials/projects.json';
 
 export default function Portfolio(): React.JSX.Element {
+  const { t } = useLocale();
   const projectRefs = useRef<(HTMLImageElement | null)[]>([]);
   const nonWebCard1Ref = useRef<HTMLDivElement>(null);
   const nonWebCard2Ref = useRef<HTMLDivElement>(null);
@@ -72,29 +74,29 @@ export default function Portfolio(): React.JSX.Element {
       scrub2: number;
       card2X?: { start: number; end: number };
     }[] = [
-      {
-        query: '(max-width: 1024px)',
-        card1Y: CARD_OFFSET,
-        card2Y: 50,
-        scrub1: 2,
-        scrub2: 2,
-      },
-      {
-        query: '(min-width: 1025px) and (max-width: 1280px)',
-        card1Y: CARD_OFFSET,
-        card2Y: 50,
-        scrub1: 2,
-        scrub2: 2,
-        card2X: { start: -20, end: -CARD_OFFSET },
-      },
-      {
-        query: '(min-width: 1281px)',
-        card1Y: CARD_OFFSET,
-        card2Y: -CARD_OFFSET,
-        scrub1: 2,
-        scrub2: 1.5,
-      },
-    ];
+        {
+          query: '(max-width: 1024px)',
+          card1Y: CARD_OFFSET,
+          card2Y: 50,
+          scrub1: 2,
+          scrub2: 2,
+        },
+        {
+          query: '(min-width: 1025px) and (max-width: 1280px)',
+          card1Y: CARD_OFFSET,
+          card2Y: 50,
+          scrub1: 2,
+          scrub2: 2,
+          card2X: { start: -20, end: -CARD_OFFSET },
+        },
+        {
+          query: '(min-width: 1281px)',
+          card1Y: CARD_OFFSET,
+          card2Y: -CARD_OFFSET,
+          scrub1: 2,
+          scrub2: 1.5,
+        },
+      ];
     breakpoints.forEach(({ query, card1Y, card2Y, scrub1, scrub2, card2X }) => {
       mm.add(query, () => {
         const cardTriggers: ScrollTrigger[] = [];
@@ -146,10 +148,10 @@ export default function Portfolio(): React.JSX.Element {
     >
       <div className='arrow-down white pt-[60px]' />
       <h3 className='font-grotesk -left-[45px] top-[190px] text-xl font-normal leading-3 tracking-[10px] text-white md:absolute md:rotate-90'>
-        PORTFOLIO
+        {t.portfolioTitle}
       </h3>
       <div className='xxl:w-[1200px] my-[60px] flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:my-20 md:w-[620px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
-        {projects.map((project, index) => (
+        {t.projects.map((project, index) => (
           <PortfolioProjectItem
             key={project.id}
             project={project}
@@ -166,65 +168,61 @@ export default function Portfolio(): React.JSX.Element {
             <div className='font-light leading-5'>
               <h1 className='text-2xl md:text-3xl lg:text-4xl'>
                 <div className='nonweb-text text-end text-raspberry'>
-                  NON WEB
+                  {t.portfolioNonWeb}
                 </div>
                 <div className='related-text text-center text-[#b2b2b2]'>
-                  RELATED
+                  {t.portfolioRelated}
                 </div>
                 <div className='corner-text text-end text-[#b2b2b2]'>
-                  CORNER
+                  {t.portfolioCorner}
                 </div>
               </h1>
             </div>
           </div>
           <div className='mt-0 mb-20 lg:mb-0 flex max-w-full flex-col gap-5 xl:flex-row min-[1025px]:mt-10 min-[1281px]:mt-20 max-[1280px]:max-w-[600px]'>
-            <div ref={nonWebCard1Ref}>
-              <PortfolioCard
-                className='border-b-[2px] border-b-[#0C2835]'
-                title='Tibia Key Presser'
-                tech='Python, Tkinter, pywinauto'
-                description='A lightweight Python-based automation tool for Tibia (MMORPG), developed for personal use to assist with magic skill training on Open Tibia Servers. It supports up to eight key-delay pairs with customizable delays from 0 to 10 seconds, along with individual reset and delete options. The tool automatically detects the Tibia game window, provides dynamic UI feedback, and offers simple Start/Stop controls. Designed for efficiency and minimal resource usage, it runs perfectly in the background, without interrupting other activities and games.'
-                links={[
-                  {
-                    href: 'https://github.com/SkorczanFFF/tibia-key-presser',
-                    label: 'repo',
-                    icon: <GithubIcon className='text-2xl' />,
-                  },
-                ]}
-              />
-            </div>
-            <div
-              ref={nonWebCard2Ref}
-              className='min-[1025px]:max-[1280px]:-ml-20'
-            >
-              <PortfolioCard
-                className='h-auto border-t-[2px] border-t-[#0C2835]'
-                title='Package Delivery SA:MP Server'
-                tech='PawnC, SA:MP'
-                description={
-                  <>
-                    <p>
-                      A package delivery system for a San Andreas Multiplayer
-                      server, created for fun and educational purposes with a
-                      friend. The system includes features for picking up and
-                      delivering packages, a map divided into package delivery
-                      regions, and dedicated loading/unloading hubs in each
-                      city.
-                      <br /> To enhance realism and immersion, the system also
-                      includes additional scripts such as random tire punctures
-                      and a post-shift vehicle condition report. Future plans
-                      include expanding the system with housing, personal
-                      vehicles, and more in-game functionalities.
-                    </p>
-                  </>
-                }
-              />
-            </div>
+            {t.nonWebProjects.map((nwp, i) => {
+              const isFirst = i === 0;
+              return (
+                <div
+                  key={nwp.title}
+                  ref={isFirst ? nonWebCard1Ref : nonWebCard2Ref}
+                  className={isFirst ? '' : 'min-[1025px]:max-[1280px]:-ml-20'}
+                >
+                  <PortfolioCard
+                    className={
+                      isFirst
+                        ? 'border-b-[2px] border-b-[#0C2835]'
+                        : 'h-auto border-t-[2px] border-t-[#0C2835]'
+                    }
+                    title={nwp.title}
+                    tech={nwp.tech}
+                    description={
+                      nwp.description.includes('\n') ? (
+                        <p>
+                          {nwp.description.split('\n').map((part, pi) => (
+                            <React.Fragment key={pi}>
+                              {pi > 0 && <br />}
+                              {part}
+                            </React.Fragment>
+                          ))}
+                        </p>
+                      ) : (
+                        nwp.description
+                      )
+                    }
+                    links={nwp.links.map((link) => ({
+                      ...link,
+                      icon: <GithubIcon className='text-2xl' />,
+                    }))}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
       <p className='mb-10 mt-[60px] lg:mt-[160px] tracking-[8px] text-white'>
-        STAY TUNED
+        {t.portfolioStayTuned}
       </p>
     </section>
   );

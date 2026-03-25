@@ -15,6 +15,7 @@ interface TextConfig {
   position: Vector3Tuple;
 }
 
+const FONT_URL = '/fonts/UnicaOne-Regular.ttf';
 const SHIFT_STRENGTH = 4;
 const DAMP_SMOOTHING = 0.25;
 
@@ -31,6 +32,7 @@ function AnimatedTextRow({ item, index }: { item: TextConfig; index: number }) {
   return (
     <group ref={groupRef}>
       <Text
+        font={FONT_URL}
         fontSize={item.fontSize}
         letterSpacing={0}
         color={item.color}
@@ -44,44 +46,44 @@ function AnimatedTextRow({ item, index }: { item: TextConfig; index: number }) {
 
 const desktopConfig: TextConfig[] = [
   {
-    text: 'ENDENDENDENDENDENDENDENDENDENDEND',
+    text: 'MOBILEMOBILEMOBILEMOBILEMOBILEMOB',
     fontSize: 8,
     color: colors.whiterColor,
     position: [10, 24, -23],
   },
   {
     text: 'FRONTENDFRONTENDFRONTENDFRONTENDF',
-    fontSize: 7,
+    fontSize: 6,
     color: colors.whiterColor,
     position: [10, 17, -20],
   },
   {
-    text: 'FRONTFRONTFRONTFRONTFRONTFRONTFRO',
-    fontSize: 8,
+    text: 'FULLSTACKFULLSTACKFULLSTACKFULLST',
+    fontSize: 7,
     color: colors.whiterColor,
     position: [10, 11, -17],
   },
   {
-    text: 'ENDENDENDENDENDENDENDENDENDENDEND',
-    fontSize: 8,
+    text: 'BACKENDBACKENDBACKENDBACKENDBACKEND',
+    fontSize: 7,
     color: colors.whiterColor,
     position: [5, 8, -25],
   },
   {
-    text: 'FRONTFRONTFRONTFRONTFRONTFRONTFRO',
-    fontSize: 6,
+    text: 'FRONTENDFRONTENDFRONTENDFRONTENDFRONT',
+    fontSize: 6.5,
     color: colors.whiterColor,
     position: [2.5, 2, -15],
   },
   {
     text: 'DEVELOPERDEVELOPERDEVELOPERDEVELO',
-    fontSize: 6,
+    fontSize: 6.5,
     color: colors.raspberryColor,
     position: [0, -3, -17],
   },
   {
     text: 'DEVDEVDEVDEVDEVDEVDEVDEVDEVDEVDEV',
-    fontSize: 6,
+    fontSize: 6.5,
     color: colors.raspberryColor,
     position: [0, -7.5, -15],
   },

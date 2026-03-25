@@ -1,98 +1,88 @@
 import React, { useRef } from 'react';
 
-import { gsap, ScrollTrigger } from '@/lib/gsap';
-import { GithubIcon, LinkedinIcon } from '@/lib/shared/Icons';
+import { gsap } from '@/lib/gsap';
+import {
+  DockerIcon,
+  GlobeIcon,
+  ReactIcon,
+} from '@/lib/shared/Icons';
 import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
-export default function About(): React.JSX.Element {
-  const firstHeadingRef = useRef<HTMLDivElement>(null);
-  const secondHeadingRef = useRef<HTMLDivElement>(null);
+import { useLocale } from '@/locale/LocaleContext';
+import type { ServiceEntry } from '@/locale/types';
+
+type IconType = React.FC<React.SVGProps<SVGSVGElement>>;
+
+const serviceIconMap: Record<string, IconType> = {
+  Globe: GlobeIcon,
+  React: ReactIcon,
+  Extension: DockerIcon,
+  Maintenance: DockerIcon,
+};
+
+function ServiceCard({ service }: { service: ServiceEntry }) {
+  const Icon = serviceIconMap[service.icon];
+  return (
+    <div className='border border-primary-blue/10 p-6 flex flex-col gap-3 hover:shadow-lg transition-shadow duration-300'>
+      {Icon && <Icon className='text-4xl text-raspberry' />}
+      <h4 className='text-xl font-medium text-primary-blue tracking-wider'>
+        {service.title}
+      </h4>
+      <p className='text-primary-blue/80 leading-relaxed text-[15px]'>
+        {service.description}
+      </p>
+    </div>
+  );
+}
+
+export default function Services(): React.JSX.Element {
+  const { t } = useLocale();
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useScrollTriggers(() => {
-    const triggers: (ScrollTrigger | undefined)[] = [];
+    if (!gridRef.current || window.innerWidth < 768) return [];
 
-    const createParallaxTween = (el: HTMLElement, xOffset: number) => {
-      gsap.set(el, { x: xOffset });
-      const tween = gsap.to(el, {
-        x: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 2,
-          toggleActions: 'play none none reverse',
-        },
-      });
-      triggers.push(tween.scrollTrigger);
-    };
+    const cards = gsap.utils.toArray<Element>(
+      '.service-card',
+      gridRef.current,
+    );
+    if (!cards.length) return [];
 
-    if (firstHeadingRef.current)
-      createParallaxTween(firstHeadingRef.current, 50);
-    if (secondHeadingRef.current)
-      createParallaxTween(secondHeadingRef.current, -50);
+    gsap.set(cards, { opacity: 0, y: 40 });
+    const tween = gsap.to(cards, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.15,
+      duration: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+    });
 
-    return triggers;
+    return tween.scrollTrigger ? [tween.scrollTrigger] : [];
   }, []);
 
   return (
     <section
-      id='about'
-      className='font-grotesk relative flex h-[100%] w-full flex-col items-center justify-center overflow-hidden bg-white pb-10 md:pt-[200px]'
+      id='services'
+      className='font-grotesk relative flex min-h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-white py-[100px] md:py-[160px]'
     >
-      <h3 className='font-grotesk text-primary-blue left-0 top-[140px] py-20 text-xl font-medium leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
-        ABOUT
+      <h3 className='font-grotesk text-primary-blue -left-8 top-[160px] py-2 text-xl font-medium leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
+        {t.servicesSectionTitle}
       </h3>
 
-      <div className='flex w-full max-w-[450px] flex-col gap-3 text-white md:flex-col'>
-        <div ref={firstHeadingRef} className='ml-10 flex items-start'>
-          <h2 className='from-raspberry to-orange-dark font-grotesk gradient w-auto justify-end bg-gradient-to-r px-6 py-3 text-xl font-medium'>
-            Hey, I'm Maciej.
-          </h2>
-        </div>
-        <div ref={secondHeadingRef} className='mr-10 flex justify-end'>
-          <h2 className='from-orange-dark to-raspberry font-grotesk gradient bg-gradient-to-r px-6 py-3 text-xl font-medium'>
-            Skorus Maciej.
-          </h2>
-        </div>
-      </div>
-
-      <h3 className=' font-grotesk text-primary-blue mb-10 mt-[100px] leading-7 max-w-[770px] md:px-10 px-6 py-2 text-[21px] text-sm font-normal tracking-wide text-center'>
-        <b className='text-raspberry'>Versatile and open-minded</b> developer
-        focused on building engaging, user-centered frontend solutions, with
-        solid hands-on experience in backend work. Skilled in{' '}
-        <b className='text-raspberry'>
-          Web3 development for the gaming industry
-        </b>{' '}
-        and in
-        <b className='text-raspberry'>
-          {' '}
-          crafting custom platforms and tools for the medical events sector
-        </b>
-        , backed by a strong foundation in{' '}
-        <b className='text-raspberry'>IT support</b>. Personally passionate
-        about
-        <b className='text-raspberry'> WebGL, modding, and building</b> useful
-        and entertaining code, not only frontend centered.
-      </h3>
-
-      <div className='mt-[100px] flex gap-10'>
-        <a
-          href='https://github.com/SkorczanFFF'
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='GitHub profile'
-        >
-          <GithubIcon className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 text-7xl duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]' />
-        </a>
-        <a
-          href='https://www.linkedin.com/in/mskorus/'
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='LinkedIn profile'
-        >
-          <LinkedinIcon className='text-primary-blue hover:text-raspberry flex cursor-pointer flex-col items-center gap-3 text-7xl duration-150 hover:drop-shadow-[0_-2px_2px_#80183466]' />
-        </a>
+      <div
+        ref={gridRef}
+        className='mx-auto grid w-full max-w-[1000px] grid-cols-1 gap-6 px-6 sm:grid-cols-2'
+      >
+        {t.services.map((service) => (
+          <div key={service.title} className='service-card'>
+            <ServiceCard service={service} />
+          </div>
+        ))}
       </div>
     </section>
   );

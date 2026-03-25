@@ -2,18 +2,11 @@ import React from 'react';
 
 import { GithubIcon, GlobalIcon } from '@/lib/shared/Icons';
 
-export interface PortfolioProject {
-  id: number;
-  pic: string;
-  title: string;
-  technos: string;
-  description: string;
-  live: string;
-  git: string;
-}
+import { useLocale } from '@/locale/LocaleContext';
+import type { ProjectEntry } from '@/locale/types';
 
 interface PortfolioProjectItemProps {
-  project: PortfolioProject;
+  project: ProjectEntry;
   index: number;
   imageRef: (el: HTMLImageElement | null) => void;
 }
@@ -23,6 +16,7 @@ export default function PortfolioProjectItem({
   index,
   imageRef,
 }: PortfolioProjectItemProps): React.JSX.Element {
+  const { t } = useLocale();
   const isEven = index % 2 === 0;
 
   return (
@@ -47,7 +41,7 @@ export default function PortfolioProjectItem({
       >
         <a href={project.git} target='_blank' rel='noopener noreferrer'>
           <p
-            className={`hover:text-primary-blue my-3 w-auto cursor-pointer bg-gradient-to-r p-2 text-xl font-normal duration-75 md:text-2xl lg:text-3xl ${isEven ? 'from-raspberry to-orange-dark' : 'to-raspberry from-orange-dark text-end'}`}
+            className={`font-unica hover:text-primary-blue my-3 w-auto cursor-pointer bg-gradient-to-r p-2 py-1 text-2xl font-normal duration-75 md:text-3xl lg:text-4xl ${isEven ? 'from-raspberry to-orange-dark' : 'to-raspberry from-orange-dark text-end'}`}
           >
             {project.title}
           </p>
@@ -67,13 +61,13 @@ export default function PortfolioProjectItem({
             <div className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
               <GithubIcon className='text-2xl' />
               <a href={project.git} target='_blank' rel='noopener noreferrer'>
-                repo
+                {t.portfolioRepo}
               </a>
             </div>
             <div className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'>
               <GlobalIcon className='text-2xl' />
               <a href={project.live} target='_blank' rel='noopener noreferrer'>
-                live demo
+                {project.liveLabel ?? t.portfolioLiveDemo}
               </a>
             </div>
           </div>

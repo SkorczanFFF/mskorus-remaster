@@ -7,9 +7,15 @@ import {
   AiOutlineGlobal,
 } from 'react-icons/ai';
 import { BiLogoJava } from 'react-icons/bi';
-import { BsCursorFill, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
+import {
+  BsClaude,
+  BsCursor,
+  BsCursorFill,
+  BsGithub,
+  BsGlobe2,
+  BsLinkedin,
+} from 'react-icons/bs';
 import { DiMongodb, DiPhotoshop, DiPhp } from 'react-icons/di';
-import { FaExclamationTriangle } from 'react-icons/fa';
 import { GiGuitarBassHead } from 'react-icons/gi';
 import { GrMysql } from 'react-icons/gr';
 import { HiChip, HiMusicNote } from 'react-icons/hi';
@@ -46,12 +52,9 @@ import {
   SiThreedotjs,
   SiTypescript,
   SiVercel,
-  SiYarn,
 } from 'react-icons/si';
 
 type IconType = React.FC<React.SVGProps<SVGSVGElement>>;
-
-export const WarningIcon = FaExclamationTriangle as IconType;
 
 export const GithubIcon = BsGithub as IconType;
 export const LinkedinIcon = BsLinkedin as IconType;
@@ -96,10 +99,11 @@ export const CanvaIcon = SiCanva as IconType;
 export const FigmaIcon = SiFigma as IconType;
 
 export const CursorIcon = BsCursorFill as IconType;
+export const CursorOverlayIcon = BsCursor as IconType;
 export const GitlabIcon = SiGitlab as IconType;
 export const BitbucketIcon = SiBitbucket as IconType;
 export const NpmIcon = SiNpm as IconType;
-export const YarnIcon = SiYarn as IconType;
+export const ClaudeIcon = BsClaude as IconType;
 export const VercelIcon = SiVercel as IconType;
 export const DockerIcon = IoLogoDocker as IconType;
 

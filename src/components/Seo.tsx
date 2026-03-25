@@ -1,23 +1,34 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-const defaultMeta = {
-  title: 'Maciej Skorus - Frontend Developer',
-  siteName: 'Maciej Skorus - Frontend Developer',
-  description: 'Maciej Skorus - Frontend Developer Portfolio Page',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
-  type: 'website',
-  robots: 'follow, index',
-  image: 'https://mskorus.vercel.app/favicon/large-og.ico',
-};
+import { useLocale } from '@/locale/LocaleContext';
 
 type SeoProps = {
   date?: string;
   templateTitle?: string;
-} & Partial<typeof defaultMeta>;
+  title?: string;
+  siteName?: string;
+  description?: string;
+  url?: string;
+  type?: string;
+  robots?: string;
+  image?: string;
+};
 
 export default function Seo(props: SeoProps) {
   const router = useRouter();
+  const { t } = useLocale();
+
+  const defaultMeta = {
+    title: t.seoTitle,
+    siteName: t.seoSiteName,
+    description: t.seoDescription,
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
+    type: 'website',
+    robots: 'follow, index',
+    image: 'https://mskorus.vercel.app/favicon/large-og.ico',
+  };
+
   const meta = {
     ...defaultMeta,
     ...props,
@@ -58,6 +69,30 @@ export default function Seo(props: SeoProps) {
         </>
       )}
 
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Maciej Skorus',
+            url: meta.url,
+            jobTitle: 'Frontend Developer',
+            knowsAbout: [
+              'React',
+              'Next.js',
+              'TypeScript',
+              'Three.js',
+              'Python',
+              'Web Development',
+            ],
+            sameAs: [
+              'https://github.com/SkorczanFFF',
+              'https://www.linkedin.com/in/mskorus/',
+            ],
+          }),
+        }}
+      />
       {favicons.map((linkProps) => (
         <link key={linkProps.href} {...linkProps} />
       ))}

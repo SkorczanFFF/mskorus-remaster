@@ -1,20 +1,95 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
+import { ScrollTrigger } from '@/lib/gsap';
+
 import Desktop from '@/components/layout/Header/Partials/Desktop';
+import Logo from '@/components/layout/Header/Partials/Logo';
 import Mobile from '@/components/layout/Header/Partials/Mobile';
 
-const links = [
-  { href: '/#home', label: 'Home' },
-  { href: '/#experience', label: 'Experience' },
-  { href: '/#technologies', label: 'Technologies' },
-  { href: '/#portfolio', label: 'Portfolio' },
-  { href: '/#contact', label: 'Contact' },
-  { href: '/resume', label: 'Resume' },
-];
+import { useLocale } from '@/locale/LocaleContext';
+
+function LocaleToggle({ className }: { className?: string }) {
+  const { locale, setLocale } = useLocale();
+  return (
+    <button
+      onClick={() => setLocale(locale === 'en' ? 'pl' : 'en')}
+      className={`font-unica flex items-center gap-1 text-xl md:text-md tracking-wider text-white transition-colors ${className ?? ''}`}
+    >
+      <span
+        className={`duration-200 ${locale === 'en' ? 'font-semibold text-white' : 'text-orange'}`} style={{ textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)' }}
+      >
+        EN
+      </span>
+      <span className='text-white/70'>|</span>
+      <span
+        className={`duration-200 ${locale === 'pl' ? 'font-semibold text-white' : 'text-orange'}`} style={{ textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)' }}
+      >
+        PL
+      </span>
+    </button>
+  );
+}
+
+const SECTION_IDS = ['home', 'services', 'experience', 'technologies', 'portfolio', 'contact'];
+
+function useActiveSection() {
+  const router = useRouter();
+  const [active, setActive] = useState<string>('home');
+
+  const isResumePage = router.pathname === '/resume';
+
+  useEffect(() => {
+    if (isResumePage) {
+      setActive('resume');
+      return;
+    }
+
+    const triggers: ScrollTrigger[] = [];
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const isContact = id === 'contact';
+
+      triggers.push(
+        ScrollTrigger.create({
+          trigger: el,
+          // Contact: activate sooner (when its top hits 80% of viewport)
+          // and stay active all the way to page bottom
+          start: isContact ? 'top 80%' : 'top center',
+          end: isContact ? 'bottom bottom' : 'bottom center',
+          onToggle: (self) => {
+            if (self.isActive) setActive(id);
+          },
+        }),
+      );
+    });
+
+    return () => {
+      triggers.forEach((st) => st.kill());
+    };
+  }, [isResumePage]);
+
+  return active;
+}
 
 export default function Header(): React.JSX.Element {
+  const { t } = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const activeSection = useActiveSection();
+
+  const links = [
+    { href: '/#home', label: t.navHome },
+    { href: '/#services', label: t.navServices },
+    { href: '/#experience', label: t.navExperience },
+    { href: '/#technologies', label: t.navTechnologies },
+    { href: '/#portfolio', label: t.navPortfolio },
+    { href: '/#contact', label: t.navContact },
+    { href: '/resume', label: t.navResume },
+  ];
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
@@ -38,49 +113,49 @@ export default function Header(): React.JSX.Element {
   return (
     <>
       <header
-        className={`font-grotesk sticky top-2 z-50 flex h-[45px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183466] rounded-[3px] bg-[#001a2530] ${
-          isMenuOpen ? 'opacity-0' : 'opacity-95'
-        }`}
+        className={`font-grotesk sticky top-2 z-50 flex h-[46px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-[2px] border-[#80183433] rounded-[3px] ${isMenuOpen ? 'opacity-0' : 'opacity-95'
+          }`}
       >
         <div className='flex w-full items-center justify-between'>
-          <a
-            href='/'
-            className='hover:text-raspberry text-primary-blue relative drop-shadow-[0_5px_5px_#ffffff30] duration-200 hover:drop-shadow-[0_5px_5px_#80183466]'
-          >
-            <span className='text-raspberry hover:text-primary-blue mx-4 text-xl duration-300 drop-shadow-[0_5px_5px_#00000080]'>
-              M
-            </span>
-            <span className='text-real-white absolute left-4 z-10 mx-4 text-xl font-medium tracking-wide duration-150'>
-              SKORUS
-            </span>
-          </a>
-          <div className='flex h-14 items-center justify-between'>
+          <div className='flex items-center gap-3'>
+            <div className='ml-[10px] -mt-1'>
+              <Logo />
+            </div>
+            <LocaleToggle className='hidden lg:flex' />
+          </div>
+          <div className='flex h-14 items-center justify-between gap-3'>
             <Mobile isMenuOpen={isMenuOpen} handleClick={handleClick} />
-            <Desktop links={links} />
+            <Desktop links={links} activeSection={activeSection} />
           </div>
         </div>
       </header>
 
       <div
-        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <nav className='flex h-full w-full flex-col items-center justify-center'>
           <ul className='flex flex-col items-center space-y-8'>
-            {links.map(({ href, label }) => (
-              <li key={`${href}${label}`} className='text-center'>
-                <Link
-                  href={href}
-                  scroll={false}
-                  className='text-real-white hover:text-real-white text-3xl font-light uppercase tracking-widest drop-shadow-[0_2px_2px_#001a25] transition-all duration-300 hover:tracking-[0.2em] hover:drop-shadow-[0_5px_5px_#972b1a]'
-                  onClick={handleClick}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
+            {links.map(({ href, label }) => {
+              const linkId = href.startsWith('/#') ? href.slice(2) : href.slice(1);
+              const isActive = linkId === activeSection;
+              return (
+                <li key={`${href}${label}`} className='text-center'>
+                  <Link
+                    href={href}
+                    scroll={false}
+                    className={`text-3xl font-light uppercase tracking-widest transition-all duration-300 hover:tracking-[0.2em] hover:drop-shadow-[0_5px_5px_#972b1a] ${isActive ? 'text-real-white drop-shadow-[0_5px_5px_#001A25] tracking-[0.2em]' : 'text-real-white/60 drop-shadow-[0_2px_2px_#001a25]'}`}
+                    onClick={handleClick}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
+          <div className='mt-10'>
+            <LocaleToggle className='text-xl' />
+          </div>
         </nav>
       </div>
     </>

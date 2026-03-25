@@ -2,12 +2,11 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
-import { rasterizeHeroBioToCanvas } from '@/components/Hero/Partials/imageParticles/rasterizeHeroBio';
 import bioFragShader from '@/components/Hero/Partials/shaders/bioParticles.frag.glsl';
 import bioVertShader from '@/components/Hero/Partials/shaders/bioParticles.vert.glsl';
 
 const PARTICLE_COUNT = 8000;
-const DURATION = 20;
+const DURATION = 60;
 
 function randFloat(min: number, max: number) {
   return min + Math.random() * (max - min);
@@ -41,21 +40,21 @@ function buildParticleGeometry(): THREE.BufferGeometry {
 
     aOffset[i] = (i / PARTICLE_COUNT) * DURATION;
 
-    aStartPosition[i3] = -12;
-    aStartPosition[i3 + 1] = -2;
-    aStartPosition[i3 + 2] = -1;
+    aStartPosition[i3] = -16;
+    aStartPosition[i3 + 1] = -4;
+    aStartPosition[i3 + 2] = -8;
 
     aControlPoint1[i3] = randFloat(-37, 9);
     aControlPoint1[i3 + 1] = randFloat(-3, 22);
     aControlPoint1[i3 + 2] = randFloat(-6, -26);
 
     aControlPoint2[i3] = randFloat(-15, 25);
-    aControlPoint2[i3 + 1] = randFloat(-25, 15);
+    aControlPoint2[i3 + 1] = randFloat(-35, 35);
     aControlPoint2[i3 + 2] = randFloat(-30, -15);
 
-    aEndPosition[i3] = 25;
-    aEndPosition[i3 + 1] = 10;
-    aEndPosition[i3 + 2] = 2;
+    aEndPosition[i3] = 30;
+    aEndPosition[i3 + 1] = 5;
+    aEndPosition[i3 + 2] = 10;
 
     axis.set(randFloat(-1, 1), randFloat(-1, 1), randFloat(-1, 1)).normalize();
     const angle = Math.PI * (16 + Math.floor(Math.random() * 17));
@@ -66,7 +65,7 @@ function buildParticleGeometry(): THREE.BufferGeometry {
     aAxisAngle[i4 + 3] = angle;
 
     color.set(palette[Math.floor(Math.random() * palette.length)]);
-    color.multiplyScalar(randFloat(0.85, 1.2));
+    color.multiplyScalar(randFloat(0.75, 1.2));
 
     aColor[i3] = color.r;
     aColor[i3 + 1] = color.g;
@@ -100,39 +99,22 @@ function buildParticleGeometry(): THREE.BufferGeometry {
 }
 
 type HeroBioParticlesProps = {
-  targetWidth?: number;
   position?: [number, number, number];
 };
 
 export default function HeroBioParticles({
-  targetWidth = 13,
-  position = [6, -0.48, -2.46],
+  position = [0, 0, -4],
 }: HeroBioParticlesProps) {
   const pointsRef = useRef<THREE.Points>(null);
   const { camera, pointer } = useThree();
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
   const hitPoint = useMemo(() => new THREE.Vector3(), []);
   const localMouse = useMemo(() => new THREE.Vector3(0, 0, -9999), []);
-
-  const { texture, cw, ch } = useMemo(() => {
-    const canvas = rasterizeHeroBioToCanvas({
-      maxWidthPx: 760,
-      fontPx: 29,
-      lineHeight: 1.4,
-      paddingPx: 22,
-    });
-    const tex = new THREE.CanvasTexture(canvas);
-    tex.colorSpace = THREE.SRGBColorSpace;
-    tex.needsUpdate = true;
-    tex.minFilter = THREE.LinearFilter;
-    tex.magFilter = THREE.LinearFilter;
-    return { texture: tex, cw: canvas.width, ch: canvas.height };
-  }, []);
-
-  const { planeWidth, planeHeight } = useMemo(() => {
-    const pixelScale = targetWidth / Math.max(1, cw);
-    return { planeWidth: cw * pixelScale, planeHeight: ch * pixelScale };
-  }, [targetWidth, cw, ch]);
+  const _hitPlane = useMemo(
+    () => new THREE.Plane(new THREE.Vector3(0, 0, 1)),
+    [],
+  );
+  const _intersect = useMemo(() => new THREE.Vector3(), []);
 
   const particleGeometry = useMemo(() => buildParticleGeometry(), []);
 
@@ -162,12 +144,11 @@ export default function HeroBioParticles({
 
     if (pointsRef.current) {
       raycaster.setFromCamera(pointer, camera);
-      const wPos = pointsRef.current.getWorldPosition(hitPoint.set(0, 0, 0));
-      const zPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -wPos.z);
-      const intersect = new THREE.Vector3();
-      if (raycaster.ray.intersectPlane(zPlane, intersect)) {
-        pointsRef.current.worldToLocal(intersect);
-        localMouse.copy(intersect);
+      const wPos = pointsRef.current.getWorldPosition(hitPoint);
+      _hitPlane.constant = -wPos.z;
+      if (raycaster.ray.intersectPlane(_hitPlane, _intersect)) {
+        pointsRef.current.worldToLocal(_intersect);
+        localMouse.copy(_intersect);
       }
     }
     particleMaterial.uniforms.uMouse.value.copy(localMouse);
@@ -175,52 +156,18 @@ export default function HeroBioParticles({
 
   useEffect(() => {
     return () => {
-      texture.dispose();
       particleMaterial.dispose();
       particleGeometry.dispose();
     };
-  }, [texture, particleMaterial, particleGeometry]);
-
-  const bgPadding = 0.8;
+  }, [particleMaterial, particleGeometry]);
 
   return (
-    <group position={[0, 0, -4]}>
-      <points
-        ref={pointsRef}
-        geometry={particleGeometry}
-        material={particleMaterial}
-        frustumCulled={false}
-      />
-
-      <group position={position}>
-        <mesh position={[0, 0, -0.08]}>
-          <planeGeometry
-            args={[
-              planeWidth + bgPadding + 0.08,
-              planeHeight + bgPadding + 0.08,
-            ]}
-          />
-          <meshBasicMaterial color='#801834' transparent opacity={0.5} />
-        </mesh>
-
-        <mesh position={[0, 0, -0.05]}>
-          <planeGeometry
-            args={[planeWidth + bgPadding, planeHeight + bgPadding]}
-          />
-          <meshBasicMaterial color='#000000' />
-        </mesh>
-
-        <mesh position={[0, 0, 0]}>
-          <planeGeometry args={[planeWidth, planeHeight]} />
-          <meshBasicMaterial
-            map={texture}
-            transparent
-            opacity={1}
-            depthWrite={true}
-            depthTest={false}
-          />
-        </mesh>
-      </group>
-    </group>
+    <points
+      ref={pointsRef}
+      position={position}
+      geometry={particleGeometry}
+      material={particleMaterial}
+      frustumCulled={false}
+    />
   );
 }

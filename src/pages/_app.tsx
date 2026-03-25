@@ -4,7 +4,10 @@ import { useEffect } from 'react';
 
 import '@/styles/globals.css';
 
+import CustomCursor from '@/components/CustomCursor';
 import Header from '@/components/layout/Header/Header';
+
+import { LocaleProvider } from '@/locale/LocaleContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -38,10 +41,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
+    <LocaleProvider>
       <Header />
       <Component {...pageProps} />
-    </>
+      <CustomCursor />
+    </LocaleProvider>
   );
 }
 

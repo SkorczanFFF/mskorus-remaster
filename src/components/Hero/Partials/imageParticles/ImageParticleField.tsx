@@ -81,7 +81,7 @@ function ImageParticleFieldCore({
   enableHover = true,
   enableYawWobble = true,
   idleRandom = 0.06,
-  hoverRandom = 0.9,
+  hoverRandom = 2,
   idleSize = 0.08,
   hoverSize = 0.1,
   idleOpacity = 0.7,
@@ -95,6 +95,12 @@ function ImageParticleFieldCore({
   const { camera, pointer } = useThree();
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
   const localMouse = useMemo(() => new THREE.Vector3(0, 0, -9999), []);
+  const _wPos = useMemo(() => new THREE.Vector3(), []);
+  const _hitPlane = useMemo(
+    () => new THREE.Plane(new THREE.Vector3(0, 0, 1)),
+    [],
+  );
+  const _hit = useMemo(() => new THREE.Vector3(), []);
 
   const geometryData = useMemo(() => {
     const src = getImageSourceFromTexture(texture);
@@ -118,8 +124,8 @@ function ImageParticleFieldCore({
       uOpacity: { value: idleOpacity },
       uTexture: { value: texture },
       uMouse: { value: new THREE.Vector3(0, 0, -9999) },
-      uRepelRadius: { value: 1.2 },
-      uRepelStrength: { value: 0.5 },
+      uRepelRadius: { value: 1.7 },
+      uRepelStrength: { value: 0.9 },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- idle* are initial uniform seeds only
     [texture],
@@ -140,7 +146,7 @@ function ImageParticleFieldCore({
   useFrame((state, delta) => {
     uniforms.uTime.value = state.clock.getElapsedTime();
 
-    const t = 1 - Math.pow(0.001, delta);
+    const t = 1 - Math.pow(0.1, delta);
     const targetRandom = hoveringRef.current ? hoverRandom : idleRandom;
     uniforms.uRandom.value += (targetRandom - uniforms.uRandom.value) * t;
 
@@ -157,14 +163,11 @@ function ImageParticleFieldCore({
 
     if (particleMeshRef.current) {
       raycaster.setFromCamera(pointer, camera);
-      const wPos = particleMeshRef.current.getWorldPosition(
-        new THREE.Vector3(),
-      );
-      const zPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -wPos.z);
-      const hit = new THREE.Vector3();
-      if (raycaster.ray.intersectPlane(zPlane, hit)) {
-        particleMeshRef.current.worldToLocal(hit);
-        localMouse.copy(hit);
+      const wPos = particleMeshRef.current.getWorldPosition(_wPos);
+      _hitPlane.constant = -wPos.z;
+      if (raycaster.ray.intersectPlane(_hitPlane, _hit)) {
+        particleMeshRef.current.worldToLocal(_hit);
+        localMouse.copy(_hit);
       }
     }
     uniforms.uMouse.value.copy(localMouse);

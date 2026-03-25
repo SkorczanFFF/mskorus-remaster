@@ -193,7 +193,7 @@ const HeroParticles = ({
     };
   }, [geometry]);
 
-  useFrame((_state, delta) => {
+  useFrame((state, delta) => {
     if (!groupRef.current) return;
     if (!pointsRef.current) return;
 
@@ -206,7 +206,7 @@ const HeroParticles = ({
 
     groupRef.current.rotation.y += delta * 0.06;
     groupRef.current.rotation.x += delta * 0.03;
-    const t = performance.now() * 0.0006;
+    const t = state.clock.elapsedTime * 0.6;
     const breathe = 1 + Math.sin(t) * 0.03;
     groupRef.current.scale.setScalar(breathe);
 
@@ -214,7 +214,7 @@ const HeroParticles = ({
       'position',
     ) as THREE.BufferAttribute;
     const arr = attr.array as Float32Array;
-    const now = performance.now() * 0.001;
+    const now = state.clock.elapsedTime;
     const swirl = 0.35;
     const jitter = 0.06;
 

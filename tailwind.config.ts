@@ -6,8 +6,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...defaultTheme.fontFamily.sans],
-        grotesk: ['Space Grotesk'],
+        primary: ['Space Grotesk', ...defaultTheme.fontFamily.sans],
+        grotesk: ['Space Grotesk', ...defaultTheme.fontFamily.sans],
+        unica: ['Unica One', 'sans-serif'],
       },
       colors: {
         'primary-blue': '#001a25',
@@ -30,5 +31,5 @@ export default {
       xxl: '1480px',
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [],
 } satisfies Config;

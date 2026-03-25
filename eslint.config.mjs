@@ -3,7 +3,7 @@ import prettier from 'eslint-config-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 
-export default [
+const config = [
   ...nextVitals,
   prettier,
   {
@@ -79,3 +79,5 @@ export default [
     },
   },
 ];
+
+export default config;
