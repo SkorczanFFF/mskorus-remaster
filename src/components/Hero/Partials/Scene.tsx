@@ -19,7 +19,7 @@ const Scene = (props: ThreeElements['group'] & { onReady?: () => void }) => {
     if (onReady) requestAnimationFrame(() => onReady());
   }, [onReady]);
   const groupScale = isMobile ? 1.15 : 1.5;
-  const portraitGroupX = -11;
+  const portraitGroupX = -12;
   const portraitWorldTargetX = -6;
   const portraitParticlesLocalX =
     (portraitWorldTargetX - portraitGroupX) / groupScale;

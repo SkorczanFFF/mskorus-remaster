@@ -222,7 +222,7 @@ export default function Hero(): React.JSX.Element {
                 angle={0.2}
               />
               <Suspense fallback={null}>
-                <Float speed={0.8} floatIntensity={0.5}>
+                <Float speed={0.8} floatIntensity={0.2} floatingRange={[-5.5, 5.5]}>
                   <Scene onReady={handleReady} />
                 </Float>
               </Suspense>

@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 
-import { gsap } from '@/lib/gsap';
-import { ScrollTrigger } from '@/lib/gsap';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { GithubIcon } from '@/lib/shared/Icons';
 
 import { useLocale } from '@/locale/LocaleContext';
@@ -11,219 +10,193 @@ import PortfolioProjectItem from './Partials/PortfolioProjectItem';
 
 export default function Portfolio(): React.JSX.Element {
   const { t } = useLocale();
-  const projectRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const nonWebCard1Ref = useRef<HTMLDivElement>(null);
-  const nonWebCard2Ref = useRef<HTMLDivElement>(null);
-
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
-    const triggers: ScrollTrigger[] = [];
-    const CARD_OFFSET = 80;
-
-    const setupCardScroll = (
-      card1Start: number,
-      card2Start: number,
-      cardTriggers: ScrollTrigger[],
-      scrub1 = 2.5,
-      scrub2 = 1.5,
-      card2X?: { start: number; end: number },
-    ) => {
-      if (nonWebCard1Ref.current) {
-        gsap.set(nonWebCard1Ref.current, { y: card1Start });
-        const t1 = gsap.to(nonWebCard1Ref.current, {
-          y: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: nonWebCard1Ref.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: scrub1,
-            invalidateOnRefresh: true,
-          },
-        });
-        if (t1.scrollTrigger) cardTriggers.push(t1.scrollTrigger);
-      }
-      if (nonWebCard2Ref.current) {
-        const startX = card2X?.start ?? 0;
-        const endX = card2X?.end ?? 0;
-        gsap.set(nonWebCard2Ref.current, {
-          y: card2Start,
-          x: startX,
-        });
-        const t2 = gsap.to(nonWebCard2Ref.current, {
-          y: 0,
-          x: endX,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: nonWebCard2Ref.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: scrub2,
-            invalidateOnRefresh: true,
-          },
-        });
-        if (t2.scrollTrigger) cardTriggers.push(t2.scrollTrigger);
-      }
-    };
+    const track = trackRef.current;
+    const section = sectionRef.current;
+    if (!track || !section) return;
 
     const mm = gsap.matchMedia();
-    const breakpoints: {
-      query: string;
-      card1Y: number;
-      card2Y: number;
-      scrub1: number;
-      scrub2: number;
-      card2X?: { start: number; end: number };
-    }[] = [
-        {
-          query: '(max-width: 1024px)',
-          card1Y: CARD_OFFSET,
-          card2Y: 50,
-          scrub1: 2,
-          scrub2: 2,
+
+    // Desktop: horizontal scroll with pin
+    mm.add('(min-width: 769px)', () => {
+      const totalScroll = track.scrollWidth - window.innerWidth;
+
+      const tween = gsap.to(track, {
+        x: -totalScroll,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: 1,
+          end: () => `+=${totalScroll}`,
+          invalidateOnRefresh: true,
         },
-        {
-          query: '(min-width: 1025px) and (max-width: 1280px)',
-          card1Y: CARD_OFFSET,
-          card2Y: 50,
-          scrub1: 2,
-          scrub2: 2,
-          card2X: { start: -20, end: -CARD_OFFSET },
-        },
-        {
-          query: '(min-width: 1281px)',
-          card1Y: CARD_OFFSET,
-          card2Y: -CARD_OFFSET,
-          scrub1: 2,
-          scrub2: 1.5,
-        },
-      ];
-    breakpoints.forEach(({ query, card1Y, card2Y, scrub1, scrub2, card2X }) => {
-      mm.add(query, () => {
-        const cardTriggers: ScrollTrigger[] = [];
-        setupCardScroll(card1Y, card2Y, cardTriggers, scrub1, scrub2, card2X);
-        return () => cardTriggers.forEach((t) => t.kill());
       });
+
+      // Per-panel entrance + overlay reveal animations
+      const panels = track.querySelectorAll<HTMLElement>('.project-panel');
+      panels.forEach((panel) => {
+        const overlay = panel.querySelector<HTMLElement>('.project-overlay');
+        const title = panel.querySelector<HTMLElement>('.project-title');
+
+        gsap.fromTo(
+          panel,
+          { opacity: 0.3, x: 80 },
+          {
+            opacity: 1,
+            x: 0,
+            scrollTrigger: {
+              trigger: panel,
+              containerAnimation: tween,
+              start: 'left 85%',
+              end: 'left 40%',
+              scrub: true,
+            },
+          },
+        );
+
+        if (title) {
+          gsap.fromTo(
+            title,
+            { x: 200 },
+            {
+              x: 0,
+              scrollTrigger: {
+                trigger: panel,
+                containerAnimation: tween,
+                start: 'left 90%',
+                end: 'left 35%',
+                scrub: true,
+              },
+            },
+          );
+        }
+
+        if (overlay) {
+          gsap.fromTo(
+            overlay,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              scrollTrigger: {
+                trigger: panel,
+                containerAnimation: tween,
+                start: 'left 60%',
+                end: 'left 30%',
+                scrub: true,
+              },
+            },
+          );
+        }
+      });
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
     });
 
-    projectRefs.current.forEach((img, index) => {
-      if (!img) return;
-
-      const isEven = index % 2 === 0;
-      const xOffset = isEven ? -100 : 100;
-
-      const tween = gsap.fromTo(
-        img,
-        {
-          opacity: 0,
-          x: xOffset,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.3,
-          ease: 'power4.out',
-          scrollTrigger: {
-            trigger: img,
-            start: 'top bottom-=100',
-            toggleActions: 'play none none reverse',
-            invalidateOnRefresh: true,
+    // Mobile: vertical stack with simple fade-in
+    mm.add('(max-width: 768px)', () => {
+      const triggers: ScrollTrigger[] = [];
+      const items = section.querySelectorAll<HTMLElement>('.mobile-fade');
+      items.forEach((el) => {
+        const tw = gsap.fromTo(
+          el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top bottom-=80',
+              toggleActions: 'play none none reverse',
+            },
           },
-        },
-      );
-      if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
+        );
+        if (tw.scrollTrigger) triggers.push(tw.scrollTrigger);
+      });
+
+      return () => triggers.forEach((st) => st.kill());
     });
 
     ScrollTrigger.refresh();
-
-    return () => {
-      mm.revert();
-      triggers.forEach((t) => t.kill());
-    };
+    return () => mm.revert();
   }, []);
 
   return (
     <section
+      ref={sectionRef}
       id='portfolio'
-      className='font-grotesk bg-primary-blue relative flex h-auto w-full flex-col items-center justify-center overflow-hidden pb-20'
+      className='font-grotesk bg-primary-blue relative w-full overflow-hidden md:h-screen'
     >
-      <div className='arrow-down white pt-[60px]' />
-      <h3 className='font-grotesk -left-[45px] top-[190px] text-xl font-normal leading-3 tracking-[10px] text-white md:absolute md:rotate-90'>
+      {/* Section title — rotated on desktop, matching Services/Experience */}
+      <h3 className='font-grotesk z-10 py-2 text-xl font-normal leading-3 tracking-[10px] text-white md:absolute md:origin-top-left md:rotate-90 md:left-[80px] md:top-[60px] md:p-4 md:left-[95px] w-full backdrop-blur-[10px]'>
         {t.portfolioTitle}
       </h3>
-      <div className='xxl:w-[1200px] my-[60px] flex w-full flex-col gap-20 px-5 text-white md:mx-0 md:my-20 md:w-[620px] md:flex-col lg:w-[750px] xl:w-[1050px]'>
+
+
+      {/* Horizontal scroll track (desktop) / vertical stack (mobile) */}
+      <div
+        ref={trackRef}
+        className='flex h-auto w-full flex-col text-white will-change-transform md:h-full md:flex-row md:flex-nowrap'
+      >
+        {/* Project panels */}
         {t.projects.map((project, index) => (
-          <PortfolioProjectItem
+          <div
             key={project.id}
-            project={project}
-            index={index}
-            imageRef={(el) => {
-              projectRefs.current[index] = el;
-            }}
-          />
+            className={`project-panel mobile-fade flex w-full shrink-0 items-center justify-center px-5 py-10 md:w-[70vw] md:px-16 md:py-0 ${index === 0 ? 'md:ml-20' : ''}`}
+          >
+            <PortfolioProjectItem project={project} />
+          </div>
         ))}
-      </div>
-      <div className='mt-20 flex w-full flex-col items-center justify-center px-5 md:px-10 lg:px-20'>
-        <div className='flex w-full md:max-w-[580px] lg:max-w-[1160px] flex-col gap-5 lg:flex-row max-w-[600px]'>
-          <div className='border-1 text-primary-blue border-orange-dark mt-10 flex max-h-[140px] min-w-[300px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-[gradient] bg-[#0c2835] p-5 shadow-xl md:p-10'>
-            <div className='font-light leading-5'>
-              <h1 className='text-2xl md:text-3xl lg:text-4xl'>
-                <div className='nonweb-text text-end text-raspberry'>
-                  {t.portfolioNonWeb}
-                </div>
-                <div className='related-text text-center text-[#b2b2b2]'>
-                  {t.portfolioRelated}
-                </div>
-                <div className='corner-text text-end text-[#b2b2b2]'>
-                  {t.portfolioCorner}
-                </div>
-              </h1>
+
+        {/* Non-web outro panel */}
+        <div className='mobile-fade flex w-full shrink-0 flex-col items-center justify-center gap-10 px-8 py-16 md:w-screen md:py-0'>
+          <div className='flex w-full max-w-[900px] flex-col gap-5 xl:flex-row'>
+            <div className='flex min-w-[260px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-orange-dark bg-[#0c2835] p-5 shadow-xl md:p-8'>
+              <h4 className='text-2xl font-light leading-5 md:text-3xl'>
+                <div className='text-end text-raspberry'>{t.portfolioNonWeb}</div>
+                <div className='text-center text-[#b2b2b2]'>{t.portfolioRelated}</div>
+                <div className='text-end text-[#b2b2b2]'>{t.portfolioCorner}</div>
+              </h4>
+            </div>
+            <div className='flex flex-col gap-5 xl:flex-row'>
+              {t.nonWebProjects.map((nwp) => (
+                <PortfolioCard
+                  key={nwp.title}
+                  title={nwp.title}
+                  tech={nwp.tech}
+                  description={
+                    nwp.description.includes('\n') ? (
+                      <p>
+                        {nwp.description.split('\n').map((part, pi) => (
+                          <React.Fragment key={pi}>
+                            {pi > 0 && <br />}
+                            {part}
+                          </React.Fragment>
+                        ))}
+                      </p>
+                    ) : (
+                      nwp.description
+                    )
+                  }
+                  links={nwp.links.map((link) => ({
+                    ...link,
+                    icon: <GithubIcon className='text-2xl' />,
+                  }))}
+                />
+              ))}
             </div>
           </div>
-          <div className='mt-0 mb-20 lg:mb-0 flex max-w-full flex-col gap-5 xl:flex-row min-[1025px]:mt-10 min-[1281px]:mt-20 max-[1280px]:max-w-[600px]'>
-            {t.nonWebProjects.map((nwp, i) => {
-              const isFirst = i === 0;
-              return (
-                <div
-                  key={nwp.title}
-                  ref={isFirst ? nonWebCard1Ref : nonWebCard2Ref}
-                  className={isFirst ? '' : 'min-[1025px]:max-[1280px]:-ml-20'}
-                >
-                  <PortfolioCard
-                    className={
-                      isFirst
-                        ? 'border-b-[2px] border-b-[#0C2835]'
-                        : 'h-auto border-t-[2px] border-t-[#0C2835]'
-                    }
-                    title={nwp.title}
-                    tech={nwp.tech}
-                    description={
-                      nwp.description.includes('\n') ? (
-                        <p>
-                          {nwp.description.split('\n').map((part, pi) => (
-                            <React.Fragment key={pi}>
-                              {pi > 0 && <br />}
-                              {part}
-                            </React.Fragment>
-                          ))}
-                        </p>
-                      ) : (
-                        nwp.description
-                      )
-                    }
-                    links={nwp.links.map((link) => ({
-                      ...link,
-                      icon: <GithubIcon className='text-2xl' />,
-                    }))}
-                  />
-                </div>
-              );
-            })}
-          </div>
+          <p className='tracking-[8px]'>{t.portfolioStayTuned}</p>
         </div>
       </div>
-      <p className='mb-10 mt-[60px] lg:mt-[160px] tracking-[8px] text-white'>
-        {t.portfolioStayTuned}
-      </p>
     </section>
   );
 }

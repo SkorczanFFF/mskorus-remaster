@@ -118,7 +118,7 @@ export default function Header(): React.JSX.Element {
       >
         <div className='flex w-full items-center justify-between'>
           <div className='flex items-center gap-3'>
-            <div className='ml-[10px] -mt-1'>
+            <div className='ml-3'>
               <Logo />
             </div>
             <LocaleToggle className='hidden lg:flex' />

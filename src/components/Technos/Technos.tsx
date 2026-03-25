@@ -123,11 +123,8 @@ export default function Technos(): React.JSX.Element {
     <section
       ref={sectionRef}
       id='technologies'
-      className='font-grotesk flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[120px]'
+      className='font-grotesk relative flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[120px]'
     >
-      <h3 className='font-grotesk mb-10 font-normal tracking-wider'>
-        {t.techStackTitle}
-      </h3>
 
       <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         <div className='flex w-full flex-col' ref={frontendRef}>

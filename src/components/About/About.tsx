@@ -70,7 +70,7 @@ export default function Services(): React.JSX.Element {
       id='services'
       className='font-grotesk relative flex min-h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-white py-[100px] md:py-[160px]'
     >
-      <h3 className='font-grotesk text-primary-blue -left-8 top-[160px] py-2 text-xl font-medium leading-3 tracking-[10px] md:absolute md:rotate-90 md:py-0'>
+      <h3 className='font-grotesk text-primary-blue py-2 text-xl font-normal leading-3 tracking-[10px] md:absolute md:origin-top-left md:rotate-90 md:left-[80px] md:top-[60px] md:py-0'>
         {t.servicesSectionTitle}
       </h3>
 
