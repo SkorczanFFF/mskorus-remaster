@@ -83,10 +83,13 @@ export default function Hero(): React.JSX.Element {
   const [sceneReady, setSceneReady] = useState(false);
 
   const panelRef = useRef<HTMLDivElement>(null);
+  const namesRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
   const canvasElRef = useRef<HTMLCanvasElement | null>(null);
   const greetingRef = useRef<HTMLHeadingElement>(null);
   const nameRef = useRef<HTMLHeadingElement>(null);
-  const headlineRef = useRef<HTMLParagraphElement>(null);
+  const headlinePart1Ref = useRef<HTMLSpanElement>(null);
+  const headlinePart2Ref = useRef<HTMLSpanElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
@@ -115,7 +118,7 @@ export default function Hero(): React.JSX.Element {
 
   useEffect(() => {
     if (!sceneReady) return;
-    if (!panelRef.current || !greetingRef.current || !nameRef.current || !headlineRef.current) return;
+    if (!panelRef.current || !namesRef.current || !headlineRef.current || !greetingRef.current || !nameRef.current || !headlinePart1Ref.current || !headlinePart2Ref.current) return;
 
     const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@&%';
 
@@ -163,25 +166,49 @@ export default function Hero(): React.JSX.Element {
     const tl = gsap.timeline({ delay: 0.3 });
     tlRef.current = tl;
 
-    // 1. Slide panel up from below
+    // 1. Fade in backdrop panel
     tl.fromTo(
       panelRef.current,
-      { yPercent: 100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 1.0, ease: 'power3.out' },
+      { opacity: 0 },
+      { opacity: 1, duration: 0.8, ease: 'power2.out' },
     );
 
-    // 2. Scramble-reveal greeting
+    // 2. Slide names container in
+    tl.fromTo(
+      namesRef.current,
+      { yPercent: 50, opacity: 0 },
+      { yPercent: 0, opacity: 1, duration: 1.0, ease: 'power3.out' },
+      '<0.2',
+    );
+
+    // 3. Slide headline container in
+    tl.fromTo(
+      headlineRef.current,
+      { yPercent: 50, opacity: 0 },
+      { yPercent: 0, opacity: 1, duration: 1.0, ease: 'power3.out' },
+      '<0.3',
+    );
+
+    // 4. Scramble-reveal greeting
     tl.add(scrambleReveal(greetingRef.current!, t.heroGreeting, 1.5), '+=0.3');
 
     // 3. Scramble-reveal name
     tl.add(scrambleReveal(nameRef.current!, t.heroName, 1.5), '+=0.3');
 
-    // 4. Fade in headline
+    // 4. Headline part 1 — slide in from left
     tl.fromTo(
-      headlineRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+      headlinePart1Ref.current,
+      { opacity: 0, x: -60 },
+      { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out' },
       '+=0.3',
+    );
+
+    // 5. Headline part 2 — slide in from right
+    tl.fromTo(
+      headlinePart2Ref.current,
+      { opacity: 0, x: 60 },
+      { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out' },
+      '+=0.2',
     );
 
     return () => {
@@ -193,7 +220,7 @@ export default function Hero(): React.JSX.Element {
     <section
       ref={ref}
       id='home'
-      className='font-grotesk -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500]'
+      className='font-grotesk -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500] overflow-hidden'
     >
       {isMounted ? (
         <CanvasErrorBoundary fallbackText={t.heroErrorFallback}>
@@ -235,9 +262,16 @@ export default function Hero(): React.JSX.Element {
             </div>
           )}
 
+          {/* Backdrop panel — visual only */}
           <div
             ref={panelRef}
-            className='absolute right-0 w-[calc(50%-100px)] h-[calc(100%-540px)] z-10 pointer-events-none flex backdrop-blur-[10px] items-center opacity-0'
+            className='md:absolute right-2 w-[33vw] md:w-[calc(50%-100px)] h-[calc(100%-140px)] md:h-[calc(100%-540px)] z-10 pointer-events-none backdrop-blur-[10px] opacity-0'
+          />
+
+          {/* Names — top on mobile, right-center on desktop */}
+          <div
+            ref={namesRef}
+            className='absolute z-20 top-[100px] left-[20px] md:top-1/2 md:-translate-y-1/2 md:left-auto md:right-0 md:w-[calc(50%-100px)] pointer-events-none opacity-0'
           >
             <div
               className='pointer-events-auto select-text'
@@ -245,23 +279,38 @@ export default function Hero(): React.JSX.Element {
             >
               <h2
                 ref={greetingRef}
-                className='inline-block gradient bg-gradient-to-r from-raspberry to-orange-dark px-6 py-2 text-lg md:text-6xl -ml-[80px] font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
+                className='inline-block gradient bg-gradient-to-r from-raspberry to-orange-dark px-6 py-2 text-2xl md:text-6xl md:-ml-[80px] font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
               <br />
               <h2
                 ref={nameRef}
-                className='inline-block gradient bg-gradient-to-r from-orange-dark to-raspberry px-6 py-2 text-lg md:text-6xl font-medium text-white tracking-wider mb-6 min-h-[1.2em]'
+                className='inline-block gradient bg-gradient-to-r from-orange-dark to-raspberry px-6 py-2 text-2xl md:text-6xl font-medium text-white tracking-wider mb-6 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
-              <p
-                ref={headlineRef}
-                className='text-base md:text-xl lg:text-3xl text-white/90 font-light tracking-wide leading-relaxed drop-shadow-[0_2px_8px_#00000080] uppercase mt-[40px] opacity-0 ml-[20px]'
+            </div>
+          </div>
+
+          {/* Headline — bottom on mobile, below names on desktop */}
+          <div
+            ref={headlineRef}
+            className=' absolute z-20 bottom-[200px] right-[20px] md:top-[calc(50%+120px)] md:bottom-auto md:left-auto md:right-0 md:w-[calc(50%-100px)] md:ml-[20px] pointer-events-none opacity-0'
+          >
+            <div className='flex flex-col gap-2'>
+              <span
+                ref={headlinePart1Ref}
+                className='block text-2xl lg:text-3xl text-white/90 font-light tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0'
               >
-                {t.heroHeadline}
-              </p>
+                {t.heroHeadline.split('. ')[0]}.
+              </span>
+              <span
+                ref={headlinePart2Ref}
+                className='block text-2xl lg:text-3xl text-white font-medium tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0'
+              >
+                {t.heroHeadline.split('. ')[1]}
+              </span>
             </div>
           </div>
         </CanvasErrorBoundary>

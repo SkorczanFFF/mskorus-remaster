@@ -3,10 +3,10 @@ import type { Dictionary } from '@/locale/types';
 import { experiences, nonWebProjects, projects, services } from './data/pl';
 
 export const pl: Dictionary = {
-  seoTitle: 'Maciej Skorus - Frontend Developer | Strony, Aplikacje i Rozszerzenia',
-  seoSiteName: 'Maciej Skorus - Frontend Developer',
+  seoTitle: 'Maciej Skorus - Creative Fullstack Developer | Aplikacje, Usługi i 3D',
+  seoSiteName: 'Maciej Skorus - Creative Fullstack Developer',
   seoDescription:
-    'Freelance frontend/fullstack developer z Polski. Nowoczesne strony, aplikacje webowe, rozszerzenia i doświadczenia 3D. React, Next.js, TypeScript. Faktury VAT, współpraca na całym świecie.',
+    'Creative fullstack developer z Polski. Aplikacje webowe, usługi cyfrowe, doświadczenia 3D i aplikacje mobilne. React, Next.js, Python, TypeScript. Faktury VAT, współpraca na całym świecie.',
 
   notFoundTitle: 'Strona nie znaleziona',
   notFoundBack: 'Powrót na stronę główną',
@@ -21,7 +21,7 @@ export const pl: Dictionary = {
 
   heroGreeting: 'Hej, jestem Maciej.',
   heroName: 'Skorus Maciej.',
-  heroHeadline: 'Buduję nowoczesne strony i aplikacje webowe',
+  heroHeadline: 'Pomysły na wejściu. Software na wyjściu.',
   heroErrorFallback: 'Nie udało się załadować sceny 3D.',
 
   footerCopyright: '© {year} SKOFTWARE Maciej Skorus. Wszelkie prawa zastrzeżone.',
@@ -52,7 +52,6 @@ export const pl: Dictionary = {
   portfolioNonWeb: 'NIE Z',
   portfolioRelated: 'WEBEM',
   portfolioCorner: 'ZWIĄZANE',
-  portfolioStayTuned: 'BĄDŹ NA BIEŻĄCO',
   portfolioRepo: 'repozytorium',
   portfolioLiveDemo: 'demo',
   projects,
@@ -62,7 +61,7 @@ export const pl: Dictionary = {
   contactEmail: 'skorusmaciej94@gmail.com',
   contactResponseTime: 'Odpowiadam w ciągu 24 godzin',
   contactCompanyName: 'SKOFTware Maciej Skorus',
-  contactCompanyInfo: 'Frontend / Fullstack Developer - Dostępny na projekty',
+  contactCompanyInfo: 'Creative Fullstack Developer - Dostępny na projekty',
   contactNip: 'NIP: 6252501911',
   contactLocation: 'Śląsk, Polska',
   contactInvoiceInfo: 'Cały świat',
@@ -81,7 +80,7 @@ export const pl: Dictionary = {
   resumeHeaderSkills: 'UMIEJĘTNOŚCI I NARZĘDZIA',
   resumeHeaderDownload: 'POBIERZ',
   resumeAboutMe:
-    'Wszechstronny i otwarty na nowe wyzwania developer, skoncentrowany na tworzeniu angażujących, zorientowanych na użytkownika rozwiązań frontendowych, z solidnym doświadczeniem w pracy po stronie backendu. Posiada umiejętności w zakresie rozwoju Web3 w branży gier oraz tworzenia dedykowanych rozwiązań dla sektora wydarzeń medycznych, oraz silnym zapleczem w obszarze wsparcia IT. Prywatnie pasjonat WebGL, grafiki 3D oraz tworzenia skryptów i narzędzi.',
+    'Creative fullstack developer z blisko 4-letnim doświadczeniem zawodowym w aplikacjach webowych, systemach wewnętrznych, aplikacjach mobilnych i 3D. Budował platformy produkcyjne dla sektora wydarzeń medycznych, zdecentralizowane aplikacje blockchain dla branży gier oraz fullstackowe narzędzia do przetwarzania dokumentów i mediów. Doświadczony w uruchamianiu i integracji lokalnych modeli AI/LLM. Komfortowo porusza się po całym stosie: React/Next.js na frontendzie, Python/Node.js na backendzie, PostgreSQL/MongoDB do danych i Docker do wdrożeń. Prywatnie pasjonat WebGL, moddingu oraz tworzenia użytecznego i kreatywnego kodu',
   resumeEducation: {
     university: 'UŚ - Wydział Nauk Ścisłych i Technicznych',
     field: 'INFORMATYKA - Programowanie Aplikacji Webowych',

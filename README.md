@@ -1,29 +1,172 @@
-# MSKORUS - portfolio page remaster
+# MSKORUS - Portfolio
 
-Remaster of my official portfolio page. Now it is based on Next.js, TailwindCSS and TypeScript. WebGL scene was made with React Three Fiber and GLTF models made in Blender, then converted to JSX coponents for better manipulation.
+Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. Built with Next.js 16, React 19, TypeScript, and Three.js. Features an interactive 3D hero scene with image-to-particle conversion, GSAP scroll-driven animations, bilingual content (EN/PL), and a built-in web resume with PDF export.
 
-Mobile and Destkop version of WebGL scene differs - for better performance, Mobile scene uses other avaliable "glasslike" material and less effects are applied.
+**Live:** [mskorus.vercel.app](https://mskorus.vercel.app/)
 
-### HOW IT'S MADE?
+---
 
-Mainly this site is based on:
+## Tech Stack
 
-- Next.js
-- TailwindCSS
-- TypeScript
-- @react-three/fiber
-- @react-three/drei
-- @react-three/postprocessing
-- gltfjsx
-- GLTF models exported from Blender
+### Core
 
-But also I used some packages like:
+| Technology | Version | Purpose |
+|---|---|---|
+| Next.js | 16.2 | Framework (SSR, routing, optimization) |
+| React | 19.2 | UI library |
+| TypeScript | 5.9 | Type safety |
+| TailwindCSS | 3.4 | Utility-first styling |
 
-- react-intersection-observer
-- react-device-detect
-- react-icons
-- react-toastify
+### 3D & Animation
 
-### TODO
+| Technology | Version | Purpose |
+|---|---|---|
+| Three.js | 0.183 | 3D rendering engine |
+| @react-three/fiber | 9.5 | React renderer for Three.js |
+| @react-three/drei | 10.7 | R3F helpers & abstractions |
+| GSAP | 3.14 | Scroll-triggered animations (ScrollTrigger) |
+| Lenis | 1.3 | Smooth scrolling |
+| maath | 0.10 | Math utilities for 3D |
 
-- WebGL rework
+### Utilities
+
+| Technology | Purpose |
+|---|---|
+| react-icons | Icon library (50+ tech icons) |
+| react-device-detect | Mobile/desktop conditional rendering |
+| react-intersection-observer | Viewport visibility detection |
+| html2canvas-pro + jsPDF | Resume PDF export |
+| @vercel/analytics | Usage analytics |
+| @vercel/speed-insights | Performance monitoring |
+
+---
+
+## Features
+
+### 3D Hero Scene
+- Portrait image converted to an interactive particle field at runtime
+- Animated bio text particles
+- Camera rig responding to mouse movement
+- Adaptive rendering — mobile uses lighter materials and fewer particles
+- Frameloop pauses when hero is out of viewport
+
+### Scroll Animations (GSAP ScrollTrigger)
+- Horizontal-scroll portfolio gallery (desktop)
+- Parallax experience slides with staggered entrances
+- Service card reveal animations
+- Technology icon scale/fade effects
+
+### Internationalization
+- English and Polish with full content translation
+- Browser language auto-detection with localStorage persistence
+- Covers navigation, sections, projects, experience, services, and contact
+
+### Resume
+- Dedicated `/resume` page with web-native CV layout
+- One-click PDF export via html2canvas + jsPDF
+
+### Other
+- Custom cursor (desktop only, fine pointer)
+- Active section tracking in header navigation
+- SEO: sitemap generation, Schema.org structured data, meta tags
+- Responsive design with custom breakpoints (480–1480px)
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Hero/                  # 3D canvas, particles, background scene
+│   │   └── Partials/
+│   │       └── imageParticles/  # Image-to-particle pipeline
+│   ├── Portfolio/             # Horizontal scroll project showcase
+│   ├── Experience/            # Work history timeline
+│   ├── About/                 # Services section
+│   ├── Technos/               # Technology grid
+│   ├── layout/
+│   │   ├── Header/            # Nav with locale toggle (desktop + mobile)
+│   │   ├── Footer/            # Contact info
+│   │   └── Layout.tsx         # Root layout wrapper
+│   ├── CustomCursor.tsx
+│   └── Seo.tsx                # Meta tags, structured data
+├── pages/
+│   ├── index.tsx              # Home (all sections)
+│   ├── resume/index.tsx       # CV page with PDF export
+│   ├── 404.tsx
+│   ├── _app.tsx               # Lenis + LocaleProvider
+│   └── _document.tsx          # Fonts, HTML structure
+├── locale/
+│   ├── LocaleContext.tsx      # i18n context + useLocale hook
+│   ├── types.ts               # Dictionary, entry types
+│   └── data/                  # en.ts, pl.ts content files
+├── lib/
+│   ├── gsap.ts                # GSAP + ScrollTrigger registration
+│   └── shared/
+│       ├── Icons.tsx          # Centralized icon exports
+│       └── techMap.ts         # Tech-to-icon mappings
+├── hooks/
+│   └── useScrollTriggers.ts   # GSAP trigger lifecycle management
+├── styles/
+│   └── globals.css            # Global styles, animations, scrollbar
+└── __tests__/
+```
+
+---
+
+## Showcased Projects
+
+| Project | Stack | Links |
+|---|---|---|
+| **Polonez Autodrive** | JavaScript, Three.js, 3D Studio Max | [Live](https://polonez-autodrive.vercel.app/) · [Repo](https://github.com/SkorczanFFF/Polonez-Autodrive) |
+| **VAT-OFF** | JavaScript, Chrome Extension API, CSS | [Chrome Web Store](https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl) · [Repo](https://github.com/SkorczanFFF/VAT-OFF) |
+| **Chandrastic** [WIP] | React, TypeScript, Python, FastAPI | — |
+| **MSKORUS Portfolio** | Next.js, TypeScript, TailwindCSS, R3F, Blender | [Live](https://mskorus.vercel.app/) · [Repo](https://github.com/SkorczanFFF/mskorus-remaster) |
+| **Yet Another Weather App** | React, JavaScript, Sass, Vanta.js, Open-Meteo | [Live](https://yet-another-weather-app.vercel.app/) · [Repo](https://github.com/SkorczanFFF/YetAnotherWeatherApp/) |
+
+---
+
+## Getting Started
+
+**Requirements:** Node >= 24.0.0, npm >= 10.7.0
+
+```bash
+npm install
+npm run dev
+```
+
+### Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm start` | Start production server |
+| `npm run lint` | Lint source files |
+| `npm run lint:fix` | Lint, fix, and format |
+| `npm run typecheck` | TypeScript type checking |
+| `npm test` | Run Jest tests |
+| `npm run format` | Format all files with Prettier |
+
+---
+
+## Design
+
+**Fonts:** Space Grotesk (body), Unica One (headings)
+
+**Color palette:**
+
+| Color | Hex | Usage |
+|---|---|---|
+| Primary Blue | `#001a25` | Main background |
+| Secondary Blue | `#0b0d16` | Dark accent areas |
+| White | `#e4e4e4` | Body text |
+| Raspberry | `#801834` | Accent, hover states |
+| Orange | `#992210` | Secondary accent |
+
+---
+
+## Deployment
+
+Hosted on **Vercel** with automatic deploys. Sitemap is generated post-build via `next-sitemap`.

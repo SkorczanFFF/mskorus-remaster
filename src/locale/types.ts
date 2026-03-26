@@ -86,7 +86,6 @@ export type Dictionary = {
   portfolioNonWeb: string;
   portfolioRelated: string;
   portfolioCorner: string;
-  portfolioStayTuned: string;
   portfolioRepo: string;
   portfolioLiveDemo: string;
   projects: ProjectEntry[];

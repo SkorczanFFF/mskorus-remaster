@@ -3,10 +3,10 @@ import type { Dictionary } from '@/locale/types';
 import { experiences, nonWebProjects, projects, services } from './data/en';
 
 export const en: Dictionary = {
-  seoTitle: 'Maciej Skorus - Frontend Developer | Websites, Web Apps & Extensions',
-  seoSiteName: 'Maciej Skorus - Frontend Developer',
+  seoTitle: 'Maciej Skorus - Creative Fullstack Developer | Web Apps, Services & 3D',
+  seoSiteName: 'Maciej Skorus - Creative Fullstack Developer',
   seoDescription:
-    'Freelance frontend/fullstack developer from Poland. Modern websites, web applications, browser extensions, and 3D experiences. React, Next.js, TypeScript. B2B invoices, worldwide availability.',
+    'Creative fullstack developer from Poland. Web applications, digital services, 3D experiences, and mobile apps. React, Next.js, Python, TypeScript. B2B invoices, worldwide availability.',
 
   notFoundTitle: 'Page Not Found',
   notFoundBack: 'Back to Home',
@@ -21,7 +21,7 @@ export const en: Dictionary = {
 
   heroGreeting: "Hey, I'm Maciej.",
   heroName: 'Skorus Maciej.',
-  heroHeadline: 'I build modern websites and web applications',
+  heroHeadline: 'Ideas in. Software out.',
   heroErrorFallback: '3D scene could not be loaded.',
 
   footerCopyright: '© {year} SKOFTWARE Maciej Skorus. All rights reserved.',
@@ -52,7 +52,6 @@ export const en: Dictionary = {
   portfolioNonWeb: 'NON WEB',
   portfolioRelated: 'RELATED',
   portfolioCorner: 'CORNER',
-  portfolioStayTuned: 'STAY TUNED',
   portfolioRepo: 'repo',
   portfolioLiveDemo: 'live demo',
   projects,
@@ -62,7 +61,7 @@ export const en: Dictionary = {
   contactEmail: 'skorusmaciej94@gmail.com',
   contactResponseTime: 'I respond within 24 hours',
   contactCompanyName: 'SKOFTware Maciej Skorus',
-  contactCompanyInfo: 'Frontend / Fullstack Developer - Available for projects',
+  contactCompanyInfo: 'Creative Fullstack Developer - Available for projects',
   contactNip: 'NIP: 6252501911',
   contactLocation: 'Silesia, Poland',
   contactInvoiceInfo: 'Worldwide',
@@ -81,7 +80,7 @@ export const en: Dictionary = {
   resumeHeaderSkills: 'SKILLS AND TOOLS',
   resumeHeaderDownload: 'DOWNLOAD',
   resumeAboutMe:
-    'Versatile and open-minded developer focused on building engaging, user-centered frontend solutions, with solid hands-on experience in backend work. Skilled in Web3 development for the gaming industry and in crafting custom platforms and tools for the medical events sector, backed by a strong foundation in IT support. Personally passionate about WebGL, modding, and building useful and entertaining code, not only frontend centered',
+    'Creative fullstack developer with nearly 4 years of professional experience across web applications, internal systems, mobile apps, and 3D. Built production platforms for the medical events sector, decentralized blockchain applications for the gaming industry, and fullstack tools for document and media processing. Experienced in running and integrating local AI/LLM models. Comfortable across the entire stack: React/Next.js on the frontend, Python/Node.js on the backend, PostgreSQL/MongoDB for data, and Docker for deployment. Personally passionate about WebGL, modding, and building useful and entertaining code',
   resumeEducation: {
     university: 'UNIVERSITY OF SILESIA',
     field: 'Web Application Programming',

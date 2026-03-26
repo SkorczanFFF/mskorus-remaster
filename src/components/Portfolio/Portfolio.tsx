@@ -40,34 +40,69 @@ export default function Portfolio(): React.JSX.Element {
       panels.forEach((panel) => {
         const overlay = panel.querySelector<HTMLElement>('.project-overlay');
         const title = panel.querySelector<HTMLElement>('.project-title');
+        const meta = panel.querySelector<HTMLElement>('.project-meta');
 
+        // Enter from right
         gsap.fromTo(
           panel,
-          { opacity: 0.3, x: 80 },
+          { opacity: 0.2, x: 150 },
           {
             opacity: 1,
             x: 0,
             scrollTrigger: {
               trigger: panel,
               containerAnimation: tween,
-              start: 'left 85%',
+              start: 'left 90%',
               end: 'left 40%',
               scrub: true,
             },
           },
         );
 
+        // Exit to left
+        gsap.fromTo(
+          panel,
+          { opacity: 1, x: 0 },
+          {
+            opacity: 0.2, x: -150,
+            scrollTrigger: {
+              trigger: panel,
+              containerAnimation: tween,
+              start: 'right 60%',
+              end: 'right 10%',
+              scrub: true,
+            },
+          },
+        );
+
         if (title) {
+          // Enter from right
           gsap.fromTo(
             title,
-            { x: 200 },
+            { x: 300 },
             {
               x: 0,
               scrollTrigger: {
                 trigger: panel,
                 containerAnimation: tween,
-                start: 'left 90%',
-                end: 'left 35%',
+                start: 'left 95%',
+                end: 'left 30%',
+                scrub: true,
+              },
+            },
+          );
+
+          // Exit to left
+          gsap.fromTo(
+            title,
+            { x: 0 },
+            {
+              x: -300,
+              scrollTrigger: {
+                trigger: panel,
+                containerAnimation: tween,
+                start: 'right 60%',
+                end: 'right 10%',
                 scrub: true,
               },
             },
@@ -75,9 +110,10 @@ export default function Portfolio(): React.JSX.Element {
         }
 
         if (overlay) {
+          // Enter from bottom
           gsap.fromTo(
             overlay,
-            { opacity: 0, y: 40 },
+            { opacity: 0, y: 50 },
             {
               opacity: 1,
               y: 0,
@@ -86,6 +122,57 @@ export default function Portfolio(): React.JSX.Element {
                 containerAnimation: tween,
                 start: 'left 60%',
                 end: 'left 30%',
+                scrub: true,
+              },
+            },
+          );
+
+          // Exit back down
+          gsap.fromTo(
+            overlay,
+            { opacity: 1, y: 0 },
+            {
+              opacity: 0, y: 50,
+              scrollTrigger: {
+                trigger: panel,
+                containerAnimation: tween,
+                start: 'right 60%',
+                end: 'right 10%',
+                scrub: true,
+              },
+            },
+          );
+        }
+
+        if (meta) {
+          // Enter from top
+          gsap.fromTo(
+            meta,
+            { opacity: 0, y: -30 },
+            {
+              opacity: 1,
+              y: 0,
+              scrollTrigger: {
+                trigger: panel,
+                containerAnimation: tween,
+                start: 'left 55%',
+                end: 'left 25%',
+                scrub: true,
+              },
+            },
+          );
+
+          // Exit back up
+          gsap.fromTo(
+            meta,
+            { opacity: 1, y: 0 },
+            {
+              opacity: 0, y: -30,
+              scrollTrigger: {
+                trigger: panel,
+                containerAnimation: tween,
+                start: 'right 60%',
+                end: 'right 10%',
                 scrub: true,
               },
             },
@@ -150,17 +237,17 @@ export default function Portfolio(): React.JSX.Element {
         {t.projects.map((project, index) => (
           <div
             key={project.id}
-            className={`project-panel mobile-fade flex w-full shrink-0 items-center justify-center px-5 py-10 md:w-[70vw] md:px-16 md:py-0 ${index === 0 ? 'md:ml-20' : ''}`}
+            className={`project-panel mobile-fade flex w-full shrink-0 items-center justify-center px-5 py-10 md:w-[1150px] md:px-[125px] md:py-0 ${index === 0 ? 'md:ml-[calc(50vw-575px)]' : ''}`}
           >
             <PortfolioProjectItem project={project} />
           </div>
         ))}
 
         {/* Non-web outro panel */}
-        <div className='mobile-fade flex w-full shrink-0 flex-col items-center justify-center gap-10 px-8 py-16 md:w-screen md:py-0'>
+        <div className='project-panel mobile-fade flex w-full shrink-0 flex-col items-center justify-center gap-10 px-8 py-16 md:w-[1150px] md:px-[125px] md:py-0'>
           <div className='flex w-full max-w-[900px] flex-col gap-5 xl:flex-row'>
-            <div className='flex min-w-[260px] max-w-[300px] flex-col justify-center gap-2 border-r-2 border-orange-dark bg-[#0c2835] p-5 shadow-xl md:p-8'>
-              <h4 className='text-2xl font-light leading-5 md:text-3xl'>
+            <div className='flex min-w-[220px] max-w-[220px] flex-col justify-center gap-2 border-r-2 border-orange-dark bg-[#0c2835] p-5 shadow-xl md:p-8 h-[140px]'>
+              <h4 className='text-3xl font-unica leading-5 md:text-3xl'>
                 <div className='text-end text-raspberry'>{t.portfolioNonWeb}</div>
                 <div className='text-center text-[#b2b2b2]'>{t.portfolioRelated}</div>
                 <div className='text-end text-[#b2b2b2]'>{t.portfolioCorner}</div>
@@ -194,8 +281,10 @@ export default function Portfolio(): React.JSX.Element {
               ))}
             </div>
           </div>
-          <p className='tracking-[8px]'>{t.portfolioStayTuned}</p>
         </div>
+
+        {/* Spacer — ensures last panel can scroll to center */}
+        <div className='hidden shrink-0 md:block md:w-[calc(50vw-575px)]' />
       </div>
     </section>
   );

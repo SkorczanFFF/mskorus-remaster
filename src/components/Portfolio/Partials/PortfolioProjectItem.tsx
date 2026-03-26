@@ -72,7 +72,7 @@ export default function PortfolioProjectItem({
           />
 
           {/* Description overlay — bottom of image, GSAP controlled */}
-          <div className='project-overlay absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-blue/95 via-primary-blue/80 to-transparent px-8 pb-6 pt-16 opacity-0'>
+          <div className='project-overlay absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-blue/95 via-primary-blue/80 to-transparent px-4 pb-2 pt-4 opacity-0'>
             <p className='text-sm font-extralight leading-relaxed text-white/90'>
               {project.description}
             </p>
@@ -80,7 +80,7 @@ export default function PortfolioProjectItem({
         </div>
 
         {/* Under image: technos (left) + links (right) */}
-        <div className='mt-2 flex items-center justify-between'>
+        <div className='project-meta mt-2 flex items-center justify-between opacity-0'>
           <p className='text-sm tracking-wide text-gray-400'>
             {project.technos}
           </p>

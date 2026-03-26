@@ -108,10 +108,10 @@ export const projects: ProjectEntry[] = [
   {
     id: 2,
     pic: '/projects/tba.jpg',
-    title: 'Chandrastic [WIP]',
-    technos: 'React • TypeScript • CSS • Python • FastAPI • Pillow',
+    title: 'Chandrastic',
+    technos: 'React • TypeScript • Python • FastAPI • Chandra OCR LLM',
     description:
-      'Chandrastic is a local wrapper for the Chandra OCR LLM. The project sets up backend and frontend and allows you to display and communicate with the backend OCR. Accepts images and PDF files. Processed data can be displayed via Markdown, HTML, or JSON. Extracts text, tables, and images.',
+      'A fullstack React wrapper for the Chandra OCR LLM model, running entirely locally. Sets up the backend and a polished frontend for communicating with the model. Accepts images and PDF files, extracts text, tables, and images, and renders output as Markdown, HTML, or JSON. A showcase of integrating and taming local AI models in a web environment.',
     live: '',
     git: '',
   },

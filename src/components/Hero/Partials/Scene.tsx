@@ -18,9 +18,9 @@ const Scene = (props: ThreeElements['group'] & { onReady?: () => void }) => {
   useEffect(() => {
     if (onReady) requestAnimationFrame(() => onReady());
   }, [onReady]);
-  const groupScale = isMobile ? 1.15 : 1.5;
-  const portraitGroupX = -12;
-  const portraitWorldTargetX = -6;
+  const groupScale = isMobile ? 0.9 : 1.5;
+  const portraitGroupX = isMobile ? 0 : -12;
+  const portraitWorldTargetX = isMobile ? 0 : -6;
   const portraitParticlesLocalX =
     (portraitWorldTargetX - portraitGroupX) / groupScale;
 

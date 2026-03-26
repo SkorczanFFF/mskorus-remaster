@@ -27,7 +27,7 @@ export default function PortfolioCard({
     >
       <div className='flex w-full items-center justify-between'>
         <div className='flex flex-col'>
-          <h4 className='text-xl font-medium uppercase'>{title}</h4>
+          <h4 className='text-2xl font-medium font-unica'>{title}</h4>
           <p className='text-[14px] text-[#b6b6b6]'>{tech}</p>
         </div>
         {links.length > 0 && (
