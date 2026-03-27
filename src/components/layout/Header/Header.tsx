@@ -92,9 +92,9 @@ export default function Header(): React.JSX.Element {
   ];
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    document.body.style.overflowY = isMenuOpen ? 'hidden' : 'auto';
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflowY = 'auto';
     };
   }, [isMenuOpen]);
 

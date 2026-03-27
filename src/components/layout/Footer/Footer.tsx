@@ -2,8 +2,15 @@ import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 
 import { gsap, ScrollTrigger } from '@/lib/gsap';
-
-import { CallIcon, GithubIcon, GlobeIcon, LinkedinIcon, MailIcon, PdfIcon } from '@/lib/shared/Icons';
+import {
+  CallIcon,
+  CookieIcon,
+  GithubIcon,
+  GlobeIcon,
+  LinkedinIcon,
+  MailIcon,
+  PdfIcon,
+} from '@/lib/shared/Icons';
 
 import { useLocale } from '@/locale/LocaleContext';
 
@@ -202,16 +209,24 @@ export default function Footer(): React.JSX.Element {
               <p className='mb-2 text-xs uppercase tracking-widest text-primary-blue/40'>
                 {t.contactLocation} · {t.contactInvoiceInfo}
               </p>
-              <p className='text-[10px] uppercase tracking-widest text-primary-blue/30'>
-                {t.footerCopyright.replace('{year}', String(CURRENT_YEAR))}
-              </p>
             </div>
           </div>
         </div>
-
       </div>
 
-      <div className='gradient h-1 w-full' />
+      {/* Bottom bar */}
+      <div className='gradient flex w-full items-center justify-between px-4 py-2 md:px-8'>
+        <p className='text-[10px] uppercase tracking-widest text-white/70'>
+          {t.footerCopyright.replace('{year}', String(CURRENT_YEAR))}
+        </p>
+        <Link
+          href='/cookies'
+          className='flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-white/70 transition-colors duration-200 hover:text-white'
+        >
+          <CookieIcon className='text-xs' />
+          {t.cookiePolicyTitle}
+        </Link>
+      </div>
     </footer>
   );
 }

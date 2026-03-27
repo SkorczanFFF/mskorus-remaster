@@ -91,4 +91,89 @@ export const pl: Dictionary = {
     'Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).',
   resumeRepo: 'repozytorium',
   resumeDemo: 'wersja demonstracyjna',
+
+  cookieTitle: 'Dbam o Twoją prywatność',
+  cookieDescription:
+    'Ta strona używa plików cookie do analizy ruchu i poprawy doświadczeń użytkownika. Możesz wybrać, które kategorie chcesz zaakceptować.',
+  cookieAcceptAll: 'Akceptuj wszystkie',
+  cookieRejectAll: 'Odrzuć wszystkie',
+  cookieManagePreferences: 'Zarządzaj preferencjami',
+  cookiePreferencesTitle: 'Preferencje plików cookie',
+  cookieSavePreferences: 'Zapisz preferencje',
+  cookieClose: 'Zamknij',
+  cookieNecessaryTitle: 'Niezbędne',
+  cookieNecessaryDescription:
+    'Niezbędne do prawidłowego działania strony. Nie można ich wyłączyć.',
+  cookieAnalyticsTitle: 'Analityczne',
+  cookieAnalyticsDescription:
+    'Pomagają zrozumieć, jak odwiedzający korzystają ze strony. Wszystkie dane są anonimizowane.',
+  cookieSettings: 'Ustawienia cookies',
+
+  cookiePolicyTitle: 'Polityka Cookies',
+  cookiePolicyIntro:
+    'Niniejsza Polityka Cookies wyjaśnia, w jaki sposób SKOFTWARE Maciej Skorus („my", „nas", „nasz") wykorzystuje pliki cookie i podobne technologie na stronie mskorus.vercel.app („Strona"). Polityka ta jest zgodna z Ogólnym Rozporządzeniem o Ochronie Danych (RODO, Rozporządzenie 2016/679), Dyrektywą ePrivacy (2002/58/WE, z późniejszymi zmianami) oraz obowiązującymi przepisami krajowymi.',
+  cookiePolicyWhatAreCookiesTitle: '1. Czym są pliki cookie?',
+  cookiePolicyWhatAreCookies:
+    'Pliki cookie to małe pliki tekstowe, które są umieszczane na Twoim urządzeniu podczas odwiedzania strony internetowej. Są szeroko stosowane, aby zapewnić prawidłowe działanie stron, dostarczać informacje właścicielom witryn i poprawiać doświadczenia użytkownika. Podobne technologie obejmują localStorage (przechowywanie danych lokalnie w przeglądarce bez daty wygaśnięcia) oraz skrypty analityczne zbierające zanonimizowane dane o użytkowaniu.',
+  cookiePolicyControllerTitle: '2. Administrator Danych',
+  cookiePolicyController:
+    'Administratorem danych osobowych przetwarzanych za pośrednictwem niniejszej Strony jest: SKOFTWARE Maciej Skorus, Śląsk, Polska, NIP: 6252501911. W przypadku pytań dotyczących niniejszej polityki lub Twoich danych, skontaktuj się: skorusmaciej94@gmail.com.',
+  cookiePolicyCookiesWeUseTitle: '3. Pliki cookie i technologie, których używamy',
+  cookiePolicyCookiesWeUseIntro:
+    'Poniżej znajduje się pełna lista plików cookie i podobnych technologii używanych na tej Stronie, uporządkowana według kategorii:',
+  cookiePolicyTableName: 'Nazwa',
+  cookiePolicyTableProvider: 'Dostawca',
+  cookiePolicyTablePurpose: 'Cel',
+  cookiePolicyTableCategory: 'Kategoria',
+  cookiePolicyTableType: 'Typ',
+  cookiePolicyTableDuration: 'Czas trwania',
+  cookiePolicyCookieCC: 'cc_cookie',
+  cookiePolicyCookieCCPurpose:
+    'Przechowuje Twoje preferencje dotyczące zgody na pliki cookie (które kategorie zaakceptowałeś lub odrzuciłeś).',
+  cookiePolicyCookieLocale: 'locale',
+  cookiePolicyCookieLocalePurpose:
+    'Przechowuje preferowany język (angielski lub polski), aby był zachowany między wizytami.',
+  cookiePolicyCookieVercelAnalytics: 'Vercel Web Analytics',
+  cookiePolicyCookieVercelAnalyticsPurpose:
+    'Zbiera zanonimizowane, zagregowane dane o wyświetleniach stron i odwiedzających. Bez plików cookie — wykorzystuje codziennie rotowany zanonimizowany hash zamiast trwałych identyfikatorów. Nie przechowuje danych osobowych.',
+  cookiePolicyCookieVercelSpeed: 'Vercel Speed Insights',
+  cookiePolicyCookieVercelSpeedPurpose:
+    'Mierzy metryki wydajności Core Web Vitals (LCP, FID, CLS). Bez plików cookie — zbiera wyłącznie techniczne dane o wydajności bez identyfikacji użytkownika.',
+  cookiePolicyLegalBasisTitle: '4. Podstawa prawna przetwarzania',
+  cookiePolicyLegalBasis:
+    'Ściśle niezbędne pliki cookie (przechowywanie zgody, preferencje językowe) są ustawiane na podstawie naszego prawnie uzasadnionego interesu w zapewnieniu funkcjonalnej strony internetowej (art. 6 ust. 1 lit. f RODO) i są zwolnione z wymogu zgody na mocy art. 5 ust. 3 Dyrektywy ePrivacy. Technologie analityczne są aktywowane wyłącznie po udzieleniu przez Ciebie wyraźnej zgody (art. 6 ust. 1 lit. a RODO, art. 5 ust. 3 Dyrektywy ePrivacy). Zgodę możesz wycofać w dowolnym momencie. Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania dokonanego przed jej wycofaniem.',
+  cookiePolicyManageTitle: '5. Jak zarządzać zgodą',
+  cookiePolicyManage:
+    'Możesz zmienić lub wycofać swoje preferencje dotyczące plików cookie w dowolnym momencie, klikając poniższy przycisk lub za pomocą linku „Ustawienia cookies" w stopce strony. Spowoduje to ponowne otwarcie panelu preferencji cookie, w którym możesz włączać lub wyłączać poszczególne kategorie.',
+  cookiePolicyManageBrowser:
+    'Możesz również zarządzać plikami cookie za pomocą ustawień przeglądarki. Większość przeglądarek pozwala na blokowanie lub usuwanie plików cookie. Pamiętaj, że blokowanie ściśle niezbędnych plików cookie może ograniczyć funkcjonalność Strony. Instrukcje znajdziesz w dokumentacji pomocy swojej przeglądarki.',
+  cookiePolicyResetButton: 'Otwórz preferencje cookies',
+  cookiePolicyThirdPartyTitle: '6. Usługi podmiotów trzecich',
+  cookiePolicyThirdParty:
+    'Gdy wyrażasz zgodę na kategorię Analityczne, zanonimizowane dane są przetwarzane przez Vercel Inc. (San Francisco, USA) za pośrednictwem usług Web Analytics i Speed Insights. Vercel działa jako podmiot przetwarzający w naszym imieniu. Szczegółowe informacje o tym, jak Vercel przetwarza dane, znajdziesz w: Polityce Prywatności Vercel (vercel.com/legal/privacy-policy). Na tej Stronie nie są używane żadne inne pliki cookie ani technologie śledzenia podmiotów trzecich. Wszystkie czcionki są hostowane lokalnie — żadne żądania nie są wysyłane do zewnętrznych serwisów czcionek.',
+  cookiePolicyRightsTitle: '7. Twoje prawa wynikające z RODO',
+  cookiePolicyRightsIntro:
+    'Na mocy RODO przysługują Ci następujące prawa dotyczące Twoich danych osobowych:',
+  cookiePolicyRightAccess: 'Prawo dostępu — uzyskanie kopii swoich danych (art. 15)',
+  cookiePolicyRightRectification: 'Prawo do sprostowania — poprawienie nieprawidłowych danych (art. 16)',
+  cookiePolicyRightErasure: 'Prawo do usunięcia — żądanie usunięcia danych (art. 17)',
+  cookiePolicyRightRestriction:
+    'Prawo do ograniczenia przetwarzania — ograniczenie sposobu wykorzystania danych (art. 18)',
+  cookiePolicyRightPortability:
+    'Prawo do przenoszenia danych — otrzymanie danych w ustrukturyzowanym formacie (art. 20)',
+  cookiePolicyRightObject: 'Prawo do sprzeciwu — sprzeciw wobec przetwarzania opartego na prawnie uzasadnionym interesie (art. 21)',
+  cookiePolicyRightWithdraw:
+    'Prawo do wycofania zgody w dowolnym momencie, bez wpływu na zgodność z prawem wcześniejszego przetwarzania (art. 7 ust. 3)',
+  cookiePolicyRightComplaint:
+    'Prawo do wniesienia skargi do organu nadzorczego (art. 77). W Polsce organem nadzorczym jest: Prezes Urzędu Ochrony Danych Osobowych (UODO), ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl.',
+  cookiePolicyRightsOutro:
+    'Aby skorzystać z któregokolwiek z tych praw, skontaktuj się z nami: skorusmaciej94@gmail.com.',
+  cookiePolicyTransfersTitle: '8. Międzynarodowe transfery danych',
+  cookiePolicyTransfers:
+    'Jeśli wyrażasz zgodę na analitykę, zanonimizowane dane mogą być przekazywane do Vercel Inc. w Stanach Zjednoczonych. Vercel uczestniczy w ramach EU-U.S. Data Privacy Framework, zapewniając odpowiednie zabezpieczenia dla transferów danych poza EOG zgodnie z art. 45 RODO.',
+  cookiePolicyChangesTitle: '9. Zmiany w niniejszej polityce',
+  cookiePolicyChanges:
+    'Niniejsza Polityka Cookies może być okresowo aktualizowana w celu odzwierciedlenia zmian w stosowanych przez nas technologiach lub obowiązujących przepisach. Wszelkie aktualizacje zostaną opublikowane na tej stronie ze zaktualizowaną datą „Ostatnia aktualizacja". Zachęcamy do okresowego przeglądania tej polityki.',
+  cookiePolicyLastUpdated: 'Ostatnia aktualizacja: 27 marca 2026',
+  cookiePolicyBackHome: 'Powrót na stronę główną',
 };

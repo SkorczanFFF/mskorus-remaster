@@ -10,7 +10,7 @@
   h4,
   h5,
   h6 {
-    font-family: 'Unica One', sans-serif;
+    font-family: var(--font-unica), 'Unica One', sans-serif;
   }
 }
 
@@ -25,6 +25,7 @@
 
 body {
   background-color: var(--color-primary-blue);
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--color-raspberry) var(--color-primary-blue);
 }

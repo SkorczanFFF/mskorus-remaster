@@ -1,13 +1,30 @@
 import Lenis from 'lenis';
 import { AppProps } from 'next/app';
+import localFont from 'next/font/local';
 import { useEffect } from 'react';
 
 import '@/styles/globals.css';
 
+import CookieConsentBanner from '@/components/CookieConsent';
 import CustomCursor from '@/components/CustomCursor';
 import Header from '@/components/layout/Header/Header';
 
 import { LocaleProvider } from '@/locale/LocaleContext';
+
+const spaceGrotesk = localFont({
+  src: [
+    { path: '../../public/fonts/SpaceGrotesk-Latin.woff2', style: 'normal' },
+    { path: '../../public/fonts/SpaceGrotesk-LatinExt.woff2', style: 'normal' },
+  ],
+  variable: '--font-grotesk',
+  display: 'swap',
+});
+
+const unicaOne = localFont({
+  src: '../../public/fonts/UnicaOne-Regular.ttf',
+  variable: '--font-unica',
+  display: 'swap',
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -41,11 +58,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <LocaleProvider>
-      <Header />
-      <Component {...pageProps} />
-      <CustomCursor />
-    </LocaleProvider>
+    <div className={`${spaceGrotesk.variable} ${unicaOne.variable}`}>
+      <LocaleProvider>
+        <Header />
+        <Component {...pageProps} />
+        <CookieConsentBanner />
+        <CustomCursor />
+      </LocaleProvider>
+    </div>
   );
 }
 

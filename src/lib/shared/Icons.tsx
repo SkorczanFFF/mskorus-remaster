@@ -17,6 +17,7 @@ import {
 } from 'react-icons/bs';
 import { DiMongodb, DiPhotoshop, DiPhp } from 'react-icons/di';
 import { GiGuitarBassHead } from 'react-icons/gi';
+import { LiaCookieBiteSolid } from 'react-icons/lia';
 import { GrMysql } from 'react-icons/gr';
 import { HiChip, HiMusicNote } from 'react-icons/hi';
 import { HiMiniLanguage } from 'react-icons/hi2';
@@ -113,3 +114,4 @@ export const GuitarIcon = GiGuitarBassHead as IconType;
 export const ChipIcon = HiChip as IconType;
 export const MusicIcon = HiMusicNote as IconType;
 export const LanguageIcon = HiMiniLanguage as IconType;
+export const CookieIcon = LiaCookieBiteSolid as IconType;

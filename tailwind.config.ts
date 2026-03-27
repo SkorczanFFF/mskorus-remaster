@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Space Grotesk', ...defaultTheme.fontFamily.sans],
-        grotesk: ['Space Grotesk', ...defaultTheme.fontFamily.sans],
-        unica: ['Unica One', 'sans-serif'],
+        primary: ['var(--font-grotesk)', ...defaultTheme.fontFamily.sans],
+        grotesk: ['var(--font-grotesk)', ...defaultTheme.fontFamily.sans],
+        unica: ['var(--font-unica)', 'sans-serif'],
       },
       colors: {
         'primary-blue': '#001a25',

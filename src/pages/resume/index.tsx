@@ -119,7 +119,7 @@ export default function CV(): React.JSX.Element {
         <title>Maciej Skorus - Resume - Frontend Developer</title>
       </Head>
       <section
-        className={`font-grotesk flex  flex-col items-center justify-between bg-gradient-to-b from-[#1A1A28] to-[#3a1323] ${isMobile ? 'min-h-[95vh]' : 'min-h-[100vh]'
+        className={`font-grotesk -mt-[60px] pt-[60px] flex  flex-col items-center justify-between bg-gradient-to-b from-[#1A1A28] to-[#3a1323] ${isMobile ? 'min-h-[95vh]' : 'min-h-[100vh]'
           }`}
       >
         <div

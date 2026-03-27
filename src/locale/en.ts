@@ -91,4 +91,89 @@ export const en: Dictionary = {
     'I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)',
   resumeRepo: 'repository',
   resumeDemo: 'web demo',
+
+  cookieTitle: 'I value your privacy',
+  cookieDescription:
+    'This site uses cookies to analyze traffic and improve your experience. You can choose which categories to allow.',
+  cookieAcceptAll: 'Accept All',
+  cookieRejectAll: 'Reject All',
+  cookieManagePreferences: 'Manage Preferences',
+  cookiePreferencesTitle: 'Cookie Preferences',
+  cookieSavePreferences: 'Save Preferences',
+  cookieClose: 'Close',
+  cookieNecessaryTitle: 'Strictly Necessary',
+  cookieNecessaryDescription:
+    'Essential for the website to function. These cannot be disabled.',
+  cookieAnalyticsTitle: 'Analytics',
+  cookieAnalyticsDescription:
+    'Help me understand how visitors interact with the site. All data is anonymized.',
+  cookieSettings: 'Cookie Settings',
+
+  cookiePolicyTitle: 'Cookie Policy',
+  cookiePolicyIntro:
+    'This Cookie Policy explains how SKOFTWARE Maciej Skorus ("we", "us", "our") uses cookies and similar technologies on mskorus.vercel.app ("the Website"). This policy is designed to comply with the EU General Data Protection Regulation (GDPR, Regulation 2016/679), the ePrivacy Directive (2002/58/EC, as amended), and applicable national implementations.',
+  cookiePolicyWhatAreCookiesTitle: '1. What Are Cookies?',
+  cookiePolicyWhatAreCookies:
+    'Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work efficiently, provide information to site owners, and improve the user experience. Similar technologies include localStorage (which stores data locally in your browser without an expiration date) and analytics scripts that collect anonymized usage data.',
+  cookiePolicyControllerTitle: '2. Data Controller',
+  cookiePolicyController:
+    'The data controller responsible for the processing of your personal data through this Website is: SKOFTWARE Maciej Skorus, Silesia, Poland, NIP: 6252501911. For any questions regarding this policy or your data, contact: skorusmaciej94@gmail.com.',
+  cookiePolicyCookiesWeUseTitle: '3. Cookies and Technologies We Use',
+  cookiePolicyCookiesWeUseIntro:
+    'Below is a complete list of cookies and similar technologies used on this Website, organized by category:',
+  cookiePolicyTableName: 'Name',
+  cookiePolicyTableProvider: 'Provider',
+  cookiePolicyTablePurpose: 'Purpose',
+  cookiePolicyTableCategory: 'Category',
+  cookiePolicyTableType: 'Type',
+  cookiePolicyTableDuration: 'Duration',
+  cookiePolicyCookieCC: 'cc_cookie',
+  cookiePolicyCookieCCPurpose:
+    'Stores your cookie consent preferences (which categories you accepted or rejected).',
+  cookiePolicyCookieLocale: 'locale',
+  cookiePolicyCookieLocalePurpose:
+    'Stores your preferred language (English or Polish) so it persists between visits.',
+  cookiePolicyCookieVercelAnalytics: 'Vercel Web Analytics',
+  cookiePolicyCookieVercelAnalyticsPurpose:
+    'Collects anonymized, aggregated page view and visitor data. Cookieless — uses a daily-rotating anonymized hash instead of persistent identifiers. No personally identifiable information is stored.',
+  cookiePolicyCookieVercelSpeed: 'Vercel Speed Insights',
+  cookiePolicyCookieVercelSpeedPurpose:
+    'Measures Core Web Vitals performance metrics (LCP, FID, CLS). Cookieless — collects only technical performance data with no user identification.',
+  cookiePolicyLegalBasisTitle: '4. Legal Basis for Processing',
+  cookiePolicyLegalBasis:
+    'Strictly necessary cookies (consent storage, language preference) are set based on our legitimate interest in providing a functional website (Art. 6(1)(f) GDPR) and are exempt from consent requirements under Art. 5(3) of the ePrivacy Directive. Analytics technologies are only activated after you provide explicit consent (Art. 6(1)(a) GDPR, Art. 5(3) ePrivacy Directive). You may withdraw your consent at any time. Withdrawing consent does not affect the lawfulness of processing carried out before the withdrawal.',
+  cookiePolicyManageTitle: '5. How to Manage Your Consent',
+  cookiePolicyManage:
+    'You can change or withdraw your cookie preferences at any time by clicking the button below or via the "Cookie Settings" link in the website footer. This will reopen the cookie preferences panel where you can toggle individual categories on or off.',
+  cookiePolicyManageBrowser:
+    'You can also manage cookies through your browser settings. Most browsers allow you to block or delete cookies. Please note that blocking strictly necessary cookies may impair the functionality of the Website. For instructions, refer to your browser\'s help documentation.',
+  cookiePolicyResetButton: 'Open Cookie Preferences',
+  cookiePolicyThirdPartyTitle: '6. Third-Party Services',
+  cookiePolicyThirdParty:
+    'When you consent to the Analytics category, anonymized data is processed by Vercel Inc. (San Francisco, USA) through their Web Analytics and Speed Insights services. Vercel acts as a data processor on our behalf. For details on how Vercel handles data, see: Vercel Privacy Policy (vercel.com/legal/privacy-policy). No other third-party cookies or tracking technologies are used on this Website. All fonts are self-hosted — no requests are made to external font services.',
+  cookiePolicyRightsTitle: '7. Your Rights Under the GDPR',
+  cookiePolicyRightsIntro:
+    'Under the GDPR, you have the following rights regarding your personal data:',
+  cookiePolicyRightAccess: 'Right of access — obtain a copy of your data (Art. 15)',
+  cookiePolicyRightRectification: 'Right to rectification — correct inaccurate data (Art. 16)',
+  cookiePolicyRightErasure: 'Right to erasure — request deletion of your data (Art. 17)',
+  cookiePolicyRightRestriction:
+    'Right to restriction of processing — limit how your data is used (Art. 18)',
+  cookiePolicyRightPortability:
+    'Right to data portability — receive your data in a structured format (Art. 20)',
+  cookiePolicyRightObject: 'Right to object — object to processing based on legitimate interest (Art. 21)',
+  cookiePolicyRightWithdraw:
+    'Right to withdraw consent at any time, without affecting the lawfulness of prior processing (Art. 7(3))',
+  cookiePolicyRightComplaint:
+    'Right to lodge a complaint with a supervisory authority (Art. 77). In Poland, the supervisory authority is: Prezes Urzędu Ochrony Danych Osobowych (UODO), ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl.',
+  cookiePolicyRightsOutro:
+    'To exercise any of these rights, contact us at: skorusmaciej94@gmail.com.',
+  cookiePolicyTransfersTitle: '8. International Data Transfers',
+  cookiePolicyTransfers:
+    'If you consent to analytics, anonymized data may be transferred to Vercel Inc. in the United States. Vercel participates in the EU-U.S. Data Privacy Framework, providing adequate safeguards for data transfers outside the EEA in accordance with Art. 45 GDPR.',
+  cookiePolicyChangesTitle: '9. Changes to This Policy',
+  cookiePolicyChanges:
+    'We may update this Cookie Policy from time to time to reflect changes in the technologies we use or applicable regulations. Any updates will be posted on this page with a revised "Last Updated" date. We encourage you to review this policy periodically.',
+  cookiePolicyLastUpdated: 'Last updated: March 27, 2026',
+  cookiePolicyBackHome: 'Back to Home',
 };
