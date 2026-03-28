@@ -3,7 +3,8 @@ import type { Dictionary } from '@/locale/types';
 import { experiences, nonWebProjects, projects, services } from './data/pl';
 
 export const pl: Dictionary = {
-  seoTitle: 'Maciej Skorus - Creative Fullstack Developer | Aplikacje, Usługi i 3D',
+  seoTitle:
+    'Maciej Skorus - Creative Fullstack Developer | Aplikacje, Usługi i 3D',
   seoSiteName: 'Maciej Skorus - Creative Fullstack Developer',
   seoDescription:
     'Creative fullstack developer z Polski. Aplikacje webowe, usługi cyfrowe, doświadczenia 3D i aplikacje mobilne. React, Next.js, Python, TypeScript. Faktury VAT, współpraca na całym świecie.',
@@ -18,13 +19,15 @@ export const pl: Dictionary = {
   navContact: 'Kontakt',
   navResume: 'CV',
   toggleMenu: 'Przełącz menu',
+  navMenuLabel: 'Nawigacja główna',
 
   heroGreeting: 'Hej, jestem Maciej.',
   heroName: 'Skorus Maciej.',
   heroHeadline: 'Pomysły na wejściu. Software na wyjściu.',
   heroErrorFallback: 'Nie udało się załadować sceny 3D.',
 
-  footerCopyright: '© {year} SKOFTWARE Maciej Skorus. Wszelkie prawa zastrzeżone.',
+  footerCopyright:
+    '© {year} SKOFTWARE Maciej Skorus. Wszelkie prawa zastrzeżone.',
   footerResume: 'ŻYCIORYS',
   footerResumeOnline: 'CV ONLINE',
   footerResumeDownload: 'POBIERZ PDF',
@@ -41,7 +44,6 @@ export const pl: Dictionary = {
   experienceSectionTitle: 'DOŚWIADCZENIE',
   experiences,
 
-  techStackTitle: 'TECHNOLOGIE',
   techCategoryFrontend: 'frontend',
   techCategoryBackend: 'backend',
   techCategoryDatabase: 'bazy danych',
@@ -59,10 +61,7 @@ export const pl: Dictionary = {
 
   contactPhone: '+48 668 366 648',
   contactEmail: 'skorusmaciej94@gmail.com',
-  contactResponseTime: 'Odpowiadam w ciągu 24 godzin',
-  contactCompanyName: 'SKOFTware Maciej Skorus',
   contactCompanyInfo: 'Creative Fullstack Developer - Dostępny na projekty',
-  contactNip: 'NIP: 6252501911',
   contactLocation: 'Śląsk, Polska',
   contactInvoiceInfo: 'Cały świat',
 
@@ -97,17 +96,13 @@ export const pl: Dictionary = {
     'Ta strona używa plików cookie do analizy ruchu i poprawy doświadczeń użytkownika. Możesz wybrać, które kategorie chcesz zaakceptować.',
   cookieAcceptAll: 'Akceptuj wszystkie',
   cookieRejectAll: 'Odrzuć wszystkie',
-  cookieManagePreferences: 'Zarządzaj preferencjami',
-  cookiePreferencesTitle: 'Preferencje plików cookie',
   cookieSavePreferences: 'Zapisz preferencje',
-  cookieClose: 'Zamknij',
   cookieNecessaryTitle: 'Niezbędne',
   cookieNecessaryDescription:
     'Niezbędne do prawidłowego działania strony. Nie można ich wyłączyć.',
   cookieAnalyticsTitle: 'Analityczne',
   cookieAnalyticsDescription:
     'Pomagają zrozumieć, jak odwiedzający korzystają ze strony. Wszystkie dane są anonimizowane.',
-  cookieSettings: 'Ustawienia cookies',
 
   cookiePolicyTitle: 'Polityka Cookies',
   cookiePolicyIntro:
@@ -118,7 +113,8 @@ export const pl: Dictionary = {
   cookiePolicyControllerTitle: '2. Administrator Danych',
   cookiePolicyController:
     'Administratorem danych osobowych przetwarzanych za pośrednictwem niniejszej Strony jest: SKOFTWARE Maciej Skorus, Śląsk, Polska, NIP: 6252501911. W przypadku pytań dotyczących niniejszej polityki lub Twoich danych, skontaktuj się: skorusmaciej94@gmail.com.',
-  cookiePolicyCookiesWeUseTitle: '3. Pliki cookie i technologie, których używamy',
+  cookiePolicyCookiesWeUseTitle:
+    '3. Pliki cookie i technologie, których używamy',
   cookiePolicyCookiesWeUseIntro:
     'Poniżej znajduje się pełna lista plików cookie i podobnych technologii używanych na tej Stronie, uporządkowana według kategorii:',
   cookiePolicyTableName: 'Nazwa',
@@ -154,14 +150,18 @@ export const pl: Dictionary = {
   cookiePolicyRightsTitle: '7. Twoje prawa wynikające z RODO',
   cookiePolicyRightsIntro:
     'Na mocy RODO przysługują Ci następujące prawa dotyczące Twoich danych osobowych:',
-  cookiePolicyRightAccess: 'Prawo dostępu — uzyskanie kopii swoich danych (art. 15)',
-  cookiePolicyRightRectification: 'Prawo do sprostowania — poprawienie nieprawidłowych danych (art. 16)',
-  cookiePolicyRightErasure: 'Prawo do usunięcia — żądanie usunięcia danych (art. 17)',
+  cookiePolicyRightAccess:
+    'Prawo dostępu — uzyskanie kopii swoich danych (art. 15)',
+  cookiePolicyRightRectification:
+    'Prawo do sprostowania — poprawienie nieprawidłowych danych (art. 16)',
+  cookiePolicyRightErasure:
+    'Prawo do usunięcia — żądanie usunięcia danych (art. 17)',
   cookiePolicyRightRestriction:
     'Prawo do ograniczenia przetwarzania — ograniczenie sposobu wykorzystania danych (art. 18)',
   cookiePolicyRightPortability:
     'Prawo do przenoszenia danych — otrzymanie danych w ustrukturyzowanym formacie (art. 20)',
-  cookiePolicyRightObject: 'Prawo do sprzeciwu — sprzeciw wobec przetwarzania opartego na prawnie uzasadnionym interesie (art. 21)',
+  cookiePolicyRightObject:
+    'Prawo do sprzeciwu — sprzeciw wobec przetwarzania opartego na prawnie uzasadnionym interesie (art. 21)',
   cookiePolicyRightWithdraw:
     'Prawo do wycofania zgody w dowolnym momencie, bez wpływu na zgodność z prawem wcześniejszego przetwarzania (art. 7 ust. 3)',
   cookiePolicyRightComplaint:

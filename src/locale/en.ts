@@ -3,7 +3,8 @@ import type { Dictionary } from '@/locale/types';
 import { experiences, nonWebProjects, projects, services } from './data/en';
 
 export const en: Dictionary = {
-  seoTitle: 'Maciej Skorus - Creative Fullstack Developer | Web Apps, Services & 3D',
+  seoTitle:
+    'Maciej Skorus - Creative Fullstack Developer | Web Apps, Services & 3D',
   seoSiteName: 'Maciej Skorus - Creative Fullstack Developer',
   seoDescription:
     'Creative fullstack developer from Poland. Web applications, digital services, 3D experiences, and mobile apps. React, Next.js, Python, TypeScript. B2B invoices, worldwide availability.',
@@ -18,6 +19,7 @@ export const en: Dictionary = {
   navContact: 'Contact',
   navResume: 'Resume',
   toggleMenu: 'Toggle Menu',
+  navMenuLabel: 'Main navigation',
 
   heroGreeting: "Hey, I'm Maciej.",
   heroName: 'Skorus Maciej.',
@@ -41,7 +43,6 @@ export const en: Dictionary = {
   experienceSectionTitle: 'WORK EXP',
   experiences,
 
-  techStackTitle: 'TECH STACK',
   techCategoryFrontend: 'frontend',
   techCategoryBackend: 'backend',
   techCategoryDatabase: 'database',
@@ -59,10 +60,7 @@ export const en: Dictionary = {
 
   contactPhone: '+48 668 366 648',
   contactEmail: 'skorusmaciej94@gmail.com',
-  contactResponseTime: 'I respond within 24 hours',
-  contactCompanyName: 'SKOFTware Maciej Skorus',
   contactCompanyInfo: 'Creative Fullstack Developer - Available for projects',
-  contactNip: 'NIP: 6252501911',
   contactLocation: 'Silesia, Poland',
   contactInvoiceInfo: 'Worldwide',
 
@@ -97,18 +95,13 @@ export const en: Dictionary = {
     'This site uses cookies to analyze traffic and improve your experience. You can choose which categories to allow.',
   cookieAcceptAll: 'Accept All',
   cookieRejectAll: 'Reject All',
-  cookieManagePreferences: 'Manage Preferences',
-  cookiePreferencesTitle: 'Cookie Preferences',
   cookieSavePreferences: 'Save Preferences',
-  cookieClose: 'Close',
   cookieNecessaryTitle: 'Strictly Necessary',
   cookieNecessaryDescription:
     'Essential for the website to function. These cannot be disabled.',
   cookieAnalyticsTitle: 'Analytics',
   cookieAnalyticsDescription:
     'Help me understand how visitors interact with the site. All data is anonymized.',
-  cookieSettings: 'Cookie Settings',
-
   cookiePolicyTitle: 'Cookie Policy',
   cookiePolicyIntro:
     'This Cookie Policy explains how SKOFTWARE Maciej Skorus ("we", "us", "our") uses cookies and similar technologies on mskorus.vercel.app ("the Website"). This policy is designed to comply with the EU General Data Protection Regulation (GDPR, Regulation 2016/679), the ePrivacy Directive (2002/58/EC, as amended), and applicable national implementations.',
@@ -146,7 +139,7 @@ export const en: Dictionary = {
   cookiePolicyManage:
     'You can change or withdraw your cookie preferences at any time by clicking the button below or via the "Cookie Settings" link in the website footer. This will reopen the cookie preferences panel where you can toggle individual categories on or off.',
   cookiePolicyManageBrowser:
-    'You can also manage cookies through your browser settings. Most browsers allow you to block or delete cookies. Please note that blocking strictly necessary cookies may impair the functionality of the Website. For instructions, refer to your browser\'s help documentation.',
+    "You can also manage cookies through your browser settings. Most browsers allow you to block or delete cookies. Please note that blocking strictly necessary cookies may impair the functionality of the Website. For instructions, refer to your browser's help documentation.",
   cookiePolicyResetButton: 'Open Cookie Preferences',
   cookiePolicyThirdPartyTitle: '6. Third-Party Services',
   cookiePolicyThirdParty:
@@ -154,14 +147,18 @@ export const en: Dictionary = {
   cookiePolicyRightsTitle: '7. Your Rights Under the GDPR',
   cookiePolicyRightsIntro:
     'Under the GDPR, you have the following rights regarding your personal data:',
-  cookiePolicyRightAccess: 'Right of access — obtain a copy of your data (Art. 15)',
-  cookiePolicyRightRectification: 'Right to rectification — correct inaccurate data (Art. 16)',
-  cookiePolicyRightErasure: 'Right to erasure — request deletion of your data (Art. 17)',
+  cookiePolicyRightAccess:
+    'Right of access — obtain a copy of your data (Art. 15)',
+  cookiePolicyRightRectification:
+    'Right to rectification — correct inaccurate data (Art. 16)',
+  cookiePolicyRightErasure:
+    'Right to erasure — request deletion of your data (Art. 17)',
   cookiePolicyRightRestriction:
     'Right to restriction of processing — limit how your data is used (Art. 18)',
   cookiePolicyRightPortability:
     'Right to data portability — receive your data in a structured format (Art. 20)',
-  cookiePolicyRightObject: 'Right to object — object to processing based on legitimate interest (Art. 21)',
+  cookiePolicyRightObject:
+    'Right to object — object to processing based on legitimate interest (Art. 21)',
   cookiePolicyRightWithdraw:
     'Right to withdraw consent at any time, without affecting the lawfulness of prior processing (Art. 7(3))',
   cookiePolicyRightComplaint:

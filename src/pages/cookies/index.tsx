@@ -3,7 +3,7 @@ import React from 'react';
 
 import { CookieIcon } from '@/lib/shared/Icons';
 
-import { showCookiePreferences } from '@/components/CookieConsent';
+import { COOKIE_DAYS, showCookiePreferences } from '@/components/CookieConsent';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
@@ -19,7 +19,7 @@ export default function CookiesPage() {
       purpose: t.cookiePolicyCookieCCPurpose,
       category: t.cookieNecessaryTitle,
       type: 'HTTP Cookie',
-      duration: '182 days',
+      duration: `${COOKIE_DAYS} days`,
     },
     {
       name: t.cookiePolicyCookieLocale,
@@ -65,7 +65,7 @@ export default function CookiesPage() {
         <section className='mx-auto max-w-4xl px-6 pb-24 pt-20 md:px-12'>
           {/* Header */}
           <div className='mb-12 flex items-start gap-4'>
-            <CookieIcon className='flex-shrink-0 text-4xl text-raspberry md:text-[80px]' />
+            <CookieIcon className='shrink-0 text-4xl text-raspberry md:text-[80px]' />
             <div>
               <h1 className='font-unica text-4xl font-bold tracking-tight md:text-5xl'>
                 {t.cookiePolicyTitle}
@@ -124,7 +124,7 @@ export default function CookiesPage() {
                   {cookieTable.map((cookie, i) => (
                     <tr
                       key={cookie.name}
-                      className={`border-b border-primary-blue/10 ${i % 2 === 0 ? 'bg-white' : 'bg-primary-blue/[0.03]'}`}
+                      className={`border-b border-primary-blue/10 ${i % 2 === 0 ? 'bg-white' : 'bg-primary-blue/3'}`}
                     >
                       <td className='px-4 py-3 font-medium'>{cookie.name}</td>
                       <td className='px-4 py-3 text-primary-blue/60'>

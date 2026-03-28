@@ -44,6 +44,21 @@ export default function Seo(props: SeoProps) {
       <meta content={meta.description} name='description' />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
+      <link
+        rel='alternate'
+        hrefLang='en'
+        href={`${meta.url}${router.asPath}`}
+      />
+      <link
+        rel='alternate'
+        hrefLang='pl'
+        href={`${meta.url}${router.asPath}`}
+      />
+      <link
+        rel='alternate'
+        hrefLang='x-default'
+        href={`${meta.url}${router.asPath}`}
+      />
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />

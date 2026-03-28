@@ -1,7 +1,8 @@
 import { ThreeElements, useLoader } from '@react-three/fiber';
 import React, { useEffect, useRef } from 'react';
-import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
+
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 import Background, {
   Vector3Tuple,
@@ -14,6 +15,8 @@ useLoader.preload(THREE.TextureLoader, '/me.png');
 const Scene = (props: ThreeElements['group'] & { onReady?: () => void }) => {
   const { onReady, ...groupProps } = props;
   const group = useRef<THREE.Group | null>(null);
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (onReady) requestAnimationFrame(() => onReady());

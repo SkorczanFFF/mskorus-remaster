@@ -2,43 +2,22 @@ import { Float } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
 import React, {
-  Component,
   Suspense,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useInView } from 'react-intersection-observer';
 
 import { gsap } from '@/lib/gsap';
+import { randomizeText, scrambleReveal } from '@/lib/scrambleReveal';
 
 import Scene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
 import { useLocale } from '@/locale/LocaleContext';
-
-class CanvasErrorBoundary extends Component<
-  { children: React.ReactNode; fallbackText?: string },
-  { hasError: boolean }
-> {
-  state = { hasError: false };
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className='flex h-full w-full items-center justify-center text-white'>
-          <p>{this.props.fallbackText}</p>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
 
 function Rig() {
   useFrame((state, delta) => {
@@ -118,50 +97,20 @@ export default function Hero(): React.JSX.Element {
 
   useEffect(() => {
     if (!sceneReady) return;
-    if (!panelRef.current || !namesRef.current || !headlineRef.current || !greetingRef.current || !nameRef.current || !headlinePart1Ref.current || !headlinePart2Ref.current) return;
-
-    const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@&%';
-
-    function randomString(text: string) {
-      let result = '';
-      for (let i = 0; i < text.length; i++) {
-        result +=
-          text[i] === ' '
-            ? ' '
-            : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-      }
-      return result;
-    }
-
-    function scrambleReveal(el: HTMLElement, text: string, duration: number) {
-      const len = text.length;
-      // Pre-fill with scrambled chars immediately
-      el.textContent = randomString(text);
-      const proxy = { progress: 0 };
-      return gsap.to(proxy, {
-        progress: 1,
-        duration,
-        ease: 'power1.in',
-        onUpdate() {
-          const locked = Math.floor(proxy.progress * len);
-          let result = text.substring(0, locked);
-          for (let i = locked; i < len; i++) {
-            result +=
-              text[i] === ' '
-                ? ' '
-                : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-          }
-          el.textContent = result;
-        },
-        onComplete() {
-          el.textContent = text;
-        },
-      });
-    }
+    if (
+      !panelRef.current ||
+      !namesRef.current ||
+      !headlineRef.current ||
+      !greetingRef.current ||
+      !nameRef.current ||
+      !headlinePart1Ref.current ||
+      !headlinePart2Ref.current
+    )
+      return;
 
     // Pre-fill both with scrambled text right away
-    greetingRef.current!.textContent = randomString(t.heroGreeting);
-    nameRef.current!.textContent = randomString(t.heroName);
+    greetingRef.current!.textContent = randomizeText(t.heroGreeting);
+    nameRef.current!.textContent = randomizeText(t.heroName);
 
     const tl = gsap.timeline({ delay: 0.3 });
     tlRef.current = tl;
@@ -192,10 +141,10 @@ export default function Hero(): React.JSX.Element {
     // 4. Scramble-reveal greeting
     tl.add(scrambleReveal(greetingRef.current!, t.heroGreeting, 1.5), '+=0.3');
 
-    // 3. Scramble-reveal name
+    // 5. Scramble-reveal name
     tl.add(scrambleReveal(nameRef.current!, t.heroName, 1.5), '+=0.3');
 
-    // 4. Headline part 1 — slide in from left
+    // 6. Headline part 1 — slide in from left
     tl.fromTo(
       headlinePart1Ref.current,
       { opacity: 0, x: -60 },
@@ -203,7 +152,7 @@ export default function Hero(): React.JSX.Element {
       '+=0.3',
     );
 
-    // 5. Headline part 2 — slide in from right
+    // 7. Headline part 2 — slide in from right
     tl.fromTo(
       headlinePart2Ref.current,
       { opacity: 0, x: 60 },
@@ -223,7 +172,13 @@ export default function Hero(): React.JSX.Element {
       className='font-grotesk -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500] overflow-hidden'
     >
       {isMounted ? (
-        <CanvasErrorBoundary fallbackText={t.heroErrorFallback}>
+        <ErrorBoundary
+          fallback={
+            <div className='flex h-full w-full items-center justify-center text-white'>
+              <p>{t.heroErrorFallback}</p>
+            </div>
+          }
+        >
           <div
             className={`h-full w-full transition-opacity duration-700 ease-out ${sceneReady ? 'opacity-100' : 'opacity-0'}`}
           >
@@ -249,7 +204,11 @@ export default function Hero(): React.JSX.Element {
                 angle={0.2}
               />
               <Suspense fallback={null}>
-                <Float speed={0.8} floatIntensity={0.2} floatingRange={[-5.5, 5.5]}>
+                <Float
+                  speed={0.8}
+                  floatIntensity={0.2}
+                  floatingRange={[-5.5, 5.5]}
+                >
                   <Scene onReady={handleReady} />
                 </Float>
               </Suspense>
@@ -279,14 +238,14 @@ export default function Hero(): React.JSX.Element {
             >
               <h2
                 ref={greetingRef}
-                className='inline-block gradient bg-gradient-to-r from-raspberry to-orange-dark px-6 py-2 text-2xl md:text-6xl md:-ml-[80px] font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
+                className='inline-block gradient bg-linear-to-r from-raspberry to-orange-dark px-6 py-2 text-2xl md:text-6xl md:-ml-[80px] font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
               <br />
               <h2
                 ref={nameRef}
-                className='inline-block gradient bg-gradient-to-r from-orange-dark to-raspberry px-6 py-2 text-2xl md:text-6xl font-medium text-white tracking-wider mb-6 min-h-[1.2em]'
+                className='inline-block gradient bg-linear-to-r from-orange-dark to-raspberry px-6 py-2 text-2xl md:text-6xl font-medium text-white tracking-wider mb-6 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
@@ -313,7 +272,7 @@ export default function Hero(): React.JSX.Element {
               </span>
             </div>
           </div>
-        </CanvasErrorBoundary>
+        </ErrorBoundary>
       ) : (
         <div className='flex h-full w-full items-center justify-center'>
           <span className='loader' />

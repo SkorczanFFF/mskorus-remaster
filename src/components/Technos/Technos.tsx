@@ -1,7 +1,8 @@
 import React, { useMemo, useRef } from 'react';
 
+import { BREAKPOINTS } from '@/lib/breakpoints';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
-import { techCategoryGroups,techIconMap } from '@/lib/shared/techMap';
+import { techCategoryGroups, techIconMap } from '@/lib/shared/techMap';
 import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
 import { useLocale } from '@/locale/LocaleContext';
@@ -44,12 +45,25 @@ function animateCategory(
 
   const anim = options?.useFromTo
     ? gsap.fromTo(
-      allIcons,
-      { opacity: 0, scale: 1.4 },
-      {
+        allIcons,
+        { opacity: 0, scale: 1.4 },
+        {
+          opacity: 1,
+          scale: 1,
+          stagger: { each: 0.1, from: options.staggerFrom ?? 'start' },
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        },
+      )
+    : gsap.to(allIcons, {
         opacity: 1,
         scale: 1,
-        stagger: { each: 0.1, from: options.staggerFrom ?? 'start' },
+        stagger: 0.1,
         duration: 0.8,
         ease: 'power2.out',
         scrollTrigger: {
@@ -57,20 +71,7 @@ function animateCategory(
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
-      },
-    )
-    : gsap.to(allIcons, {
-      opacity: 1,
-      scale: 1,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
-      },
-    });
+      });
 
   return anim.scrollTrigger ?? undefined;
 }
@@ -103,7 +104,7 @@ export default function Technos(): React.JSX.Element {
       });
     }
 
-    if (window.innerWidth <= 1280) {
+    if (window.innerWidth <= BREAKPOINTS.xl) {
       return [];
     }
 
@@ -123,9 +124,8 @@ export default function Technos(): React.JSX.Element {
     <section
       ref={sectionRef}
       id='technologies'
-      className='font-grotesk relative flex h-[100%] w-[100%] flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[120px]'
+      className='font-grotesk relative flex h-full w-full flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[120px]'
     >
-
       <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         <div className='flex w-full flex-col' ref={frontendRef}>
           <div className='flex w-full justify-between'>

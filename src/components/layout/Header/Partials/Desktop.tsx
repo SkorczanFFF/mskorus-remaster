@@ -9,7 +9,10 @@ interface DesktopProps {
   links: LinkItem[];
   activeSection: string;
 }
-export default function Desktop({ links, activeSection }: DesktopProps): React.JSX.Element {
+export default function Desktop({
+  links,
+  activeSection,
+}: DesktopProps): React.JSX.Element {
   return (
     <>
       <ul className=' hidden h-full max-h-[40px] items-center justify-between space-x-10 px-6 lg:flex '>

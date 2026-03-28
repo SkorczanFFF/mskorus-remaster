@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { ScrollTrigger } from '@/lib/gsap';
 
@@ -18,13 +18,19 @@ function LocaleToggle({ className }: { className?: string }) {
       className={`font-unica flex items-center gap-1 text-xl md:text-md tracking-wider text-white transition-colors ${className ?? ''}`}
     >
       <span
-        className={`duration-200 ${locale === 'en' ? 'font-semibold text-white' : 'text-orange'}`} style={{ textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)' }}
+        className={`duration-200 ${locale === 'en' ? 'font-semibold text-white' : 'text-orange'}`}
+        style={{
+          textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)',
+        }}
       >
         EN
       </span>
       <span className='text-white/70'>|</span>
       <span
-        className={`duration-200 ${locale === 'pl' ? 'font-semibold text-white' : 'text-orange'}`} style={{ textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)' }}
+        className={`duration-200 ${locale === 'pl' ? 'font-semibold text-white' : 'text-orange'}`}
+        style={{
+          textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)',
+        }}
       >
         PL
       </span>
@@ -32,7 +38,14 @@ function LocaleToggle({ className }: { className?: string }) {
   );
 }
 
-const SECTION_IDS = ['home', 'services', 'experience', 'technologies', 'portfolio', 'contact'];
+const SECTION_IDS = [
+  'home',
+  'services',
+  'experience',
+  'technologies',
+  'portfolio',
+  'contact',
+];
 
 function useActiveSection() {
   const router = useRouter();
@@ -81,6 +94,10 @@ export default function Header(): React.JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const activeSection = useActiveSection();
 
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const wasOpen = useRef(false);
+
   const links = [
     { href: '/#home', label: t.navHome },
     { href: '/#services', label: t.navServices },
@@ -98,23 +115,63 @@ export default function Header(): React.JSX.Element {
     };
   }, [isMenuOpen]);
 
+  // Focus management: move focus into menu on open, return to hamburger on close
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMenuOpen) setIsMenuOpen(false);
-    };
-    document.addEventListener('keydown', handleEsc);
-    return () => document.removeEventListener('keydown', handleEsc);
+    if (isMenuOpen) {
+      wasOpen.current = true;
+      const timer = setTimeout(() => {
+        const firstLink = menuRef.current?.querySelector<HTMLElement>('a');
+        firstLink?.focus();
+      }, 100);
+      return () => clearTimeout(timer);
+    } else if (wasOpen.current) {
+      wasOpen.current = false;
+      hamburgerRef.current?.focus();
+    }
   }, [isMenuOpen]);
 
-  const handleClick = () => {
+  // Focus trap + Escape
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab' || !menuRef.current) return;
+
+      const focusable = menuRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])',
+      );
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
+
+  const handleClick = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
-  };
+  }, []);
 
   return (
     <>
       <header
-        className={`font-grotesk sticky top-2 z-50 flex h-[46px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-[2px] border-[#80183433] rounded-[3px] ${isMenuOpen ? 'opacity-0' : 'opacity-95'
-          }`}
+        className={`font-grotesk sticky top-2 z-50 flex h-[46px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183433] rounded-[3px] ${
+          isMenuOpen ? 'opacity-0' : 'opacity-95'
+        }`}
       >
         <div className='flex w-full items-center justify-between'>
           <div className='flex items-center gap-3'>
@@ -124,20 +181,35 @@ export default function Header(): React.JSX.Element {
             <LocaleToggle className='hidden lg:flex' />
           </div>
           <div className='flex h-14 items-center justify-between gap-3'>
-            <Mobile isMenuOpen={isMenuOpen} handleClick={handleClick} />
+            <Mobile
+              ref={hamburgerRef}
+              isMenuOpen={isMenuOpen}
+              handleClick={handleClick}
+            />
             <Desktop links={links} activeSection={activeSection} />
           </div>
         </div>
       </header>
 
       <div
-        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+        ref={menuRef}
+        role='dialog'
+        aria-modal={isMenuOpen}
+        aria-label={t.navMenuLabel}
+        inert={!isMenuOpen || undefined}
+        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
-        <nav className='flex h-full w-full flex-col items-center justify-center'>
+        <nav
+          aria-label={t.navMenuLabel}
+          className='flex h-full w-full flex-col items-center justify-center'
+        >
           <ul className='flex flex-col items-center space-y-8'>
             {links.map(({ href, label }) => {
-              const linkId = href.startsWith('/#') ? href.slice(2) : href.slice(1);
+              const linkId = href.startsWith('/#')
+                ? href.slice(2)
+                : href.slice(1);
               const isActive = linkId === activeSection;
               return (
                 <li key={`${href}${label}`} className='text-center'>

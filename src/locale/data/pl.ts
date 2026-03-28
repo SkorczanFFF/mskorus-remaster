@@ -1,4 +1,9 @@
-import type { ExperienceEntry, NonWebProject, ProjectEntry, ServiceEntry } from '@/locale/types';
+import type {
+  ExperienceEntry,
+  NonWebProject,
+  ProjectEntry,
+  ServiceEntry,
+} from '@/locale/types';
 
 export const services: ServiceEntry[] = [
   {
@@ -119,8 +124,7 @@ export const projects: ProjectEntry[] = [
     id: 3,
     pic: '/projects/portfolio.jpg',
     title: 'MSKORUS - moje portfolio',
-    technos:
-      'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
+    technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
     description:
       'Jednostronicowe portfolio ze sceną 3D i wbudowaną webową wersją CV. Scena jest modelowana w Blenderze i konwertowana do komponentów React Three Fiber JSX dla łatwiejszej interaktywności. Czyste eksperymenty webowe i poligon React Three Fiber.',
     live: 'https://mskorus.vercel.app/',
@@ -140,7 +144,7 @@ export const projects: ProjectEntry[] = [
     live: 'https://yet-another-weather-app.vercel.app/',
     git: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp/',
     resumeDescription:
-      '\'Kolejna Aplikacja Pogodowa\', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem.',
+      "'Kolejna Aplikacja Pogodowa', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem.",
   },
 ];
 

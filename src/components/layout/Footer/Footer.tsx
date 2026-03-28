@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import { scrambleReveal } from '@/lib/scrambleReveal';
 import {
   CallIcon,
   CookieIcon,
@@ -28,44 +29,6 @@ const networkLinks = [
     icon: GithubIcon,
   },
 ] as const;
-
-const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@&%';
-
-function randomString(text: string) {
-  let result = '';
-  for (let i = 0; i < text.length; i++) {
-    result +=
-      text[i] === ' '
-        ? ' '
-        : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-  }
-  return result;
-}
-
-function scrambleReveal(el: HTMLElement, text: string, duration: number) {
-  const len = text.length;
-  el.textContent = randomString(text);
-  const proxy = { progress: 0 };
-  return gsap.to(proxy, {
-    progress: 1,
-    duration,
-    ease: 'power1.in',
-    onUpdate() {
-      const locked = Math.floor(proxy.progress * len);
-      let result = text.substring(0, locked);
-      for (let i = locked; i < len; i++) {
-        result +=
-          text[i] === ' '
-            ? ' '
-            : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-      }
-      el.textContent = result;
-    },
-    onComplete() {
-      el.textContent = text;
-    },
-  });
-}
 
 export default function Footer(): React.JSX.Element {
   const { t } = useLocale();
@@ -117,7 +80,7 @@ export default function Footer(): React.JSX.Element {
           <div className='md:w-3/5'>
             <h2
               ref={headingRef}
-              className='font-unica mb-12 text-6xl font-extrabold tracking-tighter text-primary-blue md:text-8xl lg:text-8xl -mt-2 break-words'
+              className='font-unica mb-12 text-6xl font-extrabold tracking-tighter text-primary-blue md:text-8xl lg:text-8xl -mt-2 wrap-break-word'
             >
               {t.footerHeading}
             </h2>

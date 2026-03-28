@@ -10,40 +10,41 @@ Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. 
 
 ### Core
 
-| Technology | Version | Purpose |
-|---|---|---|
-| Next.js | 16.2 | Framework (SSR, routing, optimization) |
-| React | 19.2 | UI library |
-| TypeScript | 5.9 | Type safety |
-| TailwindCSS | 3.4 | Utility-first styling |
+| Technology  | Version | Purpose                                |
+| ----------- | ------- | -------------------------------------- |
+| Next.js     | 16.2    | Framework (SSR, routing, optimization) |
+| React       | 19.2    | UI library                             |
+| TypeScript  | 6.0     | Type safety                            |
+| TailwindCSS | 4.2     | Utility-first styling                  |
 
 ### 3D & Animation
 
-| Technology | Version | Purpose |
-|---|---|---|
-| Three.js | 0.183 | 3D rendering engine |
-| @react-three/fiber | 9.5 | React renderer for Three.js |
-| @react-three/drei | 10.7 | R3F helpers & abstractions |
-| GSAP | 3.14 | Scroll-triggered animations (ScrollTrigger) |
-| Lenis | 1.3 | Smooth scrolling |
-| maath | 0.10 | Math utilities for 3D |
+| Technology         | Version | Purpose                                     |
+| ------------------ | ------- | ------------------------------------------- |
+| Three.js           | 0.183   | 3D rendering engine                         |
+| @react-three/fiber | 9.5     | React renderer for Three.js                 |
+| @react-three/drei  | 10.7    | R3F helpers & abstractions                  |
+| GSAP               | 3.14    | Scroll-triggered animations (ScrollTrigger) |
+| Lenis              | 1.3     | Smooth scrolling                            |
+| maath              | 0.10    | Math utilities for 3D                       |
 
 ### Utilities
 
-| Technology | Purpose |
-|---|---|
-| react-icons | Icon library (50+ tech icons) |
-| react-device-detect | Mobile/desktop conditional rendering |
-| react-intersection-observer | Viewport visibility detection |
-| html2canvas-pro + jsPDF | Resume PDF export |
-| @vercel/analytics | Usage analytics |
-| @vercel/speed-insights | Performance monitoring |
+| Technology                  | Purpose                         |
+| --------------------------- | ------------------------------- |
+| react-icons                 | Icon library (50+ tech icons)   |
+| react-error-boundary        | Error boundary for WebGL canvas |
+| react-intersection-observer | Viewport visibility detection   |
+| html2canvas-pro + jsPDF     | Resume PDF export               |
+| @vercel/analytics           | Usage analytics                 |
+| @vercel/speed-insights      | Performance monitoring          |
 
 ---
 
 ## Features
 
 ### 3D Hero Scene
+
 - Portrait image converted to an interactive particle field at runtime
 - Animated bio text particles
 - Camera rig responding to mouse movement
@@ -51,21 +52,25 @@ Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. 
 - Frameloop pauses when hero is out of viewport
 
 ### Scroll Animations (GSAP ScrollTrigger)
+
 - Horizontal-scroll portfolio gallery (desktop)
 - Parallax experience slides with staggered entrances
 - Service card reveal animations
 - Technology icon scale/fade effects
 
 ### Internationalization
+
 - English and Polish with full content translation
 - Browser language auto-detection with localStorage persistence
 - Covers navigation, sections, projects, experience, services, and contact
 
 ### Resume
+
 - Dedicated `/resume` page with web-native CV layout
 - One-click PDF export via html2canvas + jsPDF
 
 ### Other
+
 - Custom cursor (desktop only, fine pointer)
 - Active section tracking in header navigation
 - SEO: sitemap generation, Schema.org structured data, meta tags
@@ -117,13 +122,13 @@ src/
 
 ## Showcased Projects
 
-| Project | Stack | Links |
-|---|---|---|
-| **Polonez Autodrive** | JavaScript, Three.js, 3D Studio Max | [Live](https://polonez-autodrive.vercel.app/) · [Repo](https://github.com/SkorczanFFF/Polonez-Autodrive) |
-| **VAT-OFF** | JavaScript, Chrome Extension API, CSS | [Chrome Web Store](https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl) · [Repo](https://github.com/SkorczanFFF/VAT-OFF) |
-| **Chandrastic** [WIP] | React, TypeScript, Python, FastAPI | — |
-| **MSKORUS Portfolio** | Next.js, TypeScript, TailwindCSS, R3F, Blender | [Live](https://mskorus.vercel.app/) · [Repo](https://github.com/SkorczanFFF/mskorus-remaster) |
-| **Yet Another Weather App** | React, JavaScript, Sass, Vanta.js, Open-Meteo | [Live](https://yet-another-weather-app.vercel.app/) · [Repo](https://github.com/SkorczanFFF/YetAnotherWeatherApp/) |
+| Project                     | Stack                                          | Links                                                                                                                                                  |
+| --------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Polonez Autodrive**       | JavaScript, Three.js, 3D Studio Max            | [Live](https://polonez-autodrive.vercel.app/) · [Repo](https://github.com/SkorczanFFF/Polonez-Autodrive)                                               |
+| **VAT-OFF**                 | JavaScript, Chrome Extension API, CSS          | [Chrome Web Store](https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl) · [Repo](https://github.com/SkorczanFFF/VAT-OFF) |
+| **Chandrastic** [WIP]       | React, TypeScript, Python, FastAPI             | —                                                                                                                                                      |
+| **MSKORUS Portfolio**       | Next.js, TypeScript, TailwindCSS, R3F, Blender | [Live](https://mskorus.vercel.app/) · [Repo](https://github.com/SkorczanFFF/mskorus-remaster)                                                          |
+| **Yet Another Weather App** | React, JavaScript, Sass, Vanta.js, Open-Meteo  | [Live](https://yet-another-weather-app.vercel.app/) · [Repo](https://github.com/SkorczanFFF/YetAnotherWeatherApp/)                                     |
 
 ---
 
@@ -138,16 +143,16 @@ npm run dev
 
 ### Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Development server |
-| `npm run build` | Production build |
-| `npm start` | Start production server |
-| `npm run lint` | Lint source files |
-| `npm run lint:fix` | Lint, fix, and format |
-| `npm run typecheck` | TypeScript type checking |
-| `npm test` | Run Jest tests |
-| `npm run format` | Format all files with Prettier |
+| Command             | Description                    |
+| ------------------- | ------------------------------ |
+| `npm run dev`       | Development server             |
+| `npm run build`     | Production build               |
+| `npm start`         | Start production server        |
+| `npm run lint`      | Lint source files              |
+| `npm run lint:fix`  | Lint, fix, and format          |
+| `npm run typecheck` | TypeScript type checking       |
+| `npm test`          | Run Jest tests                 |
+| `npm run format`    | Format all files with Prettier |
 
 ---
 
@@ -157,13 +162,13 @@ npm run dev
 
 **Color palette:**
 
-| Color | Hex | Usage |
-|---|---|---|
-| Primary Blue | `#001a25` | Main background |
-| Secondary Blue | `#0b0d16` | Dark accent areas |
-| White | `#e4e4e4` | Body text |
-| Raspberry | `#801834` | Accent, hover states |
-| Orange | `#992210` | Secondary accent |
+| Color          | Hex       | Usage                |
+| -------------- | --------- | -------------------- |
+| Primary Blue   | `#001a25` | Main background      |
+| Secondary Blue | `#0b0d16` | Dark accent areas    |
+| White          | `#e4e4e4` | Body text            |
+| Raspberry      | `#801834` | Accent, hover states |
+| Orange         | `#992210` | Secondary accent     |
 
 ---
 

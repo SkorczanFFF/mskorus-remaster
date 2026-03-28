@@ -1,4 +1,9 @@
-import type { ExperienceEntry, NonWebProject, ProjectEntry, ServiceEntry } from '@/locale/types';
+import type {
+  ExperienceEntry,
+  NonWebProject,
+  ProjectEntry,
+  ServiceEntry,
+} from '@/locale/types';
 
 export const services: ServiceEntry[] = [
   {
@@ -119,8 +124,7 @@ export const projects: ProjectEntry[] = [
     id: 3,
     pic: '/projects/portfolio.jpg',
     title: 'MSKORUS - my portfolio',
-    technos:
-      'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
+    technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
     description:
       'Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier interactivity. Pure web experiments and React Three Fiber battleground.',
     live: 'https://mskorus.vercel.app/',

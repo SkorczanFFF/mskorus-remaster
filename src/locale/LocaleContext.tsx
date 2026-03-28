@@ -26,8 +26,12 @@ const LocaleContext = createContext<LocaleContextValue>({
 
 function getStoredLocale(): Locale {
   if (typeof window === 'undefined') return 'en';
-  const stored = localStorage.getItem('locale');
-  if (stored === 'en' || stored === 'pl') return stored;
+  try {
+    const stored = localStorage.getItem('locale');
+    if (stored === 'en' || stored === 'pl') return stored;
+  } catch {
+    /* private browsing or quota exceeded */
+  }
   const browserLang = navigator.language?.slice(0, 2);
   return browserLang === 'pl' ? 'pl' : 'en';
 }
@@ -41,7 +45,11 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
-    localStorage.setItem('locale', locale);
+    try {
+      localStorage.setItem('locale', locale);
+    } catch {
+      /* private browsing or quota exceeded */
+    }
   }, [locale]);
 
   const setLocale = useCallback((l: Locale) => setLocaleState(l), []);

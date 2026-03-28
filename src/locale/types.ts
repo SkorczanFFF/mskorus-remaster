@@ -53,6 +53,7 @@ export type Dictionary = {
   navContact: string;
   navResume: string;
   toggleMenu: string;
+  navMenuLabel: string;
 
   heroGreeting: string;
   heroName: string;
@@ -75,7 +76,6 @@ export type Dictionary = {
   experienceSectionTitle: string;
   experiences: ExperienceEntry[];
 
-  techStackTitle: string;
   techCategoryFrontend: string;
   techCategoryBackend: string;
   techCategoryDatabase: string;
@@ -93,10 +93,7 @@ export type Dictionary = {
 
   contactPhone: string;
   contactEmail: string;
-  contactResponseTime: string;
-  contactCompanyName: string;
   contactCompanyInfo: string;
-  contactNip: string;
   contactLocation: string;
   contactInvoiceInfo: string;
 
@@ -128,16 +125,11 @@ export type Dictionary = {
   cookieDescription: string;
   cookieAcceptAll: string;
   cookieRejectAll: string;
-  cookieManagePreferences: string;
-  cookiePreferencesTitle: string;
   cookieSavePreferences: string;
-  cookieClose: string;
   cookieNecessaryTitle: string;
   cookieNecessaryDescription: string;
   cookieAnalyticsTitle: string;
   cookieAnalyticsDescription: string;
-  cookieSettings: string;
-
   cookiePolicyTitle: string;
   cookiePolicyIntro: string;
   cookiePolicyWhatAreCookiesTitle: string;

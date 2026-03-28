@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 
+import { BREAKPOINTS } from '@/lib/breakpoints';
 import { gsap } from '@/lib/gsap';
 import { techIconMap } from '@/lib/shared/techMap';
 import { useScrollTriggers } from '@/hooks/useScrollTriggers';
@@ -38,9 +39,9 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
   useScrollTriggers(() => {
     if (!containerRef.current) return [];
 
-    const isSmallScreen = window.innerWidth < 1024;
+    const isSmallScreen = window.innerWidth < BREAKPOINTS.lg;
     const isMediumScreen =
-      window.innerWidth >= 1024 && window.innerWidth < 1280;
+      window.innerWidth >= BREAKPOINTS.lg && window.innerWidth < BREAKPOINTS.xl;
 
     if (isSmallScreen) {
       gsap.set(containerRef.current, { x: 0 });
@@ -77,10 +78,11 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
 
   return (
     <div
-      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-sm ${index % 2 === 0
+      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-xs ${
+        index % 2 === 0
           ? 'gradient-slow self-end pl-2 md:pl-10'
           : 'gradient-slow justify-end self-start pr-2 md:pr-10'
-        }`}
+      }`}
     >
       <div ref={containerRef} className='flex w-full max-w-[750px]'>
         <div className='bg-primary-blue flex-1 p-6 md:py-4 text-[14px] lg:mx-auto'>
@@ -108,7 +110,7 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
                   return Icon ? (
                     <span
                       key={i}
-                      className='hover:text-raspberry px-1 py-[0] text-[#c7c7c7] transition-colors duration-200'
+                      className='hover:text-raspberry px-1 py-0 text-[#c7c7c7] transition-colors duration-200'
                     >
                       <Icon className='text-xl' />
                     </span>
@@ -119,8 +121,9 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
             {exp.duties.map((duty, i) => (
               <p
                 key={i}
-                className={`${i === exp.duties.length - 1 ? 'mb-1' : 'mb-2'
-                  } font-light leading-4 text-[#f8f8f8]`}
+                className={`${
+                  i === exp.duties.length - 1 ? 'mb-1' : 'mb-2'
+                } font-light leading-4 text-[#f8f8f8]`}
               >
                 - {duty}
               </p>

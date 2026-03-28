@@ -47,75 +47,43 @@ export default function PortfolioProjectItem({
   project,
 }: PortfolioProjectItemProps): React.JSX.Element {
   return (
-    <div className='w-full max-w-[900px]'>
-      {/* === Desktop layout === */}
-      <div className='hidden md:block'>
-        {/* Title — above image */}
-        <a
-          href={project.git || undefined}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='project-title inline-block'
-        >
-          <h4 className='font-unica gradient inline-block bg-gradient-to-r from-raspberry to-orange-dark px-4 py-1 text-3xl font-normal transition-colors duration-150 hover:text-primary-blue lg:text-4xl'>
-            {project.title}
-          </h4>
-        </a>
+    <div className='w-full max-w-[900px] flex flex-col'>
+      {/* Title — above image on desktop (order-1), below on mobile (order-2) */}
+      <a
+        href={project.git || undefined}
+        target='_blank'
+        rel='noopener noreferrer'
+        className='project-title order-2 md:order-1 mt-4 md:mt-0 px-1 md:px-0'
+      >
+        <h4 className='font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 text-2xl md:text-3xl lg:text-4xl font-normal transition-colors duration-150 hover:text-primary-blue block md:inline-block mb-3 md:mb-0'>
+          {project.title}
+        </h4>
+      </a>
 
-        {/* Image with description overlay at bottom */}
-        <div className='relative overflow-hidden border-2 border-orange'>
-          <img
-            src={project.pic}
-            alt={project.title}
-            loading='lazy'
-            className='block w-full'
-          />
-
-          {/* Description overlay — bottom of image, GSAP controlled */}
-          <div className='project-overlay absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-blue/95 via-primary-blue/80 to-transparent px-4 pb-2 pt-4 opacity-0'>
-            <p className='text-sm font-extralight leading-relaxed text-white/90'>
-              {project.description}
-            </p>
-          </div>
-        </div>
-
-        {/* Under image: technos (left) + links (right) */}
-        <div className='project-meta mt-2 flex items-center justify-between opacity-0'>
-          <p className='text-sm tracking-wide text-gray-400'>
-            {project.technos}
+      {/* Image with desktop-only description overlay */}
+      <div className='order-1 md:order-2 relative overflow-hidden border-2 border-orange'>
+        <img
+          src={project.pic}
+          alt={project.title}
+          loading='lazy'
+          className='block w-full'
+        />
+        <div className='project-overlay absolute inset-x-0 bottom-0 bg-linear-to-t from-primary-blue/95 via-primary-blue/80 to-transparent px-4 pb-2 pt-4 opacity-0 hidden md:block'>
+          <p className='text-sm font-extralight leading-relaxed text-white/90'>
+            {project.description}
           </p>
-          <ProjectLinks project={project} />
         </div>
       </div>
 
-      {/* === Mobile layout === */}
-      <div className='md:hidden'>
-        <div className='overflow-hidden border-2 border-orange'>
-          <img
-            src={project.pic}
-            alt={project.title}
-            loading='lazy'
-            className='block w-full'
-          />
-        </div>
-        <div className='mt-4 flex flex-col gap-1 px-1'>
-          <a
-            href={project.git || undefined}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <h4 className='font-unica gradient mb-3 block bg-gradient-to-r from-raspberry to-orange-dark px-4 py-1 text-2xl font-normal transition-colors duration-150 hover:text-primary-blue'>
-              {project.title}
-            </h4>
-          </a>
-          <p className='mb-2 text-sm tracking-wide text-gray-400'>
-            {project.technos}
-          </p>
-          <p className='mb-4 text-sm font-extralight leading-relaxed'>
-            {project.description}
-          </p>
-          <ProjectLinks project={project} />
-        </div>
+      {/* Meta: technos + links — row on desktop (GSAP animated), column on mobile */}
+      <div className='project-meta order-3 mt-2 flex flex-col px-1 md:flex-row md:items-center md:justify-between md:px-0 md:opacity-0'>
+        <p className='mb-2 md:mb-0 text-sm tracking-wide text-gray-400'>
+          {project.technos}
+        </p>
+        <p className='mb-4 text-sm font-extralight leading-relaxed md:hidden'>
+          {project.description}
+        </p>
+        <ProjectLinks project={project} />
       </div>
     </div>
   );

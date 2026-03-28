@@ -1,11 +1,8 @@
 import React, { useRef } from 'react';
 
+import { BREAKPOINTS } from '@/lib/breakpoints';
 import { gsap } from '@/lib/gsap';
-import {
-  DockerIcon,
-  GlobeIcon,
-  ReactIcon,
-} from '@/lib/shared/Icons';
+import { DockerIcon, GlobeIcon, ReactIcon } from '@/lib/shared/Icons';
 import { useScrollTriggers } from '@/hooks/useScrollTriggers';
 
 import { useLocale } from '@/locale/LocaleContext';
@@ -40,12 +37,9 @@ export default function Services(): React.JSX.Element {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useScrollTriggers(() => {
-    if (!gridRef.current || window.innerWidth < 768) return [];
+    if (!gridRef.current || window.innerWidth < BREAKPOINTS.md) return [];
 
-    const cards = gsap.utils.toArray<Element>(
-      '.service-card',
-      gridRef.current,
-    );
+    const cards = gsap.utils.toArray<Element>('.service-card', gridRef.current);
     if (!cards.length) return [];
 
     gsap.set(cards, { opacity: 0, y: 40 });

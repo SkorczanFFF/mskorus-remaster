@@ -17,7 +17,6 @@ import {
 } from 'react-icons/bs';
 import { DiMongodb, DiPhotoshop, DiPhp } from 'react-icons/di';
 import { GiGuitarBassHead } from 'react-icons/gi';
-import { LiaCookieBiteSolid } from 'react-icons/lia';
 import { GrMysql } from 'react-icons/gr';
 import { HiChip, HiMusicNote } from 'react-icons/hi';
 import { HiMiniLanguage } from 'react-icons/hi2';
@@ -29,6 +28,7 @@ import {
   IoLogoReact,
   IoLogoWordpress,
 } from 'react-icons/io5';
+import { LiaCookieBiteSolid } from 'react-icons/lia';
 import {
   SiAutodesk,
   SiBitbucket,

@@ -10,7 +10,10 @@ import Seo from '@/components/Seo';
 import Technos from '@/components/Technos/Technos';
 
 const HeroNoSSR = dynamic(() => import('@/components/Hero/Hero'), {
-  ssr: true,
+  ssr: false,
+  loading: () => (
+    <section className='-mt-[60px] h-[99vh] w-full bg-[#001a25]' />
+  ),
 });
 
 export default function HomePage() {
