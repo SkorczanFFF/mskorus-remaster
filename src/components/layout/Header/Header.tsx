@@ -15,6 +15,7 @@ function LocaleToggle({ className }: { className?: string }) {
   return (
     <button
       onClick={() => setLocale(locale === 'en' ? 'pl' : 'en')}
+      aria-label={locale === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
       className={`font-unica flex items-center gap-1 text-xl md:text-md tracking-wider text-white transition-colors ${className ?? ''}`}
     >
       <span

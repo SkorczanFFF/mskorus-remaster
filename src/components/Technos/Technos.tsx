@@ -24,10 +24,10 @@ const techCategories: Record<string, TechEntry[]> = Object.fromEntries(
 function TechIcon({ tech }: { tech: TechEntry }) {
   return (
     <div
-      className='tech-icon text-primary-blue hover:text-raspberry flex w-[75px] cursor-pointer flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px]'
+      className='tech-icon group text-primary-blue hover:text-raspberry flex w-[75px] flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px] [perspective:200px]'
       style={{ willChange: 'opacity' }}
     >
-      <tech.Icon className='text-4xl sm:text-5xl' />
+      <tech.Icon className='text-4xl sm:text-5xl transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(360deg)]' />
       <span className='text-center text-xs'>{tech.label}</span>
     </div>
   );
@@ -124,10 +124,14 @@ export default function Technos(): React.JSX.Element {
     <section
       ref={sectionRef}
       id='technologies'
+      aria-label='Technologies'
       className='font-grotesk relative flex h-full w-full flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[120px]'
     >
       <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         <div className='flex w-full flex-col' ref={frontendRef}>
+          <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-md font-semibold capitalize text-white'>
+            {categoryLabels.frontend}
+          </h3>
           <div className='flex w-full justify-between'>
             {techCategories.frontend.map((tech) => (
               <TechIcon key={tech.label} tech={tech} />
@@ -137,9 +141,9 @@ export default function Technos(): React.JSX.Element {
 
         <div className='flex w-full gap-6 xl:flex-row'>
           <div className='max-w-2/3 flex w-full flex-col' ref={backendRef}>
-            <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
+            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-md font-semibold capitalize text-white'>
               {categoryLabels.backend}
-            </h4>
+            </h3>
             <div className='flex w-full gap-[12px]'>
               {techCategories.backend.map((tech) => (
                 <TechIcon key={tech.label} tech={tech} />
@@ -148,9 +152,9 @@ export default function Technos(): React.JSX.Element {
           </div>
 
           <div className='flex w-1/3 flex-col' ref={databaseRef}>
-            <h4 className='mb-2 mr-6 self-end text-lg font-semibold capitalize'>
+            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-right text-md font-semibold capitalize text-white'>
               {categoryLabels.database}
-            </h4>
+            </h3>
             <div className='flex w-full gap-[10px]'>
               {techCategories.database.map((tech) => (
                 <TechIcon key={tech.label} tech={tech} />
@@ -161,9 +165,9 @@ export default function Technos(): React.JSX.Element {
 
         <div className='flex w-full gap-10 xl:flex-row'>
           <div className='flex flex-col' ref={designRef}>
-            <h4 className='mb-2 ml-6 self-start text-lg font-semibold capitalize'>
+            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-md font-semibold capitalize text-white'>
               {categoryLabels.design}
-            </h4>
+            </h3>
             <div className='flex w-full gap-[20px]'>
               {techCategories.design.map((tech) => (
                 <TechIcon key={tech.label} tech={tech} />
@@ -172,9 +176,9 @@ export default function Technos(): React.JSX.Element {
           </div>
 
           <div className='flex flex-col' ref={toolsRef}>
-            <h4 className='mb-2 mr-6 self-end text-lg font-semibold capitalize'>
+            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-right text-md font-semibold capitalize text-white'>
               {categoryLabels.tools}
-            </h4>
+            </h3>
             <div className='flex w-full gap-[20px]'>
               {techCategories.tools.map((tech) => (
                 <TechIcon key={tech.label} tech={tech} />
@@ -184,19 +188,14 @@ export default function Technos(): React.JSX.Element {
         </div>
       </div>
 
-      <div className='px-4 md:px-0 my-10 flex w-full flex-col gap-10 md:max-w-[740px] lg:max-w-[900px] xl:hidden'>
-        {Object.entries(techCategories).map(([category, techs]) => (
-          <div key={category} className='flex w-full flex-col  items-center'>
-            <h4 className='mb-6 text-lg font-semibold capitalize'>
-              {categoryLabels[category] ?? category}
-            </h4>
-            <div className='flex flex-wrap gap-4 md:gap-2 md:gap-y-8 justify-center gap-y-8'>
-              {techs.map((tech) => (
-                <TechIcon key={tech.label} tech={tech} />
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className='my-10 w-full px-2 md:px-0 xl:hidden'>
+        <div className='mx-auto grid grid-cols-4 justify-items-center gap-x-1 gap-y-4 md:gap-x-2 lg:max-w-[1100px]'>
+          {Object.entries(techCategories).flatMap(([, techs]) =>
+            techs.map((tech) => (
+              <TechIcon key={tech.label} tech={tech} />
+            )),
+          )}
+        </div>
       </div>
     </section>
   );

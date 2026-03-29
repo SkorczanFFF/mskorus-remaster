@@ -100,22 +100,22 @@ export default function CookiesPage() {
               <table className='w-full min-w-[640px] text-left text-sm'>
                 <thead>
                   <tr className='border-b-2 border-raspberry/20 bg-primary-blue text-white'>
-                    <th className='px-4 py-3 font-medium'>
+                    <th scope='col' className='px-4 py-3 font-medium'>
                       {t.cookiePolicyTableName}
                     </th>
-                    <th className='px-4 py-3 font-medium'>
+                    <th scope='col' className='px-4 py-3 font-medium'>
                       {t.cookiePolicyTableProvider}
                     </th>
-                    <th className='px-4 py-3 font-medium'>
+                    <th scope='col' className='px-4 py-3 font-medium'>
                       {t.cookiePolicyTablePurpose}
                     </th>
-                    <th className='px-4 py-3 font-medium'>
+                    <th scope='col' className='px-4 py-3 font-medium'>
                       {t.cookiePolicyTableCategory}
                     </th>
-                    <th className='px-4 py-3 font-medium'>
+                    <th scope='col' className='px-4 py-3 font-medium'>
                       {t.cookiePolicyTableType}
                     </th>
-                    <th className='px-4 py-3 font-medium'>
+                    <th scope='col' className='px-4 py-3 font-medium'>
                       {t.cookiePolicyTableDuration}
                     </th>
                   </tr>

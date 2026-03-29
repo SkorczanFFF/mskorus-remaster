@@ -230,7 +230,7 @@ export default function Hero(): React.JSX.Element {
           {/* Names — top on mobile, right-center on desktop */}
           <div
             ref={namesRef}
-            className='absolute z-20 top-[100px] left-[20px] md:top-1/2 md:-translate-y-1/2 md:left-auto md:right-0 md:w-[calc(50%-100px)] pointer-events-none opacity-0'
+            className='absolute z-20 top-[100px] left-[20px] md:top-1/3 md:left-auto md:right-0 md:w-[calc(50%-100px)] pointer-events-none opacity-0'
           >
             <div
               className='pointer-events-auto select-text'
@@ -255,18 +255,18 @@ export default function Hero(): React.JSX.Element {
           {/* Headline — bottom on mobile, below names on desktop */}
           <div
             ref={headlineRef}
-            className=' absolute z-20 bottom-[200px] right-[20px] md:top-[calc(50%+120px)] md:bottom-auto md:left-auto md:right-0 md:w-[calc(50%-100px)] md:ml-[20px] pointer-events-none opacity-0'
+            className=' absolute z-20 bottom-[200px] right-[20px] md:top-[55%] md:bottom-auto md:left-auto md:right-0 md:w-[calc(50%-100px)] md:ml-[20px] pointer-events-none opacity-0 text-right md:text-left backdrop-blur-[10px] md:backdrop-blur-0 p-4 md: p-0'
           >
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-6'>
               <span
                 ref={headlinePart1Ref}
-                className='block text-2xl lg:text-3xl text-white/90 font-light tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0'
+                className='block text-2xl lg:text-4xl text-white/90 font-light tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0'
               >
                 {t.heroHeadline.split('. ')[0]}.
               </span>
               <span
                 ref={headlinePart2Ref}
-                className='block text-2xl lg:text-3xl text-white font-medium tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0'
+                className='block text-2xl lg:text-4xl text-white font-medium tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0'
               >
                 {t.heroHeadline.split('. ')[1]}
               </span>

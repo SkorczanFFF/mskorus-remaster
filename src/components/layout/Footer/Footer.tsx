@@ -98,14 +98,14 @@ export default function Footer(): React.JSX.Element {
                 className='group flex items-center gap-2 text-lg font-semibold text-primary-blue transition-all duration-200 hover:translate-x-1 hover:text-raspberry'
               >
                 {t.contactEmail}
-                <MailIcon className='text-base opacity-0 transition-opacity duration-200 group-hover:opacity-100' />
+                <MailIcon className='text-base opacity-0 transition-opacity duration-200 group-hover:opacity-100' aria-hidden='true' />
               </a>
               <a
                 href={`tel:${t.contactPhone.replace(/\s/g, '')}`}
                 className='group flex items-center gap-2 text-lg font-semibold text-primary-blue transition-all duration-200 hover:translate-x-1 hover:text-raspberry'
               >
                 {t.contactPhone}
-                <CallIcon className='text-base opacity-0 transition-opacity duration-200 group-hover:opacity-100' />
+                <CallIcon className='text-base opacity-0 transition-opacity duration-200 group-hover:opacity-100' aria-hidden='true' />
               </a>
             </div>
           </div>
@@ -136,9 +136,10 @@ export default function Footer(): React.JSX.Element {
                       href={href}
                       target='_blank'
                       rel='noopener noreferrer'
+                      aria-label={`${label} (opens in new tab)`}
                       className='flex items-center gap-2 font-bold text-primary-blue/50 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
                     >
-                      <Icon className='text-base' />
+                      <Icon className='text-base' aria-hidden='true' />
                       <span>{label}</span>
                     </a>
                   ))}
@@ -154,14 +155,14 @@ export default function Footer(): React.JSX.Element {
                     href='/resume'
                     className='flex items-center gap-2 font-bold text-primary-blue/50 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
                   >
-                    <GlobeIcon className='text-base' />
+                    <GlobeIcon className='text-base' aria-hidden='true' />
                     <span>{t.footerResumeOnline}</span>
                   </Link>
                   <Link
                     href='/resume?download=1'
                     className='flex items-center gap-2 font-bold text-primary-blue/50 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
                   >
-                    <PdfIcon className='text-base' />
+                    <PdfIcon className='text-base' aria-hidden='true' />
                     <span>{t.footerResumeDownload}</span>
                   </Link>
                 </nav>
@@ -186,7 +187,7 @@ export default function Footer(): React.JSX.Element {
           href='/cookies'
           className='flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-white/70 transition-colors duration-200 hover:text-white'
         >
-          <CookieIcon className='text-xs' />
+          <CookieIcon className='text-xs' aria-hidden='true' />
           {t.cookiePolicyTitle}
         </Link>
       </div>

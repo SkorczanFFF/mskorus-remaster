@@ -31,16 +31,18 @@ const ResumeProject: React.FC<ResumeProjectProps> = ({
           href={project.git}
           target='_blank'
           rel='noreferrer'
+          aria-label={`${repo} (opens in new tab)`}
         >
-          <GithubIcon className='text-3xl' /> {repo}
+          <GithubIcon className='text-3xl' aria-hidden='true' /> {repo}
         </a>
         <a
           className='hover:text-raspberry flex cursor-pointer items-center gap-2 duration-150'
           href={project.live}
           target='_blank'
           rel='noreferrer'
+          aria-label={`${demo} (opens in new tab)`}
         >
-          <GlobeIcon className='text-2xl' /> {demo}
+          <GlobeIcon className='text-2xl' aria-hidden='true' /> {demo}
         </a>
       </div>
     </div>
@@ -89,7 +91,7 @@ export default function ResumeContent({
                       </p>
                     </div>
                   </div>
-                  <div className=' flex w-full flex-col items-start gap-2 text-xl'>
+                  <ul className='flex w-full list-none flex-col items-start gap-2 text-xl'>
                     {exp.duties.map((duty, i) => (
                       <li
                         key={i}
@@ -98,7 +100,7 @@ export default function ResumeContent({
                         {duty}
                       </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               ))}
             </div>

@@ -36,7 +36,7 @@ export const experiences: ExperienceEntry[] = [
   {
     company: 'BUSINESS SERVICE GALOP',
     position: 'Front-End Developer',
-    date: 'MAJ 2024 - SIE 2025',
+    date: 'MAJ 2024 - SIERPIEŃ 2025',
     resumeDate: 'Maj 2024 - Sierpień 2025',
     stack: [
       'PHP',
@@ -61,7 +61,7 @@ export const experiences: ExperienceEntry[] = [
   {
     company: 'ANFATA GAMES',
     position: 'Junior Web3 Frontend Developer',
-    date: 'WRZ 2022 - SIE 2023',
+    date: 'WRZESIEŃ 2022 - SIERPIEŃ 2023',
     resumeDate: 'Wrzesień 2022 - Sierpień 2023',
     stack: [
       'Next.js',

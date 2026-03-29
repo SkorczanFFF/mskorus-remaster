@@ -20,9 +20,10 @@ function ProjectLinks({ project }: { project: ProjectEntry }) {
           href={project.git}
           target='_blank'
           rel='noopener noreferrer'
+          aria-label={`${t.portfolioRepo} (opens in new tab)`}
           className='flex items-center gap-2 text-orange-dark transition-colors duration-150 hover:text-white'
         >
-          <GithubIcon className='text-xl' />
+          <GithubIcon className='text-xl' aria-hidden='true' />
           <span className='text-sm'>{t.portfolioRepo}</span>
         </a>
       )}
@@ -31,9 +32,10 @@ function ProjectLinks({ project }: { project: ProjectEntry }) {
           href={project.live}
           target='_blank'
           rel='noopener noreferrer'
+          aria-label={`${project.liveLabel ?? t.portfolioLiveDemo} (opens in new tab)`}
           className='flex items-center gap-2 text-orange-dark transition-colors duration-150 hover:text-white'
         >
-          <GlobalIcon className='text-xl' />
+          <GlobalIcon className='text-xl' aria-hidden='true' />
           <span className='text-sm'>
             {project.liveLabel ?? t.portfolioLiveDemo}
           </span>
@@ -49,22 +51,31 @@ export default function PortfolioProjectItem({
   return (
     <div className='w-full max-w-[900px] flex flex-col'>
       {/* Title — above image on desktop (order-1), below on mobile (order-2) */}
-      <a
-        href={project.git || undefined}
-        target='_blank'
-        rel='noopener noreferrer'
-        className='project-title order-2 md:order-1 mt-4 md:mt-0 px-1 md:px-0'
-      >
-        <h4 className='font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 text-2xl md:text-3xl lg:text-4xl font-normal transition-colors duration-150 hover:text-primary-blue block md:inline-block mb-3 md:mb-0'>
-          {project.title}
-        </h4>
-      </a>
+      {project.git ? (
+        <a
+          href={project.git}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label={`${project.title} (opens in new tab)`}
+          className='project-title order-2 md:order-1 mt-4 md:mt-0 px-1 md:px-0'
+        >
+          <h3 className='font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 text-2xl md:text-3xl lg:text-4xl font-normal transition-colors duration-150 hover:text-primary-blue block md:inline-block mb-3 md:mb-0'>
+            {project.title}
+          </h3>
+        </a>
+      ) : (
+        <div className='project-title order-2 md:order-1 mt-4 md:mt-0 px-1 md:px-0'>
+          <h3 className='font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 text-2xl md:text-3xl lg:text-4xl font-normal block md:inline-block mb-3 md:mb-0'>
+            {project.title}
+          </h3>
+        </div>
+      )}
 
       {/* Image with desktop-only description overlay */}
       <div className='order-1 md:order-2 relative overflow-hidden border-2 border-orange'>
         <img
           src={project.pic}
-          alt={project.title}
+          alt={`Screenshot of ${project.title}`}
           loading='lazy'
           className='block w-full'
         />

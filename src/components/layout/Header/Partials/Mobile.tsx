@@ -15,7 +15,7 @@ const Mobile = React.forwardRef<HTMLButtonElement, MobileProps>(
         ref={ref}
         onClick={handleClick}
         aria-expanded={isMenuOpen}
-        className='relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden'
+        className='relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 drop-shadow-[0_3px_4px_#001A2566] lg:hidden'
         aria-label={t.toggleMenu}
       >
         <span

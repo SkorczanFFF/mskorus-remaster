@@ -19,22 +19,25 @@ export default function Portfolio(): React.JSX.Element {
     <section
       ref={sectionRef}
       id='portfolio'
+      aria-label='Portfolio projects'
       className='font-grotesk bg-primary-blue relative w-full overflow-hidden md:h-screen'
     >
       {/* Section title — rotated on desktop, matching Services/Experience */}
-      <h3 className='font-grotesk z-10 py-2 text-xl font-normal leading-3 tracking-[10px] text-white md:absolute md:origin-top-left md:rotate-90 md:left-[80px] md:top-[60px] md:p-4 md:left-[95px] w-full backdrop-blur-[10px]'>
+      <h2 className='font-grotesk z-10 py-2 text-xl font-normal leading-3 tracking-[10px] text-white md:absolute md:origin-top-left md:rotate-90 md:left-[80px] md:top-[60px] md:p-4 md:left-[95px] w-full backdrop-blur-[10px]'>
         {t.portfolioTitle}
-      </h3>
+      </h2>
 
       {/* Horizontal scroll track (desktop) / vertical stack (mobile) */}
       <div
         ref={trackRef}
+        role='list'
         className='flex h-auto w-full flex-col text-white will-change-transform md:h-full md:flex-row md:flex-nowrap'
       >
         {/* Project panels */}
         {t.projects.map((project, index) => (
           <div
             key={project.id}
+            role='listitem'
             className={`project-panel mobile-fade flex w-full shrink-0 items-center justify-center px-5 py-10 md:w-[1150px] md:px-[125px] md:py-0 ${index === 0 ? 'md:ml-[calc(50vw-575px)]' : ''}`}
           >
             <PortfolioProjectItem project={project} />
@@ -44,7 +47,7 @@ export default function Portfolio(): React.JSX.Element {
         {/* Non-web outro panel */}
         <div className='project-panel mobile-fade flex w-full shrink-0 flex-col items-center justify-center gap-10 px-8 py-16 md:w-[1150px] md:px-[125px] md:py-0'>
           <div className='flex w-full max-w-[900px] flex-col gap-5 xl:flex-row'>
-            <div className='flex min-w-[220px] max-w-[220px] flex-col justify-center gap-2 border-r-2 border-orange-dark bg-[#0c2835] p-5 shadow-xl md:p-8 h-[140px]'>
+            <div className='flex min-w-[220px] max-w-[220px] flex-col justify-center gap-2 border-r-2 border-orange-dark bg-deep-blue p-5 shadow-xl md:p-8 h-[140px]'>
               <h4 className='text-3xl font-unica leading-5 md:text-3xl'>
                 <div className='text-end text-raspberry'>
                   {t.portfolioNonWeb}

@@ -101,7 +101,7 @@ export default function CookieConsentBanner() {
           <div className='relative z-10 p-6'>
             {/* Header */}
             <div className='mb-3 flex items-center gap-3'>
-              <CookieIcon className='shrink-0 text-2xl text-raspberry' />
+              <CookieIcon className='shrink-0 text-2xl text-raspberry' aria-hidden='true' />
               <h2 className='text-lg font-semibold tracking-wide'>
                 {t.cookieTitle}
               </h2>
@@ -132,7 +132,7 @@ export default function CookieConsentBanner() {
                     {t.cookieNecessaryDescription}
                   </p>
                 </div>
-                <Toggle checked disabled />
+                <Toggle checked disabled aria-label={t.cookieNecessaryTitle} />
               </div>
 
               {/* Analytics — toggleable */}
@@ -148,6 +148,7 @@ export default function CookieConsentBanner() {
                 <Toggle
                   checked={analytics}
                   onChange={() => setAnalytics((v) => !v)}
+                  aria-label={t.cookieAnalyticsTitle}
                 />
               </div>
             </div>
@@ -189,16 +190,19 @@ function Toggle({
   checked,
   disabled,
   onChange,
+  'aria-label': ariaLabel,
 }: {
   checked: boolean;
   disabled?: boolean;
   onChange?: () => void;
+  'aria-label'?: string;
 }) {
   return (
     <button
       type='button'
       role='switch'
       aria-checked={checked}
+      aria-label={ariaLabel}
       disabled={disabled}
       onClick={onChange}
       className={`relative ml-4 flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 ${

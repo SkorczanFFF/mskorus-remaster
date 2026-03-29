@@ -33,7 +33,7 @@ export default function ResumeSidebar({ t }: { t: Dictionary }) {
         <div className='h-[4px] w-[95%] bg-linear-to-r from-white from-10% to-transparent to-100%' />
         <img
           src='/cvphoto.png'
-          alt='Me'
+          alt='Maciej Skorus, Frontend Developer'
           className='mx-auto mt-[60px] w-[70%]'
         />
         <div className='to-raspberry via-raspberry mt-[60px] h-[4px] w-full bg-linear-to-r from-transparent' />
@@ -55,25 +55,25 @@ export default function ResumeSidebar({ t }: { t: Dictionary }) {
             </p>
             <div className='cv-arrow -mr-1 -rotate-180 scale-75' />
           </div>
-          <div className='mx-4 mr-9 mt-2 flex flex-col gap-1 text-end text-xl text-white'>
-            <a
-              href='mailto:skorusmaciej94@gmail.com'
-              className='hover:text-orange flex items-center gap-2 duration-150'
-              target='_blank'
-              rel='noreferrer'
-            >
-              skorusmaciej94@gmail.com <MailIcon />
-            </a>
-            <a
-              href='tel:+48668366648'
-              className='hover:text-orange flex items-center justify-end gap-2 duration-150'
-              target='_blank'
-              rel='noreferrer'
-            >
-              +48 668 366 648
-              <CallIcon />
-            </a>
-          </div>
+          <ul className='mx-4 mr-9 mt-2 flex list-none flex-col gap-1 text-end text-xl text-white'>
+            <li>
+              <a
+                href='mailto:skorusmaciej94@gmail.com'
+                className='hover:text-orange flex items-center gap-2 duration-150'
+              >
+                skorusmaciej94@gmail.com <MailIcon aria-hidden='true' />
+              </a>
+            </li>
+            <li>
+              <a
+                href='tel:+48668366648'
+                className='hover:text-orange flex items-center justify-end gap-2 duration-150'
+              >
+                +48 668 366 648
+                <CallIcon aria-hidden='true' />
+              </a>
+            </li>
+          </ul>
         </div>
         <div className='mt-5 flex flex-col items-end'>
           <div className='flex items-center justify-end gap-3'>
@@ -120,24 +120,27 @@ export default function ResumeSidebar({ t }: { t: Dictionary }) {
               href='https://github.com/SkorczanFFF'
               target='_blank'
               rel='noreferrer'
+              aria-label='/skorczanFFF (opens in new tab)'
             >
-              /skorczanFFF <GithubIcon className='-mt-[2px]' />
+              /skorczanFFF <GithubIcon className='-mt-[2px]' aria-hidden='true' />
             </a>
             <a
               className='hover:text-orange flex items-center gap-2 duration-150'
               href='https://linkedin.com/mskorus'
               target='_blank'
               rel='noreferrer'
+              aria-label='/mskorus (opens in new tab)'
             >
-              /mskorus <LinkedinIcon className='-mt-[2px]' />
+              /mskorus <LinkedinIcon className='-mt-[2px]' aria-hidden='true' />
             </a>
             <a
               className='hover:text-orange flex items-center gap-2 duration-150'
               href='https://mskorus.vercel.app/'
               target='_blank'
               rel='noreferrer'
+              aria-label='mskorus.vercel.app (opens in new tab)'
             >
-              mskorus.vercel.app <VercelIcon className='-mt-[2px]' />
+              mskorus.vercel.app <VercelIcon className='-mt-[2px]' aria-hidden='true' />
             </a>
           </div>
         </div>
@@ -151,14 +154,14 @@ export default function ResumeSidebar({ t }: { t: Dictionary }) {
           <div className=' flex h-full flex-col justify-between'>
             <div className='mx-4 mr-7 mt-3 flex flex-col items-center gap-5 text-end text-xl text-white'>
               <div className='flex w-[310px] justify-between'>
-                <GuitarIcon className='text-6xl' />
-                <CarIcon className='text-6xl' />
-                <MusicIcon className='text-6xl' />
+                <GuitarIcon className='text-6xl' role='img' aria-label='Guitar' />
+                <CarIcon className='text-6xl' role='img' aria-label='Cars' />
+                <MusicIcon className='text-6xl' role='img' aria-label='Music' />
               </div>
               <div className='flex w-[310px] justify-between'>
-                <CompassIcon className='text-6xl' />
-                <ChipIcon className='text-6xl' />
-                <LanguageIcon className='text-6xl' />
+                <CompassIcon className='text-6xl' role='img' aria-label='Travel' />
+                <ChipIcon className='text-6xl' role='img' aria-label='Technology' />
+                <LanguageIcon className='text-6xl' role='img' aria-label='Languages' />
               </div>
             </div>
           </div>

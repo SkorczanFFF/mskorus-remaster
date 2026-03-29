@@ -27,7 +27,7 @@ export default function PortfolioCard({
     >
       <div className='flex w-full items-center justify-between'>
         <div className='flex flex-col'>
-          <h4 className='text-2xl font-medium font-unica'>{title}</h4>
+          <h3 className='text-2xl font-medium font-unica'>{title}</h3>
           <p className='text-[14px] text-[#b6b6b6]'>{tech}</p>
         </div>
         {links.length > 0 && (
@@ -38,9 +38,10 @@ export default function PortfolioCard({
                 href={href}
                 target='_blank'
                 rel='noopener noreferrer'
+                aria-label={`${label} (opens in new tab)`}
                 className='text-orange-dark flex cursor-pointer items-center gap-2 duration-150 hover:text-white'
               >
-                {icon}
+                <span aria-hidden='true'>{icon}</span>
                 <span>{label}</span>
               </a>
             ))}

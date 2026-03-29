@@ -39,12 +39,27 @@ const CustomCursor = () => {
       rafId.current = requestAnimationFrame(() => {
         cursor.style.left = `${event.clientX - CURSOR_SIZE / 2}px`;
         cursor.style.top = `${event.clientY - CURSOR_SIZE / 2}px`;
+        cursor.style.opacity = '1';
       });
     };
 
+    const onMouseLeave = () => {
+      cursor.style.opacity = '0';
+      document.documentElement.classList.remove('custom-cursor');
+    };
+
+    const onMouseEnter = () => {
+      cursor.style.opacity = '1';
+      document.documentElement.classList.add('custom-cursor');
+    };
+
     document.addEventListener('mousemove', onMouseMove);
+    document.documentElement.addEventListener('mouseleave', onMouseLeave);
+    document.documentElement.addEventListener('mouseenter', onMouseEnter);
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
+      document.documentElement.removeEventListener('mouseleave', onMouseLeave);
+      document.documentElement.removeEventListener('mouseenter', onMouseEnter);
       cancelAnimationFrame(rafId.current);
     };
   }, [isActive]);

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Logo() {
   return (
-    <Link href='/' className='font-unica font-bold select-none'>
+    <Link href='/' className='font-unica font-bold select-none' aria-label='SKOFTware - Back to home'>
       <span className='text-2xl'>
         <span
           className='text-orange'

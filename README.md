@@ -1,6 +1,6 @@
 # MSKORUS - Portfolio
 
-Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. Built with Next.js 16, React 19, TypeScript, and Three.js. Features an interactive 3D hero scene with image-to-particle conversion, GSAP scroll-driven animations, bilingual content (EN/PL), and a built-in web resume with PDF export.
+Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. Built with Next.js 16, React 19, TypeScript, and Three.js. Features an interactive 3D hero scene with image-to-particle conversion, custom GLSL shaders, GSAP scroll-driven animations, bilingual content (EN/PL), cookie consent management, and a built-in web resume with PDF export.
 
 **Live:** [mskorus.vercel.app](https://mskorus.vercel.app/)
 
@@ -30,14 +30,14 @@ Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. 
 
 ### Utilities
 
-| Technology                  | Purpose                         |
-| --------------------------- | ------------------------------- |
-| react-icons                 | Icon library (50+ tech icons)   |
-| react-error-boundary        | Error boundary for WebGL canvas |
-| react-intersection-observer | Viewport visibility detection   |
-| html2canvas-pro + jsPDF     | Resume PDF export               |
-| @vercel/analytics           | Usage analytics                 |
-| @vercel/speed-insights      | Performance monitoring          |
+| Technology                  | Purpose                          |
+| --------------------------- | -------------------------------- |
+| react-icons                 | Icon library (50+ tech icons)    |
+| react-error-boundary        | Error boundary for WebGL canvas  |
+| react-intersection-observer | Viewport visibility detection    |
+| html2canvas-pro + jsPDF     | Resume PDF export                |
+| @vercel/analytics           | Usage analytics                  |
+| @vercel/speed-insights      | Performance monitoring           |
 
 ---
 
@@ -46,6 +46,7 @@ Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. 
 ### 3D Hero Scene
 
 - Portrait image converted to an interactive particle field at runtime
+- Custom GLSL vertex/fragment shaders for hero and bio particles
 - Animated bio text particles
 - Camera rig responding to mouse movement
 - Adaptive rendering — mobile uses lighter materials and fewer particles
@@ -53,10 +54,12 @@ Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. 
 
 ### Scroll Animations (GSAP ScrollTrigger)
 
-- Horizontal-scroll portfolio gallery (desktop)
+- Horizontal-scroll portfolio gallery (desktop) with per-panel entrance/exit animations
+- Vertical fade-in portfolio cards (mobile)
 - Parallax experience slides with staggered entrances
 - Service card reveal animations
 - Technology icon scale/fade effects
+- Text scramble reveal animations
 
 ### Internationalization
 
@@ -66,8 +69,14 @@ Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. 
 
 ### Resume
 
-- Dedicated `/resume` page with web-native CV layout
-- One-click PDF export via html2canvas + jsPDF
+- Dedicated `/resume` page with sidebar + content layout
+- One-click PDF export via html2canvas + jsPDF (locale-aware filename)
+
+### Cookie Consent & Privacy
+
+- GDPR-compliant cookie consent banner
+- Dedicated `/cookies` policy page with cookie inventory
+- Consent preference stored in cookies with reset option
 
 ### Other
 
@@ -85,20 +94,24 @@ src/
 ├── components/
 │   ├── Hero/                  # 3D canvas, particles, background scene
 │   │   └── Partials/
-│   │       └── imageParticles/  # Image-to-particle pipeline
+│   │       ├── imageParticles/  # Image-to-particle pipeline
+│   │       └── shaders/         # GLSL vertex & fragment shaders
 │   ├── Portfolio/             # Horizontal scroll project showcase
 │   ├── Experience/            # Work history timeline
 │   ├── About/                 # Services section
 │   ├── Technos/               # Technology grid
+│   ├── Resume/                # CV sidebar + content components
 │   ├── layout/
 │   │   ├── Header/            # Nav with locale toggle (desktop + mobile)
 │   │   ├── Footer/            # Contact info
 │   │   └── Layout.tsx         # Root layout wrapper
+│   ├── CookieConsent.tsx      # GDPR cookie consent banner
 │   ├── CustomCursor.tsx
 │   └── Seo.tsx                # Meta tags, structured data
 ├── pages/
 │   ├── index.tsx              # Home (all sections)
 │   ├── resume/index.tsx       # CV page with PDF export
+│   ├── cookies/index.tsx      # Cookie policy page
 │   ├── 404.tsx
 │   ├── _app.tsx               # Lenis + LocaleProvider
 │   └── _document.tsx          # Fonts, HTML structure
@@ -108,11 +121,16 @@ src/
 │   └── data/                  # en.ts, pl.ts content files
 ├── lib/
 │   ├── gsap.ts                # GSAP + ScrollTrigger registration
+│   ├── breakpoints.ts         # Responsive breakpoint constants
+│   ├── scrambleReveal.ts      # Text scramble/reveal animation
+│   ├── generatePdf.ts         # HTML-to-PDF export utility
 │   └── shared/
 │       ├── Icons.tsx          # Centralized icon exports
 │       └── techMap.ts         # Tech-to-icon mappings
 ├── hooks/
-│   └── useScrollTriggers.ts   # GSAP trigger lifecycle management
+│   ├── useScrollTriggers.ts   # GSAP trigger lifecycle management
+│   ├── useIsMobile.ts         # Responsive mobile detection hook
+│   └── usePortfolioScroll.ts  # Portfolio scroll animation hook
 ├── styles/
 │   └── globals.css            # Global styles, animations, scrollbar
 └── __tests__/
@@ -143,16 +161,19 @@ npm run dev
 
 ### Scripts
 
-| Command             | Description                    |
-| ------------------- | ------------------------------ |
-| `npm run dev`       | Development server             |
-| `npm run build`     | Production build               |
-| `npm start`         | Start production server        |
-| `npm run lint`      | Lint source files              |
-| `npm run lint:fix`  | Lint, fix, and format          |
-| `npm run typecheck` | TypeScript type checking       |
-| `npm test`          | Run Jest tests                 |
-| `npm run format`    | Format all files with Prettier |
+| Command                | Description                    |
+| ---------------------- | ------------------------------ |
+| `npm run dev`          | Development server             |
+| `npm run build`        | Production build               |
+| `npm start`            | Start production server        |
+| `npm run lint`         | Lint source files              |
+| `npm run lint:fix`     | Lint, fix, and format          |
+| `npm run lint:strict`  | Lint with max 10 warnings      |
+| `npm run typecheck`    | TypeScript type checking       |
+| `npm test`             | Run Jest tests                 |
+| `npm run test:watch`   | Run Jest in watch mode         |
+| `npm run format`       | Format all files with Prettier |
+| `npm run format:check` | Check formatting without write |
 
 ---
 
