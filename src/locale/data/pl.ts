@@ -9,26 +9,44 @@ export const services: ServiceEntry[] = [
   {
     icon: 'Globe',
     title: 'Strony internetowe',
+    tagline: 'Twoje cyfrowe drzwi wejściowe.',
     description:
-      'Landing pages, strony firmowe, wizytówkowe. Responsywne, szybkie, zoptymalizowane pod SEO. Budowane w nowoczesnych frameworkach.',
+      'Landing pages, strony firmowe i wizytówkowe. Szybkie, responsywne, zoptymalizowane pod SEO — zaprojektowane, by przyciągać nowych klientów.',
   },
   {
     icon: 'React',
     title: 'Aplikacje webowe',
+    tagline: 'Software, który napędza Twój biznes.',
     description:
-      'Dashboardy, panele administracyjne, platformy SaaS, narzędzia wewnętrzne. React, Next.js, TypeScript — skalowalne rozwiązania dopasowane do potrzeb biznesu.',
+      'Dashboardy, panele administracyjne, SaaS, narzędzia wewnętrzne i rozszerzenia. Skalowalne rozwiązania w React, Next.js i TypeScript.',
   },
   {
-    icon: 'Extension',
-    title: 'Rozszerzenia przeglądarkowe',
+    icon: 'Sparkles',
+    title: 'Integracja AI',
+    tagline: 'Inteligencja, lokalnie Twoja.',
     description:
-      'Rozszerzenia Chrome, narzędzia produktywności, integracje z przeglądarką. Od koncepcji po publikację w Chrome Web Store.',
+      'Modele AI zintegrowane z produktem — lokalnie na Twoim sprzęcie lub w chmurze. Dopracowane interfejsy gotowe dla użytkowników.',
   },
   {
-    icon: 'Maintenance',
+    icon: 'Cube',
+    title: '3D i WebGL',
+    tagline: 'Web w trzech wymiarach.',
+    description:
+      'Interaktywne sceny, wizualizacje produktów i kreatywne doświadczenia 3D. Three.js, React Three Fiber, Blender — od modelu do przeglądarki.',
+  },
+  {
+    icon: 'Phone',
+    title: 'Aplikacje mobilne',
+    tagline: 'Twoja aplikacja, wszędzie.',
+    description:
+      'Wieloplatformowe aplikacje iOS i Android w React Native. Od skanerów kodów i kiosków eventowych po dopracowane produkty konsumenckie.',
+  },
+  {
+    icon: 'Wrench',
     title: 'Utrzymanie i rozwój',
+    tagline: 'Rozwijaj, nie przepisuj.',
     description:
-      'Rozbudowa istniejących projektów o nowe funkcje, optymalizacja wydajności, naprawa błędów i bieżące wsparcie techniczne.',
+      'Optymalizacja wydajności, rozbudowa funkcji, modernizacja stacku i bieżące wsparcie techniczne. Twój codebase, wiecznie w rozwoju.',
   },
 ];
 
@@ -109,6 +127,9 @@ export const projects: ProjectEntry[] = [
     live: 'https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl',
     git: 'https://github.com/SkorczanFFF/VAT-OFF',
     liveLabel: 'Chrome Web Store',
+    resumeTechnologies: 'JavaScript • Chrome Extension API • CSS',
+    resumeDescription:
+      'Rozszerzenie Chrome pokazujące ceny netto (bez VAT) po najechaniu na cenę na dowolnej stronie. Obsługa 120+ krajów z walutami i stawkami VAT, własna stawka VAT oraz wbudowany kalkulator. Dostępne w Chrome Web Store.',
   },
   {
     id: 2,
@@ -123,11 +144,11 @@ export const projects: ProjectEntry[] = [
   {
     id: 3,
     pic: '/projects/portfolio.jpg',
-    title: 'MSKORUS - moje portfolio',
+    title: 'SKOFTWARE - moje portfolio',
     technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
     description:
       'Jednostronicowe portfolio ze sceną 3D i wbudowaną webową wersją CV. Scena jest modelowana w Blenderze i konwertowana do komponentów React Three Fiber JSX dla łatwiejszej interaktywności. Czyste eksperymenty webowe i poligon React Three Fiber.',
-    live: 'https://mskorus.vercel.app/',
+    live: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     resumeTechnologies:
       'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',

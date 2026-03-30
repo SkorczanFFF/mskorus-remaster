@@ -86,19 +86,19 @@ export default function CookieConsentBanner() {
   if (!visible) return null;
 
   return (
-    <div className='fixed bottom-4 left-4 z-9998 md:bottom-6 md:left-6'>
+    <div className='fixed bottom-4 left-4 mr-4 z-9998 md:bottom-6 md:left-6'>
       <div className='rounded-[3px] p-[4px] backdrop-blur-[10px]'>
         <div className='font-grotesk relative w-full max-w-[520px] overflow-hidden rounded-[3px] border-2 border-raspberry/20 bg-primary-blue text-white'>
           {/* Cookie watermark */}
           <div
-            className='pointer-events-none absolute -top-2 -right-3 h-[300px] w-[300px] opacity-[0.25]'
+            className='pointer-events-none absolute -top-4 -right-4 h-[300px] w-[300px]'
             aria-hidden='true'
           >
-            <CookieIcon className='h-full w-full text-[#7a7a7a]' />
+            <CookieIcon className='h-full w-full text-deep-blue' />
           </div>
 
           {/* Content */}
-          <div className='relative z-10 p-6'>
+          <div className='relative z-10 p-4'>
             {/* Header */}
             <div className='mb-3 flex items-center gap-3'>
               <CookieIcon className='shrink-0 text-2xl text-raspberry' aria-hidden='true' />
@@ -112,7 +112,7 @@ export default function CookieConsentBanner() {
               {t.cookieDescription}{' '}
               <Link
                 href='/cookies'
-                className='text-orange underline transition-colors hover:text-orange-dark'
+                className='text-orange underline transition-colors hover:text-orange-dark brightness-150'
                 onClick={() => setVisible(false)}
               >
                 {t.cookiePolicyTitle}
@@ -123,7 +123,7 @@ export default function CookieConsentBanner() {
             {/* Categories */}
             <div className='mb-5 space-y-3'>
               {/* Necessary — always on */}
-              <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3'>
+              <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3 backdrop-blur-[3px]'>
                 <div>
                   <p className='text-sm font-medium'>
                     {t.cookieNecessaryTitle}
@@ -136,7 +136,7 @@ export default function CookieConsentBanner() {
               </div>
 
               {/* Analytics — toggleable */}
-              <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3'>
+              <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3 backdrop-blur-[3px]'>
                 <div>
                   <p className='text-sm font-medium'>
                     {t.cookieAnalyticsTitle}
@@ -158,14 +158,14 @@ export default function CookieConsentBanner() {
               <button
                 type='button'
                 onClick={acceptAll}
-                className='flex-1 rounded-[3px] bg-raspberry px-4 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-orange-dark'
+                className='flex-1 rounded-[3px] bg-raspberry px-4 py-1 text-sm font-medium text-white transition-colors duration-200 hover:bg-orange-dark'
               >
                 {t.cookieAcceptAll}
               </button>
               <button
                 type='button'
                 onClick={rejectAll}
-                className='flex-1 rounded-[3px] border-2 border-raspberry bg-transparent px-4 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-raspberry/20'
+                className='flex-1 rounded-[3px] border-2 border-raspberry bg-transparent px-4 py-1 text-sm font-medium text-white transition-colors duration-200 hover:bg-raspberry/20'
               >
                 {t.cookieRejectAll}
               </button>
@@ -205,18 +205,16 @@ function Toggle({
       aria-label={ariaLabel}
       disabled={disabled}
       onClick={onChange}
-      className={`relative ml-4 flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 ${
-        checked
-          ? disabled
-            ? 'bg-orange opacity-80'
-            : 'bg-raspberry cursor-pointer'
-          : 'bg-primary-blue/50 cursor-pointer'
-      } ${disabled ? 'cursor-default' : ''}`}
+      className={`relative ml-4 flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 ${checked
+        ? disabled
+          ? 'bg-orange opacity-80'
+          : 'bg-raspberry cursor-pointer'
+        : 'bg-primary-blue/50 cursor-pointer'
+        } ${disabled ? 'cursor-default' : ''}`}
     >
       <span
-        className={`inline-block h-4 w-4 rounded-full bg-white shadow-xs transition-transform duration-200 ${
-          checked ? 'translate-x-[22px]' : 'translate-x-1'
-        }`}
+        className={`inline-block h-4 w-4 rounded-full bg-white shadow-xs transition-transform duration-200 ${checked ? 'translate-x-[22px]' : 'translate-x-1'
+          }`}
       />
     </button>
   );

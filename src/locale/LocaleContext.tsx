@@ -45,6 +45,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
+    document.cookie = `locale=${locale};path=/;max-age=31536000;SameSite=Lax`;
     try {
       localStorage.setItem('locale', locale);
     } catch {

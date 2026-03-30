@@ -9,26 +9,44 @@ export const services: ServiceEntry[] = [
   {
     icon: 'Globe',
     title: 'Websites',
+    tagline: 'Your digital front door.',
     description:
-      'Landing pages, company websites, business cards. Responsive, fast, SEO-optimized. Built with modern frameworks for the best user experience.',
+      'Landing pages, company sites, and business cards. Fast, responsive, SEO-optimized — designed to turn visitors into clients.',
   },
   {
     icon: 'React',
     title: 'Web applications',
+    tagline: 'Software that runs your business.',
     description:
-      'Dashboards, admin panels, SaaS platforms, internal tools. React, Next.js, TypeScript — scalable solutions tailored to your business needs.',
+      'Dashboards, admin panels, SaaS, internal tools, and browser extensions. Scalable solutions in React, Next.js, and TypeScript.',
   },
   {
-    icon: 'Extension',
-    title: 'Browser extensions',
+    icon: 'Sparkles',
+    title: 'AI integration',
+    tagline: 'Intelligence, locally yours.',
     description:
-      'Chrome extensions, productivity tools, browser integrations. From concept to Chrome Web Store publication.',
+      'AI models integrated into real products — locally on your hardware or via the cloud. Wrapped in polished, user-ready interfaces.',
   },
   {
-    icon: 'Maintenance',
+    icon: 'Cube',
+    title: '3D & WebGL',
+    tagline: 'The web, in three dimensions.',
+    description:
+      'Interactive scenes, product visualizers, and creative 3D experiences. Three.js, React Three Fiber, Blender — from model to browser.',
+  },
+  {
+    icon: 'Phone',
+    title: 'Mobile apps',
+    tagline: 'Your app, everywhere.',
+    description:
+      'Cross-platform iOS & Android built with React Native. From barcode scanners and event kiosks to polished consumer products.',
+  },
+  {
+    icon: 'Wrench',
     title: 'Maintenance & growth',
+    tagline: 'Evolve, don\'t rewrite.',
     description:
-      'Expanding existing projects with new features, performance optimization, bug fixing, and ongoing technical support.',
+      'Performance optimization, feature expansion, stack modernization, and ongoing technical support. Your codebase, always moving.',
   },
 ];
 
@@ -109,6 +127,9 @@ export const projects: ProjectEntry[] = [
     live: 'https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl',
     git: 'https://github.com/SkorczanFFF/VAT-OFF',
     liveLabel: 'Chrome Web Store',
+    resumeTechnologies: 'JavaScript • Chrome Extension API • CSS',
+    resumeDescription:
+      'Chrome extension that shows net prices (excluding VAT) on hover on any website. Supports 120+ countries with preconfigured currencies and VAT rates, custom VAT rate support, and a built-in VAT calculator. Available on the Chrome Web Store.',
   },
   {
     id: 2,
@@ -123,11 +144,11 @@ export const projects: ProjectEntry[] = [
   {
     id: 3,
     pic: '/projects/portfolio.jpg',
-    title: 'MSKORUS - my portfolio',
+    title: 'SKOFTWARE - my portfolio',
     technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
     description:
       'Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier interactivity. Pure web experiments and React Three Fiber battleground.',
-    live: 'https://mskorus.vercel.app/',
+    live: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     resumeTechnologies:
       'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',

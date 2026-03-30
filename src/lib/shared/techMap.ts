@@ -8,8 +8,8 @@ import {
   CursorIcon,
   DockerIcon,
   FigmaIcon,
+  GitIcon,
   FirebaseIcon,
-  GithubIcon,
   GitlabIcon,
   GsapIcon,
   HtmlIcon,
@@ -68,19 +68,19 @@ export const techIconMap: Record<string, IconType> = {
   Figma: FigmaIcon,
   Canva: CanvaIcon,
   Docker: DockerIcon,
-  GitHub: GithubIcon,
+  GitHub: GitIcon,
   CursorAI: CursorIcon,
   Claude: ClaudeIcon,
   npm: NpmIcon,
   // Aliases — extra labels used in experience stack arrays
   'Vanilla JS': JavascriptIcon,
-  Git: GithubIcon,
+  Git: GitIcon,
   'Sanity CMS': SanityIcon,
   GitLab: GitlabIcon,
   Bitbucket: BitbucketIcon,
 };
 
-/** Category grouping for the Technos section. Values are keys into techIconMap. */
+/** Category grouping for the Skills section. Values are keys into techIconMap. */
 export const techCategoryGroups: Record<string, string[]> = {
   frontend: [
     'HTML5',
@@ -99,46 +99,15 @@ export const techCategoryGroups: Record<string, string[]> = {
     'Python',
     'PHP',
     'Node.js',
-    'Java',
     'Laravel',
     'Wordpress',
+    'Java',
     'Sanity',
   ],
-  database: ['MySQL', 'MongoDB', 'Firebase', 'PostgreSQL'],
+  database: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase'],
   design: ['Photoshop', '3Ds Max', 'Blender', 'Figma', 'Canva'],
   tools: ['Docker', 'GitHub', 'CursorAI', 'Claude', 'npm'],
 };
 
-/** Flat ordered list for the resume skills section. */
-export const resumeTechList: string[] = [
-  'HTML5',
-  'CSS3',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'React Native',
-  'Redux',
-  'Three.js',
-  'TailwindCSS',
-  'Sass',
-  'GSAP',
-  'PHP',
-  'Node.js',
-  'Java',
-  'Python',
-  'Laravel',
-  'Wordpress',
-  'Sanity',
-  'MySQL',
-  'Firebase',
-  'MongoDB',
-  'Photoshop',
-  '3Ds Max',
-  'Blender',
-  'Canva',
-  'Figma',
-  'Docker',
-  'GitHub',
-  'CursorAI',
-  'npm',
-];
+/** Flat ordered list for the resume skills section — derived from techCategoryGroups. */
+export const resumeTechList: string[] = Object.values(techCategoryGroups).flat();

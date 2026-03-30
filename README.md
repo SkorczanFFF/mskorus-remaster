@@ -1,6 +1,6 @@
-# MSKORUS - Portfolio
+# SKOFTWARE - Portfolio
 
-Personal portfolio website for Maciej Skorus — Full-Stack Frontend Developer. Built with Next.js 16, React 19, TypeScript, and Three.js. Features an interactive 3D hero scene with image-to-particle conversion, custom GLSL shaders, GSAP scroll-driven animations, bilingual content (EN/PL), cookie consent management, and a built-in web resume with PDF export.
+Portfolio website for SKOFTWARE / Maciej Skorus — Creative Fullstack Developer. Built with Next.js 16, React 19, TypeScript, and Three.js. Features an interactive 3D hero scene with image-to-particle conversion, custom GLSL shaders, GSAP scroll-driven animations, bilingual content (EN/PL), cookie consent management, and a built-in web resume with PDF export.
 
 **Live:** [mskorus.vercel.app](https://mskorus.vercel.app/)
 
@@ -99,7 +99,7 @@ src/
 │   ├── Portfolio/             # Horizontal scroll project showcase
 │   ├── Experience/            # Work history timeline
 │   ├── About/                 # Services section
-│   ├── Technos/               # Technology grid
+│   ├── Skills/                # Technology grid
 │   ├── Resume/                # CV sidebar + content components
 │   ├── layout/
 │   │   ├── Header/            # Nav with locale toggle (desktop + mobile)
@@ -145,7 +145,7 @@ src/
 | **Polonez Autodrive**       | JavaScript, Three.js, 3D Studio Max            | [Live](https://polonez-autodrive.vercel.app/) · [Repo](https://github.com/SkorczanFFF/Polonez-Autodrive)                                               |
 | **VAT-OFF**                 | JavaScript, Chrome Extension API, CSS          | [Chrome Web Store](https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl) · [Repo](https://github.com/SkorczanFFF/VAT-OFF) |
 | **Chandrastic** [WIP]       | React, TypeScript, Python, FastAPI             | —                                                                                                                                                      |
-| **MSKORUS Portfolio**       | Next.js, TypeScript, TailwindCSS, R3F, Blender | [Live](https://mskorus.vercel.app/) · [Repo](https://github.com/SkorczanFFF/mskorus-remaster)                                                          |
+| **SKOFTWARE Portfolio**     | Next.js, TypeScript, TailwindCSS, R3F, Blender | [Live](https://mskorus.vercel.app/) · [Repo](https://github.com/SkorczanFFF/mskorus-remaster)                                                          |
 | **Yet Another Weather App** | React, JavaScript, Sass, Vanta.js, Open-Meteo  | [Live](https://yet-another-weather-app.vercel.app/) · [Repo](https://github.com/SkorczanFFF/YetAnotherWeatherApp/)                                     |
 
 ---

@@ -16,7 +16,7 @@ export default function Experience(): React.JSX.Element {
       id='experience'
       className='font-grotesk relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white'
     >
-      <h2 className='font-grotesk text-primary-blue py-2 text-xl font-normal leading-3 tracking-[10px] md:absolute md:origin-top-left md:rotate-90 md:left-[80px] md:top-[60px] md:py-0'>
+      <h2 className='font-grotesk text-primary-blue py-2 text-xl font-normal leading-3 tracking-[10px] xl:absolute xl:origin-top-left xl:rotate-90 xl:left-[80px] xl:top-[60px] xl:py-0'>
         {t.experienceSectionTitle}
       </h2>
       <div className='flex h-full w-full flex-col gap-[60px] py-[160px]'>

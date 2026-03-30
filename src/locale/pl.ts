@@ -4,8 +4,8 @@ import { experiences, nonWebProjects, projects, services } from './data/pl';
 
 export const pl: Dictionary = {
   seoTitle:
-    'Maciej Skorus - Creative Fullstack Developer | Aplikacje, Usługi i 3D',
-  seoSiteName: 'Maciej Skorus - Creative Fullstack Developer',
+    'SKOFTWARE | Maciej Skorus - Creative Fullstack Developer | Aplikacje, Usługi i 3D',
+  seoSiteName: 'SKOFTWARE | Maciej Skorus - Creative Fullstack Developer',
   seoDescription:
     'Creative fullstack developer z Polski. Aplikacje webowe, usługi cyfrowe, doświadczenia 3D i aplikacje mobilne. React, Next.js, Python, TypeScript. Faktury VAT, współpraca na całym świecie.',
 
@@ -14,7 +14,7 @@ export const pl: Dictionary = {
 
   navHome: 'Strona główna',
   navExperience: 'Doświadczenie',
-  navTechnologies: 'Technologie',
+  navSkills: 'Umiejętności',
   navPortfolio: 'Portfolio',
   navContact: 'Kontakt',
   navResume: 'CV',
@@ -86,6 +86,9 @@ export const pl: Dictionary = {
     degree: 'Inżynier',
     dates: 'Październik 2017 - Czerwiec 2021',
   },
+  resumePageTitle: 'SKOFTWARE - Maciej Skorus - CV - Creative Fullstack Engineer',
+  resumeAltPhoto: 'Maciej Skorus, Fullstack Engineer',
+  resumeHobbies: ['gitara basowa', 'starsze auta', 'muzyka', 'podróże', 'hardware', 'języki obce'],
   resumeRodo:
     'Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).',
   resumeRepo: 'repozytorium',
@@ -106,7 +109,7 @@ export const pl: Dictionary = {
 
   cookiePolicyTitle: 'Polityka Cookies',
   cookiePolicyIntro:
-    'Niniejsza Polityka Cookies wyjaśnia, w jaki sposób SKOFTWARE Maciej Skorus („my", „nas", „nasz") wykorzystuje pliki cookie i podobne technologie na stronie mskorus.vercel.app („Strona"). Polityka ta jest zgodna z Ogólnym Rozporządzeniem o Ochronie Danych (RODO, Rozporządzenie 2016/679), Dyrektywą ePrivacy (2002/58/WE, z późniejszymi zmianami) oraz obowiązującymi przepisami krajowymi.',
+    'Niniejsza Polityka Cookies wyjaśnia, w jaki sposób SKOFTWARE Maciej Skorus („my", „nas", „nasz") wykorzystuje pliki cookie i podobne technologie na stronie skoftware.dev („Strona"). Polityka ta jest zgodna z Ogólnym Rozporządzeniem o Ochronie Danych (RODO, Rozporządzenie 2016/679), Dyrektywą ePrivacy (2002/58/WE, z późniejszymi zmianami) oraz obowiązującymi przepisami krajowymi.',
   cookiePolicyWhatAreCookiesTitle: '1. Czym są pliki cookie?',
   cookiePolicyWhatAreCookies:
     'Pliki cookie to małe pliki tekstowe, które są umieszczane na Twoim urządzeniu podczas odwiedzania strony internetowej. Są szeroko stosowane, aby zapewnić prawidłowe działanie stron, dostarczać informacje właścicielom witryn i poprawiać doświadczenia użytkownika. Podobne technologie obejmują localStorage (przechowywanie danych lokalnie w przeglądarce bez daty wygaśnięcia) oraz skrypty analityczne zbierające zanonimizowane dane o użytkowaniu.',

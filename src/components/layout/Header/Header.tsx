@@ -16,34 +16,29 @@ function LocaleToggle({ className }: { className?: string }) {
     <button
       onClick={() => setLocale(locale === 'en' ? 'pl' : 'en')}
       aria-label={locale === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
-      className={`font-unica flex items-center gap-1 text-xl md:text-md tracking-wider text-white transition-colors ${className ?? ''}`}
+      className={`font-unica flex items-center gap-1 text-xl md:text-md tracking-wider text-white transition-colors mt-1 ${className ?? ''}`}
     >
       <span
-        className={`duration-200 ${locale === 'en' ? 'font-semibold text-white' : 'text-orange'}`}
-        style={{
-          textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)',
-        }}
+        className={`relative duration-200 ${locale === 'en' ? 'font-semibold text-orange' : 'text-white/60'}`}
       >
-        EN
+        <span className={`absolute right-[-1px] bottom-[-1px] pointer-events-none ${locale === 'en' ? 'text-white' : 'text-primary-blue'}`} aria-hidden='true'>EN</span>
+        <span className='relative'>EN</span>
       </span>
       <span className='text-white/70'>|</span>
       <span
-        className={`duration-200 ${locale === 'pl' ? 'font-semibold text-white' : 'text-orange'}`}
-        style={{
-          textShadow: '0 0 2px rgba(0,26,37,0.8), 0 0 10px rgba(0,26,37,0.5)',
-        }}
+        className={`relative duration-200 ${locale === 'pl' ? 'font-semibold text-orange' : 'text-white/60'}`}
       >
-        PL
+        <span className={`absolute right-[-1px] bottom-[-1px] pointer-events-none ${locale === 'pl' ? 'text-white' : 'text-primary-blue'}`} aria-hidden='true'>PL</span>
+        <span className='relative'>PL</span>
       </span>
     </button>
   );
 }
 
 const SECTION_IDS = [
-  'home',
   'services',
   'experience',
-  'technologies',
+  'skills',
   'portfolio',
   'contact',
 ];
@@ -66,18 +61,20 @@ function useActiveSection() {
       const el = document.getElementById(id);
       if (!el) return;
 
+      const isServices = id === 'services';
       const isContact = id === 'contact';
 
       triggers.push(
         ScrollTrigger.create({
           trigger: el,
-          // Contact: activate sooner (when its top hits 80% of viewport)
-          // and stay active all the way to page bottom
           start: isContact ? 'top 80%' : 'top center',
           end: isContact ? 'bottom bottom' : 'bottom center',
           onToggle: (self) => {
             if (self.isActive) setActive(id);
           },
+          ...(isServices && {
+            onLeaveBack: () => setActive('home'),
+          }),
         }),
       );
     });
@@ -103,7 +100,7 @@ export default function Header(): React.JSX.Element {
     { href: '/#home', label: t.navHome },
     { href: '/#services', label: t.navServices },
     { href: '/#experience', label: t.navExperience },
-    { href: '/#technologies', label: t.navTechnologies },
+    { href: '/#skills', label: t.navSkills },
     { href: '/#portfolio', label: t.navPortfolio },
     { href: '/#contact', label: t.navContact },
     { href: '/resume', label: t.navResume },
@@ -170,18 +167,17 @@ export default function Header(): React.JSX.Element {
   return (
     <>
       <header
-        className={`font-grotesk sticky top-2 z-50 flex h-[46px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183433] rounded-[3px] ${
-          isMenuOpen ? 'opacity-0' : 'opacity-95'
-        }`}
+        className={`font-grotesk sticky top-2 z-50 flex h-[46px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183433] rounded-[3px] ${isMenuOpen ? 'opacity-0' : 'opacity-95'
+          }`}
       >
-        <div className='flex w-full items-center justify-between'>
-          <div className='flex items-center gap-3'>
-            <div className='ml-3'>
+        <div className='flex h-full w-full items-center justify-between'>
+          <div className='flex h-full items-center gap-3'>
+            <div className='ml-3 flex items-center'>
               <Logo />
             </div>
-            <LocaleToggle className='hidden lg:flex' />
+            <LocaleToggle className='hidden lg:flex items-center' />
           </div>
-          <div className='flex h-14 items-center justify-between gap-3'>
+          <div className='flex h-full items-center gap-3'>
             <Mobile
               ref={hamburgerRef}
               isMenuOpen={isMenuOpen}
@@ -198,9 +194,8 @@ export default function Header(): React.JSX.Element {
         aria-modal={isMenuOpen}
         aria-label={t.navMenuLabel}
         inert={!isMenuOpen || undefined}
-        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <nav
           aria-label={t.navMenuLabel}
@@ -217,10 +212,11 @@ export default function Header(): React.JSX.Element {
                   <Link
                     href={href}
                     scroll={false}
-                    className={`text-3xl font-light uppercase tracking-widest transition-all duration-300 hover:tracking-[0.2em] hover:drop-shadow-[0_5px_5px_#972b1a] ${isActive ? 'text-real-white drop-shadow-[0_5px_5px_#001A25] tracking-[0.2em]' : 'text-real-white/60 drop-shadow-[0_2px_2px_#001a25]'}`}
+                    className={`relative text-3xl font-light uppercase tracking-widest transition-all duration-300 hover:tracking-[0.2em] ${isActive ? 'text-real-white tracking-[0.2em]' : 'text-real-white/60'}`}
                     onClick={handleClick}
                   >
-                    {label}
+                    <span className='absolute right-[-1px] bottom-[-2px] text-primary-blue pointer-events-none' aria-hidden='true'>{label}</span>
+                    <span className='relative'>{label}</span>
                   </Link>
                 </li>
               );

@@ -37,6 +37,13 @@
   font-family: var(--font-unica), sans-serif;
 }
 
+/* Service cards: dim siblings only when a card (not a gap) is hovered.
+   !important needed to override GSAP inline opacity from entrance animation. */
+.service-grid:has(.service-card:hover) .service-card:not(:hover) {
+  opacity: 0.8 !important;
+  filter: blur(1.5px);
+}
+
 @layer base {
   /*
     Tailwind CSS v4 changed the default border color to `currentcolor`.
@@ -185,6 +192,13 @@ body {
   height: 0;
   border-style: solid;
   border-width: 30px 30px 0 0;
+}
+
+.arrow-bottom-right {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 30px 30px;
 }
 
 .cv-arrow {

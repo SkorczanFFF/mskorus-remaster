@@ -24,9 +24,10 @@ export default function Desktop({
               <Link
                 href={href}
                 scroll={false}
-                className={`text-sm uppercase tracking-widest duration-300 hover:drop-shadow-[0_5px_5px_#001A2566] ${isActive ? 'text-real-white drop-shadow-[0_3px_4px_#001A2566]' : 'text-real-white/60'}`}
+                className={`relative text-sm uppercase tracking-widest duration-300 ${isActive ? 'text-real-white' : 'text-real-white/60'}`}
               >
-                {label}
+                <span className='absolute right-[-1px] bottom-[-1px] text-primary-blue pointer-events-none' aria-hidden='true'>{label}</span>
+                <span className='relative'>{label}</span>
               </Link>
             </li>
           );

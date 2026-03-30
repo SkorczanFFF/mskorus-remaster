@@ -16,10 +16,17 @@ import {
   BsLinkedin,
 } from 'react-icons/bs';
 import { DiMongodb, DiPhotoshop, DiPhp } from 'react-icons/di';
+import { FaGitAlt } from 'react-icons/fa6';
 import { GiGuitarBassHead } from 'react-icons/gi';
 import { GrMysql } from 'react-icons/gr';
 import { HiChip, HiMusicNote } from 'react-icons/hi';
-import { HiMiniLanguage } from 'react-icons/hi2';
+import {
+  HiCubeTransparent,
+  HiDevicePhoneMobile,
+  HiMiniLanguage,
+  HiSparkles,
+  HiWrenchScrewdriver,
+} from 'react-icons/hi2';
 import {
   IoCallSharp,
   IoLogoCss3,
@@ -115,3 +122,9 @@ export const ChipIcon = HiChip as IconType;
 export const MusicIcon = HiMusicNote as IconType;
 export const LanguageIcon = HiMiniLanguage as IconType;
 export const CookieIcon = LiaCookieBiteSolid as IconType;
+export const GitIcon = FaGitAlt as IconType;
+
+export const SparklesIcon = HiSparkles as IconType;
+export const CubeIcon = HiCubeTransparent as IconType;
+export const PhoneIcon = HiDevicePhoneMobile as IconType;
+export const WrenchIcon = HiWrenchScrewdriver as IconType;

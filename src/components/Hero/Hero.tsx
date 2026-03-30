@@ -24,9 +24,9 @@ function Rig() {
     easing.damp3(
       state.camera.position,
       [
-        Math.sin(-state.pointer.x) * 3,
-        state.pointer.y * 3.5,
-        15 + Math.cos(state.pointer.x) * 10,
+        Math.sin(-state.pointer.x) * 1.5,
+        state.pointer.y * 1.75,
+        15 + Math.cos(state.pointer.x) * 5,
       ],
       0.2,
       delta,
@@ -97,6 +97,7 @@ export default function Hero(): React.JSX.Element {
 
   useEffect(() => {
     if (!sceneReady) return;
+    window.dispatchEvent(new Event('hero:ready'));
     if (
       !panelRef.current ||
       !namesRef.current ||
@@ -207,19 +208,14 @@ export default function Hero(): React.JSX.Element {
                 <Float
                   speed={0.8}
                   floatIntensity={0.2}
-                  floatingRange={[-5.5, 5.5]}
+                  floatingRange={[-3.5, 3.5]}
+                  rotationIntensity={0.5}
                 >
                   <Scene onReady={handleReady} />
                 </Float>
               </Suspense>
             </Canvas>
           </div>
-
-          {!sceneReady && (
-            <div className='absolute inset-0 flex items-center justify-center'>
-              <span className='loader' />
-            </div>
-          )}
 
           {/* Backdrop panel — visual only */}
           <div
@@ -255,7 +251,7 @@ export default function Hero(): React.JSX.Element {
           {/* Headline — bottom on mobile, below names on desktop */}
           <div
             ref={headlineRef}
-            className=' absolute z-20 bottom-[200px] right-[20px] md:top-[55%] md:bottom-auto md:left-auto md:right-0 md:w-[calc(50%-100px)] md:ml-[20px] pointer-events-none opacity-0 text-right md:text-left backdrop-blur-[10px] md:backdrop-blur-0 p-4 md: p-0'
+            className=' absolute z-20 bottom-[200px] right-[20px] md:top-[55%] md:bottom-auto md:left-auto md:right-0 md:w-[calc(50%-100px)] md:ml-[20px] pointer-events-none opacity-0 text-right md:text-left backdrop-blur-[10px] md:backdrop-blur-none p-4 md:p-0'
           >
             <div className='flex flex-col gap-6'>
               <span

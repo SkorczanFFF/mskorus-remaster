@@ -24,7 +24,7 @@ const techCategories: Record<string, TechEntry[]> = Object.fromEntries(
 function TechIcon({ tech }: { tech: TechEntry }) {
   return (
     <div
-      className='tech-icon group text-primary-blue hover:text-raspberry flex w-[75px] flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px] [perspective:200px]'
+      className='tech-icon group text-deep-blue hover:text-raspberry flex w-[75px] flex-col items-center gap-3 duration-150 hover:drop-shadow-[0_-2px_2px_#80183466] md:w-[100px] [perspective:200px]'
       style={{ willChange: 'opacity' }}
     >
       <tech.Icon className='text-4xl sm:text-5xl transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(360deg)]' />
@@ -45,25 +45,12 @@ function animateCategory(
 
   const anim = options?.useFromTo
     ? gsap.fromTo(
-        allIcons,
-        { opacity: 0, scale: 1.4 },
-        {
-          opacity: 1,
-          scale: 1,
-          stagger: { each: 0.1, from: options.staggerFrom ?? 'start' },
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        },
-      )
-    : gsap.to(allIcons, {
+      allIcons,
+      { opacity: 0, scale: 1.4 },
+      {
         opacity: 1,
         scale: 1,
-        stagger: 0.1,
+        stagger: { each: 0.1, from: options.staggerFrom ?? 'start' },
         duration: 0.8,
         ease: 'power2.out',
         scrollTrigger: {
@@ -71,12 +58,42 @@ function animateCategory(
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
-      });
+      },
+    )
+    : gsap.to(allIcons, {
+      opacity: 1,
+      scale: 1,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+    });
 
   return anim.scrollTrigger ?? undefined;
 }
 
-export default function Technos(): React.JSX.Element {
+const CHECKER_COLS = 6;
+
+const allTechs: TechEntry[] = Object.values(techCategories).flat();
+
+const checkerRows: TechEntry[][] = (() => {
+  const rows: TechEntry[][] = [];
+  let idx = 0;
+  let rowNum = 0;
+  while (idx < allTechs.length) {
+    const cols = rowNum % 2 === 0 ? CHECKER_COLS : CHECKER_COLS - 1;
+    rows.push(allTechs.slice(idx, idx + cols));
+    idx += cols;
+    rowNum++;
+  }
+  return rows;
+})();
+
+export default function Skills(): React.JSX.Element {
   const { t } = useLocale();
   const categoryLabels = useMemo(
     () =>
@@ -123,13 +140,13 @@ export default function Technos(): React.JSX.Element {
   return (
     <section
       ref={sectionRef}
-      id='technologies'
-      aria-label='Technologies'
-      className='font-grotesk relative flex h-full w-full flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[120px]'
+      id='skills'
+      aria-label='Skills'
+      className='font-grotesk relative flex h-full w-full flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[160px]'
     >
       <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         <div className='flex w-full flex-col' ref={frontendRef}>
-          <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-md font-semibold capitalize text-white'>
+          <h3 className='mb-4 w-full rounded-[3px] bg-deep-blue px-2 text-md font-semibold capitalize text-white'>
             {categoryLabels.frontend}
           </h3>
           <div className='flex w-full justify-between'>
@@ -141,7 +158,7 @@ export default function Technos(): React.JSX.Element {
 
         <div className='flex w-full gap-6 xl:flex-row'>
           <div className='max-w-2/3 flex w-full flex-col' ref={backendRef}>
-            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-md font-semibold capitalize text-white'>
+            <h3 className='mb-4 w-full rounded-[3px] bg-deep-blue px-2 text-md font-semibold capitalize text-white'>
               {categoryLabels.backend}
             </h3>
             <div className='flex w-full gap-[12px]'>
@@ -152,7 +169,7 @@ export default function Technos(): React.JSX.Element {
           </div>
 
           <div className='flex w-1/3 flex-col' ref={databaseRef}>
-            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-right text-md font-semibold capitalize text-white'>
+            <h3 className='mb-4 w-full rounded-[3px] bg-deep-blue px-2 text-right text-md font-semibold capitalize text-white'>
               {categoryLabels.database}
             </h3>
             <div className='flex w-full gap-[10px]'>
@@ -165,7 +182,7 @@ export default function Technos(): React.JSX.Element {
 
         <div className='flex w-full gap-10 xl:flex-row'>
           <div className='flex flex-col' ref={designRef}>
-            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-md font-semibold capitalize text-white'>
+            <h3 className='mb-4 w-full rounded-[3px] bg-deep-blue px-2 text-md font-semibold capitalize text-white'>
               {categoryLabels.design}
             </h3>
             <div className='flex w-full gap-[20px]'>
@@ -176,7 +193,7 @@ export default function Technos(): React.JSX.Element {
           </div>
 
           <div className='flex flex-col' ref={toolsRef}>
-            <h3 className='mb-2 w-full rounded-[3px] bg-primary-blue px-2 text-right text-md font-semibold capitalize text-white'>
+            <h3 className='mb-4 w-full rounded-[3px] bg-deep-blue px-2 text-right text-md font-semibold capitalize text-white'>
               {categoryLabels.tools}
             </h3>
             <div className='flex w-full gap-[20px]'>
@@ -188,13 +205,25 @@ export default function Technos(): React.JSX.Element {
         </div>
       </div>
 
-      <div className='my-10 w-full px-2 md:px-0 xl:hidden'>
-        <div className='mx-auto grid grid-cols-4 justify-items-center gap-x-1 gap-y-4 md:gap-x-2 lg:max-w-[1100px]'>
-          {Object.entries(techCategories).flatMap(([, techs]) =>
-            techs.map((tech) => (
-              <TechIcon key={tech.label} tech={tech} />
-            )),
-          )}
+      {/* Tablet: checkerboard (768px – 1280px) */}
+      <div className='hidden md:block xl:hidden my-10 w-full'>
+        <div className='mx-auto flex flex-col items-center gap-y-4'>
+          {checkerRows.map((row, i) => (
+            <div key={i} className='flex justify-center gap-x-4'>
+              {row.map((tech) => (
+                <TechIcon key={tech.label} tech={tech} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile: 4-col grid (< 768px) */}
+      <div className='my-10 w-full px-2 md:hidden'>
+        <div className='mx-auto grid grid-cols-4 justify-items-center gap-x-1 gap-y-4'>
+          {allTechs.map((tech) => (
+            <TechIcon key={tech.label} tech={tech} />
+          ))}
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ export default function CookiesPage() {
   const cookieTable = [
     {
       name: t.cookiePolicyCookieCC,
-      provider: 'mskorus.vercel.app',
+      provider: (process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app').replace(/^https?:\/\//, ''),
       purpose: t.cookiePolicyCookieCCPurpose,
       category: t.cookieNecessaryTitle,
       type: 'HTTP Cookie',
@@ -23,7 +23,7 @@ export default function CookiesPage() {
     },
     {
       name: t.cookiePolicyCookieLocale,
-      provider: 'mskorus.vercel.app',
+      provider: (process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app').replace(/^https?:\/\//, ''),
       purpose: t.cookiePolicyCookieLocalePurpose,
       category: t.cookieNecessaryTitle,
       type: 'localStorage',

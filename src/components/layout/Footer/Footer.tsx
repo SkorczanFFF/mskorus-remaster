@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 
+import BottomBar from '@/components/layout/BottomBar';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { scrambleReveal } from '@/lib/scrambleReveal';
 import {
   CallIcon,
-  CookieIcon,
   GithubIcon,
   GlobeIcon,
   LinkedinIcon,
@@ -15,7 +15,6 @@ import {
 
 import { useLocale } from '@/locale/LocaleContext';
 
-const CURRENT_YEAR = new Date().getFullYear();
 
 const networkLinks = [
   {
@@ -30,37 +29,72 @@ const networkLinks = [
   },
 ] as const;
 
+const FOREIGN_HEADINGS = [
+  'LASS UNS REDEN.', // German
+  'PARLIAMO.', // Italian
+  'HABLEMOS.', // Spanish
+  'PROMLUVME SI.', // Czech
+  'ПОГОВОРИМО.', // Ukrainian
+] as const;
+
 export default function Footer(): React.JSX.Element {
   const { t } = useLocale();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const cycleRef = useRef<gsap.core.Tween | null>(null);
 
   useEffect(() => {
     const el = headingRef.current;
     if (!el) return;
 
-    const finalText = t.footerHeading;
+    const baseText = t.footerHeading;
+
+    const startCycling = () => {
+      let foreignIdx = 0;
+      let showingBase = true;
+
+      const scheduleNext = () => {
+        cycleRef.current = gsap.delayedCall(5, () => {
+          tlRef.current?.kill();
+          const tl = gsap.timeline();
+
+          if (showingBase) {
+            tl.add(scrambleReveal(el, FOREIGN_HEADINGS[foreignIdx], 1.5));
+            showingBase = false;
+          } else {
+            tl.add(scrambleReveal(el, baseText, 1.5));
+            foreignIdx = (foreignIdx + 1) % FOREIGN_HEADINGS.length;
+            showingBase = true;
+          }
+
+          tlRef.current = tl;
+          scheduleNext();
+        });
+      };
+
+      scheduleNext();
+    };
+
+    const playRevealAndCycle = () => {
+      tlRef.current?.kill();
+      cycleRef.current?.kill();
+      const tl = gsap.timeline();
+      tl.add(scrambleReveal(el, baseText, 1.5));
+      tl.call(startCycling);
+      tlRef.current = tl;
+    };
 
     const trigger = ScrollTrigger.create({
       trigger: el,
       start: 'top 85%',
-      onEnter: () => {
-        tlRef.current?.kill();
-        const tl = gsap.timeline();
-        tl.add(scrambleReveal(el, finalText, 1.5));
-        tlRef.current = tl;
-      },
-      onEnterBack: () => {
-        tlRef.current?.kill();
-        const tl = gsap.timeline();
-        tl.add(scrambleReveal(el, finalText, 1.5));
-        tlRef.current = tl;
-      },
+      onEnter: playRevealAndCycle,
+      onEnterBack: playRevealAndCycle,
     });
 
     return () => {
       trigger.kill();
       tlRef.current?.kill();
+      cycleRef.current?.kill();
     };
   }, [t.footerHeading]);
 
@@ -80,29 +114,29 @@ export default function Footer(): React.JSX.Element {
           <div className='md:w-3/5'>
             <h2
               ref={headingRef}
-              className='font-unica mb-12 text-6xl font-extrabold tracking-tighter text-primary-blue md:text-8xl lg:text-8xl -mt-2 wrap-break-word'
+              className='font-unica mb-12 text-6xl font-extrabold tracking-tighter text-deep-blue md:text-8xl lg:text-8xl -mt-2 wrap-break-word'
             >
               {t.footerHeading}
             </h2>
 
-            <p className='mb-8 max-w-md text-lg font-light leading-tight text-primary-blue/60 md:text-xl'>
+            <p className='mb-8 max-w-md text-lg font-light leading-tight text-deep-blue/60 md:text-xl'>
               {t.footerNarrative}
             </p>
 
             <div className='flex flex-col gap-2'>
-              <span className='text-[0.65rem] uppercase tracking-[0.2em] text-primary-blue/40'>
+              <span className='text-[0.65rem] uppercase tracking-[0.2em] text-deep-blue/40'>
                 {t.footerDirectLabel}
               </span>
               <a
                 href={`mailto:${t.contactEmail}`}
-                className='group flex items-center gap-2 text-lg font-semibold text-primary-blue transition-all duration-200 hover:translate-x-1 hover:text-raspberry'
+                className='group flex items-center gap-2 text-lg font-semibold text-deep-blue transition-all duration-200 hover:translate-x-1 hover:text-raspberry'
               >
                 {t.contactEmail}
                 <MailIcon className='text-base opacity-0 transition-opacity duration-200 group-hover:opacity-100' aria-hidden='true' />
               </a>
               <a
                 href={`tel:${t.contactPhone.replace(/\s/g, '')}`}
-                className='group flex items-center gap-2 text-lg font-semibold text-primary-blue transition-all duration-200 hover:translate-x-1 hover:text-raspberry'
+                className='group flex items-center gap-2 text-lg font-semibold text-deep-blue transition-all duration-200 hover:translate-x-1 hover:text-raspberry'
               >
                 {t.contactPhone}
                 <CallIcon className='text-base opacity-0 transition-opacity duration-200 group-hover:opacity-100' aria-hidden='true' />
@@ -117,16 +151,16 @@ export default function Footer(): React.JSX.Element {
                 <h3 className='text-2xl font-extrabold tracking-tighter'>
                   <span className='text-orange'>SKO</span>
                   <span className='text-raspberry'>FT</span>
-                  <span className='text-primary-blue'>ware</span>
-                  <span className='text-primary-blue'> Maciej Skorus</span>
+                  <span className='text-deep-blue'>ware</span>
+                  <span className='text-deep-blue'> Maciej Skorus</span>
                 </h3>
-                <p className='mt-1 text-sm font-medium tracking-wide text-primary-blue/50'>
+                <p className='mt-1 text-sm font-medium tracking-wide text-deep-blue/60'>
                   {t.contactCompanyInfo}
                 </p>
               </div>
 
               <div className='flex flex-col gap-4 md:items-end'>
-                <span className='text-[0.65rem] uppercase tracking-[0.2em] text-primary-blue/40'>
+                <span className='text-[0.65rem] uppercase tracking-[0.2em] text-deep-blue/50'>
                   {t.footerNetworkLabel}
                 </span>
                 <nav className='flex flex-col gap-3 md:items-end'>
@@ -137,7 +171,7 @@ export default function Footer(): React.JSX.Element {
                       target='_blank'
                       rel='noopener noreferrer'
                       aria-label={`${label} (opens in new tab)`}
-                      className='flex items-center gap-2 font-bold text-primary-blue/50 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
+                      className='flex items-center gap-2 font-bold text-deep-blue/60 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
                     >
                       <Icon className='text-base' aria-hidden='true' />
                       <span>{label}</span>
@@ -147,20 +181,20 @@ export default function Footer(): React.JSX.Element {
               </div>
 
               <div className='flex flex-col gap-4 md:items-end mt-6'>
-                <span className='text-[0.65rem] uppercase tracking-[0.2em] text-primary-blue/40'>
+                <span className='text-[0.65rem] uppercase tracking-[0.2em] text-deep-blue/40'>
                   {t.footerResume}
                 </span>
                 <nav className='flex flex-col gap-3 md:items-end'>
                   <Link
                     href='/resume'
-                    className='flex items-center gap-2 font-bold text-primary-blue/50 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
+                    className='flex items-center gap-2 font-bold text-deep-blue/60 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
                   >
                     <GlobeIcon className='text-base' aria-hidden='true' />
                     <span>{t.footerResumeOnline}</span>
                   </Link>
                   <Link
                     href='/resume?download=1'
-                    className='flex items-center gap-2 font-bold text-primary-blue/50 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
+                    className='flex items-center gap-2 font-bold text-deep-blue/60 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
                   >
                     <PdfIcon className='text-base' aria-hidden='true' />
                     <span>{t.footerResumeDownload}</span>
@@ -170,7 +204,7 @@ export default function Footer(): React.JSX.Element {
             </div>
 
             <div className='mt-auto'>
-              <p className='mb-2 text-xs uppercase tracking-widest text-primary-blue/40'>
+              <p className='mb-2 text-xs uppercase tracking-widest text-deep-blue/50'>
                 {t.contactLocation} · {t.contactInvoiceInfo}
               </p>
             </div>
@@ -179,18 +213,7 @@ export default function Footer(): React.JSX.Element {
       </div>
 
       {/* Bottom bar */}
-      <div className='gradient flex w-full items-center justify-between px-4 py-2 md:px-8'>
-        <p className='text-[10px] uppercase tracking-widest text-white/70'>
-          {t.footerCopyright.replace('{year}', String(CURRENT_YEAR))}
-        </p>
-        <Link
-          href='/cookies'
-          className='flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-white/70 transition-colors duration-200 hover:text-white'
-        >
-          <CookieIcon className='text-xs' aria-hidden='true' />
-          {t.cookiePolicyTitle}
-        </Link>
-      </div>
+      <BottomBar />
     </footer>
   );
 }

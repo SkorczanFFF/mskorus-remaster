@@ -1,8 +1,14 @@
-import { Head, Html, Main, NextScript } from 'next/document';
+import NextDocument, {
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from 'next/document';
 
-export default function Document() {
+function Document({ locale }: { locale: string }) {
   return (
-    <Html lang='en' className='scroll-smooth'>
+    <Html lang={locale || 'en'} className='scroll-smooth'>
       <Head />
       <body>
         <Main />
@@ -11,3 +17,12 @@ export default function Document() {
     </Html>
   );
 }
+
+Document.getInitialProps = async (ctx: DocumentContext) => {
+  const initialProps = await NextDocument.getInitialProps(ctx);
+  const cookie = ctx.req?.headers?.cookie ?? '';
+  const match = cookie.match(/(?:^|;\s*)locale=(en|pl)/);
+  return { ...initialProps, locale: match?.[1] ?? 'en' };
+};
+
+export default Document;

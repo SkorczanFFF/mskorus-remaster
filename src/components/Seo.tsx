@@ -26,7 +26,7 @@ export default function Seo(props: SeoProps) {
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
     type: 'website',
     robots: 'follow, index',
-    image: 'https://mskorus.vercel.app/favicon/large-og.ico',
+    image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app'}/favicon/large-og.ico`,
   };
 
   const meta = {

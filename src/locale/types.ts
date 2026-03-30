@@ -28,6 +28,7 @@ export type ProjectEntry = {
 export type ServiceEntry = {
   icon: string;
   title: string;
+  tagline: string;
   description: string;
 };
 
@@ -48,7 +49,7 @@ export type Dictionary = {
 
   navHome: string;
   navExperience: string;
-  navTechnologies: string;
+  navSkills: string;
   navPortfolio: string;
   navContact: string;
   navResume: string;
@@ -117,9 +118,12 @@ export type Dictionary = {
     degree: string;
     dates: string;
   };
+  resumePageTitle: string;
+  resumeAltPhoto: string;
   resumeRodo: string;
   resumeRepo: string;
   resumeDemo: string;
+  resumeHobbies: string[];
 
   cookieTitle: string;
   cookieDescription: string;

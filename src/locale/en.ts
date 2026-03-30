@@ -4,8 +4,8 @@ import { experiences, nonWebProjects, projects, services } from './data/en';
 
 export const en: Dictionary = {
   seoTitle:
-    'Maciej Skorus - Creative Fullstack Developer | Web Apps, Services & 3D',
-  seoSiteName: 'Maciej Skorus - Creative Fullstack Developer',
+    'SKOFTWARE | Maciej Skorus - Creative Fullstack Developer | Web Apps, Services & 3D',
+  seoSiteName: 'SKOFTWARE | Maciej Skorus - Creative Fullstack Developer',
   seoDescription:
     'Creative fullstack developer from Poland. Web applications, digital services, 3D experiences, and mobile apps. React, Next.js, Python, TypeScript. B2B invoices, worldwide availability.',
 
@@ -14,7 +14,7 @@ export const en: Dictionary = {
 
   navHome: 'Home',
   navExperience: 'Experience',
-  navTechnologies: 'Technologies',
+  navSkills: 'Skills',
   navPortfolio: 'Portfolio',
   navContact: 'Contact',
   navResume: 'Resume',
@@ -85,6 +85,9 @@ export const en: Dictionary = {
     degree: 'Engineer degree',
     dates: 'October 2017 - June 2021',
   },
+  resumePageTitle: 'SKOFTWARE - Maciej Skorus - Resume - Creative Fullstack Engineer',
+  resumeAltPhoto: 'Maciej Skorus, Fullstack Engineer',
+  resumeHobbies: ['bass guitar', 'older cars', 'music', 'traveling', 'hardware', 'foreign langs'],
   resumeRodo:
     'I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)',
   resumeRepo: 'repository',
@@ -104,7 +107,7 @@ export const en: Dictionary = {
     'Help me understand how visitors interact with the site. All data is anonymized.',
   cookiePolicyTitle: 'Cookie Policy',
   cookiePolicyIntro:
-    'This Cookie Policy explains how SKOFTWARE Maciej Skorus ("we", "us", "our") uses cookies and similar technologies on mskorus.vercel.app ("the Website"). This policy is designed to comply with the EU General Data Protection Regulation (GDPR, Regulation 2016/679), the ePrivacy Directive (2002/58/EC, as amended), and applicable national implementations.',
+    'This Cookie Policy explains how SKOFTWARE Maciej Skorus ("we", "us", "our") uses cookies and similar technologies on skoftware.dev ("the Website"). This policy is designed to comply with the EU General Data Protection Regulation (GDPR, Regulation 2016/679), the ePrivacy Directive (2002/58/EC, as amended), and applicable national implementations.',
   cookiePolicyWhatAreCookiesTitle: '1. What Are Cookies?',
   cookiePolicyWhatAreCookies:
     'Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work efficiently, provide information to site owners, and improve the user experience. Similar technologies include localStorage (which stores data locally in your browser without an expiration date) and analytics scripts that collect anonymized usage data.',
