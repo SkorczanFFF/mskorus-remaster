@@ -81,9 +81,9 @@ export const pl: Dictionary = {
   resumeAboutMe:
     'Creative fullstack developer z blisko 4-letnim doświadczeniem zawodowym w aplikacjach webowych, systemach wewnętrznych, aplikacjach mobilnych i 3D. Budował platformy produkcyjne dla sektora wydarzeń medycznych, zdecentralizowane aplikacje blockchain dla branży gier oraz fullstackowe narzędzia do przetwarzania dokumentów i mediów. Doświadczony w uruchamianiu i integracji lokalnych modeli AI/LLM. Komfortowo porusza się po całym stosie: React/Next.js na frontendzie, Python/Node.js na backendzie, PostgreSQL/MongoDB do danych i Docker do wdrożeń. Prywatnie pasjonat WebGL, moddingu oraz tworzenia użytecznego i kreatywnego kodu',
   resumeEducation: {
-    university: 'UŚ - Wydział Nauk Ścisłych i Technicznych',
-    field: 'INFORMATYKA - Programowanie Aplikacji Webowych',
-    degree: 'Inżynier',
+    university: 'Uniwersytet Śląski - WNST',
+    field: 'Programowanie Aplikacji Webowych',
+    degree: 'Inżynierskie',
     dates: 'Październik 2017 - Czerwiec 2021',
   },
   resumePageTitle: 'SKOFTWARE - Maciej Skorus - CV - Creative Fullstack Engineer',

@@ -35,7 +35,7 @@ export default function HomePage() {
     <Layout>
       <Seo />
       <LoaderOverlay visible={!heroReady} />
-      <main>
+      <main className='overflow-x-clip'>
         <HeroNoSSR />
         <Services />
         <Experience />

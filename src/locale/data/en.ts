@@ -52,6 +52,27 @@ export const services: ServiceEntry[] = [
 
 export const experiences: ExperienceEntry[] = [
   {
+    company: 'SKOFTWARE',
+    position: 'B2B Freelance Fullstack Developer',
+    date: 'SEP 2025 - PRESENT',
+    resumeDate: 'Sep 2025 - Present',
+    stack: [
+      'React',
+      'TailwindCSS',
+      'Python',
+      'PostgreSQL',
+      'TypeScript',
+      'MobX',
+      'Git',
+    ],
+    icon: 'SKOFTWARE.png',
+    duties: [
+      'Placeholder duty 1',
+      'Placeholder duty 2',
+      'Placeholder duty 3',
+    ],
+  },
+  {
     company: 'BUSINESS SERVICE GALOP',
     position: 'Front-End Developer',
     date: 'MAY 2024 - AUG 2025',
@@ -71,7 +92,7 @@ export const experiences: ExperienceEntry[] = [
     duties: [
       'Updated and expanded the internal event management system with new functionalities, system optimizations, and bug fixes; designed a new participant zone integrated into the event websites; created a dedicated system instance tailored to the needs of a major client, supporting diverse medical courses and events',
       'Developed a management system for the Endoscopy Section and a VoD platform for purchasing and accessing recorded conference content, dedicated front-end solutions for medical events (customized registration forms and websites, participant zones, API integrations) and responsive mailings compatible across all major email services',
-      'Developed a mobile application for Zebra data collectors (QR code scanning with local data storage) and a web application for attendance tracking during event sessions, supporting both self-scanning kiosks and Zebra scanners',
+      'Developed a mobile application for Zebra data collectors and a web application for attendance tracking during event sessions, supporting both self-scanning kiosks and Zebra scanners',
       'Built a customizable live voting application with an administrative panel and real-time results; developed virtual exhibitor booths with documentation for partner companies',
       'Provided onsite IT support during events across Poland, ensuring smooth operation of software systems and hardware reliability; assisted event participants when needed, including at international conferences; represented the IT department during international meetings and occasionally served as a company driver',
     ],
@@ -115,7 +136,7 @@ export const projects: ProjectEntry[] = [
     git: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
     resumeTechnologies: 'JavaScript • Three.js • 3D Studio Max 2019',
     resumeDescription:
-      'A synthwave style 3D coloring-book like animation with real-time model and color customization of the scene via a built-in GUI. Built with creativity and models from 3D Studio Max. Now includes a beta overtaking mini-game. Play some music and have fun!',
+      'A synthwave-style 3D coloring-book like animation with real-time model and color customization of the scene via a built-in GUI. Built with creativity and models from 3D Studio Max. Now includes a beta overtaking mini-game.',
   },
   {
     id: 1,
@@ -129,7 +150,7 @@ export const projects: ProjectEntry[] = [
     liveLabel: 'Chrome Web Store',
     resumeTechnologies: 'JavaScript • Chrome Extension API • CSS',
     resumeDescription:
-      'Chrome extension that shows net prices (excluding VAT) on hover on any website. Supports 120+ countries with preconfigured currencies and VAT rates, custom VAT rate support, and a built-in VAT calculator. Available on the Chrome Web Store.',
+      'Chrome extension that shows prices excluding VAT when you hover over them on any website. It detects prices on the page and displays the net amount in a tooltip and in the extension popup. Supports 120+ countries with preconfigured currencies and VAT rates, and allows custom VAT rate and currency. Features a built-in VAT calculator (GROSS/NET) in the popup. Available on the Chrome Web Store.',
   },
   {
     id: 2,
@@ -148,7 +169,7 @@ export const projects: ProjectEntry[] = [
     technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
     description:
       'Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier interactivity. Pure web experiments and React Three Fiber battleground.',
-    live: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
+    live: process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     resumeTechnologies:
       'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
@@ -165,7 +186,7 @@ export const projects: ProjectEntry[] = [
     live: 'https://yet-another-weather-app.vercel.app/',
     git: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp/',
     resumeDescription:
-      'Another `weather application` — but with a twist. Weather data is displayed for a selected city or via user geolocation, with an interface enriched by interactive elements tied to the current weather conditions and background. Recently, the backend switched from OpenWeather to Open-Meteo. It was into liquid glass style before it became cool. Still desktop-only for now.',
+      'A weather app with real-time 3D visual feedback reflecting actual weather conditions. Pick a city from an interactive map or use geolocation — the interface responds with dynamic elements and backgrounds tied to live weather data. Recently migrated from OpenWeather to Open-Meteo. Still desktop-only for now.',
   },
 ];
 

@@ -23,10 +23,10 @@ export default function Seo(props: SeoProps) {
     title: t.seoTitle,
     siteName: t.seoSiteName,
     description: t.seoDescription,
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl/',
     type: 'website',
     robots: 'follow, index',
-    image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app'}/favicon/large-og.ico`,
+    image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl'}/favicon/large-og.ico`,
   };
 
   const meta = {

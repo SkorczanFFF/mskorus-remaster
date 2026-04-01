@@ -45,6 +45,7 @@ import {
   SiFirebase,
   SiGitlab,
   SiGreensock,
+  SiMobx,
   SiJavascript,
   SiLaravel,
   SiNextdotjs,
@@ -114,6 +115,7 @@ export const NpmIcon = SiNpm as IconType;
 export const ClaudeIcon = BsClaude as IconType;
 export const VercelIcon = SiVercel as IconType;
 export const DockerIcon = IoLogoDocker as IconType;
+export const MobxIcon = SiMobx as IconType;
 
 export const CarIcon = AiFillCar as IconType;
 export const CompassIcon = AiFillCompass as IconType;

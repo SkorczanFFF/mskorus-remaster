@@ -16,10 +16,10 @@ export default function Experience(): React.JSX.Element {
       id='experience'
       className='font-grotesk relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white'
     >
-      <h2 className='font-grotesk text-primary-blue py-2 text-xl font-normal leading-3 tracking-[10px] xl:absolute xl:origin-top-left xl:rotate-90 xl:left-[80px] xl:top-[60px] xl:py-0'>
-        {t.experienceSectionTitle}
-      </h2>
-      <div className='flex h-full w-full flex-col gap-[60px] py-[160px]'>
+      <div className='flex h-full w-full flex-col gap-[60px] py-[160px] lg:pb-0'>
+        <h2 className='font-grotesk text-primary-blue py-2 text-xl font-normal leading-3 tracking-[10px] xl:absolute xl:origin-top-left xl:rotate-90 xl:left-[80px] xl:top-[60px] xl:py-0 md:-mb-4 text-center'>
+          {t.experienceSectionTitle}
+        </h2>
         {t.experiences.map((exp, index) => (
           <ExperienceSection key={index} exp={exp} index={index} />
         ))}
@@ -78,21 +78,20 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
 
   return (
     <div
-      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-xs ${
-        index % 2 === 0
-          ? 'gradient-slow self-end pl-2 md:pl-10'
-          : 'gradient-slow justify-end self-start pr-2 md:pr-10'
-      }`}
+      className={`border-primary-blue flex h-full w-full md:max-w-[85%] lg:max-w-[80%] border-y-2 py-0 text-justify text-white shadow-xs ${index % 2 === 0
+        ? 'gradient-slow self-end pl-2 md:pl-10'
+        : 'gradient-slow justify-end self-start pr-2 md:pr-10'
+        }`}
     >
       <div ref={containerRef} className='flex w-full max-w-[750px]'>
         <div className='bg-primary-blue flex-1 p-6 md:py-4 text-[14px] lg:mx-auto'>
           <h3 className='flex flex-col sm:flex-row sm:justify-between text-xl font-medium'>
-            <span className='pb-0 sm:pb-2 text-[20px] text-white'>
+            <span className=' text-[20px] text-white'>
               {exp.position}
             </span>
             <span className='text-[14px] font-normal'>{exp.date}</span>
           </h3>
-          <div className='gradient mb-2 h-[2px] w-full'></div>
+          <div className='gradient mb-2 h-[2px] w-full mt-1 md:-mt-1'></div>
 
           <div>
             <div className={`flex justify-between flex-col sm:flex-row `}>
@@ -124,9 +123,8 @@ function ExperienceSection({ exp, index }: ExperienceSectionProps) {
               {exp.duties.map((duty, i) => (
                 <li
                   key={i}
-                  className={`${
-                    i === exp.duties.length - 1 ? 'mb-1' : 'mb-2'
-                  } font-light leading-4 text-[#f8f8f8]`}
+                  className={`${i === exp.duties.length - 1 ? 'mb-1' : 'mb-2'
+                    } font-light leading-4 text-[#f8f8f8]`}
                 >
                   - {duty}
                 </li>

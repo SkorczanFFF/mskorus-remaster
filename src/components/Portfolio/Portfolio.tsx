@@ -22,8 +22,9 @@ export default function Portfolio(): React.JSX.Element {
       aria-label='Portfolio projects'
       className='font-grotesk bg-primary-blue relative w-full overflow-hidden md:h-screen'
     >
+      <div className="arrow-down white absolute -top-[2px] left-0 right-0 mx-auto"></div>
       {/* Section title — rotated on desktop, matching Services/Experience */}
-      <h2 className='font-grotesk z-10 py-2 text-xl font-normal leading-3 tracking-[10px] text-white xl:absolute xl:origin-top-left xl:rotate-90 xl:left-[95px] xl:top-[60px] xl:p-4 w-full backdrop-blur-[10px]'>
+      <h2 className='font-grotesk z-10 py-2 text-xl font-normal leading-3 tracking-[10px] text-white xl:absolute xl:origin-top-left xl:rotate-90 xl:left-[95px] xl:top-[60px] xl:p-4 w-full backdrop-blur-[10px] lg:mt-[80px] text-center xl:text-left xl:mt-0 md:-mb-[100px]'>
         {t.portfolioTitle}
       </h2>
 
@@ -44,9 +45,9 @@ export default function Portfolio(): React.JSX.Element {
           </div>
         ))}
 
-        {/* Non-web outro panel */}
-        <div className='project-panel mobile-fade flex w-full shrink-0 flex-col items-center justify-center gap-10 px-8 py-16 md:w-[1150px] md:px-[125px] md:py-0'>
-          <div className='flex w-full max-w-[900px] flex-col gap-5 xl:flex-row'>
+        {/* Non-web outro panel — temporarily hidden */}
+        {/* <div className='project-panel mobile-fade flex w-full shrink-0 flex-col items-center justify-center gap-10 px-8 py-16 md:w-[1150px] md:px-[125px] md:py-0'>
+          <div className='flex w-full max-w-[900px] flex-col gap-5 md:flex-row'>
             <div className='flex min-w-[220px] max-w-[220px] flex-col justify-center gap-2 border-r-2 border-orange-dark bg-deep-blue p-5 shadow-xl md:p-8 h-[140px]'>
               <h4 className='text-3xl font-unica leading-5 md:text-3xl md:leading-8'>
                 <div className='text-end text-raspberry'>
@@ -88,7 +89,7 @@ export default function Portfolio(): React.JSX.Element {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Spacer — ensures last panel can scroll to center */}
         <div className='hidden shrink-0 md:block md:w-[calc(50vw-575px)]' />

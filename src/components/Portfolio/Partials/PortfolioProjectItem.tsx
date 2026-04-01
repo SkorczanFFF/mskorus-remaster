@@ -79,8 +79,8 @@ export default function PortfolioProjectItem({
           loading='lazy'
           className='block w-full'
         />
-        <div className='project-overlay absolute inset-x-0 bottom-0 bg-primary-blue/60 to-transparent px-4 pb-2 pt-4 opacity-0 hidden md:block backdrop-blur-[5px]'>
-          <p className='text-sm font-extralight leading-relaxed text-white/90'>
+        <div className='project-overlay absolute inset-x-0 bottom-0 bg-primary-blue/60 to-transparent p-2 opacity-0 hidden md:block backdrop-blur-[5px]'>
+          <p className='text-sm font-extralight leading-relaxed text-white/90 text-justify'>
             {project.description}
           </p>
         </div>

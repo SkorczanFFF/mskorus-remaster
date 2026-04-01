@@ -52,6 +52,27 @@ export const services: ServiceEntry[] = [
 
 export const experiences: ExperienceEntry[] = [
   {
+    company: 'SKOFTWARE',
+    position: 'B2B Freelance Fullstack Developer',
+    date: 'WRZESIEŃ 2025 - OBECNIE',
+    resumeDate: 'Wrzesień 2025 - Obecnie',
+    stack: [
+      'React',
+      'TailwindCSS',
+      'Python',
+      'PostgreSQL',
+      'TypeScript',
+      'MobX',
+      'Git',
+    ],
+    icon: 'SKOFTWARE.png',
+    duties: [
+      'Opis obowiązków 1',
+      'Opis obowiązków 2',
+      'Opis obowiązków 3',
+    ],
+  },
+  {
     company: 'BUSINESS SERVICE GALOP',
     position: 'Front-End Developer',
     date: 'MAJ 2024 - SIERPIEŃ 2025',
@@ -71,7 +92,7 @@ export const experiences: ExperienceEntry[] = [
     duties: [
       'Zaktualizowanie i rozbudowa wewnętrznego systemu zarządzania wydarzeniami o nowe funkcjonalności, optymalizacje oraz poprawki błędów; zaprojektowanie nowej strefy uczestnika zintegrowanej ze stronami wydarzeń; stworzenie dedykowanej instancji systemu dostosowanej do potrzeb kluczowego klienta, obsługującej różnorodne kursy i wydarzenia medyczne',
       'Stworzenie dedykowanych rozwiązań front-endowych dla wydarzeń medycznych (dostosowane formularze rejestracyjne i strony internetowe, strefy uczestnika, integracje z API), platformy VOD oraz responsywnych mailingów kompatybilnych ze wszystkimi głównymi usługami pocztowymi',
-      'Opracowanie aplikacji mobilnej dla kolektorów danych Zebra (skanowanie kodów QR z lokalnym zapisem danych) oraz aplikacji webowej do rejestracji obecności na sesjach wydarzeń, obsługujących zarówno kioski do samodzielnego skanowania, jak i skanery Zebra',
+      'Opracowanie aplikacji mobilnej dla kolektorów danych Zebra oraz aplikacji webowej do rejestracji obecności na sesjach wydarzeń, obsługujących zarówno kioski do samodzielnego skanowania, jak i skanery Zebra',
       'Stworzenie konfigurowalnej aplikacji do głosowania na żywo z panelem administracyjnym i wynikami w czasie rzeczywistym; opracowanie wirtualnych stoisk wystawców z dokumentacją dla firm partnerskich',
       'Zapewnienie wsparcia IT na miejscu podczas wydarzeń w całej Polsce, dbając o płynne działanie systemów i niezawodność sprzętu; pomoc uczestnikom wydarzeń w razie potrzeby, również podczas konferencji międzynarodowych; reprezentowanie działu IT podczas międzynarodowych spotkań oraz okazjonalne pełnienie funkcji kierowcy firmowego',
     ],
@@ -94,7 +115,7 @@ export const experiences: ExperienceEntry[] = [
     ],
     icon: 'ANFATA.png',
     duties: [
-      'Tworzenie zdecentralizowanej aplikacji zintegrowanej ze Smart Contracts i kolekcjami ImmutableX, w tym budowa marketplace\u2019u, mostkowanie NFT między L1 i L2, umożliwienie transferów między kontami oraz wdrożenie systemu aukcji na żywo',
+      'Tworzenie zdecentralizowanej aplikacji zintegrowanej ze Smart Contracts i kolekcjami ImmutableX, w tym budowa marketplace\u2019u, mostkowanie NFT między L1 i L2, umożliwienie transferów między kontami oraz implementacja i wdrożenie systemu aukcji na żywo opartego o blockchain',
       'Praca z bazami danych Moralis i Firebase oraz funkcjami w chmurze, z wykorzystaniem TypeScript, Next.js, GSAP i systemów kontroli wersji takich jak GitLab i Bitbucket',
       'Wdrożenie nowej strony głównej, integracja bloga opartego na Sanity CMS oraz tworzenie dedykowanych stron i funkcjonalności związanych z wydarzeniami w ramach platform firmy',
       'Manualne testowanie gry Pirates of the Arrland, w tym komponentów 3D MOBA oraz 2D mapy strategicznej w ramach zdecentralizowanej aplikacji',
@@ -113,9 +134,9 @@ export const projects: ProjectEntry[] = [
       'Animacja 3D w stylu synthwave, przypominająca kolorowankę, z możliwością personalizacji modeli i kolorów sceny w czasie rzeczywistym przez wbudowane GUI. Stworzona z kreatywnością i modelami z 3D Studio Max. Zawiera betę mini-gry wyprzedzania.',
     live: 'https://polonez-autodrive.vercel.app/',
     git: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
-    resumeTechnologies: 'HTML • JavaScript • Three.js • 3D Studio Max 2019',
+    resumeTechnologies: 'JavaScript • Three.js • 3D Studio Max',
     resumeDescription:
-      'Prosta trójwymiarowa animacja wykonana przy pomocy 3D Studio Max 2019 oraz Three.js. Wyeksportowane modele wraz z animacjami w formacie .fbx zostały połączone w scenę klimacie Synthwave/lat 80 tworząc interaktywną kolorowankę. Wbudowane GUI umożliwia łatwą manipulację elementami sceny i jej kolorami.',
+      'Animacja 3D w stylu synthwave, przypominająca kolorowankę, z możliwością personalizacji modeli i kolorów sceny w czasie rzeczywistym przez wbudowane GUI. Stworzona z kreatywnością i modelami z 3D Studio Max. Zawiera betę mini-gry wyprzedzania.',
   },
   {
     id: 1,
@@ -129,7 +150,7 @@ export const projects: ProjectEntry[] = [
     liveLabel: 'Chrome Web Store',
     resumeTechnologies: 'JavaScript • Chrome Extension API • CSS',
     resumeDescription:
-      'Rozszerzenie Chrome pokazujące ceny netto (bez VAT) po najechaniu na cenę na dowolnej stronie. Obsługa 120+ krajów z walutami i stawkami VAT, własna stawka VAT oraz wbudowany kalkulator. Dostępne w Chrome Web Store.',
+      'Rozszerzenie do Chrome, które pokazuje ceny bez VAT po najechaniu na nie na dowolnej stronie. Wykrywa ceny na stronie i wyświetla kwotę netto w dymku oraz w okienku rozszerzenia. Obsługuje ponad 120 krajów z wstępnie skonfigurowanymi walutami i stawkami VAT, umożliwia ustawienie własnej stawki i waluty. Zawiera wbudowany kalkulator VAT (brutto/netto). Dostępne w Chrome Web Store.',
   },
   {
     id: 2,
@@ -148,12 +169,12 @@ export const projects: ProjectEntry[] = [
     technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
     description:
       'Jednostronicowe portfolio ze sceną 3D i wbudowaną webową wersją CV. Scena jest modelowana w Blenderze i konwertowana do komponentów React Three Fiber JSX dla łatwiejszej interaktywności. Czyste eksperymenty webowe i poligon React Three Fiber.',
-    live: process.env.NEXT_PUBLIC_SITE_URL || 'https://mskorus.vercel.app/',
+    live: process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     resumeTechnologies:
       'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
     resumeDescription:
-      'Przebudowana od podstaw przestarzała wersja mojego portfolio. Aktualnie bazuje na Next.js, TypeScript oraz TailwindCSS. Elementy sceny WebGL są modelami wykonanymi w Blender, następnie zostały skonwertowane do komponentów JSX biblioteki React Three Fiber dla prostrzego operowania elementami sceny. Zawiera wbudowaną wersję webową CV w języku polskim i angielskim.',
+      'Jednostronicowe portfolio ze sceną 3D i wbudowaną webową wersją CV. Scena jest modelowana w Blenderze i konwertowana do komponentów React Three Fiber JSX dla łatwiejszej interaktywności. Czyste eksperymenty webowe i poligon React Three Fiber.',
   },
   {
     id: 4,
@@ -165,7 +186,7 @@ export const projects: ProjectEntry[] = [
     live: 'https://yet-another-weather-app.vercel.app/',
     git: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp/',
     resumeDescription:
-      "'Kolejna Aplikacja Pogodowa', ale z powiewem świeżości. Informacje pogodowe są wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs aplikacji został wzbogacony o dodatkowe możliwości interakcji z danymi pogodowymi oraz tłem.",
+      'Aplikacja pogodowa z trójwymiarową wizualizacją aktualnych warunków atmosferycznych w czasie rzeczywistym. Wybór miasta z interaktywnej mapy lub przez geolokację — interfejs reaguje dynamicznymi elementami i tłem dopasowanym do danych pogodowych na żywo. Backend zmigrowany z OpenWeather na Open-Meteo. Na razie tylko wersja desktop.',
   },
 ];
 

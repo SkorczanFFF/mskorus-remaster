@@ -16,6 +16,7 @@ import {
   JavaIcon,
   JavascriptIcon,
   LaravelIcon,
+  MobxIcon,
   MongodbIcon,
   MysqlIcon,
   NextjsIcon,
@@ -78,6 +79,7 @@ export const techIconMap: Record<string, IconType> = {
   'Sanity CMS': SanityIcon,
   GitLab: GitlabIcon,
   Bitbucket: BitbucketIcon,
+  MobX: MobxIcon,
 };
 
 /** Category grouping for the Skills section. Values are keys into techIconMap. */
@@ -109,5 +111,17 @@ export const techCategoryGroups: Record<string, string[]> = {
   tools: ['Docker', 'GitHub', 'CursorAI', 'Claude', 'npm'],
 };
 
-/** Flat ordered list for the resume skills section — derived from techCategoryGroups. */
-export const resumeTechList: string[] = Object.values(techCategoryGroups).flat();
+/** Flat ordered list for the resume skills section — manually sorted for symmetric 3-per-row wrapping. */
+export const resumeTechList: string[] = [
+  'TypeScript', 'React', 'CSS3',
+  'Next.js', 'React Native', 'Sass',
+  'TailwindCSS', 'Redux', 'GSAP',
+  'Three.js', 'Python', 'Blender',
+  'PostgreSQL', 'Node.js', 'Java',
+  'Wordpress', 'Laravel', 'npm',
+  'MongoDB', 'MySQL', 'MobX',
+  'Firebase', 'HTML5', 'Sanity',
+  'Photoshop', '3Ds Max', 'Php',
+  'CursorAI', 'Figma', 'Canva',
+  'Docker', 'GitHub', 'Claude',
+];

@@ -69,7 +69,7 @@
 
 body {
   background-color: var(--color-primary-blue);
-  overflow-x: hidden;
+  overflow-x: clip;
   scrollbar-width: thin;
   scrollbar-color: var(--color-raspberry) var(--color-primary-blue);
 }

@@ -1,12 +1,15 @@
 import Lenis from 'lenis';
 import { AppProps } from 'next/app';
 import localFont from 'next/font/local';
-import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import '@/styles/globals.css';
 
 import CookieConsentBanner from '@/components/CookieConsent';
 import CustomCursor from '@/components/CustomCursor';
+import LoaderOverlay from '@/components/LoaderOverlay';
+import ScrollToTop from '@/components/ScrollToTop';
 import Header from '@/components/layout/Header/Header';
 
 import { LocaleProvider } from '@/locale/LocaleContext';
@@ -27,6 +30,31 @@ const unicaOne = localFont({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const [routeLoading, setRouteLoading] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const onStart = useCallback(() => {
+    timerRef.current = setTimeout(() => setRouteLoading(true), 200);
+  }, []);
+
+  const onEnd = useCallback(() => {
+    clearTimeout(timerRef.current);
+    setRouteLoading(false);
+  }, []);
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', onStart);
+    router.events.on('routeChangeComplete', onEnd);
+    router.events.on('routeChangeError', onEnd);
+    return () => {
+      router.events.off('routeChangeStart', onStart);
+      router.events.off('routeChangeComplete', onEnd);
+      router.events.off('routeChangeError', onEnd);
+      clearTimeout(timerRef.current);
+    };
+  }, [router, onStart, onEnd]);
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -61,7 +89,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div className={`${spaceGrotesk.variable} ${unicaOne.variable}`}>
       <LocaleProvider>
         <Header />
+        {routeLoading && <LoaderOverlay visible />}
         <Component {...pageProps} />
+        <ScrollToTop />
         <CookieConsentBanner />
         <CustomCursor />
       </LocaleProvider>

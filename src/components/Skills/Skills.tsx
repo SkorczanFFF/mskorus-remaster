@@ -76,22 +76,7 @@ function animateCategory(
   return anim.scrollTrigger ?? undefined;
 }
 
-const CHECKER_COLS = 6;
-
 const allTechs: TechEntry[] = Object.values(techCategories).flat();
-
-const checkerRows: TechEntry[][] = (() => {
-  const rows: TechEntry[][] = [];
-  let idx = 0;
-  let rowNum = 0;
-  while (idx < allTechs.length) {
-    const cols = rowNum % 2 === 0 ? CHECKER_COLS : CHECKER_COLS - 1;
-    rows.push(allTechs.slice(idx, idx + cols));
-    idx += cols;
-    rowNum++;
-  }
-  return rows;
-})();
 
 export default function Skills(): React.JSX.Element {
   const { t } = useLocale();
@@ -142,7 +127,7 @@ export default function Skills(): React.JSX.Element {
       ref={sectionRef}
       id='skills'
       aria-label='Skills'
-      className='font-grotesk relative flex h-full w-full flex-col items-center justify-between border-b bg-white pb-[200px] -mt-[160px] lg:pt-[160px]'
+      className='font-grotesk relative flex h-full w-full flex-col items-center justify-between border-b bg-white lg:pb-[160px] pb-[100px] lg:pt-[160px]'
     >
       <div className='hidden xl:flex xl:w-full xl:max-w-[1200px] xl:flex-col xl:gap-8'>
         <div className='flex w-full flex-col' ref={frontendRef}>
@@ -205,22 +190,9 @@ export default function Skills(): React.JSX.Element {
         </div>
       </div>
 
-      {/* Tablet: checkerboard (768px – 1280px) */}
-      <div className='hidden md:block xl:hidden my-10 w-full'>
-        <div className='mx-auto flex flex-col items-center gap-y-4'>
-          {checkerRows.map((row, i) => (
-            <div key={i} className='flex justify-center gap-x-4'>
-              {row.map((tech) => (
-                <TechIcon key={tech.label} tech={tech} />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Mobile: 4-col grid (< 768px) */}
-      <div className='my-10 w-full px-2 md:hidden'>
-        <div className='mx-auto grid grid-cols-4 justify-items-center gap-x-1 gap-y-4'>
+      {/* 4x8 grid (below xl) */}
+      <div className='my-10 w-[400px] md:w-[600px] xl:hidden'>
+        <div className='mx-auto grid grid-cols-4 justify-items-center gap-y-6 md:gap-y-12'>
           {allTechs.map((tech) => (
             <TechIcon key={tech.label} tech={tech} />
           ))}

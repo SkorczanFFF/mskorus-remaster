@@ -38,7 +38,7 @@ const FOREIGN_HEADINGS = [
 ] as const;
 
 export default function Footer(): React.JSX.Element {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const cycleRef = useRef<gsap.core.Tween | null>(null);
@@ -114,7 +114,7 @@ export default function Footer(): React.JSX.Element {
           <div className='md:w-3/5'>
             <h2
               ref={headingRef}
-              className='font-unica mb-12 text-6xl font-extrabold tracking-tighter text-deep-blue md:text-8xl lg:text-8xl -mt-2 wrap-break-word'
+              className='font-unica mb-12 text-6xl font-extrabold tracking-tighter text-deep-blue md:text-7xl lg:text-8xl mt-2 wrap-break-word'
             >
               {t.footerHeading}
             </h2>
@@ -192,13 +192,14 @@ export default function Footer(): React.JSX.Element {
                     <GlobeIcon className='text-base' aria-hidden='true' />
                     <span>{t.footerResumeOnline}</span>
                   </Link>
-                  <Link
-                    href='/resume?download=1'
+                  <a
+                    href={`/Maciej Skorus - CV [${locale.toUpperCase()}].pdf`}
+                    download
                     className='flex items-center gap-2 font-bold text-deep-blue/60 transition-all duration-200 hover:translate-x-1 hover:text-raspberry md:flex-row-reverse'
                   >
                     <PdfIcon className='text-base' aria-hidden='true' />
                     <span>{t.footerResumeDownload}</span>
-                  </Link>
+                  </a>
                 </nav>
               </div>
             </div>
