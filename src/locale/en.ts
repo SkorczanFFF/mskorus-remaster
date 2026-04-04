@@ -78,7 +78,7 @@ export const en: Dictionary = {
   resumeHeaderSkills: 'SKILLS AND TOOLS',
   resumeHeaderDownload: 'DOWNLOAD',
   resumeAboutMe:
-    'Creative fullstack developer with nearly 4 years of professional experience across web applications, internal systems, mobile apps, and 3D. Built production platforms for the medical events sector, decentralized blockchain applications for the gaming industry, and fullstack tools for document and media processing. Experienced in running and integrating local AI/LLM models. Comfortable across the entire stack: React/Next.js on the frontend, Python/Node.js on the backend, PostgreSQL/MongoDB for data, and Docker for deployment. Personally passionate about WebGL, modding, and building useful and entertaining code',
+    'Creative fullstack developer with hands-on experience in web and mobile applications, internal systems, and 3D. Well-versed in the medical industry - from organizing national and international congresses and conferences to dedicated software: document processing pipelines, mobile apps, VOD, virtual booths, improvements and updates to existing systems, on-site and on-the-road IT support. Built an NFT auction system and dApp tied to a 3D MOBA game on Unity. From VanillaJS through frontend and backend frameworks, relational and non-relational databases to Docker - comfortable across the full stack, integrating AI/LLM models. Particularly drawn to creative frontend and WebGL. Personally passionate about modding and creating useful, unconventional solutions.',
   resumeEducation: {
     university: 'UNIVERSITY OF SILESIA',
     field: 'Web Application Programming',
@@ -87,7 +87,7 @@ export const en: Dictionary = {
   },
   resumePageTitle: 'SKOFTWARE - Maciej Skorus - Resume - Creative Fullstack Engineer',
   resumeAltPhoto: 'Maciej Skorus, Fullstack Engineer',
-  resumeHobbies: ['bass guitar', 'older cars', 'music', 'traveling', 'hardware', 'foreign langs'],
+  resumeHobbies: ['bass guitar', 'automotive', 'music', 'traveling', 'technology', 'foreign langs'],
   resumeRodo:
     'I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)',
   resumeRepo: 'repository',
@@ -99,6 +99,7 @@ export const en: Dictionary = {
   cookieAcceptAll: 'Accept All',
   cookieRejectAll: 'Reject All',
   cookieSavePreferences: 'Save Preferences',
+  cookieSettings: 'Settings',
   cookieNecessaryTitle: 'Strictly Necessary',
   cookieNecessaryDescription:
     'Essential for the website to function. These cannot be disabled.',

@@ -79,7 +79,7 @@ export const pl: Dictionary = {
   resumeHeaderSkills: 'UMIEJĘTNOŚCI I NARZĘDZIA',
   resumeHeaderDownload: 'POBIERZ',
   resumeAboutMe:
-    'Creative fullstack developer z blisko 4-letnim doświadczeniem zawodowym w aplikacjach webowych, systemach wewnętrznych, aplikacjach mobilnych i 3D. Budował platformy produkcyjne dla sektora wydarzeń medycznych, zdecentralizowane aplikacje blockchain dla branży gier oraz fullstackowe narzędzia do przetwarzania dokumentów i mediów. Doświadczony w uruchamianiu i integracji lokalnych modeli AI/LLM. Komfortowo porusza się po całym stosie: React/Next.js na frontendzie, Python/Node.js na backendzie, PostgreSQL/MongoDB do danych i Docker do wdrożeń. Prywatnie pasjonat WebGL, moddingu oraz tworzenia użytecznego i kreatywnego kodu',
+    'Creative fullstack developer z praktycznym doświadczeniem w aplikacjach webowych i mobilnych, systemach wewnętrznych i 3D. Obeznany w branży medycznej - od organizacji krajowych i międzynarodowych kongresów i konferencji po dedykowane oprogramowanie: pipeline\'y do przetwarzania dokumentów, aplikacje mobilne, VOD, wirtualne stoiska, usprawnienia i aktualizacje instniejących systemów, wsparcie IT na miejscu i w delegacji. Zrealizowałem system aukcji NFT i dApp powiązany z grą 3D MOBA na Unity. Od VanillaJS przez frameworki frontendowe i backendowe, bazy relacyjne i nierelacyjne po Dockera - poruszam się swobodnie po całym stacku, integruje modele AI/LLM. Mam szczególną słabość do kreatywnego frontendu i WebGL. Prywatnie pasjonat moddingu oraz tworzenia użytecznych i niebanalnych rozwiązań.',
   resumeEducation: {
     university: 'Uniwersytet Śląski - WNST',
     field: 'Programowanie Aplikacji Webowych',
@@ -88,7 +88,7 @@ export const pl: Dictionary = {
   },
   resumePageTitle: 'SKOFTWARE - Maciej Skorus - CV - Creative Fullstack Engineer',
   resumeAltPhoto: 'Maciej Skorus, Fullstack Engineer',
-  resumeHobbies: ['gitara basowa', 'starsze auta', 'muzyka', 'podróże', 'hardware', 'języki obce'],
+  resumeHobbies: ['gitara basowa', 'motoryzacja', 'muzyka', 'podróże', 'technologia', 'języki obce'],
   resumeRodo:
     'Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).',
   resumeRepo: 'repozytorium',
@@ -100,6 +100,7 @@ export const pl: Dictionary = {
   cookieAcceptAll: 'Akceptuj wszystkie',
   cookieRejectAll: 'Odrzuć wszystkie',
   cookieSavePreferences: 'Zapisz preferencje',
+  cookieSettings: 'Ustawienia',
   cookieNecessaryTitle: 'Niezbędne',
   cookieNecessaryDescription:
     'Niezbędne do prawidłowego działania strony. Nie można ich wyłączyć.',

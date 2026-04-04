@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
-import { CookieIcon } from '@/lib/shared/Icons';
+import { CookieIcon, WrenchIcon } from '@/lib/shared/Icons';
 
 import { useLocale } from '@/locale/LocaleContext';
 
@@ -48,6 +48,7 @@ export default function CookieConsentBanner() {
   const { t } = useLocale();
   const [visible, setVisible] = useState(false);
   const [analytics, setAnalytics] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Show on first visit (no consent cookie yet), or when triggered externally
   useEffect(() => {
@@ -120,36 +121,65 @@ export default function CookieConsentBanner() {
               .
             </p>
 
-            {/* Categories */}
-            <div className='mb-5 space-y-3'>
-              {/* Necessary — always on */}
-              <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3 backdrop-blur-[3px]'>
-                <div>
-                  <p className='text-sm font-medium'>
-                    {t.cookieNecessaryTitle}
-                  </p>
-                  <p className='mt-0.5 text-xs text-white/50'>
-                    {t.cookieNecessaryDescription}
-                  </p>
-                </div>
-                <Toggle checked disabled aria-label={t.cookieNecessaryTitle} />
-              </div>
+            {/* Settings dropdown */}
+            <div className='mb-4'>
+              <button
+                type='button'
+                onClick={() => setSettingsOpen((v) => !v)}
+                className='flex w-full items-center justify-between rounded-[3px] border-2 border-raspberry/50 bg-primary-blue/60 px-3 py-2 text-sm font-semibold uppercase tracking-wider text-white transition-colors duration-200 hover:bg-raspberry/20 backdrop-blur-[3px]'
+              >
+                <span className='flex items-center gap-2'>
+                  <WrenchIcon className='text-base text-raspberry' aria-hidden='true' />
+                  {t.cookieSettings}
+                </span>
+                <span className={`text-xs transition-transform duration-200 ${settingsOpen ? 'rotate-180' : ''}`}>▾</span>
+              </button>
 
-              {/* Analytics — toggleable */}
-              <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3 backdrop-blur-[3px]'>
-                <div>
-                  <p className='text-sm font-medium'>
-                    {t.cookieAnalyticsTitle}
-                  </p>
-                  <p className='mt-0.5 text-xs text-white/50'>
-                    {t.cookieAnalyticsDescription}
-                  </p>
+              <div
+                className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${settingsOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+              >
+                <div className='overflow-hidden'>
+                  <div className='mt-2 space-y-2'>
+                    {/* Necessary — always on */}
+                    <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3 backdrop-blur-[3px]'>
+                      <div>
+                        <p className='text-sm font-medium'>
+                          {t.cookieNecessaryTitle}
+                        </p>
+                        <p className='mt-0.5 text-xs text-white/50'>
+                          {t.cookieNecessaryDescription}
+                        </p>
+                      </div>
+                      <Toggle checked disabled aria-label={t.cookieNecessaryTitle} />
+                    </div>
+
+                    {/* Analytics — toggleable */}
+                    <div className='flex items-center justify-between rounded-[3px] bg-primary-blue/80 px-4 py-3 backdrop-blur-[3px]'>
+                      <div>
+                        <p className='text-sm font-medium'>
+                          {t.cookieAnalyticsTitle}
+                        </p>
+                        <p className='mt-0.5 text-xs text-white/50'>
+                          {t.cookieAnalyticsDescription}
+                        </p>
+                      </div>
+                      <Toggle
+                        checked={analytics}
+                        onChange={() => setAnalytics((v) => !v)}
+                        aria-label={t.cookieAnalyticsTitle}
+                      />
+                    </div>
+
+                    {/* Save preferences */}
+                    <button
+                      type='button'
+                      onClick={savePreferences}
+                      className='w-full rounded-[3px] border-2 border-raspberry/60 bg-transparent px-4 py-2 text-sm font-medium text-white uppercase transition-colors duration-200 hover:bg-raspberry/20 hover:text-white'
+                    >
+                      {t.cookieSavePreferences}
+                    </button>
+                  </div>
                 </div>
-                <Toggle
-                  checked={analytics}
-                  onChange={() => setAnalytics((v) => !v)}
-                  aria-label={t.cookieAnalyticsTitle}
-                />
               </div>
             </div>
 
@@ -165,16 +195,9 @@ export default function CookieConsentBanner() {
               <button
                 type='button'
                 onClick={rejectAll}
-                className='flex-1 rounded-[3px] border-2 border-raspberry bg-transparent px-4 py-1 text-sm font-medium text-white transition-colors duration-200 hover:bg-raspberry/20'
+                className='flex-1 rounded-[3px] border-2 border-raspberry bg-transparent px-4 py-1 text-sm font-medium text-white transition-colors duration-200 hover:bg-raspberry/20 backdrop-blur-[4px]'
               >
                 {t.cookieRejectAll}
-              </button>
-              <button
-                type='button'
-                onClick={savePreferences}
-                className='w-full rounded-[3px] border-2 border-raspberry/20 bg-transparent px-4 py-2 text-xs font-medium text-white/60 transition-colors duration-200 hover:bg-raspberry/20 hover:text-white'
-              >
-                {t.cookieSavePreferences}
               </button>
             </div>
           </div>

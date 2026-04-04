@@ -52,10 +52,11 @@ export const services: ServiceEntry[] = [
 
 export const experiences: ExperienceEntry[] = [
   {
-    company: 'SKOFTWARE',
-    position: 'B2B Freelance Fullstack Developer',
+    company: '2SIMPLE',
+    position: 'Fullstack Developer',
     date: 'WRZESIEŃ 2025 - OBECNIE',
     resumeDate: 'Wrzesień 2025 - Obecnie',
+    resumeType: 'Zdalnie',
     stack: [
       'React',
       'TailwindCSS',
@@ -65,11 +66,10 @@ export const experiences: ExperienceEntry[] = [
       'MobX',
       'Git',
     ],
-    icon: 'SKOFTWARE.png',
+    icon: '2SIMPLE.png',
     duties: [
-      'Opis obowiązków 1',
-      'Opis obowiązków 2',
-      'Opis obowiązków 3',
+      'Tworzenie narzędzi i pipeline\'ów do obróbki i przetwarzania dokumentów cyfrowych i skanów',
+      'Tworzenie dedykowanych aplikacji i rozwiązań dla klientów z sektora medycznego',
     ],
   },
   {
@@ -77,6 +77,7 @@ export const experiences: ExperienceEntry[] = [
     position: 'Front-End Developer',
     date: 'MAJ 2024 - SIERPIEŃ 2025',
     resumeDate: 'Maj 2024 - Sierpień 2025',
+    resumeType: 'Hybrydowo',
     stack: [
       'PHP',
       'MySQL',
@@ -102,6 +103,7 @@ export const experiences: ExperienceEntry[] = [
     position: 'Junior Web3 Frontend Developer',
     date: 'WRZESIEŃ 2022 - SIERPIEŃ 2023',
     resumeDate: 'Wrzesień 2022 - Sierpień 2023',
+    resumeType: 'Hybrydowo',
     stack: [
       'Next.js',
       'TypeScript',
@@ -131,12 +133,12 @@ export const projects: ProjectEntry[] = [
     title: 'POLONEZ AUTODRIVE',
     technos: 'JavaScript • Three.js • 3D Studio Max',
     description:
-      'Animacja 3D w stylu synthwave, przypominająca kolorowankę, z możliwością personalizacji modeli i kolorów sceny w czasie rzeczywistym przez wbudowane GUI. Stworzona z kreatywnością i modelami z 3D Studio Max. Zawiera betę mini-gry wyprzedzania.',
-    live: 'https://polonez-autodrive.vercel.app/',
+      'Animacja 3D w stylu lat 80/synthwave w formie kolorowanki, z możliwością dynamicznej zmiany kolorów sceny i wyświetlanych elementów przez wbudowane GUI. Modele sceny zostały stworzone w 3D Studio Max, zawiera wersję beta mini-gry zręcznościowej polegającej na wyprzedzaniu innych pojazdów.',
+    live: 'https://polonez-autodrive.skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
     resumeTechnologies: 'JavaScript • Three.js • 3D Studio Max',
     resumeDescription:
-      'Animacja 3D w stylu synthwave, przypominająca kolorowankę, z możliwością personalizacji modeli i kolorów sceny w czasie rzeczywistym przez wbudowane GUI. Stworzona z kreatywnością i modelami z 3D Studio Max. Zawiera betę mini-gry wyprzedzania.',
+      'Animacja 3D w stylu lat 80/synthwave w formie kolorowanki, z możliwością dynamicznej zmiany kolorów sceny i wyświetlanych elementów przez wbudowane GUI. Modele sceny zostały stworzone w 3D Studio Max, zawiera wersję beta mini-gry zręcznościowej polegającej na wyprzedzaniu innych pojazdów.',
   },
   {
     id: 1,
@@ -144,13 +146,13 @@ export const projects: ProjectEntry[] = [
     title: 'VAT-OFF',
     technos: 'JavaScript • Chrome Extension API • CSS',
     description:
-      'Rozszerzenie do Chrome, które pokazuje ceny bez VAT po najechaniu na nie na dowolnej stronie. Wykrywa ceny na stronie i wyświetla kwotę netto w dymku oraz w okienku rozszerzenia. Obsługuje ponad 120 krajów z wstępnie skonfigurowanymi walutami i stawkami VAT, umożliwia ustawienie własnej stawki i waluty. Zawiera wbudowany kalkulator VAT (brutto/netto). Dostępne w Chrome Web Store.',
+      'Rozszerzenie do Chrome, które pokazuje ceny bez VAT po najechaniu na nie na dowolnej stronie. Wykrywa automatycznie ceny i wyświetla kwotę netto w dymku po najechaniu na nie. Obsługuje ponad 120 krajów z wstępnie skonfigurowanymi walutami i stawkami VAT, umożliwia ustawienie własnej stawki i waluty. Zawiera wbudowany kalkulator VAT (brutto/netto). Dostępne w Chrome Web Store.',
     live: 'https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl',
     git: 'https://github.com/SkorczanFFF/VAT-OFF',
     liveLabel: 'Chrome Web Store',
     resumeTechnologies: 'JavaScript • Chrome Extension API • CSS',
     resumeDescription:
-      'Rozszerzenie do Chrome, które pokazuje ceny bez VAT po najechaniu na nie na dowolnej stronie. Wykrywa ceny na stronie i wyświetla kwotę netto w dymku oraz w okienku rozszerzenia. Obsługuje ponad 120 krajów z wstępnie skonfigurowanymi walutami i stawkami VAT, umożliwia ustawienie własnej stawki i waluty. Zawiera wbudowany kalkulator VAT (brutto/netto). Dostępne w Chrome Web Store.',
+      'Rozszerzenie do Chrome, które pokazuje ceny bez VAT po najechaniu na nie na dowolnej stronie. Wykrywa automatycznie ceny i wyświetla kwotę netto w dymku po najechaniu na nie. Obsługuje ponad 120 krajów z wstępnie skonfigurowanymi walutami i stawkami VAT, umożliwia ustawienie własnej stawki i waluty. Zawiera wbudowany kalkulator VAT (brutto/netto). Dostępne w Chrome Web Store.',
   },
   {
     id: 2,
@@ -165,16 +167,16 @@ export const projects: ProjectEntry[] = [
   {
     id: 3,
     pic: '/projects/portfolio.jpg',
-    title: 'SKOFTWARE - moje portfolio',
-    technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
+    title: 'SKOFTware - moje portfolio',
+    technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • GSAP • i18n',
     description:
-      'Jednostronicowe portfolio ze sceną 3D i wbudowaną webową wersją CV. Scena jest modelowana w Blenderze i konwertowana do komponentów React Three Fiber JSX dla łatwiejszej interaktywności. Czyste eksperymenty webowe i poligon React Three Fiber.',
+      'Moja strona portfolio, poligon do eksperymentów webowych i testów rozwiązań. Zawiera scenę 3D stworzoną w React Three Fiber, przejścia i animacje w GSAP oraz i18n do obsługi wielojęzyczności. Dodatkowo zawiera wbudowaną webową wersję CV w języku polskim i angielskim. Projekt nieustannie ewoluujący, prawdopodobnie na zawsze "WIP".',
     live: process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     resumeTechnologies:
-      'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
+      'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • GSAP • i18n',
     resumeDescription:
-      'Jednostronicowe portfolio ze sceną 3D i wbudowaną webową wersją CV. Scena jest modelowana w Blenderze i konwertowana do komponentów React Three Fiber JSX dla łatwiejszej interaktywności. Czyste eksperymenty webowe i poligon React Three Fiber.',
+      'Moja strona portfolio, poligon do eksperymentów webowych i testów rozwiązań. Zawiera scenę 3D stworzoną w React Three Fiber, przejścia i animacje w GSAP oraz i18n do obsługi wielojęzyczności. Dodatkowo zawiera wbudowaną webową wersję CV w języku polskim i angielskim. Projekt nieustannie ewoluujący, prawdopodobnie nigdy nie wyjdzie z fazy "WIP".',
   },
   {
     id: 4,
@@ -182,11 +184,11 @@ export const projects: ProjectEntry[] = [
     title: 'Yet Another Weather App',
     technos: 'React • JavaScript • Sass • Vanta.js • Open-Meteo API',
     description:
-      '"Kolejna Aplikacja Pogodowa" — ale z twistem. Informacje pogodowe wyświetlane dla wybranego miasta lub za pomocą geolokacji użytkownika. Interfejs wzbogacony o interaktywne elementy powiązane z aktualnymi warunkami pogodowymi i tłem. Backend przeszedł z OpenWeather na Open-Meteo. Był w stylu liquid glass, zanim stało się to modne. Na razie tylko wersja desktop.',
-    live: 'https://yet-another-weather-app.vercel.app/',
+      '"Kolejna Aplikacja Pogodowa" - ale inaczej. Interaktywny interfejs został wzbogacony o wyświetlanie symulacji pogody w czasie rzeczywistym bazującej na danych z Open-Meteo. Informacje pogodowe wyświetlane dla wybranego miasta lub za pomocą mapy bądź geolokacji. Aktualnie w gruntownej przebudowie, jednak można śmiało sprawdzać pogodę.',
+    live: 'https://yet-another-weather-app.skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp/',
     resumeDescription:
-      'Aplikacja pogodowa z trójwymiarową wizualizacją aktualnych warunków atmosferycznych w czasie rzeczywistym. Wybór miasta z interaktywnej mapy lub przez geolokację — interfejs reaguje dynamicznymi elementami i tłem dopasowanym do danych pogodowych na żywo. Backend zmigrowany z OpenWeather na Open-Meteo. Na razie tylko wersja desktop.',
+      '"Kolejna Aplikacja Pogodowa" - ale inaczej. Interaktywny interfejs został wzbogacony o wyświetlanie symulacji pogody w czasie rzeczywistym bazującej na danych z Open-Meteo. Informacje pogodowe wyświetlane dla wybranego miasta lub za pomocą mapy bądź geolokacji. Aktualnie w gruntownej przebudowie, jednak można śmiało sprawdzać pogodę.',
   },
 ];
 

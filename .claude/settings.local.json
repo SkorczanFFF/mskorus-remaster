@@ -16,7 +16,11 @@
       "Bash(python -c \"from PIL import Image; print\\(''Pillow OK''\\)\")",
       "Bash(curl:*)",
       "Bash(node scripts/generate-cv-pdf.mjs)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(file:*)",
+      "Bash(ls:*)",
+      "Bash(identify:*)",
+      "Bash(wc:*)"
     ]
   }
 }

@@ -52,6 +52,7 @@ export const techIconMap: Record<string, IconType> = {
   TailwindCSS: TailwindIcon,
   Sass: SassIcon,
   GSAP: GsapIcon,
+
   PHP: PhpIcon,
   'Node.js': NodejsIcon,
   Java: JavaIcon,
@@ -113,15 +114,16 @@ export const techCategoryGroups: Record<string, string[]> = {
 
 /** Flat ordered list for the resume skills section — manually sorted for symmetric 3-per-row wrapping. */
 export const resumeTechList: string[] = [
-  'TypeScript', 'React', 'CSS3',
-  'Next.js', 'React Native', 'Sass',
-  'TailwindCSS', 'Redux', 'GSAP',
-  'Three.js', 'Python', 'Blender',
-  'PostgreSQL', 'Node.js', 'Java',
-  'Wordpress', 'Laravel', 'npm',
-  'MongoDB', 'MySQL', 'MobX',
-  'Firebase', 'HTML5', 'Sanity',
-  'Photoshop', '3Ds Max', 'Php',
-  'CursorAI', 'Figma', 'Canva',
-  'Docker', 'GitHub', 'Claude',
+  'TypeScript', 'React', 'Next.js',       // frontend core
+  'React Native', 'Redux', 'MobX',        // frontend state
+  'TailwindCSS', 'Sass', 'GSAP',          // frontend styling
+  'Three.js', 'HTML5', 'CSS3',            // frontend web/3D
+  'Python', 'Node.js', 'Java',            // backend languages
+
+  'PHP', 'Laravel', 'Wordpress',           // backend frameworks
+  'Sanity', 'PostgreSQL', 'MySQL',         // CMS + databases
+  'MongoDB', 'Firebase', 'Docker',         // databases + devops
+  'Photoshop', '3Ds Max', 'Blender',      // design 3D
+  'Figma', 'Canva', 'GitHub',             // design + VCS
+  'npm', 'CursorAI', 'Claude',            // tools + AI
 ];

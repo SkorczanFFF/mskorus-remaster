@@ -52,10 +52,11 @@ export const services: ServiceEntry[] = [
 
 export const experiences: ExperienceEntry[] = [
   {
-    company: 'SKOFTWARE',
-    position: 'B2B Freelance Fullstack Developer',
+    company: '2SIMPLE',
+    position: 'Fullstack Developer',
     date: 'SEP 2025 - PRESENT',
     resumeDate: 'Sep 2025 - Present',
+    resumeType: 'Remote',
     stack: [
       'React',
       'TailwindCSS',
@@ -65,11 +66,10 @@ export const experiences: ExperienceEntry[] = [
       'MobX',
       'Git',
     ],
-    icon: 'SKOFTWARE.png',
+    icon: '2SIMPLE.png',
     duties: [
-      'Placeholder duty 1',
-      'Placeholder duty 2',
-      'Placeholder duty 3',
+      'Developing tools and pipelines for processing and transforming digital documents and scans',
+      'Building dedicated applications and solutions for clients in the medical sector',
     ],
   },
   {
@@ -77,6 +77,7 @@ export const experiences: ExperienceEntry[] = [
     position: 'Front-End Developer',
     date: 'MAY 2024 - AUG 2025',
     resumeDate: 'May 2024 - Aug 2025',
+    resumeType: 'Hybrid',
     stack: [
       'PHP',
       'MySQL',
@@ -102,6 +103,7 @@ export const experiences: ExperienceEntry[] = [
     position: 'Junior Web3 Frontend Developer',
     date: 'SEP 2022 - AUG 2023',
     resumeDate: 'Sep 2022 - Aug 2023',
+    resumeType: 'Hybrid',
     stack: [
       'Next.js',
       'TypeScript',
@@ -131,12 +133,12 @@ export const projects: ProjectEntry[] = [
     title: 'POLONEZ AUTODRIVE',
     technos: 'JavaScript • Three.js • 3D Studio Max',
     description:
-      'A synthwave-style 3D coloring-book like animation with real-time model and color customization of the scene via a built-in GUI. Built with creativity and models from 3D Studio Max. Now includes a beta overtaking mini-game.',
-    live: 'https://polonez-autodrive.vercel.app/',
+      'An 80s/synthwave-style 3D coloring-book animation with dynamic color customization of the scene and displayed elements via a built-in GUI. Scene models were created in 3D Studio Max. Includes a beta arcade mini-game based on overtaking other vehicles.',
+    live: 'https://www.polonez-autodrive.skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
-    resumeTechnologies: 'JavaScript • Three.js • 3D Studio Max 2019',
+    resumeTechnologies: 'JavaScript • Three.js • 3D Studio Max',
     resumeDescription:
-      'A synthwave-style 3D coloring-book like animation with real-time model and color customization of the scene via a built-in GUI. Built with creativity and models from 3D Studio Max. Now includes a beta overtaking mini-game.',
+      'An 80s/synthwave-style 3D coloring-book animation with dynamic color customization of the scene and displayed elements via a built-in GUI. Scene models were created in 3D Studio Max. Includes a beta arcade mini-game based on overtaking other vehicles.',
   },
   {
     id: 1,
@@ -144,13 +146,13 @@ export const projects: ProjectEntry[] = [
     title: 'VAT-OFF',
     technos: 'JavaScript • Chrome Extension API • CSS',
     description:
-      'Chrome extension that shows prices excluding VAT when you hover over them on any website. It detects prices on the page and displays the net amount in a tooltip and in the extension popup. Supports 120+ countries with preconfigured currencies and VAT rates, and allows custom VAT rate and currency. Features a built-in VAT calculator (GROSS/NET) in the popup. Available on the Chrome Web Store.',
+      'Chrome extension that shows prices excluding VAT when you hover over them on any website. Automatically detects prices and displays the net amount in a tooltip on hover. Supports 120+ countries with preconfigured currencies and VAT rates, and allows custom VAT rate and currency. Features a built-in VAT calculator (GROSS/NET). Available on the Chrome Web Store.',
     live: 'https://chromewebstore.google.com/detail/vat-off/lplomppbbkgehcldiilhckbdalnblhdl',
     git: 'https://github.com/SkorczanFFF/VAT-OFF',
     liveLabel: 'Chrome Web Store',
     resumeTechnologies: 'JavaScript • Chrome Extension API • CSS',
     resumeDescription:
-      'Chrome extension that shows prices excluding VAT when you hover over them on any website. It detects prices on the page and displays the net amount in a tooltip and in the extension popup. Supports 120+ countries with preconfigured currencies and VAT rates, and allows custom VAT rate and currency. Features a built-in VAT calculator (GROSS/NET) in the popup. Available on the Chrome Web Store.',
+      'Chrome extension that shows prices excluding VAT when you hover over them on any website. Automatically detects prices and displays the net amount in a tooltip on hover. Supports 120+ countries with preconfigured currencies and VAT rates, and allows custom VAT rate and currency. Features a built-in VAT calculator (GROSS/NET). Available on the Chrome Web Store.',
   },
   {
     id: 2,
@@ -165,16 +167,16 @@ export const projects: ProjectEntry[] = [
   {
     id: 3,
     pic: '/projects/portfolio.jpg',
-    title: 'SKOFTWARE - my portfolio',
-    technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • Blender',
+    title: 'SKOFTware - my portfolio',
+    technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber • GSAP • i18n',
     description:
-      'Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier interactivity. Pure web experiments and React Three Fiber battleground.',
+      'My portfolio website — a playground for web experiments and testing solutions. Features a 3D scene built in React Three Fiber, transitions and animations in GSAP, and i18n for multilingual support. Also includes a built-in web version of my resume in Polish and English. A project in constant evolution, probably forever "WIP".',
     live: process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     resumeTechnologies:
-      'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • Blender',
+      'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • GSAP • i18n',
     resumeDescription:
-      'Single page portfolio website with 3D scene and built-in web (HTML & CSS) version of resume. Hero scene is made in Blender and converted to React Three Fiber JSX components for easier interactivity. Pure web experiments and React Three Fiber battleground.',
+      'My portfolio website — a playground for web experiments and testing solutions. Features a 3D scene built in React Three Fiber, transitions and animations in GSAP, and i18n for multilingual support. Also includes a built-in web version of my resume in Polish and English. A project in constant evolution, probably never leaving "WIP" status.',
   },
   {
     id: 4,
@@ -182,11 +184,11 @@ export const projects: ProjectEntry[] = [
     title: 'Yet Another Weather App',
     technos: 'React • JavaScript • Sass • Vanta.js • Open-Meteo API',
     description:
-      'Another `weather application` — but with a twist. Weather data is displayed for a selected city or via user geolocation, with an interface enriched by interactive elements tied to the current weather conditions and background. Recently, the backend switched from OpenWeather to Open-Meteo. It was into liquid glass style before it became cool. Still desktop-only for now.',
-    live: 'https://yet-another-weather-app.vercel.app/',
+      '"Yet Another Weather App" — but different. The interactive interface features real-time weather simulation based on Open-Meteo data. Weather information displayed for a selected city or via map/geolocation. Currently undergoing a major rebuild, but feel free to check the weather.',
+    live: 'https://www.yet-another-weather-app.skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp/',
     resumeDescription:
-      'A weather app with real-time 3D visual feedback reflecting actual weather conditions. Pick a city from an interactive map or use geolocation — the interface responds with dynamic elements and backgrounds tied to live weather data. Recently migrated from OpenWeather to Open-Meteo. Still desktop-only for now.',
+      '"Yet Another Weather App" — but different. The interactive interface features real-time weather simulation based on Open-Meteo data. Weather information displayed for a selected city or via map/geolocation. Currently undergoing a major rebuild, but feel free to check the weather.',
   },
 ];
 

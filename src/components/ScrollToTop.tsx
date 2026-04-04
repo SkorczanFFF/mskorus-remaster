@@ -22,16 +22,15 @@ export default function ScrollToTop() {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 rounded-full backdrop-blur-[10px] p-2 transition-all duration-300 ${
-        visible
-          ? 'translate-y-0 opacity-100'
-          : 'translate-y-4 opacity-0 pointer-events-none'
-      }`}
+      className={`fixed bottom-6 right-6 z-50 rounded-sm backdrop-blur-[10px] p-1 transition-all duration-300 ${visible
+        ? 'translate-y-0 opacity-100'
+        : 'translate-y-4 opacity-0 pointer-events-none'
+        }`}
     >
       <button
         onClick={scrollToTop}
         aria-label='Scroll to top'
-        className='flex h-12 w-12 items-center justify-center rounded-full bg-raspberry text-white shadow-lg transition-all duration-300 hover:bg-raspberry-dark hover:scale-110 cursor-pointer'
+        className='flex h-12 w-12 items-center justify-center rounded-sm bg-raspberry text-white shadow-lg transition-all duration-300 hover:bg-raspberry-dark hover:scale-110 cursor-pointer'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'

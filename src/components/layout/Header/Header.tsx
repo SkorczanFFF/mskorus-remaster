@@ -63,12 +63,20 @@ function useActiveSection() {
 
       const isServices = id === 'services';
       const isContact = id === 'contact';
+      const isPortfolio = id === 'portfolio';
 
       triggers.push(
         ScrollTrigger.create({
           trigger: el,
-          start: isContact ? 'top 80%' : 'top center',
+          start: 'top center',
           end: isContact ? 'bottom bottom' : 'bottom center',
+          // Portfolio is pinned during horizontal scroll — its physical height
+          // doesn't reflect the actual scroll range. Use contact as the end marker
+          // so portfolio stays active until contact enters the viewport.
+          ...(isPortfolio && {
+            endTrigger: '#contact',
+            end: 'top center',
+          }),
           onToggle: (self) => {
             if (self.isActive) setActive(id);
           },

@@ -5,6 +5,7 @@ export type ExperienceEntry = {
   position: string;
   date: string;
   resumeDate: string;
+  resumeType?: string;
   stack: string[];
   icon: string;
   duties: string[];
@@ -130,6 +131,7 @@ export type Dictionary = {
   cookieAcceptAll: string;
   cookieRejectAll: string;
   cookieSavePreferences: string;
+  cookieSettings: string;
   cookieNecessaryTitle: string;
   cookieNecessaryDescription: string;
   cookieAnalyticsTitle: string;

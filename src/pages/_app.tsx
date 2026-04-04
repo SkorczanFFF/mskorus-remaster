@@ -2,7 +2,7 @@ import Lenis from 'lenis';
 import { AppProps } from 'next/app';
 import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import '@/styles/globals.css';
 
@@ -32,16 +32,9 @@ const unicaOne = localFont({
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [routeLoading, setRouteLoading] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-  const onStart = useCallback(() => {
-    timerRef.current = setTimeout(() => setRouteLoading(true), 200);
-  }, []);
-
-  const onEnd = useCallback(() => {
-    clearTimeout(timerRef.current);
-    setRouteLoading(false);
-  }, []);
+  const onStart = useCallback(() => setRouteLoading(true), []);
+  const onEnd = useCallback(() => setRouteLoading(false), []);
 
   useEffect(() => {
     router.events.on('routeChangeStart', onStart);
@@ -51,8 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeStart', onStart);
       router.events.off('routeChangeComplete', onEnd);
       router.events.off('routeChangeError', onEnd);
-      clearTimeout(timerRef.current);
-    };
+};
   }, [router, onStart, onEnd]);
 
   useEffect(() => {
@@ -89,7 +81,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div className={`${spaceGrotesk.variable} ${unicaOne.variable}`}>
       <LocaleProvider>
         <Header />
-        {routeLoading && <LoaderOverlay visible />}
+        <LoaderOverlay visible={routeLoading} />
         <Component {...pageProps} />
         <ScrollToTop />
         <CookieConsentBanner />
