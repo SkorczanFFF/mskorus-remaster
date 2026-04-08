@@ -12,10 +12,12 @@
 
 import puppeteer from 'puppeteer';
 import { resolve, dirname } from 'path';
+import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+const FONTS_DIR = resolve(__dirname, '..', 'public', 'fonts');
 
 // Resume container is 794x1123px — convert to mm for PDF page size
 const pxToMm = (px) => (px * 25.4) / 96;
@@ -81,7 +83,56 @@ async function generatePdf(locale) {
     for (const [k, v] of Object.entries(captured)) {
       root.style.setProperty(k, v);
     }
+
+    // The font-grotesk utility class lived on the parent <section> which was stripped.
+    // Re-apply Space Grotesk as the base font-family on the resume container.
+    const container = document.body.firstElementChild;
+    if (container) {
+      container.style.fontFamily = `var(--font-grotesk), ui-sans-serif, system-ui, sans-serif`;
+    }
   });
+
+  // Inject Space Grotesk as TTF — Chromium's PDF renderer doesn't embed woff2 fonts
+  const grotesk400 = readFileSync(resolve(FONTS_DIR, 'SpaceGrotesk-400.ttf')).toString('base64');
+  const grotesk700 = readFileSync(resolve(FONTS_DIR, 'SpaceGrotesk-700.ttf')).toString('base64');
+
+  await page.evaluate(({ g400, g700 }) => {
+    // Remove existing woff2-based @font-face rules for spaceGrotesk
+    for (const sheet of document.styleSheets) {
+      try {
+        const toDelete = [];
+        for (let i = 0; i < sheet.cssRules.length; i++) {
+          const rule = sheet.cssRules[i];
+          if (rule instanceof CSSFontFaceRule && rule.style.fontFamily === 'spaceGrotesk') {
+            toDelete.push(i);
+          }
+        }
+        for (const idx of toDelete.reverse()) sheet.deleteRule(idx);
+      } catch {}
+    }
+
+    // Inject TTF-based @font-face rules
+    const style = document.createElement('style');
+    style.textContent = `
+      @font-face {
+        font-family: 'spaceGrotesk';
+        src: url(data:font/truetype;base64,${g400}) format('truetype');
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'spaceGrotesk';
+        src: url(data:font/truetype;base64,${g700}) format('truetype');
+        font-weight: 700;
+        font-display: swap;
+      }
+    `;
+    document.head.appendChild(style);
+  }, { g400: grotesk400, g700: grotesk700 });
+
+  // Wait for injected fonts to load
+  await page.evaluateHandle('document.fonts.ready');
+  await new Promise((r) => setTimeout(r, 300));
 
   // Apply clean styles for PDF
   await page.addStyleTag({

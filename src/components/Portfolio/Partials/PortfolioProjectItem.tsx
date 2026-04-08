@@ -7,6 +7,7 @@ import type { ProjectEntry } from '@/locale/types';
 
 interface PortfolioProjectItemProps {
   project: ProjectEntry;
+  isLast?: boolean;
 }
 
 function ProjectLinks({ project }: { project: ProjectEntry }) {
@@ -47,9 +48,10 @@ function ProjectLinks({ project }: { project: ProjectEntry }) {
 
 export default function PortfolioProjectItem({
   project,
+  isLast,
 }: PortfolioProjectItemProps): React.JSX.Element {
   return (
-    <div className='w-full max-w-[900px] flex flex-col'>
+    <div className={`w-full max-w-[900px] flex flex-col ${isLast ? 'pb-[80px] md:pb-0' : ''}`}>
       {/* Title — above image on desktop (order-1), below on mobile (order-2) */}
       {project.git ? (
         <a

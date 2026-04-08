@@ -30,13 +30,13 @@ export default function Portfolio(): React.JSX.Element {
         role='list'
         className='flex h-auto w-full flex-col text-white will-change-transform md:h-full md:flex-row md:flex-nowrap'
       >
-        {t.projects.filter((p) => !p.resumeOnly).map((project, index) => (
+        {t.projects.filter((p) => !p.resumeOnly).map((project, index, arr) => (
           <div
             key={project.id}
             role='listitem'
             className={`project-panel mobile-fade flex w-full shrink-0 items-center justify-center px-5 py-10 md:w-[1150px] md:px-[125px] md:py-0 ${index === 0 ? 'md:ml-[calc(50vw-575px)]' : ''}`}
           >
-            <PortfolioProjectItem project={project} />
+            <PortfolioProjectItem project={project} isLast={index === arr.length - 1} />
           </div>
         ))}
 
