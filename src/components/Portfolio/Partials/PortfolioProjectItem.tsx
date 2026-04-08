@@ -71,14 +71,22 @@ export default function PortfolioProjectItem({
         </div>
       )}
 
-      {/* Image with desktop-only description overlay */}
-      <div className='order-1 md:order-2 relative overflow-hidden border-2 border-orange'>
+      {/* Image with desktop-only hover swap + description overlay */}
+      <div className='order-1 md:order-2 relative overflow-hidden border-2 border-orange group'>
         <img
           src={project.pic}
           alt={`Screenshot of ${project.title}`}
           loading='lazy'
-          className='block w-full'
+          className={`block w-full ${project.pic2 ? 'md:transition-opacity md:duration-500 md:group-hover:opacity-0' : ''}`}
         />
+        {project.pic2 && (
+          <img
+            src={project.pic2}
+            alt={`Screenshot of ${project.title} — alternate view`}
+            loading='lazy'
+            className='hidden md:block absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100'
+          />
+        )}
         <div className='project-overlay absolute inset-x-0 bottom-0 bg-primary-blue/60 to-transparent p-2 opacity-0 hidden md:block backdrop-blur-[5px]'>
           <p className='text-sm font-extralight leading-4.5 text-white/90 text-justify'>
             {project.description}

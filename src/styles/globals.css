@@ -7,7 +7,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
-  --breakpoint-xxl: 1480px;
+  --breakpoint-xxl: 2000px;
 
   --color-primary-blue: #001a25;
   --color-secondary-blue: #0b0d16;
@@ -45,6 +45,7 @@
 }
 
 @layer base {
+
   /*
     Tailwind CSS v4 changed the default border color to `currentcolor`.
     This keeps v3 behavior — add explicit border-color utilities to remove.
@@ -67,6 +68,10 @@
   }
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--color-primary-blue);
   overflow-x: clip;
@@ -74,30 +79,32 @@ body {
   scrollbar-color: var(--color-raspberry) var(--color-primary-blue);
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
+/* Custom scrollbar only on devices with a mouse — prevents forcing
+   a classic (non-overlay) scrollbar on mobile WebKit browsers. */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--color-primary-blue);
-}
+  ::-webkit-scrollbar-track {
+    background: var(--color-primary-blue);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-raspberry-dark);
-}
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-raspberry-dark);
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-orange);
-  cursor: pointer;
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-orange);
+    cursor: pointer;
+  }
 }
 
 .gradient,
 .gradient-slow {
-  background: linear-gradient(
-    270deg,
-    var(--color-orange-dark),
-    var(--color-raspberry)
-  );
+  background: linear-gradient(270deg,
+      var(--color-orange-dark),
+      var(--color-raspberry));
   animation: gradientAnimationX 7s ease infinite;
 }
 
@@ -137,8 +144,7 @@ body {
 }
 
 .blue-hero {
-  border-color: transparent var(--color-white) var(--color-white)
-    var(--color-white);
+  border-color: transparent var(--color-white) var(--color-white) var(--color-white);
   margin-top: -20px;
   z-index: 20;
 }
@@ -238,6 +244,7 @@ body {
 }
 
 @keyframes escaleY {
+
   0%,
   80%,
   100% {
@@ -304,6 +311,7 @@ html.custom-cursor * {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

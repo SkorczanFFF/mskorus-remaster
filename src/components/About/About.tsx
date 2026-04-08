@@ -234,7 +234,7 @@ export default function Services(): React.JSX.Element {
   return (
     <section
       id='services'
-      className='font-grotesk relative flex min-h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-white pt-[100px] lg:pb-[120px] md:pt-[160px]'
+      className='font-grotesk relative flex min-h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-white pt-[100px] lg:pb-[120px] md:pt-[160px] [contain:paint]'
     >
       <h3 className='font-grotesk text-primary-blue py-2 text-xl font-normal leading-3 tracking-[10px] xl:absolute xl:left-[80px] xl:top-[60px] xl:origin-top-left xl:rotate-90 xl:py-0 pb-12'>
         {t.servicesSectionTitle}
@@ -247,7 +247,7 @@ export default function Services(): React.JSX.Element {
         {t.services.map((service, i) => (
           <div
             key={service.title}
-            className={`service-card mx-auto max-w-[370px] max-h-[182px] w-full transition-[opacity,filter] duration-300 ${i % 2 === 1 ? 'md:mt-[100px] xl:mt-0' : ''}`}
+            className={`service-card mx-auto max-w-[370px] max-h-[182px] w-full transition-[opacity,filter] duration-300 ${i % 2 === 1 ? 'md:mt-[60px] xl:mt-0' : ''}`}
           >
             <ServiceCard
               service={service}

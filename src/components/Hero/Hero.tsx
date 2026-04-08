@@ -13,20 +13,27 @@ import { useInView } from 'react-intersection-observer';
 
 import { gsap } from '@/lib/gsap';
 import { randomizeText, scrambleReveal } from '@/lib/scrambleReveal';
+import { useDeviceOrientation } from '@/hooks/useDeviceOrientation';
+import { useViewport } from '@/hooks/useViewport';
 
 import Scene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
 
 import { useLocale } from '@/locale/LocaleContext';
 
-function Rig() {
+type GyroRef = React.MutableRefObject<{ x: number; y: number }>;
+
+function Rig({ isMobile, gyroRef }: { isMobile: boolean; gyroRef: GyroRef }) {
   useFrame((state, delta) => {
+    const inputX = isMobile ? gyroRef.current.x * 0.6 : state.pointer.x;
+    const inputY = isMobile ? gyroRef.current.y * 0.6 : state.pointer.y;
+
     easing.damp3(
       state.camera.position,
       [
-        Math.sin(-state.pointer.x) * 1.5,
-        state.pointer.y * 1.75,
-        15 + Math.cos(state.pointer.x) * 5,
+        Math.sin(-inputX) * 1.5,
+        inputY * 1.75,
+        15 + Math.cos(inputX) * 5,
       ],
       0.2,
       delta,
@@ -54,6 +61,9 @@ function FrameloopController({ inView }: { inView: boolean }) {
 
 export default function Hero(): React.JSX.Element {
   const { t } = useLocale();
+  const viewport = useViewport();
+  const isMobile = viewport === 'mobile';
+  const gyroRef = useDeviceOrientation(isMobile);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.01,
@@ -61,7 +71,6 @@ export default function Hero(): React.JSX.Element {
   const [isMounted, setIsMounted] = useState(false);
   const [sceneReady, setSceneReady] = useState(false);
 
-  const panelRef = useRef<HTMLDivElement>(null);
   const namesRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
   const canvasElRef = useRef<HTMLCanvasElement | null>(null);
@@ -99,7 +108,6 @@ export default function Hero(): React.JSX.Element {
     if (!sceneReady) return;
     window.dispatchEvent(new Event('hero:ready'));
     if (
-      !panelRef.current ||
       !namesRef.current ||
       !headlineRef.current ||
       !greetingRef.current ||
@@ -116,14 +124,7 @@ export default function Hero(): React.JSX.Element {
     const tl = gsap.timeline({ delay: 0.3 });
     tlRef.current = tl;
 
-    // 1. Fade in backdrop panel
-    tl.fromTo(
-      panelRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.8, ease: 'power2.out' },
-    );
-
-    // 2. Slide names container in
+    // 1. Slide names container in
     tl.fromTo(
       namesRef.current,
       { yPercent: 50, opacity: 0 },
@@ -131,7 +132,7 @@ export default function Hero(): React.JSX.Element {
       '<0.2',
     );
 
-    // 3. Slide headline container in
+    // 2. Slide headline container in
     tl.fromTo(
       headlineRef.current,
       { yPercent: 50, opacity: 0 },
@@ -139,13 +140,13 @@ export default function Hero(): React.JSX.Element {
       '<0.3',
     );
 
-    // 4. Scramble-reveal greeting
+    // 3. Scramble-reveal greeting
     tl.add(scrambleReveal(greetingRef.current!, t.heroGreeting, 1.5), '+=0.3');
 
-    // 5. Scramble-reveal name
+    // 4. Scramble-reveal name
     tl.add(scrambleReveal(nameRef.current!, t.heroName, 1.5), '+=0.3');
 
-    // 6. Headline part 1 — slide in from left
+    // 5. Headline part 1 — slide in from left
     tl.fromTo(
       headlinePart1Ref.current,
       { opacity: 0, x: -60 },
@@ -153,7 +154,7 @@ export default function Hero(): React.JSX.Element {
       '+=0.3',
     );
 
-    // 7. Headline part 2 — slide in from right
+    // 6. Headline part 2 — slide in from right
     tl.fromTo(
       headlinePart2Ref.current,
       { opacity: 0, x: 60 },
@@ -170,7 +171,7 @@ export default function Hero(): React.JSX.Element {
     <section
       ref={ref}
       id='home'
-      className='font-grotesk -mt-[60px] flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500] overflow-hidden'
+      className='font-grotesk relative flex h-[99vh] w-full flex-col items-center justify-center bg-[#001a2500] overflow-hidden'
     >
       {isMounted ? (
         <ErrorBoundary
@@ -197,7 +198,7 @@ export default function Hero(): React.JSX.Element {
                 args={[0 / 3072, 26 / 3072, 37 / 3072]}
               />
               <FrameloopController inView={inView} />
-              <Rig />
+              <Rig isMobile={isMobile} gyroRef={gyroRef} />
               <spotLight
                 position={[20, 20, 10]}
                 penumbra={1}
@@ -211,58 +212,52 @@ export default function Hero(): React.JSX.Element {
                   floatingRange={[-3.5, 3.5]}
                   rotationIntensity={0.5}
                 >
-                  <Scene onReady={handleReady} />
+                  <Scene onReady={handleReady} isMobile={isMobile} viewport={viewport} gyroRef={isMobile ? gyroRef : undefined} />
                 </Float>
               </Suspense>
             </Canvas>
           </div>
 
-          {/* Backdrop panel — visual only */}
-          <div
-            ref={panelRef}
-            className='md:absolute right-2 w-[33vw] md:w-[calc(50%-100px)] h-[calc(100%-140px)] md:h-[calc(100%-540px)] z-10 pointer-events-none backdrop-blur-[10px] opacity-0'
-          />
-
-          {/* Names — top on mobile, right-center on desktop */}
+          {/* Names */}
           <div
             ref={namesRef}
-            className='absolute z-20 top-[100px] left-[20px] md:top-1/3 md:left-auto md:right-0 md:w-[calc(50%-100px)] pointer-events-none opacity-0'
+            className='absolute z-20 top-[100px] left-[20px] md:top-[80px] md:left-auto md:right-[20px] lg:top-1/3 lg:right-[5%] pointer-events-none opacity-0'
           >
             <div
-              className='pointer-events-auto select-text'
+              className='pointer-events-auto select-text md:text-right'
               onPointerMove={forwardPointerToCanvas}
             >
               <h2
                 ref={greetingRef}
-                className='inline-block gradient bg-linear-to-r from-raspberry to-orange-dark px-6 py-2 text-2xl md:text-6xl md:-ml-[80px] font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
+                className='inline-block gradient bg-linear-to-r from-raspberry to-orange-dark px-6 py-2 text-2xl sm:text-4xl xl:text-6xl xxl:text-8xl font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
               <br />
               <h2
                 ref={nameRef}
-                className='inline-block gradient bg-linear-to-r from-orange-dark to-raspberry px-6 py-2 text-2xl md:text-6xl font-medium text-white tracking-wider mb-6 min-h-[1.2em] -ml-2'
+                className='inline-block gradient bg-linear-to-r from-orange-dark to-raspberry px-6 py-2 text-2xl sm:text-4xl xl:text-6xl xxl:text-8xl font-medium text-white tracking-wider mb-6 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
             </div>
           </div>
 
-          {/* Headline — bottom on mobile, below names on desktop */}
+          {/* Headline */}
           <div
             ref={headlineRef}
-            className='absolute z-20 bottom-[200px] right-[20px] md:top-[55%] md:bottom-auto md:left-auto md:right-0 md:w-[calc(50%-100px)] md:ml-[20px] pointer-events-none opacity-0 text-right md:text-left backdrop-blur-[10px] md:backdrop-blur-none p-4 md:p-0'
+            className='absolute z-20 bottom-[140px] right-[20px] lg:bottom-auto lg:top-[55%] lg:right-[5%] pointer-events-none opacity-0 text-right p-4'
           >
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-2 items-end xl:gap-6'>
               <span
                 ref={headlinePart1Ref}
-                className='block text-2xl lg:text-4xl text-white/90 font-light tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0 lg:pl-2'
+                className='block w-fit text-2xl sm:text-3xl xl:text-4xl xxl:text-6xl text-white font-medium tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0 backdrop-blur-[10px] px-4 py-2'
               >
                 {t.heroHeadline.split('. ')[0]}.
               </span>
               <span
                 ref={headlinePart2Ref}
-                className='block text-2xl lg:text-4xl text-white font-medium tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0 lg:pl-8'
+                className='block w-fit text-2xl sm:text-3xl xl:text-4xl xxl:text-6xl text-white font-medium tracking-wide drop-shadow-[0_2px_8px_#00000080] uppercase opacity-0 backdrop-blur-[10px] px-4 py-2'
               >
                 {t.heroHeadline.split('. ')[1]}
               </span>

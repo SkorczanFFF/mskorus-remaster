@@ -115,9 +115,13 @@ export default function Header(): React.JSX.Element {
   ];
 
   useEffect(() => {
-    document.body.style.overflowY = isMenuOpen ? 'hidden' : 'auto';
+    if (isMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = '';
+    }
     return () => {
-      document.body.style.overflowY = 'auto';
+      document.body.style.overflowY = '';
     };
   }, [isMenuOpen]);
 
@@ -175,7 +179,7 @@ export default function Header(): React.JSX.Element {
   return (
     <>
       <header
-        className={`font-grotesk sticky top-2 z-50 flex h-[46px] items-center justify-between opacity-95 backdrop-blur-[10px] m-2 border-2 border-[#80183433] rounded-[3px] ${isMenuOpen ? 'opacity-0' : 'opacity-95'
+        className={`font-grotesk fixed top-2 left-2 right-2 z-50 flex h-[46px] items-center justify-between opacity-95 backdrop-blur-[10px] border-2 border-[#80183433] rounded-[3px] ${isMenuOpen ? 'opacity-0' : 'opacity-95'
           }`}
       >
         <div className='flex h-full w-full items-center justify-between'>
@@ -197,43 +201,47 @@ export default function Header(): React.JSX.Element {
       </header>
 
       <div
-        ref={menuRef}
-        role='dialog'
-        aria-modal={isMenuOpen}
-        aria-label={t.navMenuLabel}
-        inert={!isMenuOpen || undefined}
-        className={`bg-[#00000024] fixed inset-0 z-40 flex min-h-screen w-full transform items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+        className={`fixed inset-0 z-40 overflow-hidden lg:hidden ${isMenuOpen ? '' : 'pointer-events-none'}`}
       >
-        <nav
+        <div
+          ref={menuRef}
+          role='dialog'
+          aria-modal={isMenuOpen}
           aria-label={t.navMenuLabel}
-          className='flex h-full w-full flex-col items-center justify-center'
+          inert={!isMenuOpen || undefined}
+          className={`bg-[#00000024] flex min-h-full w-full items-center justify-center border-b border-primary-blue backdrop-blur-[10px] transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
-          <ul className='flex flex-col items-center space-y-8'>
-            {links.map(({ href, label }) => {
-              const linkId = href.startsWith('/#')
-                ? href.slice(2)
-                : href.slice(1);
-              const isActive = linkId === activeSection;
-              return (
-                <li key={`${href}${label}`} className='text-center'>
-                  <Link
-                    href={href}
-                    scroll={false}
-                    className={`relative text-3xl font-light uppercase tracking-widest transition-all duration-300 hover:tracking-[0.2em] ${isActive ? 'text-real-white tracking-[0.2em]' : 'text-real-white/60'}`}
-                    onClick={handleClick}
-                  >
-                    <span className='absolute right-[-1px] bottom-[-2px] text-primary-blue pointer-events-none' aria-hidden='true'>{label}</span>
-                    <span className='relative'>{label}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-          <div className='mt-10'>
-            <LocaleToggle className='text-xl' />
-          </div>
-        </nav>
+          <nav
+            aria-label={t.navMenuLabel}
+            className='flex h-full w-full flex-col items-center justify-center'
+          >
+            <ul className='flex flex-col items-center space-y-8'>
+              {links.map(({ href, label }) => {
+                const linkId = href.startsWith('/#')
+                  ? href.slice(2)
+                  : href.slice(1);
+                const isActive = linkId === activeSection;
+                return (
+                  <li key={`${href}${label}`} className='text-center'>
+                    <Link
+                      href={href}
+                      scroll={false}
+                      className={`relative text-3xl font-light uppercase tracking-widest transition-all duration-300 hover:tracking-[0.2em] ${isActive ? 'text-real-white tracking-[0.2em]' : 'text-real-white/60'}`}
+                      onClick={handleClick}
+                    >
+                      <span className='absolute right-[-1px] bottom-[-2px] text-primary-blue pointer-events-none' aria-hidden='true'>{label}</span>
+                      <span className='relative'>{label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <div className='mt-10'>
+              <LocaleToggle className='text-xl' />
+            </div>
+          </nav>
+        </div>
       </div>
     </>
   );

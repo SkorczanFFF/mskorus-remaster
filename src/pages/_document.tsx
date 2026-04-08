@@ -9,7 +9,9 @@ import NextDocument, {
 function Document({ locale }: { locale: string }) {
   return (
     <Html lang={locale || 'en'} className='scroll-smooth'>
-      <Head />
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
       <body>
         <Main />
         <NextScript />

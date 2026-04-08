@@ -14,12 +14,18 @@ import Skills from '@/components/Skills/Skills';
 const HeroNoSSR = dynamic(() => import('@/components/Hero/Hero'), {
   ssr: false,
   loading: () => (
-    <section className='-mt-[60px] h-[99vh] w-full bg-[#001a25]' />
+    <section className='h-[99vh] w-full bg-[#001a25]' />
   ),
 });
 
 export default function HomePage() {
   const [heroReady, setHeroReady] = useState(false);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMinTimeElapsed(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const onReady = () => setHeroReady(true);
@@ -31,10 +37,12 @@ export default function HomePage() {
     };
   }, []);
 
+  const loaderVisible = !heroReady || !minTimeElapsed;
+
   return (
     <Layout>
       <Seo />
-      <LoaderOverlay visible={!heroReady} />
+      <LoaderOverlay visible={loaderVisible} />
       <main className='overflow-x-clip'>
         <HeroNoSSR />
         <Services />

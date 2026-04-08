@@ -109,7 +109,7 @@ export default function HeroBioParticles({
   const { camera, pointer } = useThree();
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
   const hitPoint = useMemo(() => new THREE.Vector3(), []);
-  const localMouse = useMemo(() => new THREE.Vector3(0, 0, -9999), []);
+  const localMouse = useMemo(() => new THREE.Vector3(9999, 9999, 0), []);
   const _hitPlane = useMemo(
     () => new THREE.Plane(new THREE.Vector3(0, 0, 1)),
     [],
@@ -125,7 +125,7 @@ export default function HeroBioParticles({
           uTime: { value: 0 },
           uDuration: { value: DURATION },
           uPointSizeBase: { value: 2.0 },
-          uMouse: { value: new THREE.Vector3(0, 0, -9999) },
+          uMouse: { value: new THREE.Vector3(9999, 9999, 0) },
           uRepelRadius: { value: 8.0 },
           uRepelStrength: { value: 4.0 },
         },

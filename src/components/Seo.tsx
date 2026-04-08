@@ -126,6 +126,12 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   },
   {
     rel: 'icon',
+    type: 'image/png',
+    sizes: '192x192',
+    href: '/favicon/android-chrome-192x192.png',
+  },
+  {
+    rel: 'icon',
     type: 'image/x-icon',
     sizes: '32x32',
     href: '/favicon/favicon32x32.ico',

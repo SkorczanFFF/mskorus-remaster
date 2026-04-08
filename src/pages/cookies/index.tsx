@@ -61,7 +61,7 @@ export default function CookiesPage() {
   return (
     <Layout>
       <Seo templateTitle={t.cookiePolicyTitle} />
-      <main className='font-grotesk -mt-[60px] min-h-screen bg-white pt-[60px] text-primary-blue'>
+      <main className='font-grotesk min-h-screen bg-white pt-[60px] text-primary-blue'>
         <section className='mx-auto max-w-4xl px-6 pb-24 pt-20 md:px-12'>
           {/* Header */}
           <div className='mb-12 flex items-start gap-4'>

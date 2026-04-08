@@ -25,7 +25,6 @@ import { useLocale } from '@/locale/LocaleContext';
 
 export default function CV(): React.JSX.Element {
   const { locale, t } = useLocale();
-  const resumeRef = useRef<HTMLDivElement>(null);
   const pdfHref = `/Maciej Skorus - CV [${locale.toUpperCase()}].pdf`;
 
   const searchParams = useSearchParams();
@@ -60,12 +59,12 @@ export default function CV(): React.JSX.Element {
       <Head>
         <title>{t.resumePageTitle}</title>
       </Head>
-      <section className='font-grotesk -mt-[60px] pt-[60px] flex flex-col items-center justify-between bg-linear-to-b from-[#1A1A28] to-[#3a1323] min-h-screen'>
+      <section className='font-grotesk pt-[60px] flex flex-col items-center justify-between bg-linear-to-b from-[#1A1A28] to-[#3a1323] min-h-screen'>
         <div className='flex justify-end h-auto flex-row items-stretch w-full max-w-[794px] px-2 md:px-0'>
           <a
             href={pdfHref}
             download
-            className='hover:bg-orange bg-raspberry my-6 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'
+            className='hover:bg-orange bg-raspberry sm:my-6 my-3 flex items-center px-2 py-1 text-sm tracking-wider text-white duration-150 cursor-pointer'
           >
             {t.resumeHeaderDownload}
             <PdfIcon className='ml-1 text-lg' />
@@ -80,7 +79,6 @@ export default function CV(): React.JSX.Element {
             }}
           >
             <div
-              ref={resumeRef}
               className='overflow-hidden flex h-[1123px] w-[794px] justify-center bg-primary-blue flex-row origin-top-left'
               style={{ transform: `scale(${scale})` }}
             >
@@ -151,16 +149,20 @@ export default function CV(): React.JSX.Element {
                   {/* Skills */}
                   <div>
                     <p className='bg-deep-blue pl-2 py-[2px] text-[14px] font-semibold tracking-widest text-white font-unica'>{t.resumeHeaderSkills}</p>
-                    <div className='px-2 pt-2 flex flex-wrap gap-[6px]'>
-                      {resumeTechList.map((tech) => {
-                        const Icon = techIconMap[tech];
-                        return (
-                          <div key={tech} className={`flex justify-between gap-[4px] text-[9px] text-white/70${tech === 'Java' || tech === 'GitHub' ? ' pr-3' : ''}`}>
-                            {Icon && <Icon className='text-[11px] text-white/90' />}
-                            <span>{tech}</span>
-                          </div>
-                        );
-                      })}
+                    <div className='px-2 pt-2 flex flex-col gap-[6px]'>
+                      {Array.from({ length: Math.ceil(resumeTechList.length / 3) }, (_, row) => (
+                        <div key={row} className='flex gap-[6px]'>
+                          {resumeTechList.slice(row * 3, row * 3 + 3).map((tech) => {
+                            const Icon = techIconMap[tech];
+                            return (
+                              <div key={tech} className='flex items-center gap-[4px] text-[9px] text-white/70'>
+                                {Icon && <Icon className='text-[11px] text-white/90' />}
+                                <span>{tech}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ))}
                     </div>
                   </div>
 
@@ -207,7 +209,7 @@ export default function CV(): React.JSX.Element {
                         <p className='text-[9px] text-primary-blue/50 mt-[2px]'>{exp.stack.join(' • ')}</p>
                         <ul className='mt-1 flex flex-col gap-[2px]'>
                           {exp.duties.map((duty, i) => (
-                            <li key={i} className='text-[9px] leading-[11px] text-primary-blue/80 pl-2 relative before:content-["•"] before:absolute before:left-0 before:text-raspberry'>
+                            <li key={i} className='text-[9px] leading-[11px] text-primary-blue/80 pl-2 relative before:content-["•"] before:absolute before:left-0 before:text-raspberry text-justify'>
                               {duty}
                             </li>
                           ))}
@@ -220,15 +222,15 @@ export default function CV(): React.JSX.Element {
                   <h3 className='text-[13px] font-bold uppercase tracking-[3px] text-primary-blue border-b border-primary-blue/20 pb-1 mb-3 mt-5'>
                     {t.resumeHeaderSelectedProjects}
                   </h3>
-                  <div className='flex flex-col gap-3'>
-                    {t.projects.filter((p) => p.resumeDescription).map((project) => (
+                  <div className='flex flex-col gap-2'>
+                    {t.projects.filter((p) => p.inResume).map((project) => (
                       <div key={project.id}>
                         <div className='flex items-baseline justify-between'>
                           <p className='text-[11px] font-bold text-primary-blue'>{project.title}</p>
-                          <p className='text-[9px] text-primary-blue/50'>{project.resumeTechnologies || project.technos}</p>
+                          <p className='text-[9px] text-primary-blue/50'>{project.technos}</p>
                         </div>
-                        <p className='text-[9px] leading-[11px] text-primary-blue/80 mt-[2px]'>
-                          {project.resumeDescription}
+                        <p className='text-[9px] leading-[11px] text-primary-blue/80 mt-[2px] text-justify'>
+                          {project.description}
                         </p>
                         {(project.git || project.live) && (
                           <div className='mt-[2px] flex gap-3 text-[8px] text-raspberry'>
@@ -250,7 +252,7 @@ export default function CV(): React.JSX.Element {
 
                 </div>
 
-                <p className='p-4 pb-2 text-[8.9px] leading-[8px] text-primary-blue/40 text-justify'>
+                <p className='px-2 pb-2 text-[8.7px] leading-[8px] text-primary-blue/40 text-justify'>
                   {t.resumeRodo}
                 </p>
               </div>

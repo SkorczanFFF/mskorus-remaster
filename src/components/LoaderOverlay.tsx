@@ -6,6 +6,24 @@ export default function LoaderOverlay({ visible }: { visible: boolean }) {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!visible) return;
+
+    document.documentElement.style.overflowY = 'hidden';
+    document.body.style.overflowY = 'hidden';
+
+    const prevent = (e: Event) => e.preventDefault();
+    window.addEventListener('wheel', prevent, { passive: false });
+    window.addEventListener('touchmove', prevent, { passive: false });
+
+    return () => {
+      document.documentElement.style.overflowY = '';
+      document.body.style.overflowY = '';
+      window.removeEventListener('wheel', prevent);
+      window.removeEventListener('touchmove', prevent);
+    };
+  }, [visible]);
+
+  useEffect(() => {
     if (!overlayRef.current) return;
 
     if (visible) {
@@ -32,7 +50,7 @@ export default function LoaderOverlay({ visible }: { visible: boolean }) {
     <div
       ref={overlayRef}
       className='fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-primary-blue'
-      style={{ display: 'none', opacity: 0 }}
+      style={{ display: visible ? 'flex' : 'none', opacity: visible ? 1 : 0 }}
     >
       <span className='font-unica select-none text-5xl font-bold relative'>
         <span className='absolute right-[-1.5px] bottom-[-1.5px] pointer-events-none' aria-hidden='true'>

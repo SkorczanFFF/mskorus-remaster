@@ -28,6 +28,8 @@ export type ImageParticleFieldCoreProps = ThreeElements['group'] & {
   hoverSize?: number;
   idleOpacity?: number;
   hoverOpacity?: number;
+  mobileHoverTimeout?: number;
+  repelTimeout?: number;
 };
 
 function sampleAlphaMap(
@@ -86,15 +88,21 @@ function ImageParticleFieldCore({
   hoverSize = 0.1,
   idleOpacity = 0.7,
   hoverOpacity = 0.15,
+  mobileHoverTimeout,
+  repelTimeout,
   ...props
 }: ImageParticleFieldCoreProps) {
   const groupRef = useRef<THREE.Group>(null);
   const particleMeshRef = useRef<THREE.Mesh>(null);
   const hoveringRef = useRef(false);
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileCooldownRef = useRef(false);
+  const repelActiveRef = useRef(false);
+  const repelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const alphaMap = useMemo(() => sampleAlphaMap(texture), [texture]);
   const { camera, pointer } = useThree();
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
-  const localMouse = useMemo(() => new THREE.Vector3(0, 0, -9999), []);
+  const localMouse = useMemo(() => new THREE.Vector3(9999, 9999, 0), []);
   const _wPos = useMemo(() => new THREE.Vector3(), []);
   const _hitPlane = useMemo(
     () => new THREE.Plane(new THREE.Vector3(0, 0, 1)),
@@ -123,7 +131,7 @@ function ImageParticleFieldCore({
       uSize: { value: idleSize },
       uOpacity: { value: idleOpacity },
       uTexture: { value: texture },
-      uMouse: { value: new THREE.Vector3(0, 0, -9999) },
+      uMouse: { value: new THREE.Vector3(9999, 9999, 0) },
       uRepelRadius: { value: 1.7 },
       uRepelStrength: { value: 0.9 },
     }),
@@ -142,6 +150,32 @@ function ImageParticleFieldCore({
       geo?.dispose();
     };
   }, [geometryData]);
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+      if (repelTimerRef.current) clearTimeout(repelTimerRef.current);
+    };
+  }, []);
+
+  // Mobile: activate repulsion on touch, auto-expire after repelTimeout
+  useEffect(() => {
+    if (repelTimeout == null) return;
+    const canvas = document.querySelector('canvas');
+    if (!canvas) return;
+
+    const onTouch = () => {
+      repelActiveRef.current = true;
+      if (repelTimerRef.current) clearTimeout(repelTimerRef.current);
+      repelTimerRef.current = setTimeout(() => {
+        repelActiveRef.current = false;
+        repelTimerRef.current = null;
+      }, repelTimeout);
+    };
+
+    canvas.addEventListener('pointerdown', onTouch);
+    return () => canvas.removeEventListener('pointerdown', onTouch);
+  }, [repelTimeout]);
 
   useFrame((state, delta) => {
     uniforms.uTime.value = state.clock.getElapsedTime();
@@ -162,12 +196,17 @@ function ImageParticleFieldCore({
     }
 
     if (particleMeshRef.current) {
-      raycaster.setFromCamera(pointer, camera);
-      const wPos = particleMeshRef.current.getWorldPosition(_wPos);
-      _hitPlane.constant = -wPos.z;
-      if (raycaster.ray.intersectPlane(_hitPlane, _hit)) {
-        particleMeshRef.current.worldToLocal(_hit);
-        localMouse.copy(_hit);
+      // Mobile with repelTimeout: only track pointer while repel is active
+      if (repelTimeout != null && !repelActiveRef.current) {
+        localMouse.set(9999, 9999, 0);
+      } else {
+        raycaster.setFromCamera(pointer, camera);
+        const wPos = particleMeshRef.current.getWorldPosition(_wPos);
+        _hitPlane.constant = -wPos.z;
+        if (raycaster.ray.intersectPlane(_hitPlane, _hit)) {
+          particleMeshRef.current.worldToLocal(_hit);
+          localMouse.copy(_hit);
+        }
       }
     }
     uniforms.uMouse.value.copy(localMouse);
@@ -222,10 +261,29 @@ function ImageParticleFieldCore({
               hoveringRef.current = false;
               return;
             }
+            // Mobile: ignore pointer events during cooldown (after timeout fired)
+            if (mobileHoverTimeout != null && mobileCooldownRef.current) return;
+
+            const wasHovering = hoveringRef.current;
             hoveringRef.current = isOpaqueAtUv(alphaMap, e.uv.x, e.uv.y);
+
+            // Mobile: one-shot trigger with auto-expire
+            if (!wasHovering && hoveringRef.current && mobileHoverTimeout != null) {
+              if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+              hoverTimeoutRef.current = setTimeout(() => {
+                hoveringRef.current = false;
+                mobileCooldownRef.current = true;
+                hoverTimeoutRef.current = null;
+              }, mobileHoverTimeout);
+            }
           }}
           onPointerLeave={() => {
             hoveringRef.current = false;
+            mobileCooldownRef.current = false;
+            if (hoverTimeoutRef.current) {
+              clearTimeout(hoverTimeoutRef.current);
+              hoverTimeoutRef.current = null;
+            }
           }}
         >
           <planeGeometry

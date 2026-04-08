@@ -19,13 +19,16 @@ const FONT_URL = '/fonts/UnicaOne-Regular.ttf';
 const SHIFT_STRENGTH = 4;
 const DAMP_SMOOTHING = 0.25;
 
-function AnimatedTextRow({ item, index }: { item: TextConfig; index: number }) {
+type GyroRef = React.MutableRefObject<{ x: number; y: number }>;
+
+function AnimatedTextRow({ item, index, gyroRef }: { item: TextConfig; index: number; gyroRef?: GyroRef }) {
   const groupRef = useRef<THREE.Group>(null);
   const direction = index % 2 === 0 ? 1 : -1;
 
   useFrame((state, delta) => {
     if (!groupRef.current) return;
-    const target = state.pointer.x * SHIFT_STRENGTH * direction;
+    const inputX = gyroRef ? gyroRef.current.x : state.pointer.x;
+    const target = inputX * SHIFT_STRENGTH * direction;
     easing.damp(groupRef.current.position, 'x', target, DAMP_SMOOTHING, delta);
   });
 
@@ -184,15 +187,16 @@ const mobileConfig: TextConfig[] = [
 
 interface BackgroundProps {
   variant: 'desktop' | 'mobile';
+  gyroRef?: GyroRef;
 }
 
-const Background = ({ variant }: BackgroundProps) => {
+const Background = ({ variant, gyroRef }: BackgroundProps) => {
   const config = variant === 'desktop' ? desktopConfig : mobileConfig;
 
   return (
     <>
       {config.map((item, index) => (
-        <AnimatedTextRow key={index} item={item} index={index} />
+        <AnimatedTextRow key={index} item={item} index={index} gyroRef={gyroRef} />
       ))}
     </>
   );

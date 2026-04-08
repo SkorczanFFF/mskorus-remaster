@@ -1,6 +1,6 @@
 import type { Dictionary } from '@/locale/types';
 
-import { experiences, nonWebProjects, projects, services } from './data/en';
+import { experiences, projects, services } from './data/en';
 
 export const en: Dictionary = {
   seoTitle:
@@ -50,13 +50,9 @@ export const en: Dictionary = {
   techCategoryTools: 'tools',
 
   portfolioTitle: 'PORTFOLIO',
-  portfolioNonWeb: 'NON WEB',
-  portfolioRelated: 'RELATED',
-  portfolioCorner: 'CORNER',
   portfolioRepo: 'repo',
   portfolioLiveDemo: 'live demo',
   projects,
-  nonWebProjects,
 
   contactPhone: '+48 668 366 648',
   contactEmail: 'skorusmaciej94@gmail.com',

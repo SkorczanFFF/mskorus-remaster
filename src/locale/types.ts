@@ -14,6 +14,8 @@ export type ExperienceEntry = {
 export type ProjectEntry = {
   id: number;
   pic: string;
+  /** Optional second image shown on hover (desktop). */
+  pic2?: string;
   title: string;
   technos: string;
   description: string;
@@ -21,9 +23,8 @@ export type ProjectEntry = {
   git: string;
   /** Overrides `portfolioLiveDemo` for the live link label (e.g. Chrome Web Store). */
   liveLabel?: string;
-  /** Resume-specific overrides — only set for projects shown in the CV. */
-  resumeTechnologies?: string;
-  resumeDescription?: string;
+  /** Whether to display this project in the resume. */
+  inResume?: boolean;
 };
 
 export type ServiceEntry = {
@@ -31,13 +32,6 @@ export type ServiceEntry = {
   title: string;
   tagline: string;
   description: string;
-};
-
-export type NonWebProject = {
-  title: string;
-  tech: string;
-  description: string;
-  links: Array<{ href: string; label: string }>;
 };
 
 export type Dictionary = {
@@ -85,13 +79,9 @@ export type Dictionary = {
   techCategoryTools: string;
 
   portfolioTitle: string;
-  portfolioNonWeb: string;
-  portfolioRelated: string;
-  portfolioCorner: string;
   portfolioRepo: string;
   portfolioLiveDemo: string;
   projects: ProjectEntry[];
-  nonWebProjects: NonWebProject[];
 
   contactPhone: string;
   contactEmail: string;

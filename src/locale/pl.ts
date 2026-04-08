@@ -1,6 +1,6 @@
 import type { Dictionary } from '@/locale/types';
 
-import { experiences, nonWebProjects, projects, services } from './data/pl';
+import { experiences, projects, services } from './data/pl';
 
 export const pl: Dictionary = {
   seoTitle:
@@ -51,13 +51,9 @@ export const pl: Dictionary = {
   techCategoryTools: 'narzędzia',
 
   portfolioTitle: 'PORTFOLIO',
-  portfolioNonWeb: 'NIE Z',
-  portfolioRelated: 'WEBEM',
-  portfolioCorner: 'ZWIĄZANE',
   portfolioRepo: 'repozytorium',
   portfolioLiveDemo: 'demo',
   projects,
-  nonWebProjects,
 
   contactPhone: '+48 668 366 648',
   contactEmail: 'skorusmaciej94@gmail.com',
@@ -79,7 +75,7 @@ export const pl: Dictionary = {
   resumeHeaderSkills: 'UMIEJĘTNOŚCI I NARZĘDZIA',
   resumeHeaderDownload: 'POBIERZ',
   resumeAboutMe:
-    'Creative fullstack developer z praktycznym doświadczeniem w aplikacjach webowych i mobilnych, systemach wewnętrznych i 3D. Obeznany w branży medycznej - od organizacji krajowych i międzynarodowych kongresów i konferencji po dedykowane oprogramowanie: pipeline\'y do przetwarzania dokumentów, aplikacje mobilne, VOD, wirtualne stoiska, usprawnienia i aktualizacje instniejących systemów, wsparcie IT na miejscu i w delegacji. Zrealizowałem system aukcji NFT i dApp powiązany z grą 3D MOBA na Unity. Od VanillaJS przez frameworki frontendowe i backendowe, bazy relacyjne i nierelacyjne po Dockera - poruszam się swobodnie po całym stacku, integruje modele AI/LLM. Mam szczególną słabość do kreatywnego frontendu i WebGL. Prywatnie pasjonat moddingu oraz tworzenia użytecznych i niebanalnych rozwiązań.',
+    'Kreatywny fullstack developer z praktycznym doświadczeniem w aplikacjach webowych i mobilnych, systemach wewnętrznych i 3D. Doświadczony w branży medycznej - od organizacji krajowych i międzynarodowych kongresów i konferencji po tworzenie dedykowanego oprogramowania: pipeline\'y do przetwarzania dokumentów, VOD, wirtualne stoiska, aplikacje mobilne, usprawnienia i aktualizacje instniejących systemów, zapewnianie wsparcia IT na miejscu i w delegacji. Zrealizowałem system aukcji NFT i dApp powiązany z grą 3D MOBA na Unity. Od VanillaJS przez frameworki frontendowe i backendowe, bazy relacyjne i nierelacyjne po Dockera - poruszam się swobodnie po całym stacku, integruje modele AI/LLM. Prywatnie pasjonat eksperymentów, moddingu oraz tworzenia użytecznych i niebanalnych rozwiązań.',
   resumeEducation: {
     university: 'Uniwersytet Śląski - WNST',
     field: 'Programowanie Aplikacji Webowych',

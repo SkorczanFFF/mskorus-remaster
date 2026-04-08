@@ -191,7 +191,7 @@ export default function Skills(): React.JSX.Element {
       </div>
 
       {/* 4x8 grid (below xl) */}
-      <div className='my-10 w-[400px] md:w-[600px] xl:hidden'>
+      <div className='my-10 w-full max-w-[400px] md:max-w-[600px] xl:hidden'>
         <div className='mx-auto grid grid-cols-4 justify-items-center gap-y-6 md:gap-y-12'>
           {allTechs.map((tech) => (
             <TechIcon key={tech.label} tech={tech} />
