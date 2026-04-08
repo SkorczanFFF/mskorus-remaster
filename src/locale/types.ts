@@ -25,6 +25,8 @@ export type ProjectEntry = {
   liveLabel?: string;
   /** Whether to display this project in the resume. */
   inResume?: boolean;
+  /** Whether to hide this project from the portfolio section. */
+  resumeOnly?: boolean;
 };
 
 export type ServiceEntry = {

@@ -130,6 +130,7 @@ export const projects: ProjectEntry[] = [
   {
     id: 0,
     pic: '/projects/polonez_autodrive.jpg',
+    pic2: '/projects/polonez_autodrive2.jpg',
     title: 'POLONEZ AUTODRIVE',
     technos: 'JavaScript • Three.js • 3D Studio Max',
     description:
@@ -152,7 +153,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     id: 2,
-    pic: '/projects/tba.jpg',
+    pic: '/projects/chandrastic.jpg',
     title: 'Chandrastic',
     technos: 'React • TypeScript • Python • FastAPI • Chandra OCR LLM',
     description:
@@ -193,5 +194,6 @@ export const projects: ProjectEntry[] = [
     live: '',
     git: 'https://github.com/SkorczanFFF/tibia-key-presser',
     inResume: true,
+    resumeOnly: true,
   },
 ];
