@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import { BREAKPOINTS } from '@/lib/breakpoints';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
@@ -201,17 +201,33 @@ export default function Services(): React.JSX.Element {
       cards.forEach((card) => {
         const inner = card.querySelector<HTMLElement>('.card-inner');
         const title = card.querySelector<HTMLElement>('h4');
-        const glow = card.querySelector<HTMLElement>('.card-inner > .pointer-events-none:last-child');
+        const glow = card.querySelector<HTMLElement>(
+          '.card-inner > .pointer-events-none:last-child',
+        );
 
         const activate = () => {
-          if (inner) gsap.to(inner, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
-          if (title) gsap.to(title, { letterSpacing: '1px', duration: 0.3, ease: 'power2.out' });
-          if (glow) gsap.to(glow, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+          if (inner)
+            gsap.to(inner, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+          if (title)
+            gsap.to(title, {
+              letterSpacing: '1px',
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          if (glow)
+            gsap.to(glow, { opacity: 1, duration: 0.4, ease: 'power2.out' });
         };
         const deactivate = () => {
-          if (inner) gsap.to(inner, { scale: 1, duration: 0.3, ease: 'power2.out' });
-          if (title) gsap.to(title, { letterSpacing: '0px', duration: 0.3, ease: 'power2.out' });
-          if (glow) gsap.to(glow, { opacity: 0, duration: 0.4, ease: 'power2.out' });
+          if (inner)
+            gsap.to(inner, { scale: 1, duration: 0.3, ease: 'power2.out' });
+          if (title)
+            gsap.to(title, {
+              letterSpacing: '0px',
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          if (glow)
+            gsap.to(glow, { opacity: 0, duration: 0.4, ease: 'power2.out' });
         };
 
         triggers.push(
@@ -247,7 +263,7 @@ export default function Services(): React.JSX.Element {
         {t.services.map((service, i) => (
           <div
             key={service.title}
-            className={`service-card mx-auto max-w-[370px] max-h-[182px] w-full transition-[opacity,filter] duration-300 ${i % 2 === 1 ? 'md:mt-[60px] xl:mt-0' : ''}`}
+            className={`service-card mx-auto max-w-[370px] md:max-h-[182px] w-full transition-[opacity,filter] duration-300 ${i % 2 === 1 ? 'md:mt-[60px] xl:mt-0' : ''}`}
           >
             <ServiceCard
               service={service}

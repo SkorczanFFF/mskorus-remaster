@@ -8,6 +8,7 @@ import Background, {
 import HeroBioParticles from '@/components/Hero/Partials/imageParticles/HeroBioParticles';
 import ImageParticleField from '@/components/Hero/Partials/imageParticles/ImageParticleField';
 
+import type { TactilePulseRefs } from '@/hooks/useTactilePulse';
 import type { Viewport } from '@/hooks/useViewport';
 
 useLoader.preload(THREE.TextureLoader, '/me.png');
@@ -20,8 +21,8 @@ const SCENE_CONFIG = {
   desktop: { scale: 1.5, groupX: -10, targetX: -6 },
 } as const;
 
-const Scene = (props: ThreeElements['group'] & { onReady?: () => void; isMobile?: boolean; viewport?: Viewport; gyroRef?: GyroRef }) => {
-  const { onReady, isMobile = false, viewport = 'desktop', gyroRef, ...groupProps } = props;
+const Scene = (props: ThreeElements['group'] & { onReady?: () => void; isMobile?: boolean; viewport?: Viewport; gyroRef?: GyroRef; pulse?: TactilePulseRefs }) => {
+  const { onReady, isMobile = false, viewport = 'desktop', gyroRef, pulse, ...groupProps } = props;
   const group = useRef<THREE.Group | null>(null);
   const cfg = SCENE_CONFIG[viewport];
 
@@ -45,9 +46,9 @@ const Scene = (props: ThreeElements['group'] & { onReady?: () => void; isMobile?
           maxSampleWidth={220}
           particlesPosition={[portraitParticlesLocalX, 0, 0]}
           enableHover={!isMobile}
-          repelTimeout={isMobile ? 3000 : undefined}
+          pulse={pulse}
         />
-        <HeroBioParticles />
+        <HeroBioParticles pulse={pulse} isMobile={isMobile} />
         <Background variant={isMobile ? 'mobile' : 'desktop'} gyroRef={gyroRef} />
       </group>
     </>

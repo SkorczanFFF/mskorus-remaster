@@ -114,7 +114,7 @@ export default function Footer(): React.JSX.Element {
           <div className='md:w-3/5'>
             <h2
               ref={headingRef}
-              className='font-unica mb-12 text-6xl font-extrabold tracking-tighter text-deep-blue md:text-7xl lg:text-8xl mt-2 break-words'
+              className={`font-unica mb-12 ${locale === 'pl' ? 'text-5xl sm:text-6xl' : 'text-6xl'} font-extrabold tracking-tighter text-deep-blue md:text-7xl lg:text-8xl mt-2 break-words`}
             >
               {t.footerHeading}
             </h2>

@@ -20,8 +20,8 @@ export default function Portfolio(): React.JSX.Element {
       aria-label='Portfolio projects'
       className='font-grotesk bg-primary-blue relative w-full overflow-hidden md:h-screen'
     >
-      <div className="arrow-down white absolute -top-[2px] left-0 right-0 mx-auto"></div>
-      <h2 className='font-grotesk z-10 py-2 text-xl font-normal leading-3 tracking-[10px] text-white xl:absolute xl:origin-top-left xl:rotate-90 xl:left-[95px] xl:top-[60px] xl:p-4 w-full backdrop-blur-[10px] lg:mt-[80px] text-center xl:text-left xl:mt-0 md:-mb-[100px] mt-20 pb-4'>
+      <div className='arrow-down white absolute -top-[2px] left-0 right-0 mx-auto'></div>
+      <h2 className='font-grotesk z-10 py-2 text-xl font-normal leading-3 tracking-[10px] text-white xl:absolute xl:origin-top-left xl:rotate-90 xl:left-[95px] xl:top-[60px] xl:p-4 w-full backdrop-blur-[10px] lg:mt-[80px] text-center xl:text-left xl:mt-0 md:-mb-[100px] mt-[100px] pb-2'>
         {t.portfolioTitle}
       </h2>
 
@@ -30,15 +30,20 @@ export default function Portfolio(): React.JSX.Element {
         role='list'
         className='flex h-auto w-full flex-col text-white will-change-transform md:h-full md:flex-row md:flex-nowrap'
       >
-        {t.projects.filter((p) => !p.resumeOnly).map((project, index, arr) => (
-          <div
-            key={project.id}
-            role='listitem'
-            className={`project-panel mobile-fade flex w-full shrink-0 items-center justify-center px-5 py-10 md:w-[1150px] md:px-[125px] md:py-0 ${index === 0 ? 'md:ml-[calc(50vw-575px)]' : ''}`}
-          >
-            <PortfolioProjectItem project={project} isLast={index === arr.length - 1} />
-          </div>
-        ))}
+        {t.projects
+          .filter((p) => !p.resumeOnly)
+          .map((project, index, arr) => (
+            <div
+              key={project.id}
+              role='listitem'
+              className={`project-panel mobile-fade flex w-full shrink-0 items-center justify-center px-5 py-10 md:w-[1150px] md:px-[125px] md:py-0 ${index === 0 ? 'md:ml-[calc(50vw-575px)]' : ''}`}
+            >
+              <PortfolioProjectItem
+                project={project}
+                isLast={index === arr.length - 1}
+              />
+            </div>
+          ))}
 
         {/* Spacer — ensures last panel can scroll to center */}
         <div className='hidden shrink-0 md:block md:w-[calc(50vw-575px)]' />

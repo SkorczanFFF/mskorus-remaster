@@ -11,30 +11,63 @@ import React, {
 import { ErrorBoundary } from 'react-error-boundary';
 import { useInView } from 'react-intersection-observer';
 
+import { pulseEnvelope } from '@/lib/envelope';
 import { gsap } from '@/lib/gsap';
 import { randomizeText, scrambleReveal } from '@/lib/scrambleReveal';
 import { useDeviceOrientation } from '@/hooks/useDeviceOrientation';
+import {
+  type TactilePulseRefs,
+  useTactilePulse,
+} from '@/hooks/useTactilePulse';
 import { useViewport } from '@/hooks/useViewport';
 
 import Scene from '@/components/Hero/Partials/Scene';
 import ScrollButton from '@/components/Hero/Partials/ScrollButton';
+import TapRipple, { type Ripple } from '@/components/Hero/Partials/TapRipple';
 
 import { useLocale } from '@/locale/LocaleContext';
 
 type GyroRef = React.MutableRefObject<{ x: number; y: number }>;
 
-function Rig({ isMobile, gyroRef }: { isMobile: boolean; gyroRef: GyroRef }) {
+function Rig({
+  isMobile,
+  gyroRef,
+  pulse,
+}: {
+  isMobile: boolean;
+  gyroRef: GyroRef;
+  pulse: TactilePulseRefs;
+}) {
   useFrame((state, delta) => {
-    const inputX = isMobile ? gyroRef.current.x * 0.6 : state.pointer.x;
-    const inputY = isMobile ? gyroRef.current.y * 0.6 : state.pointer.y;
+    let inputX = isMobile ? gyroRef.current.x * 0.6 : state.pointer.x;
+    let inputY = isMobile ? gyroRef.current.y * 0.6 : state.pointer.y;
+
+    // Camera kick: blend the loudest active pulse NDC into the input via the
+    // shared envelope so camera and particle wave breathe together.
+    const now = performance.now();
+    let bestEnv = 0;
+    let kickX = 0;
+    let kickY = 0;
+    const arr = pulse.pulses.current;
+    for (let i = 0; i < arr.length; i++) {
+      const p = arr[i];
+      const age = (now - p.startedAt) / pulse.duration;
+      if (age < 0 || age >= 1) continue;
+      const env = pulseEnvelope(age);
+      if (env > bestEnv) {
+        bestEnv = env;
+        kickX = p.ndcX;
+        kickY = p.ndcY;
+      }
+    }
+    if (bestEnv > 0) {
+      inputX = inputX * (1 - bestEnv) + kickX * bestEnv;
+      inputY = inputY * (1 - bestEnv) + kickY * bestEnv;
+    }
 
     easing.damp3(
       state.camera.position,
-      [
-        Math.sin(-inputX) * 1.5,
-        inputY * 1.75,
-        15 + Math.cos(inputX) * 5,
-      ],
+      [Math.sin(-inputX) * 1.5, inputY * 1.75, 15 + Math.cos(inputX) * 5],
       0.2,
       delta,
     );
@@ -70,6 +103,26 @@ export default function Hero(): React.JSX.Element {
   });
   const [isMounted, setIsMounted] = useState(false);
   const [sceneReady, setSceneReady] = useState(false);
+  const [ripples, setRipples] = useState<Ripple[]>([]);
+
+  // Shared tap source: drives Rig kick, particle shockwaves, haptic + ripples.
+  const pulse = useTactilePulse({
+    durationMs: 2000,
+    maxPulses: 2,
+    haptic: true,
+    onTap: useCallback(
+      ({ clientX, clientY }: { clientX: number; clientY: number }) => {
+        const id =
+          typeof performance !== 'undefined' ? performance.now() : Date.now();
+        setRipples((prev) => [...prev, { id, x: clientX, y: clientY }]);
+        window.setTimeout(
+          () => setRipples((prev) => prev.filter((r) => r.id !== id)),
+          700,
+        );
+      },
+      [],
+    ),
+  });
 
   const namesRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
@@ -198,7 +251,7 @@ export default function Hero(): React.JSX.Element {
                 args={[0 / 3072, 26 / 3072, 37 / 3072]}
               />
               <FrameloopController inView={inView} />
-              <Rig isMobile={isMobile} gyroRef={gyroRef} />
+              <Rig isMobile={isMobile} gyroRef={gyroRef} pulse={pulse} />
               <spotLight
                 position={[20, 20, 10]}
                 penumbra={1}
@@ -212,7 +265,13 @@ export default function Hero(): React.JSX.Element {
                   floatingRange={[-3.5, 3.5]}
                   rotationIntensity={0.5}
                 >
-                  <Scene onReady={handleReady} isMobile={isMobile} viewport={viewport} gyroRef={isMobile ? gyroRef : undefined} />
+                  <Scene
+                    onReady={handleReady}
+                    isMobile={isMobile}
+                    viewport={viewport}
+                    gyroRef={isMobile ? gyroRef : undefined}
+                    pulse={pulse}
+                  />
                 </Float>
               </Suspense>
             </Canvas>
@@ -229,14 +288,14 @@ export default function Hero(): React.JSX.Element {
             >
               <h2
                 ref={greetingRef}
-                className='inline-block gradient bg-linear-to-r from-raspberry to-orange-dark px-6 py-2 text-2xl sm:text-4xl xl:text-6xl xxl:text-8xl font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
+                className='inline-block gradient bg-linear-to-r from-raspberry to-orange-dark px-6 py-2 text-3xl sm:text-4xl xl:text-6xl xxl:text-8xl font-medium text-white tracking-wider mb-3 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
               <br />
               <h2
                 ref={nameRef}
-                className='inline-block gradient bg-linear-to-r from-orange-dark to-raspberry px-6 py-2 text-2xl sm:text-4xl xl:text-6xl xxl:text-8xl font-medium text-white tracking-wider mb-6 min-h-[1.2em]'
+                className='inline-block gradient bg-linear-to-r from-orange-dark to-raspberry px-6 py-2 text-3xl sm:text-4xl xl:text-6xl xxl:text-8xl font-medium text-white tracking-wider mb-6 min-h-[1.2em]'
               >
                 &nbsp;
               </h2>
@@ -269,6 +328,7 @@ export default function Hero(): React.JSX.Element {
           <span className='loader' />
         </div>
       )}
+      <TapRipple ripples={ripples} />
       <ScrollButton />
       <div className='flex w-full'>
         <div className='z-20 -mt-[20px] h-[20px] w-full bg-white' />
