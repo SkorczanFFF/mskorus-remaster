@@ -109,7 +109,7 @@ export default function Footer(): React.JSX.Element {
 
       {/* Main footer content */}
       <div className='w-full bg-[#f9f9f9] pt-4'>
-        <div className='mx-auto flex max-w-7xl flex-col gap-16 px-8 py-24 md:flex-row md:justify-between md:gap-24 md:px-12'>
+        <div className='mx-auto flex max-w-7xl flex-col gap-16 px-[22px] sm:px-8 py-24 md:flex-row md:justify-between md:gap-24 md:px-12'>
           {/* Narrative column */}
           <div className='md:w-3/5'>
             <h2

@@ -12,6 +12,8 @@ export function createParticleGeometry(
   height: number,
   threshold: number,
   targetWidth: number,
+  naturalHeight: number = height,
+  excludeY?: [number, number],
 ): ParticleGeometryResult {
   const quadPositions = new Float32Array([
     -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0,
@@ -21,6 +23,7 @@ export function createParticleGeometry(
 
   const source = imageData.data;
   const visible: number[] = [];
+  const yScale = excludeY ? naturalHeight / Math.max(1, height) : 1;
   for (let i = 0; i < width * height; i++) {
     const i4 = i * 4;
     const r = source[i4];
@@ -28,7 +31,12 @@ export function createParticleGeometry(
     const b = source[i4 + 2];
     const a = source[i4 + 3];
     const grey = r * 0.21 + g * 0.71 + b * 0.07;
-    if (a > 16 && grey > threshold) visible.push(i);
+    if (a <= 16 || grey >= threshold) continue;
+    if (excludeY) {
+      const origY = (Math.floor(i / width) + 0.5) * yScale;
+      if (origY >= excludeY[0] && origY <= excludeY[1]) continue;
+    }
+    visible.push(i);
   }
 
   if (visible.length === 0) {
@@ -46,6 +54,7 @@ export function createParticleGeometry(
   const cx = width * 0.5;
   const cy = height * 0.5;
   const pixelScale = targetWidth / Math.max(1, width);
+  const thresholdNorm = Math.max(threshold / 255, 1e-4);
 
   for (let i = 0; i < instanceCount; i++) {
     const idx = visible[i];
@@ -58,10 +67,8 @@ export function createParticleGeometry(
     offsets[i3 + 2] = 0;
 
     const i2 = i * 2;
-    const uvx = (px + 0.5) / Math.max(1, width);
-    const uvy = (py + 0.5) / Math.max(1, height);
-    sampleUvs[i2] = uvx;
-    sampleUvs[i2 + 1] = 1 - uvy;
+    sampleUvs[i2] = (px + 0.5) / Math.max(1, width);
+    sampleUvs[i2 + 1] = 1 - (py + 0.5) / Math.max(1, height);
 
     pindex[i] = i;
 
@@ -69,7 +76,12 @@ export function createParticleGeometry(
     const greyVal =
       (source[src] * 0.21 + source[src + 1] * 0.71 + source[src + 2] * 0.07) /
       255;
-    intensity[i] = THREE.MathUtils.clamp(greyVal, 0, 1);
+    // Normalized darkness: 1 at pitch-dark, 0 at the selection edge.
+    intensity[i] = THREE.MathUtils.clamp(
+      (thresholdNorm - greyVal) / thresholdNorm,
+      0,
+      1,
+    );
   }
 
   const geometry = new THREE.InstancedBufferGeometry();

@@ -12,6 +12,7 @@ export function sampleTextureToParticleGeometry(
   threshold: number,
   targetWidth: number,
   maxSampleWidth: number,
+  excludeY?: [number, number],
 ): ParticleGeometryResult | null {
   if (!naturalWidth || !naturalHeight) return null;
 
@@ -38,6 +39,8 @@ export function sampleTextureToParticleGeometry(
     sampleHeight,
     threshold,
     targetWidth,
+    naturalHeight,
+    excludeY,
   );
 }
 

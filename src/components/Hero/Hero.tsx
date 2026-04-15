@@ -124,7 +124,6 @@ export default function Hero(): React.JSX.Element {
     ),
   });
 
-  const namesRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
   const canvasElRef = useRef<HTMLCanvasElement | null>(null);
   const greetingRef = useRef<HTMLHeadingElement>(null);
@@ -161,7 +160,6 @@ export default function Hero(): React.JSX.Element {
     if (!sceneReady) return;
     window.dispatchEvent(new Event('hero:ready'));
     if (
-      !namesRef.current ||
       !headlineRef.current ||
       !greetingRef.current ||
       !nameRef.current ||
@@ -177,26 +175,17 @@ export default function Hero(): React.JSX.Element {
     const tl = gsap.timeline({ delay: 0.3 });
     tlRef.current = tl;
 
-    // 1. Slide names container in
-    tl.fromTo(
-      namesRef.current,
-      { yPercent: 50, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 1.0, ease: 'power3.out' },
-      '<0.2',
-    );
-
-    // 2. Slide headline container in
+    // 1. Slide headline container in
     tl.fromTo(
       headlineRef.current,
       { yPercent: 50, opacity: 0 },
       { yPercent: 0, opacity: 1, duration: 1.0, ease: 'power3.out' },
-      '<0.3',
     );
 
-    // 3. Scramble-reveal greeting
-    tl.add(scrambleReveal(greetingRef.current!, t.heroGreeting, 1.5), '+=0.3');
+    // 2. Scramble-reveal greeting
+    tl.add(scrambleReveal(greetingRef.current!, t.heroGreeting, 1.5), 0);
 
-    // 4. Scramble-reveal name
+    // 3. Scramble-reveal name
     tl.add(scrambleReveal(nameRef.current!, t.heroName, 1.5), '+=0.3');
 
     // 5. Headline part 1 — slide in from left
@@ -279,8 +268,7 @@ export default function Hero(): React.JSX.Element {
 
           {/* Names */}
           <div
-            ref={namesRef}
-            className='absolute z-20 top-[100px] left-[20px] md:top-[80px] md:left-auto md:right-[20px] lg:top-1/3 lg:right-[5%] pointer-events-none opacity-0'
+            className='absolute z-20 top-[100px] left-[20px] md:top-[80px] md:left-auto md:right-[20px] lg:top-1/3 lg:right-[5%] pointer-events-none'
           >
             <div
               className='pointer-events-auto select-text md:text-right'

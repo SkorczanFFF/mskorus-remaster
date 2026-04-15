@@ -8,6 +8,7 @@ import type { ProjectEntry } from '@/locale/types';
 interface PortfolioProjectItemProps {
   project: ProjectEntry;
   isLast?: boolean;
+  short?: boolean;
 }
 
 function ProjectLinks({ project }: { project: ProjectEntry }) {
@@ -49,9 +50,14 @@ function ProjectLinks({ project }: { project: ProjectEntry }) {
 export default function PortfolioProjectItem({
   project,
   isLast,
+  short,
 }: PortfolioProjectItemProps): React.JSX.Element {
+  const titleSize = short
+    ? 'text-xl md:text-2xl lg:text-3xl'
+    : 'text-2xl md:text-3xl lg:text-4xl';
+
   return (
-    <div className={`w-full max-w-[900px] flex flex-col ${isLast ? 'pb-[80px] md:pb-0' : ''}`}>
+    <div className={`w-full md:max-w-[calc(var(--panel-w)-250px)] flex flex-col ${isLast ? 'pb-[80px] md:pb-0' : ''}`}>
       {/* Title — above image on desktop (order-1), below on mobile (order-2) */}
       {project.git ? (
         <a
@@ -61,13 +67,13 @@ export default function PortfolioProjectItem({
           aria-label={`${project.title} (opens in new tab)`}
           className='project-title order-2 md:order-1 mt-4 md:mt-0 px-1 md:px-0'
         >
-          <h3 className='font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 text-2xl md:text-3xl lg:text-4xl font-normal transition-colors duration-150 hover:text-primary-blue block md:inline-block mb-3 md:mb-0'>
+          <h3 className={`font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 ${titleSize} font-normal transition-colors duration-150 hover:text-primary-blue block md:inline-block mb-3 md:mb-0`}>
             {project.title}
           </h3>
         </a>
       ) : (
         <div className='project-title order-2 md:order-1 mt-4 md:mt-0 px-1 md:px-0'>
-          <h3 className='font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 text-2xl md:text-3xl lg:text-4xl font-normal block md:inline-block mb-3 md:mb-0'>
+          <h3 className={`font-unica gradient bg-linear-to-r from-raspberry to-orange-dark px-4 py-1 ${titleSize} font-normal block md:inline-block mb-3 md:mb-0`}>
             {project.title}
           </h3>
         </div>
@@ -79,7 +85,7 @@ export default function PortfolioProjectItem({
           src={project.pic}
           alt={`Screenshot of ${project.title}`}
           loading='lazy'
-          className={`block w-full ${project.pic2 ? 'md:transition-opacity md:duration-500 md:group-hover:opacity-0' : ''}`}
+          className={`block w-full md:max-h-[55vh] md:object-contain ${project.pic2 ? 'md:transition-opacity md:duration-500 md:group-hover:opacity-0' : ''}`}
         />
         {project.pic2 && (
           <img

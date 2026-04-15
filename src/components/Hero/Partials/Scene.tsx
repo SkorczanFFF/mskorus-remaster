@@ -42,11 +42,12 @@ const Scene = (props: ThreeElements['group'] & { onReady?: () => void; isMobile?
           position={[portraitGroupX, isMobile ? -2.429 : -1.029, -2.504] as Vector3Tuple}
           imagePath='/me.png'
           targetWidth={12.5}
-          threshold={122}
+          threshold={80}
           maxSampleWidth={220}
           particlesPosition={[portraitParticlesLocalX, 0, 0]}
           enableHover={!isMobile}
           pulse={pulse}
+          excludeY={[106, 432]}
         />
         <HeroBioParticles pulse={pulse} isMobile={isMobile} />
         <Background variant={isMobile ? 'mobile' : 'desktop'} gyroRef={gyroRef} />

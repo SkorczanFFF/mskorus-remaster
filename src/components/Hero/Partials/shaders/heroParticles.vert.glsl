@@ -4,7 +4,6 @@ uniform float uTime;
 uniform float uRandom;
 uniform float uDepth;
 uniform float uSize;
-uniform sampler2D uTexture;
 uniform vec3 uMouse;
 uniform float uRepelRadius;
 uniform float uRepelStrength;
@@ -16,7 +15,6 @@ attribute float intensity;
 
 varying vec2 vUv;
 varying vec2 vTexUv;
-varying float vGrey;
 varying float vIntensity;
 
 float rand(float n) {
@@ -28,15 +26,11 @@ float hash(vec2 p) {
 }
 
 void main() {
-  vec2 texUv = sampleUv;
-
-  vec4 texCol = texture2D(uTexture, texUv);
-  float grey = texCol.r * 0.21 + texCol.g * 0.71 + texCol.b * 0.07;
-
   vec3 displaced = offset;
 
   float r = rand(pindex);
-  float n = hash(texUv * 37.0 + vec2(uTime * 0.08, pindex * 0.001));
+  // Static per-particle; adding uTime would re-roll every frame and jitter Z.
+  float n = hash(sampleUv * 37.0 + vec2(pindex * 0.07, pindex * 0.001));
   displaced.xy += vec2(r - 0.5, rand(offset.x + pindex) - 0.5) * uRandom * (0.5 + intensity);
   displaced.z += ((n - 0.5) + sin(uTime * 0.6 + pindex * 0.035) * 0.25) * uDepth;
 
@@ -44,6 +38,11 @@ void main() {
   displaced.x += sin(uTime * 0.15 + phase) * 0.012;
   displaced.y += cos(uTime * 0.12 + phase * 1.3) * 0.010;
   displaced.z += sin(uTime * 0.1 + phase * 0.7) * 0.006;
+
+  // Coherent traveling wave: phase driven by world-space offset, not pindex.
+  float waveArg = uTime * 1.1 - offset.x * 0.55 + offset.y * 0.2;
+  displaced.z += sin(waveArg) * 0.12;
+  displaced.y += cos(waveArg * 0.9) * 0.035;
 
   vec2 diff = displaced.xy - uMouse.xy;
   float dist = length(diff);
@@ -57,7 +56,7 @@ void main() {
   }
 
   float psize = (sin(uTime * 0.8 + pindex * 0.17) + 2.0);
-  psize *= max(grey, 0.18);
+  psize *= max(intensity, 0.18);
   psize *= uSize;
 
   vec3 transformed = displaced + vec3(position.xy * psize, 0.0);
@@ -66,7 +65,6 @@ void main() {
   gl_Position = projectionMatrix * mvPosition;
 
   vUv = uv;
-  vTexUv = texUv;
-  vGrey = grey;
+  vTexUv = sampleUv;
   vIntensity = intensity;
 }

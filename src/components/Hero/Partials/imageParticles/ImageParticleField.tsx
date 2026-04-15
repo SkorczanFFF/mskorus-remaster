@@ -33,6 +33,7 @@ export type ImageParticleFieldCoreProps = ThreeElements['group'] & {
   // When set, click pulses overlay/override the hover path with envelope-driven
   // shockwaves.
   pulse?: TactilePulseRefs;
+  excludeY?: [number, number];
 };
 
 function sampleAlphaMap(
@@ -87,11 +88,12 @@ function ImageParticleFieldCore({
   enableYawWobble = true,
   idleRandom = 0.06,
   hoverRandom = 2,
-  idleSize = 0.08,
-  hoverSize = 0.1,
+  idleSize = 0.06,
+  hoverSize = 0.075,
   idleOpacity = 0.7,
   hoverOpacity = 0.15,
   pulse,
+  excludeY,
   ...props
 }: ImageParticleFieldCoreProps) {
   const groupRef = useRef<THREE.Group>(null);
@@ -123,8 +125,9 @@ function ImageParticleFieldCore({
       threshold,
       targetWidth,
       maxSampleWidth,
+      excludeY,
     );
-  }, [maxSampleWidth, targetWidth, texture, threshold]);
+  }, [maxSampleWidth, targetWidth, texture, threshold, excludeY]);
 
   const uniforms = useMemo(
     () => ({
@@ -297,7 +300,8 @@ function ImageParticleFieldCore({
           transparent
           depthWrite={false}
           depthTest={false}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.MultiplyBlending}
+          premultipliedAlpha
           toneMapped={false}
         />
       </mesh>
