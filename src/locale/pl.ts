@@ -27,7 +27,7 @@ export const pl: Dictionary = {
   heroErrorFallback: 'Nie udało się załadować sceny 3D.',
 
   footerCopyright:
-    '© {year} SKOFTWARE Maciej Skorus. Wszelkie prawa zastrzeżone.',
+    '© {year} SKOFTWARE Maciej Skorus',
   footerResume: 'ŻYCIORYS',
   footerResumeOnline: 'CV ONLINE',
   footerResumeDownload: 'POBIERZ PDF',

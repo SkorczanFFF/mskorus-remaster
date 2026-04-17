@@ -26,7 +26,7 @@ export const en: Dictionary = {
   heroHeadline: 'Ideas in. Software out.',
   heroErrorFallback: '3D scene could not be loaded.',
 
-  footerCopyright: '© {year} SKOFTWARE Maciej Skorus. All rights reserved.',
+  footerCopyright: '© {year} SKOFTWARE Maciej Skorus',
   footerResume: 'RESUME',
   footerResumeOnline: 'VIEW ONLINE',
   footerResumeDownload: 'DOWNLOAD PDF',

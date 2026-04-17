@@ -15,16 +15,16 @@ export function usePortfolioScroll(
 
     // Desktop: horizontal scroll with pin
     mm.add('(min-width: 769px)', () => {
-      const totalScroll = track.scrollWidth - window.innerWidth;
+      const getScroll = () => track.scrollWidth - window.innerWidth;
 
       const tween = gsap.to(track, {
-        x: -totalScroll,
+        x: () => -getScroll(),
         ease: 'none',
         scrollTrigger: {
           trigger: section,
           pin: true,
           scrub: 1,
-          end: () => `+=${totalScroll}`,
+          end: () => `+=${getScroll()}`,
           invalidateOnRefresh: true,
         },
       });
