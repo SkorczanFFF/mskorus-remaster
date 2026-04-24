@@ -135,7 +135,7 @@ export const projects: ProjectEntry[] = [
     technos: 'JavaScript • Three.js • 3D Studio Max',
     description:
       'Animacja 3D w stylu lat 80/synthwave w formie kolorowanki z personalizacją kolorów i modeli na scenie w czasie rzeczywistym przez wbudowane GUI. Modele sceny zostały stworzone w 3D Studio Max. Zawiera zręcznościową mini-grę.',
-    live: 'https://polonez-autodrive.skoftware.pl/',
+    live: 'https://www.polonez-autodrive.skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/Polonez-Autodrive',
     inResume: true,
   },
@@ -181,7 +181,7 @@ export const projects: ProjectEntry[] = [
     technos: 'React • JavaScript • Sass • Vanta.js • Open-Meteo API',
     description:
       'Kolejna aplikacja pogodowa, ale ta jest zgoła inna. Tło aplikacji to trójwymiarowa scena symulująca pogodę w czasie rzeczywistym oparta na danych z Open-Meteo. Prognoza pogody jest wyświetlana dla wybranego miasta przez mapę, geolokalizację lub wpisaną nazwę. Aktualnie w gruntownej przebudowie, jednak można śmiało sprawdzać pogodę.',
-    live: 'https://yet-another-weather-app.skoftware.pl/',
+    live: 'https://www.yet-another-weather-app.skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp/',
     inResume: true,
   },
