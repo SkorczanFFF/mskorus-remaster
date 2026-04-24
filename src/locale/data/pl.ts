@@ -68,7 +68,7 @@ export const experiences: ExperienceEntry[] = [
     ],
     icon: '2SIMPLE.png',
     duties: [
-      'Budowanie narzędzi i pipeline\'ów do obróbki i przetwarzania dokumentów cyfrowych i skanów',
+      "Budowanie narzędzi i pipeline'ów do obróbki i przetwarzania dokumentów cyfrowych i skanów",
       'Tworzenie dedykowanych aplikacji i rozwiązań dla klientów z sektora medycznego',
     ],
   },
@@ -165,9 +165,10 @@ export const projects: ProjectEntry[] = [
     id: 3,
     pic: '/projects/portfolio.jpg',
     title: 'SKOFTWARE - moje portfolio',
-    technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • GSAP • i18n',
+    technos:
+      'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • GSAP • i18n',
     description:
-      'Moja strona portfolio — poligon do eksperymentów webowych. Zawiera scenę 3D stworzoną w React Three Fiber, przejścia i animacje w GSAP oraz i18n do obsługi wielojęzyczności. Dodatkowo zawiera wbudowaną webową wersję CV w języku polskim i angielskim. Projekt nieustannie ewoluujący, prawdopodobnie nigdy nie wyjdzie z fazy "WIP".',
+      'Moja strona portfolio — poligon do eksperymentów webowych. Zawiera scenę 3D stworzoną w React Three Fiber, przejścia i animacje w GSAP oraz i18n do obsługi wielojęzyczności. Wyposażona w webową wersję CV (HTML&CSS) w języku polskim i angielskim. Projekt nieustannie ewoluujący, prawdopodobnie nigdy nie wyjdzie z fazy "WIP".',
     live: process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     inResume: true,
@@ -179,7 +180,7 @@ export const projects: ProjectEntry[] = [
     title: 'Yet Another Weather App [WIP]',
     technos: 'React • JavaScript • Sass • Vanta.js • Open-Meteo API',
     description:
-      'Aplikacji pogodowych jest jak gwiazd na niebie, ale ta jest inna. Tło sceny to symulacja pogody w czasie rzeczywistym oparta na danych z Open-Meteo, wyświetlana dla wybranego miasta przez mapę, geolokalizację lub wpisaną nazwę. Aktualnie w gruntownej przebudowie, jednak można śmiało sprawdzać pogodę.',
+      'Kolejna aplikacja pogodowa, ale ta jest zgoła inna. Tło aplikacji to trójwymiarowa scena symulująca pogodę w czasie rzeczywistym oparta na danych z Open-Meteo. Prognoza pogody jest wyświetlana dla wybranego miasta przez mapę, geolokalizację lub wpisaną nazwę. Aktualnie w gruntownej przebudowie, jednak można śmiało sprawdzać pogodę.',
     live: 'https://yet-another-weather-app.skoftware.pl/',
     git: 'https://github.com/SkorczanFFF/YetAnotherWeatherApp/',
     inResume: true,
@@ -190,7 +191,7 @@ export const projects: ProjectEntry[] = [
     title: '★ Tibia Key Presser',
     technos: 'Python • Tkinter • pywinauto',
     description:
-      'Lekkie narzędzie automatyzacji w Pythonie do gry Tibia (MMORPG), obsługujące do ośmiu konfigurowalnych par klawisz-opóźnienie. Automatycznie wykrywa okno gry, działa w tle bez przerywania innych aktywności i gier.',
+      'Lekkie narzędzie automatyzacji do gry Tibia (MMORPG), obsługujące do ośmiu konfigurowalnych par klawisz-opóźnienie. Automatycznie wykrywa okno gry, działa w tle bez przerywania innych aktywności i gier.',
     live: '',
     git: 'https://github.com/SkorczanFFF/tibia-key-presser',
     inResume: true,
