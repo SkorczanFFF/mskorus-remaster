@@ -69,9 +69,13 @@ export type Dictionary = {
   toggleMenu: string;
   navMenuLabel: string;
 
-  heroGreeting: string;
-  heroName: string;
-  heroHeadline: string;
+  heroEyebrow: string;
+  heroH1Line1: string;
+  heroH1Line2: string;
+  heroSubtitle: string;
+  heroCtaPrimary: string;
+  heroCtaSecondary: string;
+  heroTrust: string[];
   heroErrorFallback: string;
 
   footerCopyright: string;

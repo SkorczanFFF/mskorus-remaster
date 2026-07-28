@@ -22,9 +22,14 @@ export const pl: Dictionary = {
   toggleMenu: 'Przełącz menu',
   navMenuLabel: 'Nawigacja główna',
 
-  heroGreeting: 'Hej, jestem Maciej.',
-  heroName: 'Skorus Maciej.',
-  heroHeadline: 'Pomysły na wejściu. Software na wyjściu.',
+  heroEyebrow: 'SKOFTWARE',
+  heroH1Line1: 'Pomysły na wejściu.',
+  heroH1Line2: 'Działający software na wyjściu.',
+  heroSubtitle:
+    'Strony, aplikacje webowe i mobilne, integracje AI i 3D — dla firm, które potrzebują, żeby to po prostu działało. Od pomysłu, przez wdrożenie, po utrzymanie. Jeden wykonawca, faktura VAT.',
+  heroCtaPrimary: 'Opisz projekt — wycena w 48 h',
+  heroCtaSecondary: 'Zobacz realizacje',
+  heroTrust: ['Faktura VAT', 'Śląsk i zdalnie', 'Obsługa PL / EN'],
   heroErrorFallback: 'Nie udało się załadować sceny 3D.',
 
   footerCopyright:

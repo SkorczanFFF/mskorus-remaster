@@ -22,9 +22,14 @@ export const en: Dictionary = {
   toggleMenu: 'Toggle Menu',
   navMenuLabel: 'Main navigation',
 
-  heroGreeting: "Hey, I'm Maciej.",
-  heroName: 'Skorus Maciej.',
-  heroHeadline: 'Ideas in. Software out.',
+  heroEyebrow: 'SKOFTWARE',
+  heroH1Line1: 'Ideas in.',
+  heroH1Line2: 'Working software out.',
+  heroSubtitle:
+    'Websites, web and mobile apps, AI and 3D integrations — for companies that need it to simply work. From idea to launch to maintenance. One contractor, VAT invoicing.',
+  heroCtaPrimary: 'Tell me about your project — quote in 48 h',
+  heroCtaSecondary: 'See case studies',
+  heroTrust: ['VAT invoicing', 'Silesia & remote', 'PL / EN support'],
   heroErrorFallback: '3D scene could not be loaded.',
 
   footerCopyright: '© {year} SKOFTWARE Maciej Skorus',
