@@ -27,7 +27,6 @@ function IndustryCard({
 }) {
   const Icon = industryIconMap[industry.icon];
   const isOdd = index % 2 === 1;
-  const accent = isOdd ? 'orange' : 'raspberry';
   const { cardRef, onMouseMove, onMouseEnter, onMouseLeave } = useTilt(
     prefersReducedMotion,
     { maxTilt: 5, hoverScale: 1.03 },

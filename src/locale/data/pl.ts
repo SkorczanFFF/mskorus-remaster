@@ -1,3 +1,5 @@
+import { SITE_URL } from '@/lib/site';
+
 import type {
   ExperienceEntry,
   IndustryEntry,
@@ -193,23 +195,13 @@ export const projects: ProjectEntry[] = [
     inResume: true,
   },
   {
-    id: 2,
-    pic: '/projects/chandrastic.jpg',
-    title: 'Chandrastic',
-    technos: 'React • TypeScript • Python • FastAPI • Chandra OCR LLM',
-    description:
-      'Fullstackowy wrapper React na model Chandra OCR LLM, działający w pełni lokalnie z wykorzystaniem akceleracji GPU CUDA. Konfiguruje backend i frontend do komunikacji z modelem. Akceptuje obrazy i pliki PDF - wyodrębnia tekst, tabele i obrazy. Renderuje wyniki jako Markdown, HTML lub JSON. Demonstracja integracji i okiełznania lokalnych modeli AI w środowisku webowym.',
-    live: '',
-    git: '',
-  },
-  {
     id: 3,
     pic: '/projects/portfolio.jpg',
     title: 'SKOFTWARE - moje portfolio',
     technos: 'Next.js • TypeScript • TailwindCSS • React Three Fiber/Three.js • GSAP • i18n',
     description:
       'Moja strona portfolio — poligon do eksperymentów webowych. Zawiera scenę 3D stworzoną w React Three Fiber, przejścia i animacje w GSAP oraz i18n do obsługi wielojęzyczności. Dodatkowo zawiera wbudowaną webową wersję CV w języku polskim i angielskim. Projekt nieustannie ewoluujący, prawdopodobnie nigdy nie wyjdzie z fazy "WIP".',
-    live: process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl/',
+    live: SITE_URL,
     git: 'https://github.com/SkorczanFFF/mskorus-remaster',
     inResume: true,
   },

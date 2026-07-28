@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from '@/lib/site';
+
 import type { Dictionary } from '@/locale/types';
 
 import { experiences, industries, projects, services } from './data/pl';
@@ -70,7 +72,7 @@ export const pl: Dictionary = {
   projects,
 
   contactPhone: '+48 668 366 648',
-  contactEmail: 'skorusmaciej94@gmail.com',
+  contactEmail: CONTACT_EMAIL,
   contactCompanyInfo: 'Creative Fullstack Developer - Dostępny na projekty',
   contactLocation: 'Śląsk, Polska',
   contactInvoiceInfo: 'Cały świat',
@@ -120,13 +122,13 @@ export const pl: Dictionary = {
 
   cookiePolicyTitle: 'Polityka Cookies',
   cookiePolicyIntro:
-    'Niniejsza Polityka Cookies wyjaśnia, w jaki sposób SKOFTWARE Maciej Skorus („my", „nas", „nasz") wykorzystuje pliki cookie i podobne technologie na stronie skoftware.dev („Strona"). Polityka ta jest zgodna z Ogólnym Rozporządzeniem o Ochronie Danych (RODO, Rozporządzenie 2016/679), Dyrektywą ePrivacy (2002/58/WE, z późniejszymi zmianami) oraz obowiązującymi przepisami krajowymi.',
+    'Niniejsza Polityka Cookies wyjaśnia, w jaki sposób SKOFTWARE Maciej Skorus („my", „nas", „nasz") wykorzystuje pliki cookie i podobne technologie na stronie {domain} („Strona"). Polityka ta jest zgodna z Ogólnym Rozporządzeniem o Ochronie Danych (RODO, Rozporządzenie 2016/679), Dyrektywą ePrivacy (2002/58/WE, z późniejszymi zmianami) oraz obowiązującymi przepisami krajowymi.',
   cookiePolicyWhatAreCookiesTitle: '1. Czym są pliki cookie?',
   cookiePolicyWhatAreCookies:
     'Pliki cookie to małe pliki tekstowe, które są umieszczane na Twoim urządzeniu podczas odwiedzania strony internetowej. Są szeroko stosowane, aby zapewnić prawidłowe działanie stron, dostarczać informacje właścicielom witryn i poprawiać doświadczenia użytkownika. Podobne technologie obejmują localStorage (przechowywanie danych lokalnie w przeglądarce bez daty wygaśnięcia) oraz skrypty analityczne zbierające zanonimizowane dane o użytkowaniu.',
   cookiePolicyControllerTitle: '2. Administrator Danych',
   cookiePolicyController:
-    'Administratorem danych osobowych przetwarzanych za pośrednictwem niniejszej Strony jest: SKOFTWARE Maciej Skorus, Śląsk, Polska, NIP: 6252501911. W przypadku pytań dotyczących niniejszej polityki lub Twoich danych, skontaktuj się: skorusmaciej94@gmail.com.',
+    'Administratorem danych osobowych przetwarzanych za pośrednictwem niniejszej Strony jest: SKOFTWARE Maciej Skorus, Śląsk, Polska, NIP: 6252501911. W przypadku pytań dotyczących niniejszej polityki lub Twoich danych, skontaktuj się: {email}.',
   cookiePolicyCookiesWeUseTitle:
     '3. Pliki cookie i technologie, których używamy',
   cookiePolicyCookiesWeUseIntro:
@@ -178,7 +180,7 @@ export const pl: Dictionary = {
   cookiePolicyRightComplaint:
     'Prawo do wniesienia skargi do organu nadzorczego (art. 77). W Polsce organem nadzorczym jest: Prezes Urzędu Ochrony Danych Osobowych (UODO), ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl.',
   cookiePolicyRightsOutro:
-    'Aby skorzystać z któregokolwiek z tych praw, skontaktuj się z nami: skorusmaciej94@gmail.com.',
+    'Aby skorzystać z któregokolwiek z tych praw, skontaktuj się z nami: {email}.',
   cookiePolicyTransfersTitle: '8. Międzynarodowe transfery danych',
   cookiePolicyTransfers:
     'Jeśli wyrażasz zgodę na analitykę, zanonimizowane dane mogą być przekazywane do Vercel Inc. w Stanach Zjednoczonych. Vercel uczestniczy w ramach EU-U.S. Data Privacy Framework, zapewniając odpowiednie zabezpieczenia dla transferów danych poza EOG zgodnie z art. 45 RODO.',

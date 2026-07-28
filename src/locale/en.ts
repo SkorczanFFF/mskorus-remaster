@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from '@/lib/site';
+
 import type { Dictionary } from '@/locale/types';
 
 import { experiences, industries, projects, services } from './data/en';
@@ -69,7 +71,7 @@ export const en: Dictionary = {
   projects,
 
   contactPhone: '+48 668 366 648',
-  contactEmail: 'skorusmaciej94@gmail.com',
+  contactEmail: CONTACT_EMAIL,
   contactCompanyInfo: 'Creative Fullstack Developer - Available for projects',
   contactLocation: 'Silesia, Poland',
   contactInvoiceInfo: 'Worldwide',
@@ -118,13 +120,13 @@ export const en: Dictionary = {
     'Help me understand how visitors interact with the site. All data is anonymized.',
   cookiePolicyTitle: 'Cookie Policy',
   cookiePolicyIntro:
-    'This Cookie Policy explains how SKOFTWARE Maciej Skorus ("we", "us", "our") uses cookies and similar technologies on skoftware.dev ("the Website"). This policy is designed to comply with the EU General Data Protection Regulation (GDPR, Regulation 2016/679), the ePrivacy Directive (2002/58/EC, as amended), and applicable national implementations.',
+    'This Cookie Policy explains how SKOFTWARE Maciej Skorus ("we", "us", "our") uses cookies and similar technologies on {domain} ("the Website"). This policy is designed to comply with the EU General Data Protection Regulation (GDPR, Regulation 2016/679), the ePrivacy Directive (2002/58/EC, as amended), and applicable national implementations.',
   cookiePolicyWhatAreCookiesTitle: '1. What Are Cookies?',
   cookiePolicyWhatAreCookies:
     'Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work efficiently, provide information to site owners, and improve the user experience. Similar technologies include localStorage (which stores data locally in your browser without an expiration date) and analytics scripts that collect anonymized usage data.',
   cookiePolicyControllerTitle: '2. Data Controller',
   cookiePolicyController:
-    'The data controller responsible for the processing of your personal data through this Website is: SKOFTWARE Maciej Skorus, Silesia, Poland, NIP: 6252501911. For any questions regarding this policy or your data, contact: skorusmaciej94@gmail.com.',
+    'The data controller responsible for the processing of your personal data through this Website is: SKOFTWARE Maciej Skorus, Silesia, Poland, NIP: 6252501911. For any questions regarding this policy or your data, contact: {email}.',
   cookiePolicyCookiesWeUseTitle: '3. Cookies and Technologies We Use',
   cookiePolicyCookiesWeUseIntro:
     'Below is a complete list of cookies and similar technologies used on this Website, organized by category:',
@@ -175,7 +177,7 @@ export const en: Dictionary = {
   cookiePolicyRightComplaint:
     'Right to lodge a complaint with a supervisory authority (Art. 77). In Poland, the supervisory authority is: Prezes Urzędu Ochrony Danych Osobowych (UODO), ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl.',
   cookiePolicyRightsOutro:
-    'To exercise any of these rights, contact us at: skorusmaciej94@gmail.com.',
+    'To exercise any of these rights, contact us at: {email}.',
   cookiePolicyTransfersTitle: '8. International Data Transfers',
   cookiePolicyTransfers:
     'If you consent to analytics, anonymized data may be transferred to Vercel Inc. in the United States. Vercel participates in the EU-U.S. Data Privacy Framework, providing adequate safeguards for data transfers outside the EEA in accordance with Art. 45 GDPR.',

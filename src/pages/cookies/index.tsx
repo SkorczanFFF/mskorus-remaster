@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { CookieIcon } from '@/lib/shared/Icons';
+import { CONTACT_EMAIL, SITE_DOMAIN } from '@/lib/site';
 
 import { COOKIE_DAYS, showCookiePreferences } from '@/components/CookieConsent';
 import Layout from '@/components/layout/Layout';
@@ -9,13 +10,18 @@ import Seo from '@/components/Seo';
 
 import { useLocale } from '@/locale/LocaleContext';
 
+/** Legal prose keeps the domain and address as placeholders so `@/lib/site`
+ *  stays the only place either is spelled out. */
+const fill = (text: string) =>
+  text.replace('{domain}', SITE_DOMAIN).replace('{email}', CONTACT_EMAIL);
+
 export default function CookiesPage() {
   const { t } = useLocale();
 
   const cookieTable = [
     {
       name: t.cookiePolicyCookieCC,
-      provider: (process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl').replace(/^https?:\/\//, ''),
+      provider: SITE_DOMAIN,
       purpose: t.cookiePolicyCookieCCPurpose,
       category: t.cookieNecessaryTitle,
       type: 'HTTP Cookie',
@@ -70,7 +76,7 @@ export default function CookiesPage() {
 
           {/* Intro */}
           <p className='mb-12 text-base leading-relaxed text-primary-blue/70'>
-            <StyledText text={t.cookiePolicyIntro} />
+            <StyledText text={fill(t.cookiePolicyIntro)} />
           </p>
 
           {/* 1. What Are Cookies */}
@@ -81,7 +87,7 @@ export default function CookiesPage() {
           {/* 2. Data Controller */}
           <Section title={t.cookiePolicyControllerTitle}>
             <p>
-              <StyledText text={t.cookiePolicyController} />
+              <StyledText text={fill(t.cookiePolicyController)} />
             </p>
           </Section>
 
@@ -181,7 +187,7 @@ export default function CookiesPage() {
                 <li key={right}>{right}</li>
               ))}
             </ul>
-            <p>{t.cookiePolicyRightsOutro}</p>
+            <p>{fill(t.cookiePolicyRightsOutro)}</p>
           </Section>
 
           {/* 8. International Transfers */}
