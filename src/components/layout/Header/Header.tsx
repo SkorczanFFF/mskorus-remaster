@@ -35,13 +35,7 @@ function LocaleToggle({ className }: { className?: string }) {
   );
 }
 
-const SECTION_IDS = [
-  'services',
-  'experience',
-  'skills',
-  'portfolio',
-  'contact',
-];
+const SECTION_IDS = ['services', 'industries', 'portfolio', 'contact'];
 
 function useActiveSection() {
   const router = useRouter();
@@ -104,14 +98,13 @@ export default function Header(): React.JSX.Element {
   const menuRef = useRef<HTMLDivElement>(null);
   const wasOpen = useRef(false);
 
+  // The CV link moved to the footer — a services site should not lead with it.
   const links = [
     { href: '/#home', label: t.navHome },
     { href: '/#services', label: t.navServices },
-    { href: '/#experience', label: t.navExperience },
-    { href: '/#skills', label: t.navSkills },
+    { href: '/#industries', label: t.navIndustries },
     { href: '/#portfolio', label: t.navPortfolio },
     { href: '/#contact', label: t.navContact },
-    { href: '/resume', label: t.navResume },
   ];
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { BREAKPOINTS } from '@/lib/breakpoints';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
@@ -11,6 +11,7 @@ import {
   WrenchIcon,
 } from '@/lib/shared/Icons';
 import { useScrollTriggers } from '@/hooks/useScrollTriggers';
+import { useTilt } from '@/hooks/useTilt';
 
 import { useLocale } from '@/locale/LocaleContext';
 import type { ServiceEntry } from '@/locale/types';
@@ -25,48 +26,6 @@ const serviceIconMap: Record<string, IconType> = {
   Phone: PhoneIcon,
   Wrench: WrenchIcon,
 };
-
-const MAX_TILT = 8;
-
-function useTilt(prefersReducedMotion: boolean) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const onMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (prefersReducedMotion || !cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      gsap.to(cardRef.current, {
-        rotateX: -y * MAX_TILT,
-        rotateY: x * MAX_TILT,
-        duration: 0.4,
-        ease: 'power2.out',
-        overwrite: 'auto',
-      });
-    },
-    [prefersReducedMotion],
-  );
-
-  const onMouseEnter = useCallback(() => {
-    if (prefersReducedMotion || !cardRef.current) return;
-    gsap.to(cardRef.current, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
-  }, [prefersReducedMotion]);
-
-  const onMouseLeave = useCallback(() => {
-    if (prefersReducedMotion || !cardRef.current) return;
-    gsap.to(cardRef.current, {
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1,
-      duration: 0.4,
-      ease: 'power2.out',
-      overwrite: true,
-    });
-  }, [prefersReducedMotion]);
-
-  return { cardRef, onMouseMove, onMouseEnter, onMouseLeave };
-}
 
 function ServiceCard({
   service,

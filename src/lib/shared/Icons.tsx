@@ -23,8 +23,11 @@ import { HiChip, HiMusicNote } from 'react-icons/hi';
 import {
   HiCubeTransparent,
   HiDevicePhoneMobile,
+  HiDocumentText,
+  HiLink,
   HiMiniLanguage,
   HiSparkles,
+  HiUserGroup,
   HiWrenchScrewdriver,
 } from 'react-icons/hi2';
 import {
@@ -130,3 +133,8 @@ export const SparklesIcon = HiSparkles as IconType;
 export const CubeIcon = HiCubeTransparent as IconType;
 export const PhoneIcon = HiDevicePhoneMobile as IconType;
 export const WrenchIcon = HiWrenchScrewdriver as IconType;
+
+/* Industry section icons */
+export const UsersIcon = HiUserGroup as IconType;
+export const LinkIcon = HiLink as IconType;
+export const DocumentIcon = HiDocumentText as IconType;

@@ -1,6 +1,6 @@
 import type { Dictionary } from '@/locale/types';
 
-import { experiences, projects, services } from './data/en';
+import { experiences, industries, projects, services } from './data/en';
 
 export const en: Dictionary = {
   seoTitle:
@@ -13,6 +13,7 @@ export const en: Dictionary = {
   notFoundBack: 'Back to Home',
 
   navHome: 'Home',
+  navIndustries: 'Industries',
   navExperience: 'Experience',
   navSkills: 'Skills',
   navPortfolio: 'Portfolio',
@@ -39,6 +40,14 @@ export const en: Dictionary = {
   navServices: 'Services',
   servicesSectionTitle: 'SERVICES',
   services,
+
+  techStripLead:
+    'I build on technology with support and a community behind it — not on whatever is trending this season.',
+
+  industriesSectionTitle: 'INDUSTRIES',
+  industriesLead:
+    'Three domains where the unusual requirements are already familiar — and where I know these projects tend to break.',
+  industries,
 
   experienceSectionTitle: 'WORK EXP',
   experiences,

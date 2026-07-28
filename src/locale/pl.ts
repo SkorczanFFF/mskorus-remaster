@@ -1,6 +1,6 @@
 import type { Dictionary } from '@/locale/types';
 
-import { experiences, projects, services } from './data/pl';
+import { experiences, industries, projects, services } from './data/pl';
 
 export const pl: Dictionary = {
   seoTitle:
@@ -13,6 +13,7 @@ export const pl: Dictionary = {
   notFoundBack: 'Powrót na stronę główną',
 
   navHome: 'Strona główna',
+  navIndustries: 'Branże',
   navExperience: 'Doświadczenie',
   navSkills: 'Umiejętności',
   navPortfolio: 'Portfolio',
@@ -40,6 +41,14 @@ export const pl: Dictionary = {
   navServices: 'Usługi',
   servicesSectionTitle: 'USŁUGI',
   services,
+
+  techStripLead:
+    'Buduję w technologiach, które mają wsparcie i społeczność — nie w modzie sezonu.',
+
+  industriesSectionTitle: 'BRANŻE',
+  industriesLead:
+    'Trzy obszary, w których mam przerobione nietypowe wymagania i wiem, gdzie takie projekty potrafią się wyłożyć.',
+  industries,
 
   experienceSectionTitle: 'DOŚWIADCZENIE',
   experiences,

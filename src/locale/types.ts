@@ -36,6 +36,19 @@ export type ServiceEntry = {
   description: string;
 };
 
+/**
+ * A domain the business delivers in. Replaces the employer-by-employer
+ * `ExperienceEntry` listing on the landing page: same underlying facts,
+ * framed as capability rather than job history.
+ */
+export type IndustryEntry = {
+  icon: string;
+  title: string;
+  description: string;
+  /** Concrete things shipped in this domain — short noun phrases. */
+  proof: string[];
+};
+
 export type Dictionary = {
   seoTitle: string;
   seoSiteName: string;
@@ -45,7 +58,10 @@ export type Dictionary = {
   notFoundBack: string;
 
   navHome: string;
+  navIndustries: string;
+  /** Retired from the main nav in the conversion; reused on /o-firmie. */
   navExperience: string;
+  /** Retired from the main nav in the conversion; reused on /o-firmie. */
   navSkills: string;
   navPortfolio: string;
   navContact: string;
@@ -70,6 +86,12 @@ export type Dictionary = {
   navServices: string;
   servicesSectionTitle: string;
   services: ServiceEntry[];
+
+  techStripLead: string;
+
+  industriesSectionTitle: string;
+  industriesLead: string;
+  industries: IndustryEntry[];
 
   experienceSectionTitle: string;
   experiences: ExperienceEntry[];

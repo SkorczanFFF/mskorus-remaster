@@ -3,13 +3,13 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 
 import Services from '@/components/About/About';
-import Experience from '@/components/Experience/Experience';
+import Industries from '@/components/Industries/Industries';
 import Footer from '@/components/layout/Footer/Footer';
 import Layout from '@/components/layout/Layout';
 import LoaderOverlay from '@/components/LoaderOverlay';
 import Portfolio from '@/components/Portfolio/Portfolio';
 import Seo from '@/components/Seo';
-import Skills from '@/components/Skills/Skills';
+import TechStrip from '@/components/TechStrip/TechStrip';
 
 const HeroNoSSR = dynamic(() => import('@/components/Hero/Hero'), {
   ssr: false,
@@ -46,8 +46,8 @@ export default function HomePage() {
       <main className='overflow-x-clip'>
         <HeroNoSSR />
         <Services />
-        <Experience />
-        <Skills />
+        <TechStrip />
+        <Industries />
         <Portfolio />
         <Footer />
       </main>
