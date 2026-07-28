@@ -3,7 +3,6 @@ import React, { useRef } from 'react';
 import { gsap } from '@/lib/gsap';
 import { DocumentIcon, LinkIcon, UsersIcon } from '@/lib/shared/Icons';
 import { useScrollTriggers } from '@/hooks/useScrollTriggers';
-import { useTilt } from '@/hooks/useTilt';
 
 import { useLocale } from '@/locale/LocaleContext';
 import type { IndustryEntry } from '@/locale/types';
@@ -16,115 +15,103 @@ const industryIconMap: Record<string, IconType> = {
   Document: DocumentIcon,
 };
 
-function IndustryCard({
+// Full class strings — Tailwind scans source text, so these cannot be built
+// by interpolation.
+const ACCENTS = [
+  {
+    number: 'text-raspberry/20',
+    icon: 'text-raspberry',
+    rule: 'bg-raspberry',
+    separator: 'text-raspberry/30',
+  },
+  {
+    number: 'text-orange/20',
+    icon: 'text-orange',
+    rule: 'bg-orange',
+    separator: 'text-orange/30',
+  },
+] as const;
+
+function IndustryRow({
   industry,
   index,
-  prefersReducedMotion,
 }: {
   industry: IndustryEntry;
   index: number;
-  prefersReducedMotion: boolean;
 }) {
   const Icon = industryIconMap[industry.icon];
-  const isOdd = index % 2 === 1;
-  const { cardRef, onMouseMove, onMouseEnter, onMouseLeave } = useTilt(
-    prefersReducedMotion,
-    { maxTilt: 5, hoverScale: 1.03 },
-  );
+  const accent = ACCENTS[index % ACCENTS.length];
 
   return (
-    <div style={{ perspective: 800 }} className='h-full'>
-      <div
-        ref={cardRef}
-        onMouseMove={onMouseMove}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        className='group bg-primary-blue relative flex h-full flex-col will-change-transform'
-        style={{ transformStyle: 'preserve-3d' }}
-      >
-        <div
-          className={`h-[3px] w-full ${isOdd ? 'bg-orange' : 'bg-raspberry'}`}
-        />
-
-        <div
-          className='flex flex-1 flex-col gap-4 p-6 sm:p-7'
-          style={{ transformStyle: 'preserve-3d' }}
+    <article className='industry-row group border-primary-blue/10 grid grid-cols-1 gap-x-8 gap-y-4 border-t py-9 last:border-b md:grid-cols-[100px_1fr] md:py-12'>
+      <div className='flex items-center gap-4 md:flex-col md:items-start md:gap-4'>
+        <span
+          className={`font-unica text-5xl leading-none tracking-tighter md:text-6xl ${accent.number}`}
+          aria-hidden='true'
         >
-          {Icon && (
-            <Icon
-              className={`text-4xl ${isOdd ? 'text-orange' : 'text-raspberry'} brightness-150`}
-              aria-hidden='true'
-              style={{ transform: 'translateZ(30px)' }}
-            />
-          )}
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        {Icon && (
+          <Icon
+            className={`text-3xl ${accent.icon} md:text-4xl`}
+            aria-hidden='true'
+          />
+        )}
+      </div>
 
-          <h3
-            className='text-[20px] font-semibold uppercase leading-tight tracking-[0px] text-white transition-[letter-spacing] duration-300 group-hover:tracking-[1px]'
-            style={{ transform: 'translateZ(40px)' }}
-          >
-            {industry.title}
-          </h3>
-
-          <p
-            className='text-[14px] leading-relaxed text-white/80'
-            style={{ transform: 'translateZ(20px)' }}
-          >
-            {industry.description}
-          </p>
-
-          <ul
-            className='mt-auto flex flex-wrap gap-1.5 pt-2'
-            style={{ transform: 'translateZ(10px)' }}
-          >
-            {industry.proof.map((item) => (
-              <li
-                key={item}
-                className={`rounded-[2px] border px-2 py-[3px] text-[11px] leading-tight text-white/70 ${
-                  isOdd ? 'border-orange/40' : 'border-raspberry/40'
-                }`}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div
-          className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-b ${
-            isOdd
-              ? 'from-orange/[0.05] to-transparent'
-              : 'from-raspberry/[0.05] to-transparent'
-          }`}
+      <div>
+        <span
+          className={`mb-4 block h-[2px] w-10 ${accent.rule} transition-all duration-300 group-hover:w-20`}
           aria-hidden='true'
         />
+
+        <h3 className='font-unica text-primary-blue text-2xl uppercase leading-tight tracking-tight md:text-3xl'>
+          {industry.title}
+        </h3>
+
+        <p className='text-primary-blue/70 mt-3 max-w-[680px] text-[15px] font-light leading-relaxed md:text-[17px]'>
+          {industry.description}
+        </p>
+
+        {/* A capability tape, not tags — these are phrases, and boxing each one
+            makes a ragged grid out of uneven strings. */}
+        <ul className='text-primary-blue/45 mt-5 flex max-w-[760px] flex-wrap items-center gap-x-2 gap-y-1 text-[12px] md:text-[13px]'>
+          {industry.proof.map((item, i) => (
+            <React.Fragment key={item}>
+              {i > 0 && (
+                <li aria-hidden='true' className={accent.separator}>
+                  ·
+                </li>
+              )}
+              <li>{item}</li>
+            </React.Fragment>
+          ))}
+        </ul>
       </div>
-    </div>
+    </article>
   );
 }
 
 export default function Industries(): React.JSX.Element {
   const { t } = useLocale();
-  const gridRef = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const listRef = useRef<HTMLDivElement>(null);
 
   useScrollTriggers(() => {
-    if (!gridRef.current) return [];
+    if (!listRef.current) return [];
 
-    const cards = gsap.utils.toArray<Element>('.industry-card', gridRef.current);
-    if (!cards.length) return [];
+    const rows = gsap.utils.toArray<Element>('.industry-row', listRef.current);
+    if (!rows.length) return [];
 
-    gsap.set(cards, { opacity: 0, y: 40 });
+    gsap.set(rows, { opacity: 0, x: -24 });
 
-    const tween = gsap.to(cards, {
+    const tween = gsap.to(rows, {
       opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.15,
+      x: 0,
+      duration: 0.7,
+      stagger: 0.12,
       ease: 'power3.out',
       scrollTrigger: {
-        trigger: gridRef.current,
+        trigger: listRef.current,
         start: 'top 85%',
         toggleActions: 'play none none reverse',
       },
@@ -136,29 +123,22 @@ export default function Industries(): React.JSX.Element {
   return (
     <section
       id='industries'
-      className='font-grotesk relative flex w-full flex-col items-center overflow-hidden bg-white pb-[100px] pt-[80px] md:pb-[120px] md:pt-[120px] [contain:paint]'
+      className='font-grotesk relative w-full overflow-hidden bg-white pb-[100px] pt-[80px] md:pb-[130px] md:pt-[120px] [contain:paint]'
     >
-      <h2 className='font-grotesk text-primary-blue py-2 text-xl font-normal leading-3 tracking-[10px] xl:absolute xl:left-[80px] xl:top-[60px] xl:origin-top-left xl:rotate-90 xl:py-0'>
+      <h2 className='font-grotesk text-primary-blue text-center text-xl font-normal leading-3 tracking-[10px] xl:absolute xl:left-[80px] xl:top-[60px] xl:origin-top-left xl:rotate-90 xl:py-0'>
         {t.industriesSectionTitle}
       </h2>
 
-      <p className='text-deep-blue/60 mx-auto mb-12 mt-8 max-w-[640px] px-6 text-center text-[15px] leading-relaxed md:text-[17px] xl:mt-0'>
-        {t.industriesLead}
-      </p>
+      <div className='mx-auto w-full max-w-[1100px] px-6 md:px-10'>
+        <p className='text-deep-blue/60 mb-10 mt-10 max-w-[620px] text-[15px] leading-relaxed md:mb-14 md:text-[17px] xl:mt-0'>
+          {t.industriesLead}
+        </p>
 
-      <div
-        ref={gridRef}
-        className='mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-8 px-6 md:grid-cols-2 lg:grid-cols-3'
-      >
-        {t.industries.map((industry, i) => (
-          <div key={industry.title} className='industry-card h-full'>
-            <IndustryCard
-              industry={industry}
-              index={i}
-              prefersReducedMotion={prefersReducedMotion}
-            />
-          </div>
-        ))}
+        <div ref={listRef}>
+          {t.industries.map((industry, i) => (
+            <IndustryRow key={industry.title} industry={industry} index={i} />
+          ))}
+        </div>
       </div>
     </section>
   );
