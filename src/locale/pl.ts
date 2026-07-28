@@ -135,9 +135,6 @@ export const pl: Dictionary = {
   cookiePolicyCookieCC: 'cc_cookie',
   cookiePolicyCookieCCPurpose:
     'Przechowuje Twoje preferencje dotyczące zgody na pliki cookie (które kategorie zaakceptowałeś lub odrzuciłeś).',
-  cookiePolicyCookieLocale: 'locale',
-  cookiePolicyCookieLocalePurpose:
-    'Przechowuje preferowany język (angielski lub polski), aby był zachowany między wizytami.',
   cookiePolicyCookieVercelAnalytics: 'Vercel Web Analytics',
   cookiePolicyCookieVercelAnalyticsPurpose:
     'Zbiera zanonimizowane, zagregowane dane o wyświetleniach stron i odwiedzających. Bez plików cookie — wykorzystuje codziennie rotowany zanonimizowany hash zamiast trwałych identyfikatorów. Nie przechowuje danych osobowych.',
@@ -183,6 +180,6 @@ export const pl: Dictionary = {
   cookiePolicyChangesTitle: '9. Zmiany w niniejszej polityce',
   cookiePolicyChanges:
     'Niniejsza Polityka Cookies może być okresowo aktualizowana w celu odzwierciedlenia zmian w stosowanych przez nas technologiach lub obowiązujących przepisach. Wszelkie aktualizacje zostaną opublikowane na tej stronie ze zaktualizowaną datą „Ostatnia aktualizacja". Zachęcamy do okresowego przeglądania tej polityki.',
-  cookiePolicyLastUpdated: 'Ostatnia aktualizacja: 27 marca 2026',
+  cookiePolicyLastUpdated: 'Ostatnia aktualizacja: 28 lipca 2026',
   cookiePolicyBackHome: 'Powrót na stronę główną',
 };

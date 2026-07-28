@@ -132,9 +132,6 @@ export const en: Dictionary = {
   cookiePolicyCookieCC: 'cc_cookie',
   cookiePolicyCookieCCPurpose:
     'Stores your cookie consent preferences (which categories you accepted or rejected).',
-  cookiePolicyCookieLocale: 'locale',
-  cookiePolicyCookieLocalePurpose:
-    'Stores your preferred language (English or Polish) so it persists between visits.',
   cookiePolicyCookieVercelAnalytics: 'Vercel Web Analytics',
   cookiePolicyCookieVercelAnalyticsPurpose:
     'Collects anonymized, aggregated page view and visitor data. Cookieless — uses a daily-rotating anonymized hash instead of persistent identifiers. No personally identifiable information is stored.',
@@ -180,6 +177,6 @@ export const en: Dictionary = {
   cookiePolicyChangesTitle: '9. Changes to This Policy',
   cookiePolicyChanges:
     'We may update this Cookie Policy from time to time to reflect changes in the technologies we use or applicable regulations. Any updates will be posted on this page with a revised "Last Updated" date. We encourage you to review this policy periodically.',
-  cookiePolicyLastUpdated: 'Last updated: March 27, 2026',
+  cookiePolicyLastUpdated: 'Last updated: July 28, 2026',
   cookiePolicyBackHome: 'Back to Home',
 };

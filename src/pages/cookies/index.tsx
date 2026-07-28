@@ -22,14 +22,6 @@ export default function CookiesPage() {
       duration: `${COOKIE_DAYS} days`,
     },
     {
-      name: t.cookiePolicyCookieLocale,
-      provider: (process.env.NEXT_PUBLIC_SITE_URL || 'https://skoftware.pl').replace(/^https?:\/\//, ''),
-      purpose: t.cookiePolicyCookieLocalePurpose,
-      category: t.cookieNecessaryTitle,
-      type: 'localStorage',
-      duration: 'Persistent',
-    },
-    {
       name: t.cookiePolicyCookieVercelAnalytics,
       provider: 'Vercel Inc.',
       purpose: t.cookiePolicyCookieVercelAnalyticsPurpose,

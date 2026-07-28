@@ -166,8 +166,6 @@ export type Dictionary = {
   cookiePolicyTableDuration: string;
   cookiePolicyCookieCC: string;
   cookiePolicyCookieCCPurpose: string;
-  cookiePolicyCookieLocale: string;
-  cookiePolicyCookieLocalePurpose: string;
   cookiePolicyCookieVercelAnalytics: string;
   cookiePolicyCookieVercelAnalyticsPurpose: string;
   cookiePolicyCookieVercelSpeed: string;
