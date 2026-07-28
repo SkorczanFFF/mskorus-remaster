@@ -41,7 +41,7 @@ function useActiveSection() {
   const router = useRouter();
   const [active, setActive] = useState<string>('home');
 
-  const isResumePage = router.pathname === '/resume';
+  const isResumePage = router.pathname === '/cv';
 
   useEffect(() => {
     if (isResumePage) {

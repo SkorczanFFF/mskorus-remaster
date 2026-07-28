@@ -30,7 +30,7 @@ async function generatePdf(locale) {
 
   await page.setViewport({ width: 1280, height: 900 });
 
-  const url = `${BASE_URL}/resume`;
+  const url = `${BASE_URL}/cv`;
   await page.goto(url, { waitUntil: 'networkidle0' });
 
   // Set locale and reload
@@ -168,7 +168,7 @@ async function generatePdf(locale) {
 }
 
 console.log('Generating CV PDFs...');
-console.log(`Using: ${BASE_URL}/resume\n`);
+console.log(`Using: ${BASE_URL}/cv\n`);
 
 await generatePdf('en');
 await generatePdf('pl');

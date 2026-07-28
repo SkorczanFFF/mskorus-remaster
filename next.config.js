@@ -14,6 +14,14 @@ const nextConfig = {
     localeDetection: false,
   },
 
+  async redirects() {
+    return [
+      // With i18n configured Next matches `source` per locale, so /en/resume
+      // is covered too. Do not add `locale: false`.
+      { source: '/resume', destination: '/cv', permanent: true },
+    ];
+  },
+
   webpack(config) {
     config.module.rules.push({
       test: /\.(glsl|vs|fs)$/i,
