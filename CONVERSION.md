@@ -516,7 +516,54 @@ Zmienne środowiskowe do dodania na Vercel: `RESEND_API_KEY`, `CONTACT_TO_EMAIL`
 - [ ] honeypot zatrzymuje bota
 - [ ] rate limit zwraca 429
 - [ ] formularz obsługiwalny z klawiatury, błędy czytane przez czytnik ekranu
-- [ ] brak zgody RODO → walidacja blokuje wysyłkę
+- [ ] klauzula art. 13 widoczna przy przycisku wysyłki
+
+##### Ustalenia z 2026-08-04 (rozmowa „formularz bez backendu")
+
+**Rozstrzygnięcie DEC-08: zostaje Resend + własny `pages/api/contact.ts`.** Rozważona
+alternatywa (Formspree / Web3Forms) odpada — nie dlatego, że gorsza technicznie, tylko
+dlatego, że jest **droższa prawnie**: dokłada drugiego procesora danych do polityki
+prywatności, transfer poza EOG i ochronę antyspamową opartą na reCAPTCHA, czyli nowe
+ciasteczka → nowy wiersz w polityce cookies → gating przez zgodę. Tabelę cookies właśnie
+wyczyściliśmy w E0.3.
+
+Na Vercelu API route to funkcja serverless — nie ma serwera do postawienia ani utrzymania.
+„Bez backendu" jest już spełnione.
+
+**Reguła krytyczna — koperta maila.** Nadawcą musi być zweryfikowana domena, nigdy adres
+zgłaszającego. `From: klient@gmail.com` to spoofing, który DMARC odrzuci albo wrzuci do spamu:
+
+```
+From:     formularz@skoftware.pl     ← zweryfikowana domena (SPF + DKIM Resendu)
+Reply-To: <adres z formularza>       ← „Odpowiedz" trafia do klienta
+To:       kontakt@skoftware.pl       ← CONTACT_TO_EMAIL
+```
+
+**Bez captchy.** Honeypot + kontrola czasu (wysyłka < 3 s od montażu = bot) + limit po IP.
+Świadome ograniczenie: limit w pamięci działa **per instancja** funkcji, więc jest
+najlepszym przybliżeniem, nie gwarancją. Przy tym ruchu wystarczy; Vercel KV dopiero gdy
+realnie zacznie przechodzić spam.
+
+**Checkbox zgody RODO — do rozstrzygnięcia z księgową/prawnikiem.** Formularz kontaktowy
+opiera się na art. 6 ust. 1 lit. b lub f, nie na zgodzie; wymagana jest **klauzula
+informacyjna (art. 13)**, nie checkbox. Spec powyżej pierwotnie wymagał `consent === true`
+— rekomendacja: zamienić na widoczną klauzulę + link do `/polityka-prywatnosci`, bo
+checkbox kosztuje konwersję i nie jest podstawą prawną. **Zostawić `consent` w typie do
+czasu potwierdzenia.**
+
+**Limity Resend zweryfikowane 2026-08-04** ([resend.com/pricing](https://resend.com/pricing)):
+darmowy tier 3 000 maili/mies. i 100/dzień; pierwszy płatny 20 $/mies. za 50 000.
+
+**Stopgap bez domeny:** Resend pozwala wysyłać z `onboarding@resend.dev` na adres z własnego
+konta. Ponieważ odbiorcą jest zawsze Maciej, formularz zadziała przed podpięciem domeny.
+Traktować jako tymczasowe — to polityka dostawcy, nie gwarancja.
+
+**G1 + G3 to jedna sesja przy DNS.** MX dla odbierania poczty i SPF/DKIM Resendu dla
+wysyłania nie kolidują (SPF przyjmuje wiele `include:`, DKIM używa osobnych selektorów).
+Ustawić za jednym razem, nie w dwóch podejściach.
+
+**Kolejność:** Maciej zdecydował 2026-08-04, że formularz robimy **później**, zgodnie
+z planem partii, a nie od razu.
 
 #### E1.8 Stopka z danymi firmy `[S]`
 
@@ -630,6 +677,15 @@ Rozmiar: **M** · Zależności: E1 · Ryzyko: niskie
 - [ ] **E4.4** Audyt kosztu Lenis + GSAP + `CustomCursor` na mobile — `CustomCursor` na urządzeniach dotykowych jest bezużyteczny, rozważyć wyłączenie poniżej `lg`
 - [ ] **E4.5** `README.md` — przepisać z „Portfolio website" na opis strony firmowej
 - [ ] **E4.6** `RESUME_ATS.md` — zostaje, ale sprawdzić czy nie jest deployowany publicznie
+- [ ] **E4.7** Usunąć `src/lib/generatePdf.ts` — eksportuje `generatePdf`, **nikt go nie
+      importuje**; `scripts/generate-cv-pdf.mjs` ma własną implementację na puppeteerze.
+      Martwy kod ciągnie `html-to-image` i `jspdf` w `dependencies`. Zweryfikowane 2026-08-04
+- [ ] **E4.8** `vercel.json` — usunąć klucz `builds` (składnia legacy: wypisuje projekt
+      z zero-config i **nadpisuje ustawienia z dashboardu**); dubluje się z `framework: "nextjs"`.
+      Vercel wykryje Next.js sam
+- [ ] **E4.9** Naprawić nieaktualny komentarz `scripts/generate-cv-pdf.mjs:9-10` — deklaruje
+      `public/cv-{en,pl}.pdf`, a kod (linia 155) zapisuje `Maciej Skorus - CV [EN|PL].pdf`.
+      Kod jest poprawny, komentarz kłamie
 
 ---
 
@@ -637,6 +693,11 @@ Rozmiar: **M** · Zależności: E1 · Ryzyko: niskie
 
 Rozmiar: **S** · Zależności: wszystkie
 
+- [ ] **Plan Vercel — sprawdzić przed uruchomieniem.** Hobby zabrania użytku komercyjnego,
+      a Vercel definiuje go szeroko: samo **reklamowanie usługi** wystarczy, sprzedaż na stronie
+      nie jest potrzebna. Strona firmy usługowej z ofertą kwalifikuje się jednoznacznie
+      → wymagany **Pro, 20 $/mies.** Egzekwowane przez ToS.
+      Zweryfikowane 2026-08-04: [vercel.com/docs/plans/hobby](https://vercel.com/docs/plans/hobby)
 - [ ] Google Search Console: właściwość `skoftware.pl`, sitemapa, ręczne zgłoszenie kluczowych URL-i
 - [ ] Weryfikacja 301 ze starych adresów (`/resume`, `mskorus.vercel.app/*`)
 - [ ] Google Business Profile (usługodawca lokalny — Śląsk) → wzmacnia local SEO
