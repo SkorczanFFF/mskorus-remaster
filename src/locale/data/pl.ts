@@ -9,6 +9,7 @@ import type {
 
 export const services: ServiceEntry[] = [
   {
+    slug: 'strony-internetowe',
     icon: 'Globe',
     title: 'Strony internetowe',
     tagline: 'Twoje cyfrowe drzwi wejściowe.',
@@ -16,6 +17,7 @@ export const services: ServiceEntry[] = [
       'Landing pages, strony firmowe i wizytówkowe. Szybkie, responsywne, zoptymalizowane pod SEO — zaprojektowane, by przyciągać nowych klientów.',
   },
   {
+    slug: 'aplikacje-webowe',
     icon: 'React',
     title: 'Aplikacje webowe',
     tagline: 'Software, który napędza Twój biznes.',
@@ -23,6 +25,7 @@ export const services: ServiceEntry[] = [
       'Dashboardy, panele administracyjne, SaaS, narzędzia wewnętrzne i rozszerzenia. Skalowalne rozwiązania w React, Next.js i TypeScript.',
   },
   {
+    slug: 'integracja-ai',
     icon: 'Sparkles',
     title: 'Integracja AI',
     tagline: 'Inteligencja, lokalnie Twoja.',
@@ -30,6 +33,7 @@ export const services: ServiceEntry[] = [
       'Modele AI zintegrowane z produktem — lokalnie na Twoim sprzęcie lub w chmurze. Dopracowane interfejsy gotowe dla użytkowników.',
   },
   {
+    slug: '3d-webgl',
     icon: 'Cube',
     title: '3D i WebGL',
     tagline: 'Web w trzech wymiarach.',
@@ -37,6 +41,7 @@ export const services: ServiceEntry[] = [
       'Interaktywne sceny, wizualizacje produktów i kreatywne doświadczenia 3D. Three.js, React Three Fiber, Blender — od modelu do przeglądarki.',
   },
   {
+    slug: 'aplikacje-mobilne',
     icon: 'Phone',
     title: 'Aplikacje mobilne',
     tagline: 'Twoja aplikacja, wszędzie.',
@@ -44,6 +49,7 @@ export const services: ServiceEntry[] = [
       'Wieloplatformowe aplikacje iOS i Android w React Native. Od skanerów kodów i kiosków eventowych po dopracowane produkty konsumenckie.',
   },
   {
+    slug: 'utrzymanie-i-rozwoj',
     icon: 'Wrench',
     title: 'Utrzymanie i rozwój',
     tagline: 'Rozwijaj, nie przepisuj.',

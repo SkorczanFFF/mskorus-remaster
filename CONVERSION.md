@@ -80,7 +80,7 @@ Każda ma moją rekomendację. **Do przeglądu — zaznacz zgodę lub zmień prz
 | **DEC-03** | Wykrywanie języka | **`localeDetection: false`** | Przewidywalne URL-e dla Google, brak zaskakujących przekierowań. Konsekwencja: znika cookie `locale` → **trzeba zaktualizować tabelę w polityce cookies** | ☐ |
 | **DEC-04** | Slugi ścieżek | **Polskie dla obu języków** (`/uslugi/...`, `/en/uslugi/...`) | Next dzieli pathname między locale. PL-owe słowo w URL-u pomaga w local SEO. EN dostaje lekko niespójny adres — akceptowalne, w razie czego dołożymy `rewrites` | ☐ |
 | **DEC-05** | Marka na froncie | **SKOFTWARE (firma)**, nazwisko na `/o-firmie` i `/cv` | „Firma" znosi obiekcję „to jednoosobowy freelancer, zniknie za miesiąc" | ☐ |
-| **DEC-06** | Ceny | **Widełki „od X zł"** przy każdej usłudze | Filtruje leady bez budżetu, buduje zaufanie. Alternatywa: „wycena indywidualna" — bezpieczniejsza, ale słabiej konwertuje | ☐ |
+| **DEC-06** | Ceny | **Widełki „od X zł" _oraz_ nota „wycena indywidualna"** przy każdej usłudze | Doprecyzowane 2026-08-08: nie „albo-albo". Widełki filtrują leady bez budżetu i budują zaufanie; nota o wycenie indywidualnej zdejmuje obiekcję „a jak mój projekt jest inny". Zakodowane: `ServiceEntry.priceFrom?` (widełki, opcjonalne — puste do C1) + `servicesPricingNote` (nota, stała). Usługa bez `priceFrom` pokazuje samą notę | ☐ |
 | **DEC-07** | E-mail firmowy | **`kontakt@skoftware.pl`** | `skorusmaciej94@gmail.com` na stronie firmowej to bezpośredni koszt zaufania | ☐ |
 | **DEC-08** | Dostawca maili z formularza | **Resend** (`RESEND_API_KEY`) | Prosty, darmowy tier, wymaga weryfikacji domeny. Alternatywa bez zewnętrznej zależności: Formspree | ☐ |
 | **DEC-09** | Ścieżka `/cookies` | **Zostaje bez zmian** | Rename → dodatkowe 301 bez zysku. Nowa `/polityka-prywatnosci` dochodzi obok | ☐ |
@@ -713,7 +713,7 @@ Bez tego etapy stoją na placeholderach. Oznaczone `[!]` w planie.
 
 | # | Co | Potrzebne do | Blokuje |
 |---|---|---|---|
-| C1 | **Widełki cenowe** dla 6 usług — albo decyzja „wycena indywidualna" | DEC-06 | E1.2, E2.1 |
+| C1 | **Widełki „od X zł" dla 6 usług** (model cenowy ustalony w DEC-06: widełki + nota; brakuje samych liczb — 6 wartości `priceFrom`) | DEC-06 | E1.2, E2.1 |
 | C2 | **Prawdziwa liczba wdrożeń** do paska zaufania (albo rezygnacja z liczby) | E1.1 | E1.1 |
 | C3 | **Zgoda NDA** — które projekty można nazwać z klienta | DEC-11 | E1.5, E2.2 |
 | C4 | **2–3 case studies z realnych wdrożeń** — problem, co zrobiłeś, efekt (liczby jeśli są) | E2.2 | E2.2 |

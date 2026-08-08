@@ -26,7 +26,7 @@ export const pl: Dictionary = {
 
   heroEyebrow: 'SKOFTWARE',
   heroH1Line1: 'Pomysły na wejściu.',
-  heroH1Line2: 'Działający software na wyjściu.',
+  heroH1Line2: 'Software na wyjściu.',
   heroSubtitle:
     'Strony, aplikacje webowe i mobilne, integracje AI i 3D — dla firm, które potrzebują, żeby to po prostu działało. Od pomysłu, przez wdrożenie, po utrzymanie. Jeden wykonawca, faktura VAT.',
   heroCtaPrimary: 'Opisz projekt — wycena w 48 h',
@@ -34,8 +34,7 @@ export const pl: Dictionary = {
   heroTrust: ['Faktura VAT', 'Śląsk i zdalnie', 'Obsługa PL / EN'],
   heroErrorFallback: 'Nie udało się załadować sceny 3D.',
 
-  footerCopyright:
-    '© {year} SKOFTWARE Maciej Skorus',
+  footerCopyright: '© {year} SKOFTWARE Maciej Skorus',
   footerResume: 'ŻYCIORYS',
   footerResumeOnline: 'CV ONLINE',
   footerResumeDownload: 'POBIERZ PDF',
@@ -47,6 +46,7 @@ export const pl: Dictionary = {
 
   navServices: 'Usługi',
   servicesSectionTitle: 'USŁUGI',
+  servicesPricingNote: 'Wycena indywidualna',
   services,
 
   techStripLead:
@@ -91,16 +91,24 @@ export const pl: Dictionary = {
   resumeHeaderSkills: 'UMIEJĘTNOŚCI I NARZĘDZIA',
   resumeHeaderDownload: 'POBIERZ',
   resumeAboutMe:
-    'Kreatywny fullstack developer z praktycznym doświadczeniem w aplikacjach webowych i mobilnych, systemach wewnętrznych i 3D. Doświadczony w branży medycznej - od organizacji krajowych i międzynarodowych kongresów i konferencji po tworzenie dedykowanego oprogramowania: pipeline\'y do przetwarzania dokumentów, VOD, wirtualne stoiska, aplikacje mobilne, usprawnienia i aktualizacje instniejących systemów, zapewnianie wsparcia IT na miejscu i w delegacji. Zrealizowałem system aukcji NFT i dApp powiązany z grą 3D MOBA na Unity. Od VanillaJS przez frameworki frontendowe i backendowe, bazy relacyjne i nierelacyjne po Dockera - poruszam się swobodnie po całym stacku, integruje modele AI/LLM. Prywatnie pasjonat eksperymentów, moddingu oraz tworzenia użytecznych i niebanalnych rozwiązań.',
+    "Kreatywny fullstack developer z praktycznym doświadczeniem w aplikacjach webowych i mobilnych, systemach wewnętrznych i 3D. Doświadczony w branży medycznej - od organizacji krajowych i międzynarodowych kongresów i konferencji po tworzenie dedykowanego oprogramowania: pipeline'y do przetwarzania dokumentów, VOD, wirtualne stoiska, aplikacje mobilne, usprawnienia i aktualizacje instniejących systemów, zapewnianie wsparcia IT na miejscu i w delegacji. Zrealizowałem system aukcji NFT i dApp powiązany z grą 3D MOBA na Unity. Od VanillaJS przez frameworki frontendowe i backendowe, bazy relacyjne i nierelacyjne po Dockera - poruszam się swobodnie po całym stacku, integruje modele AI/LLM. Prywatnie pasjonat eksperymentów, moddingu oraz tworzenia użytecznych i niebanalnych rozwiązań.",
   resumeEducation: {
     university: 'Uniwersytet Śląski - WNST',
     field: 'Programowanie Aplikacji Webowych',
     degree: 'Inżynierskie',
     dates: 'Październik 2017 - Czerwiec 2021',
   },
-  resumePageTitle: 'SKOFTWARE - Maciej Skorus - CV - Creative Fullstack Engineer',
+  resumePageTitle:
+    'SKOFTWARE - Maciej Skorus - CV - Creative Fullstack Engineer',
   resumeAltPhoto: 'Maciej Skorus, Fullstack Engineer',
-  resumeHobbies: ['gitara basowa', 'motoryzacja', 'muzyka', 'podróże', 'technologia', 'języki obce'],
+  resumeHobbies: [
+    'gitara basowa',
+    'motoryzacja',
+    'muzyka',
+    'podróże',
+    'technologia',
+    'języki obce',
+  ],
   resumeRodo:
     'Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).',
   resumeRepo: 'repozytorium',

@@ -30,10 +30,22 @@ export type ProjectEntry = {
 };
 
 export type ServiceEntry = {
+  /**
+   * Routing key for `/uslugi/[slug]`. Identical string in PL and EN — Next
+   * shares the pathname across locales, so an English slug here would break
+   * `/en/uslugi/...` (DEC-04).
+   */
+  slug: string;
   icon: string;
   title: string;
   tagline: string;
   description: string;
+  /**
+   * Localized "od X zł" / "from X" entry price (DEC-06). Optional: when unset
+   * the card shows only `servicesPricingNote`. Real figures are gated on C1 —
+   * left unset until Maciej supplies them, never invented.
+   */
+  priceFrom?: string;
 };
 
 /**
@@ -89,6 +101,11 @@ export type Dictionary = {
 
   navServices: string;
   servicesSectionTitle: string;
+  /**
+   * Always-shown note that pricing is individual, paired with each service's
+   * optional `priceFrom` range (DEC-06: range *and* individual quote).
+   */
+  servicesPricingNote: string;
   services: ServiceEntry[];
 
   techStripLead: string;

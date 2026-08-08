@@ -9,6 +9,7 @@ import type {
 
 export const services: ServiceEntry[] = [
   {
+    slug: 'strony-internetowe',
     icon: 'Globe',
     title: 'Websites',
     tagline: 'Your digital front door.',
@@ -16,6 +17,7 @@ export const services: ServiceEntry[] = [
       'Landing pages, company sites, and business cards. Fast, responsive, SEO-optimized — designed to turn visitors into clients.',
   },
   {
+    slug: 'aplikacje-webowe',
     icon: 'React',
     title: 'Web applications',
     tagline: 'Software that runs your business.',
@@ -23,6 +25,7 @@ export const services: ServiceEntry[] = [
       'Dashboards, admin panels, SaaS, internal tools, and browser extensions. Scalable solutions in React, Next.js, and TypeScript.',
   },
   {
+    slug: 'integracja-ai',
     icon: 'Sparkles',
     title: 'AI integration',
     tagline: 'Intelligence, locally yours.',
@@ -30,6 +33,7 @@ export const services: ServiceEntry[] = [
       'AI models integrated into real products — locally on your hardware or via the cloud. Wrapped in polished, user-ready interfaces.',
   },
   {
+    slug: '3d-webgl',
     icon: 'Cube',
     title: '3D & WebGL',
     tagline: 'The web, in three dimensions.',
@@ -37,6 +41,7 @@ export const services: ServiceEntry[] = [
       'Interactive scenes, product visualizers, and creative 3D experiences. Three.js, React Three Fiber, Blender — from model to browser.',
   },
   {
+    slug: 'aplikacje-mobilne',
     icon: 'Phone',
     title: 'Mobile apps',
     tagline: 'Your app, everywhere.',
@@ -44,6 +49,7 @@ export const services: ServiceEntry[] = [
       'Cross-platform iOS & Android built with React Native. From barcode scanners and event kiosks to polished consumer products.',
   },
   {
+    slug: 'utrzymanie-i-rozwoj',
     icon: 'Wrench',
     title: 'Maintenance & growth',
     tagline: 'Evolve, don\'t rewrite.',
