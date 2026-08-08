@@ -3,12 +3,78 @@
 Dokument wykonawczy. Opisuje przejście strony z **portfolio programisty pod rekrutację** na
 **stronę firmy usługowej z ofertą**, przy zachowaniu strony CV.
 
-- **Status:** DRAFT — do przeglądu przez Macieja
+- **Status:** W REALIZACJI na `feat/conversion` (poligon, w pełni lokalny) — patrz „Status wdrożenia" niżej
 - **Autor planu:** Claude
 - **Repo:** `mskorus-remaster` (Next.js 16.2.1, pages router, React 19, TS, Tailwind 4)
-- **Data:** 2026-07-28
+- **Data:** 2026-07-28 · ostatnia aktualizacja statusu: 2026-08-08
 
 **Legenda statusów zadań:** `[ ]` do zrobienia · `[~]` w toku · `[x]` zrobione · `[!]` zablokowane (czeka na decyzję/treść)
+
+---
+
+## Status wdrożenia — aktualizacja 2026-08-08
+
+**Gałąź `feat/conversion` to poligon („rzeźbimy"), w pełni lokalny — nic nie wdrożone.**
+Decyzja Macieja (2026-08-08): zostajemy tu i dłubiemy dalej; **czysty port krok-po-kroku
+pójdzie później na nowej gałęzi**, z wiedzy zebranej tutaj. Lista długu niżej to wsad do portu.
+Zmiany merytorycznie są dobre — problem jest w drodze do nich (reaktywne łatki, nie projekt).
+
+### Zmiana kierunku (2026-08-08) — po analizie reference `konradszczepanowski.com`
+
+Maciej wskazał stronę, która mu się podoba: **craft-portfolio bez cen i bez „o firmie"**.
+Wniosek + decyzje (ten blok **nadpisuje** starsze DEC-05/DEC-06 i etapy niżej):
+
+- **Kierunek: hybryda craft-leaning.** Kręgosłup = case studies z twardymi metrykami + „jak
+  pracuję" + zwięzły „dlaczego ja" na stronie głównej. Sprzedajemy **rzemiosło i efekty, nie
+  „firmę"**. Reszta (ceny, ciężka scaffolding usługowa) tylko na tyle, na ile pomaga.
+- **DEC-05 ZREWIDOWANE:** `/o-firmie` **nie powstaje jako strona.** Zaufanie = trust-chipy
+  (faktura VAT, NIP 6252501911) w stopce/kontakcie + krótki blok na home. Zaparkowane
+  `Experience`/`Skills` wracają **na home w formie craft** (proces / stack), nie jako osobna strona.
+- **DEC-06 ZREWIDOWANE:** **tylko „wycena indywidualna", bez widełek.** `priceFrom` zostaje
+  w typie jako opcjonalne, ale trwale puste; karta renderuje `servicesPricingNote`.
+  **Bramka C1 (6 liczb) — nieaktualna, zdjęta.**
+- **Podstrony `/uslugi/[slug]`:** pod znakiem zapytania (reference ich nie ma). Domyślnie
+  lekka oferta = **bogatsze karty na home** (+ ewentualnie jedna `/uslugi`), bez 6 ciężkich
+  podstron. Decyzja przy Partii usług.
+
+Wpływ na partie: **7** (usługi) — odblokowana, bez cen; **8** (`/o-firmie`) — skasowana jako
+strona, zamieniona na trust-chipy + rehome craft na home; **12** (`/uslugi/[slug]`) — wstrzymana
+do decyzji; **9** (case studies) staje się głównym silnikiem zaufania (nadal bramki G6 + C4).
+
+### Zrobione — zmapowane na commity
+
+| Partia | Zakres | Commit(y) |
+|---|---|---|
+| plan | dokument konwersji | `0e718f7` |
+| 1 | Experience/Skills → Branże + TechStrip; branże jako editorial rows | `788cead`, `111a789` |
+| 2 | i18n w URL (PL na `/`, EN na `/en`), bez persystencji | `25f3912` |
+| 3 | Hero z ofertą + CTA, copy renderowane serwerowo | `defcc14` |
+| 4 | hreflang/canonical/schema `ProfessionalService`; drop Chandrastic; `src/lib/site.ts` | `2797109` |
+| 5 | `/resume` → `/cv`, CV poza indexem, redirect | `245ef21` |
+| — | CLAUDE.md + zapis decyzji o formularzu | `15b7188` |
+| 6 (okrojona) | `slug` + model cenowy w `ServiceEntry` (bez liczb — bramka C1); DEC-06 doprecyzowane | `01fe6fe` |
+| hero (dziś) | mirror sceny: portret w prawo, strumień particli odwrócony | `d6e47bb` |
+| hero (dziś) | copy left-align + skalowanie 1440p — **NIEZACOMMITOWANE** (`HeroCopy.tsx`) | — |
+
+Partia 6 celowo **okrojona**: pełny podział słowników na moduły odłożony (patrz D8) — moduły
+`cases/marketing/legal` byłyby pustym rusztowaniem przed swoją treścią.
+
+### Świadome wyjątki — NIE „sprzątać" w porcie
+- `src/components/Experience/`, `src/components/Skills/` — zaparkowane, wracają na `/o-firmie` (Partia 8).
+- `/cv` — zostaje, `noindex, follow`.
+
+### Dług i leftovery do czystego portu (zweryfikowane w kodzie 2026-08-08)
+
+| # | Rzecz | Dowód | Jak zrobić w porcie |
+|---|---|---|---|
+| D1 | Hero copy: magic numbers + własny breakpoint `min-[2000px]` (łatki na gap i 1440p) | `HeroCopy.tsx` | zaprojektować jako grid 2-kol + fluid `clamp()`, bez ręcznych progów |
+| D2 | Podwójny `max-w` na jednym elemencie — `1200px` martwe, `800px` wygrywa | `About.tsx:220` (T11) | jeden świadomy `max-w` |
+| D3 | Katalog `components/About/` eksportuje komponent `Services` | (T10) | od razu `components/Services/` |
+| D4 | Martwy kod `generatePdf.ts` (html-to-image + jspdf), zero importerów | `src/lib/generatePdf.ts` | nie portować |
+| D5 | `vercel.json` z legacy `builds` (nadpisuje zero-config) | `vercel.json` | sam `framework: nextjs` |
+| D6 | `puppeteer` w `dependencies`, używany tylko przez skrypt PDF | `package.json` (T9) | `devDependencies` |
+| D7 | Kłamiący komentarz (deklaruje `cv-en.pdf`, zapisuje inną nazwę) | `generate-cv-pdf.mjs:9-10` | opisać realną ścieżkę |
+| D8 | Słowniki płaskie, niemodularne | `src/locale/*` | podział typów i danych po domenie od startu |
 
 ---
 
@@ -57,7 +123,7 @@ Skrót; pełna diagnoza była w rozmowie. Tu zostają fakty, na których opiera 
 | T8 | Brak polityki prywatności (jest tylko cookies) | `pages/cookies/` |
 | T9 | `puppeteer` w `dependencies`, używany tylko przez `scripts/generate-cv-pdf.mjs` | `package.json` |
 | T10 | `components/About/About.tsx` eksportuje komponent `Services` | — |
-| T11 | Duplikat `max-w-*` w jednym `className` (`max-w-[1200px]` + `max-w-[800px]`) — kolejność w CSS nieprzewidywalna | `About.tsx:261` |
+| T11 | Duplikat `max-w-*` w jednym `className` (`max-w-[1200px]` + `max-w-[800px]`) — drugi wygrywa, `1200px` jest martwe | `About.tsx:220` |
 
 ### 1.3 Co jest dobre i zostaje bez zmian
 
@@ -79,8 +145,8 @@ Każda ma moją rekomendację. **Do przeglądu — zaznacz zgodę lub zmień prz
 | **DEC-02** | Domyślny język | **PL na `/`, EN na `/en/*`** | Główny rynek to Polska/Śląsk. Dziś SSR-uje się EN — to zmiana treści pod istniejącymi URL-ami, ale ruch jest znikomy | ☐ |
 | **DEC-03** | Wykrywanie języka | **`localeDetection: false`** | Przewidywalne URL-e dla Google, brak zaskakujących przekierowań. Konsekwencja: znika cookie `locale` → **trzeba zaktualizować tabelę w polityce cookies** | ☐ |
 | **DEC-04** | Slugi ścieżek | **Polskie dla obu języków** (`/uslugi/...`, `/en/uslugi/...`) | Next dzieli pathname między locale. PL-owe słowo w URL-u pomaga w local SEO. EN dostaje lekko niespójny adres — akceptowalne, w razie czego dołożymy `rewrites` | ☐ |
-| **DEC-05** | Marka na froncie | **SKOFTWARE (firma)**, nazwisko na `/o-firmie` i `/cv` | „Firma" znosi obiekcję „to jednoosobowy freelancer, zniknie za miesiąc" | ☐ |
-| **DEC-06** | Ceny | **Widełki „od X zł" _oraz_ nota „wycena indywidualna"** przy każdej usłudze | Doprecyzowane 2026-08-08: nie „albo-albo". Widełki filtrują leady bez budżetu i budują zaufanie; nota o wycenie indywidualnej zdejmuje obiekcję „a jak mój projekt jest inny". Zakodowane: `ServiceEntry.priceFrom?` (widełki, opcjonalne — puste do C1) + `servicesPricingNote` (nota, stała). Usługa bez `priceFrom` pokazuje samą notę | ☐ |
+| **DEC-05** | Marka na froncie | **SKOFTWARE (firma)**, nazwisko na `/o-firmie` i `/cv` | **ZREWIDOWANE 2026-08-08 → patrz „Zmiana kierunku": bez strony `/o-firmie`; zaufanie przez trust-chipy (faktura VAT, NIP) + rehome craft na home** | ☐ |
+| **DEC-06** | Ceny | ~~Widełki „od X zł" + nota~~ → **tylko „wycena indywidualna"** | **ZREWIDOWANE 2026-08-08 → patrz „Zmiana kierunku": bez widełek, sama nota `servicesPricingNote`; `priceFrom` zostaje w typie, trwale puste; bramka C1 zdjęta** | ☐ |
 | **DEC-07** | E-mail firmowy | **`kontakt@skoftware.pl`** | `skorusmaciej94@gmail.com` na stronie firmowej to bezpośredni koszt zaufania | ☐ |
 | **DEC-08** | Dostawca maili z formularza | **Resend** (`RESEND_API_KEY`) | Prosty, darmowy tier, wymaga weryfikacji domeny. Alternatywa bez zewnętrznej zależności: Formspree | ☐ |
 | **DEC-09** | Ścieżka `/cookies` | **Zostaje bez zmian** | Rename → dodatkowe 301 bez zysku. Nowa `/polityka-prywatnosci` dochodzi obok | ☐ |
@@ -713,7 +779,7 @@ Bez tego etapy stoją na placeholderach. Oznaczone `[!]` w planie.
 
 | # | Co | Potrzebne do | Blokuje |
 |---|---|---|---|
-| C1 | **Widełki „od X zł" dla 6 usług** (model cenowy ustalony w DEC-06: widełki + nota; brakuje samych liczb — 6 wartości `priceFrom`) | DEC-06 | E1.2, E2.1 |
+| ~~C1~~ | ~~Widełki „od X zł" dla 6 usług~~ **ZDJĘTE 2026-08-08: ceny = „wycena indywidualna", bez liczb (DEC-06 zrewidowane)** | — | — |
 | C2 | **Prawdziwa liczba wdrożeń** do paska zaufania (albo rezygnacja z liczby) | E1.1 | E1.1 |
 | C3 | **Zgoda NDA** — które projekty można nazwać z klienta | DEC-11 | E1.5, E2.2 |
 | C4 | **2–3 case studies z realnych wdrożeń** — problem, co zrobiłeś, efekt (liczby jeśli są) | E2.2 | E2.2 |
