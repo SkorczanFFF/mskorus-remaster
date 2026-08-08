@@ -43,6 +43,7 @@ export const pl: Dictionary = {
     'Szukasz partnera, który przełoży złożone wymagania na eleganckie rozwiązania techniczne? Napisz, aby rozpocząć rozmowę o Twoim kolejnym projekcie.',
   footerDirectLabel: 'Kontakt bezpośredni',
   footerNetworkLabel: 'Sieć',
+  footerInvoiceNote: 'Faktura VAT',
 
   navServices: 'Usługi',
   servicesSectionTitle: 'USŁUGI',
@@ -57,6 +58,16 @@ export const pl: Dictionary = {
   industriesLead:
     'Trzy obszary, w których mam przerobione nietypowe wymagania i wiem, gdzie takie projekty potrafią się wyłożyć.',
   industries,
+
+  whyMeSectionTitle: 'DLACZEGO JA',
+  whyMeHeading: 'Jeden wykonawca. Od pomysłu po utrzymanie.',
+  whyMeBody:
+    'Bez pośredników i przekazywania projektu z rąk do rąk — rozmawiasz z osobą, która pisze kod. Kreatywny fullstack z praktyką w aplikacjach webowych i mobilnych, systemach wewnętrznych, 3D oraz integracji modeli AI.',
+  whyMePoints: [
+    'Rozmawiasz z osobą, która pisze kod',
+    'Od pomysłu, przez wdrożenie, po utrzymanie',
+    'Kod, który zespół może rozwijać dalej',
+  ],
 
   experienceSectionTitle: 'DOŚWIADCZENIE',
   experiences,

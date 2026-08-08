@@ -12,6 +12,7 @@ import {
   MailIcon,
   PdfIcon,
 } from '@/lib/shared/Icons';
+import { VAT_ID } from '@/lib/site';
 
 import { useLocale } from '@/locale/LocaleContext';
 
@@ -156,6 +157,9 @@ export default function Footer(): React.JSX.Element {
                 </h3>
                 <p className='mt-1 text-sm font-medium tracking-wide text-deep-blue/60'>
                   {t.contactCompanyInfo}
+                </p>
+                <p className='mt-2 text-xs tracking-wide text-deep-blue/45'>
+                  NIP {VAT_ID.replace(/^PL/, '')} · {t.footerInvoiceNote}
                 </p>
               </div>
 

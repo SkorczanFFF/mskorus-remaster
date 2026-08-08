@@ -100,6 +100,7 @@ export type Dictionary = {
   footerNarrative: string;
   footerDirectLabel: string;
   footerNetworkLabel: string;
+  footerInvoiceNote: string;
 
   navServices: string;
   servicesSectionTitle: string;
@@ -117,6 +118,11 @@ export type Dictionary = {
   industriesSectionTitle: string;
   industriesLead: string;
   industries: IndustryEntry[];
+
+  whyMeSectionTitle: string;
+  whyMeHeading: string;
+  whyMeBody: string;
+  whyMePoints: string[];
 
   experienceSectionTitle: string;
   experiences: ExperienceEntry[];

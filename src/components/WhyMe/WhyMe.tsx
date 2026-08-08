@@ -1,0 +1,76 @@
+import React, { useRef } from 'react';
+
+import { gsap } from '@/lib/gsap';
+import { useScrollTriggers } from '@/hooks/useScrollTriggers';
+
+import { useLocale } from '@/locale/LocaleContext';
+
+/**
+ * The trust/human beat that replaces a standalone `/o-firmie` page (pivot
+ * 2026-08-08): craft positioning, not an employer timeline. Sits directly above
+ * Portfolio and must stay `bg-white` — Portfolio's top `arrow-down white`
+ * relies on a white section above it (CLAUDE.md §4).
+ */
+export default function WhyMe(): React.JSX.Element {
+  const { t } = useLocale();
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useScrollTriggers(() => {
+    if (!rootRef.current) return [];
+
+    const items = gsap.utils.toArray<Element>('.why-me-item', rootRef.current);
+    if (!items.length) return [];
+
+    gsap.set(items, { opacity: 0, y: 20 });
+
+    const tween = gsap.to(items, {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: rootRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+
+    return [tween.scrollTrigger];
+  }, []);
+
+  return (
+    <section
+      id='why-me'
+      className='font-grotesk relative w-full overflow-hidden bg-white pb-[100px] pt-[80px] md:pb-[130px] md:pt-[120px] [contain:paint]'
+    >
+      <h2 className='font-grotesk text-primary-blue text-center text-xl font-normal leading-3 tracking-[10px] xl:absolute xl:left-[80px] xl:top-[60px] xl:origin-top-left xl:rotate-90 xl:py-0'>
+        {t.whyMeSectionTitle}
+      </h2>
+
+      <div ref={rootRef} className='mx-auto w-full max-w-[1100px] px-6 md:px-10'>
+        <h3 className='why-me-item font-unica text-primary-blue max-w-[900px] text-3xl uppercase leading-tight tracking-tight md:text-5xl xl:mt-0'>
+          {t.whyMeHeading}
+        </h3>
+
+        <p className='why-me-item text-deep-blue/60 mt-6 max-w-[620px] text-[15px] leading-relaxed md:text-[17px]'>
+          {t.whyMeBody}
+        </p>
+
+        <ul className='why-me-item mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-3'>
+          {t.whyMePoints.map((point, i) => (
+            <li key={point} className='border-primary-blue/10 border-t pt-4'>
+              <span
+                className={`mb-3 block h-[2px] w-10 ${i % 2 === 0 ? 'bg-raspberry' : 'bg-orange'}`}
+                aria-hidden='true'
+              />
+              <span className='text-primary-blue/80 block text-[15px] font-medium leading-snug'>
+                {point}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}

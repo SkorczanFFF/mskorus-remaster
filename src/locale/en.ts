@@ -43,6 +43,7 @@ export const en: Dictionary = {
     'Seeking a partner to translate complex requirements into elegant technical solutions? Reach out to start a conversation about your next venture.',
   footerDirectLabel: 'Direct Communication',
   footerNetworkLabel: 'Network',
+  footerInvoiceNote: 'VAT invoices',
 
   navServices: 'Services',
   servicesSectionTitle: 'SERVICES',
@@ -57,6 +58,16 @@ export const en: Dictionary = {
   industriesLead:
     'Three domains where the unusual requirements are already familiar — and where I know these projects tend to break.',
   industries,
+
+  whyMeSectionTitle: 'WHY ME',
+  whyMeHeading: 'One maker. From idea to upkeep.',
+  whyMeBody:
+    'No middlemen, no hand-offs — you talk to the person who writes the code. A creative fullstack with hands-on work across web and mobile apps, internal systems, 3D, and AI model integration.',
+  whyMePoints: [
+    'You talk to the person who writes the code',
+    'From idea, through delivery, to upkeep',
+    'Code your team can keep building on',
+  ],
 
   experienceSectionTitle: 'WORK EXP',
   experiences,

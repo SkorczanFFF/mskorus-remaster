@@ -8,6 +8,7 @@ import Portfolio from '@/components/Portfolio/Portfolio';
 import Seo from '@/components/Seo';
 import Services from '@/components/Services/Services';
 import TechStrip from '@/components/TechStrip/TechStrip';
+import WhyMe from '@/components/WhyMe/WhyMe';
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Services />
         <TechStrip />
         <Industries />
+        <WhyMe />
         <Portfolio />
         <Footer />
       </main>
