@@ -47,6 +47,7 @@ export const pl: Dictionary = {
   navServices: 'Usługi',
   servicesSectionTitle: 'USŁUGI',
   servicesPricingNote: 'Wycena indywidualna',
+  servicesCtaLabel: 'Opisz projekt',
   services,
 
   techStripLead:

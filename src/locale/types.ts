@@ -40,6 +40,8 @@ export type ServiceEntry = {
   title: string;
   tagline: string;
   description: string;
+  /** 3 "what you get" bullets — benefit phrasing derived from `description`. */
+  deliverables: string[];
   /**
    * Localized "od X zł" / "from X" entry price (DEC-06). Optional: when unset
    * the card shows only `servicesPricingNote`. Real figures are gated on C1 —
@@ -106,6 +108,8 @@ export type Dictionary = {
    * optional `priceFrom` range (DEC-06: range *and* individual quote).
    */
   servicesPricingNote: string;
+  /** Label for the section-level CTA under the services grid → /#contact. */
+  servicesCtaLabel: string;
   services: ServiceEntry[];
 
   techStripLead: string;

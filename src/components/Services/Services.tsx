@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useRef } from 'react';
 
 import { BREAKPOINTS } from '@/lib/breakpoints';
@@ -31,10 +32,12 @@ function ServiceCard({
   service,
   index,
   prefersReducedMotion,
+  pricingNote,
 }: {
   service: ServiceEntry;
   index: number;
   prefersReducedMotion: boolean;
+  pricingNote: string;
 }) {
   const Icon = serviceIconMap[service.icon];
   const isOdd = index % 2 === 1;
@@ -86,10 +89,34 @@ function ServiceCard({
 
           {/* Description */}
           <p
-            className='flex-1 text-[14px] leading-relaxed text-white/80'
+            className='text-[14px] leading-relaxed text-white/80'
             style={{ transform: 'translateZ(20px)' }}
           >
             {service.description}
+          </p>
+
+          {/* Deliverables — what you get */}
+          <ul
+            className='flex flex-col gap-1.5 text-[13px] text-white/70'
+            style={{ transform: 'translateZ(15px)' }}
+          >
+            {service.deliverables.map((item) => (
+              <li key={item} className='flex items-start gap-2'>
+                <span
+                  aria-hidden='true'
+                  className={`mt-[7px] h-[5px] w-[5px] shrink-0 rounded-full ${isOdd ? 'bg-orange' : 'bg-raspberry'}`}
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          {/* Pricing note — individual quote (DEC-06) */}
+          <p
+            className={`mt-auto pt-2 text-[11px] font-medium uppercase tracking-[0.15em] ${isOdd ? 'text-orange/80' : 'text-raspberry/80'}`}
+            style={{ transform: 'translateZ(15px)' }}
+          >
+            {pricingNote}
           </p>
         </div>
 
@@ -217,21 +244,30 @@ export default function Services(): React.JSX.Element {
 
       <div
         ref={gridRef}
-        className='service-grid mx-auto grid max-w-[1200px] gap-[60px] md:gap-y-0 grid-cols-1 md:gap-x-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-12 max-w-[800px]'
+        className='service-grid mx-auto grid max-w-[1200px] gap-[60px] md:gap-y-0 grid-cols-1 md:gap-x-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-12'
       >
         {t.services.map((service, i) => (
           <div
-            key={service.title}
-            className={`service-card mx-auto max-w-[370px] md:max-h-[182px] w-full transition-[opacity,filter] duration-300 ${i % 2 === 1 ? 'md:mt-[60px] xl:mt-0' : ''}`}
+            key={service.slug}
+            className={`service-card mx-auto max-w-[370px] w-full transition-[opacity,filter] duration-300 ${i % 2 === 1 ? 'md:mt-[60px] xl:mt-0' : ''}`}
           >
             <ServiceCard
               service={service}
               index={i}
               prefersReducedMotion={prefersReducedMotion}
+              pricingNote={t.servicesPricingNote}
             />
           </div>
         ))}
       </div>
+
+      <Link
+        href='/#contact'
+        scroll={false}
+        className='bg-raspberry hover:bg-orange focus-visible:outline-orange mt-14 rounded-[2px] px-8 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2'
+      >
+        {t.servicesCtaLabel}
+      </Link>
     </section>
   );
 }
