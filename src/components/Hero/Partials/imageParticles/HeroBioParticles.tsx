@@ -42,19 +42,22 @@ function buildParticleGeometry(): THREE.BufferGeometry {
 
     aOffset[i] = (i / PARTICLE_COUNT) * DURATION;
 
-    aStartPosition[i3] = -16;
+    // Every X below is the horizontal mirror of the original left→right stream:
+    // the flow now runs right→left to match the portrait's move to the right
+    // (SCENE_CONFIG). Only X is negated — Y and Z are unchanged.
+    aStartPosition[i3] = 16;
     aStartPosition[i3 + 1] = -4;
     aStartPosition[i3 + 2] = -8;
 
-    aControlPoint1[i3] = randFloat(-37, 9);
+    aControlPoint1[i3] = randFloat(-9, 37);
     aControlPoint1[i3 + 1] = randFloat(-3, 22);
     aControlPoint1[i3 + 2] = randFloat(-6, -26);
 
-    aControlPoint2[i3] = randFloat(-15, 25);
+    aControlPoint2[i3] = randFloat(-25, 15);
     aControlPoint2[i3 + 1] = randFloat(-35, 35);
     aControlPoint2[i3 + 2] = randFloat(-30, -15);
 
-    aEndPosition[i3] = 30;
+    aEndPosition[i3] = -30;
     aEndPosition[i3 + 1] = 5;
     aEndPosition[i3 + 2] = 10;
 

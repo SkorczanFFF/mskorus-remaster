@@ -15,10 +15,13 @@ useLoader.preload(THREE.TextureLoader, '/me.png');
 
 type GyroRef = React.MutableRefObject<{ x: number; y: number }>;
 
+// Portrait sits on the right, opposite the offer copy (HeroCopy reads better on
+// the left, over the dark side of the contrast gradient). Positive X mirrors the
+// earlier left-hand placement; HeroBioParticles' flow is mirrored to match.
 const SCENE_CONFIG = {
   mobile: { scale: 0.9, groupX: 0, targetX: 0 },
-  tablet: { scale: 1.15, groupX: -4, targetX: -1 },
-  desktop: { scale: 1.5, groupX: -10, targetX: -6 },
+  tablet: { scale: 1.15, groupX: 4, targetX: 1 },
+  desktop: { scale: 1.5, groupX: 10, targetX: 6 },
 } as const;
 
 const Scene = (props: ThreeElements['group'] & { onReady?: () => void; isMobile?: boolean; viewport?: Viewport; gyroRef?: GyroRef; pulse?: TactilePulseRefs }) => {
