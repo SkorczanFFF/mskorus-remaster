@@ -53,15 +53,17 @@ do decyzji; **9** (case studies) staje się głównym silnikiem zaufania (nadal 
 | 5 | `/resume` → `/cv`, CV poza indexem, redirect | `245ef21` |
 | — | CLAUDE.md + zapis decyzji o formularzu | `15b7188` |
 | 6 (okrojona) | `slug` + model cenowy w `ServiceEntry` (bez liczb — bramka C1); DEC-06 doprecyzowane | `01fe6fe` |
-| hero (dziś) | mirror sceny: portret w prawo, strumień particli odwrócony | `d6e47bb` |
-| hero (dziś) | copy left-align + skalowanie 1440p — **NIEZACOMMITOWANE** (`HeroCopy.tsx`) | — |
+| hero | mirror sceny: portret w prawo, strumień particli odwrócony | `d6e47bb` |
+| hero | copy left-align + skalowanie 1440p | `ae8ac9b` |
+| 7 | usługi w duchu craft: `deliverables`, nota o wycenie, CTA; rename About→Services (D2/D3/T10/T11) | `7401592` |
+| 8 | sekcja `WhyMe` (zamiast strony `/o-firmie`) + trust-chipy NIP/faktura w stopce | — (świeże) |
 
 Partia 6 celowo **okrojona**: pełny podział słowników na moduły odłożony (patrz D8) — moduły
 `cases/marketing/legal` byłyby pustym rusztowaniem przed swoją treścią.
 
 ### Świadome wyjątki — NIE „sprzątać" w porcie
-- `src/components/Experience/`, `src/components/Skills/` — zaparkowane, wracają na `/o-firmie` (Partia 8).
 - `/cv` — zostaje, `noindex, follow`.
+- (Uwaga: `Experience`/`Skills` przestały być wyjątkiem — patrz D9, są już do usunięcia.)
 
 ### Dług i leftovery do czystego portu (zweryfikowane w kodzie 2026-08-08)
 
@@ -75,6 +77,7 @@ Partia 6 celowo **okrojona**: pełny podział słowników na moduły odłożony 
 | D6 | `puppeteer` w `dependencies`, używany tylko przez skrypt PDF | `package.json` (T9) | `devDependencies` |
 | D7 | Kłamiący komentarz (deklaruje `cv-en.pdf`, zapisuje inną nazwę) | `generate-cv-pdf.mjs:9-10` | opisać realną ścieżkę |
 | D8 | Słowniki płaskie, niemodularne | `src/locale/*` | podział typów i danych po domenie od startu |
+| D9 | `Experience`/`Skills` — martwe po pivocie (cel `/o-firmie` skasowany; fakty żyją w `Industries`/`TechStrip`/`WhyMe`) | `src/components/{Experience,Skills}/` | nie portować; usunąć (czeka na OK Macieja — §7 CLAUDE.md) |
 
 ---
 
